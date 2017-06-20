@@ -1,0 +1,30 @@
+Package: edxviz
+Title: Visualize EdX Student Data
+Version: 0.0.0.9000
+Authors@R: c(person("Matthew", "Emery", email = "matthew.emery44@gmail.com", role = c("aut", "cre")), person("David", "Laing", email = "davidkendalllaing@gmail.com", role = c("aut")), person("Andrew", "Lim", email = "andrewlim90@gmail.com", role = c("aut")), person("Subi", "Zhang", email = "subi.zhangg@gmail.com", role = c("aut")))
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+	DT,
+	ggthemes,
+	gsubfn,
+	lubridate,
+	plotly,
+	reshape2,
+	tidyjson,
+	viridis,
+	wordcloud,
+	XML,
+	zoo
+Depends:
+	shiny,
+	shinyBS,
+	tidyverse
+Suggests:
+  devtools,
+  testthat,
+    packagedocs
+RoxygenNote: 6.0.1
+VignetteBuilder: packagedocs

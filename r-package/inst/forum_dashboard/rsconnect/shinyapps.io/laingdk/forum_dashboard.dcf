@@ -1,0 +1,10 @@
+name: forum_dashboard
+title: forum_dashboard
+account: laingdk
+server: shinyapps.io
+appId: 186053
+bundleId: 860314
+url: https://laingdk.shinyapps.io/forum_dashboard/
+when: 1497029394.33563
+asMultiple: FALSE
+asStatic: FALSE

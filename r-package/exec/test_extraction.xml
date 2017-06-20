@@ -1,0 +1,19 @@
+<chapter display_name="Part 1: What Is Psychology?">
+    <sequential>
+        <vertical>
+          <problem display_name="Part 1 Readings Review: Question 1" markdown="&gt;&gt;According to your textbook, Psychology is best defined as:&lt;&lt;&#10;(!) the study of the mind&#10;(x) the study of the mind and behavior&#10;() the study of behavior&#10;() the study of the biology of the mind&#10;() the study of why people do what they do" max_attempts="2" showanswer="finished" url_name_orig="09559307b70f4ffc8ff15888b7f1e47f">
+          <p>According to your textbook, Psychology is best defined as:</p>
+          <multiplechoiceresponse>
+            <choicegroup label="According to your textbook, Psychology is best defined as:" type="MultipleChoice" shuffle="true">
+              <choice correct="false">the study of the mind</choice>
+              <choice correct="true">the study of the mind and behavior</choice>
+              <choice correct="false">the study of behavior</choice>
+              <choice correct="false">the study of the biology of the mind</choice>
+              <choice correct="false">the study of why people do what they do</choice>
+            </choicegroup>
+          </multiplechoiceresponse>
+        </problem>
+        </vertical>
+    </sequential>
+</chapter>
+
