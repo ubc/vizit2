@@ -9,16 +9,6 @@ Welcome to our capstone project.
 * [Project proposal](https://github.ubc.ca/ubc-mds-2016/capstone_learning_analystics_students)
 * [Repository hosting our complete R package](https://github.ubc.ca/alim1990/mooc_capstone_private/tree/master/r-package)
 
-### Dashboard
-
-Using data from an edX psychology course, the links below demonstrate the six views of our dashboard:
-
-* [Engagement Overview Dashboard](http://40.83.221.86/inst/global_dashboard/?dash=overview&course=psyc1)
-* [General Demographics Dashboard](http://40.83.221.86/inst/global_dashboard/?dash=general&course=psyc1)
-* [Links and Pages Dashboard](http://40.83.221.86/inst/global_dashboard/?dash=linkpage&course=psyc1)
-* [Discussion Dashboard](http://40.83.221.86/inst/global_dashboard/?dash=forum&course=psyc1)
-* [Problems Dashboard](http://40.83.221.86/inst/global_dashboard/?dash=problems&course=psyc1)
-* [Video Dashboard](http://40.83.221.86/inst/global_dashboard/?dash=video&course=psyc1)
 
 ### Documentation
 
