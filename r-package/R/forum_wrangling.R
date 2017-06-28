@@ -192,8 +192,8 @@ prepare_views <- function(forum) {
 #' @param forum A dataframe with one post per row.
 #' @return The prepared forum posts data.
 #' @examples
-#' @export
 #' prepare_posts(forum)
+#' @export
 prepare_posts <- function(forum) {
 
         # Change the text from factor to character.
@@ -232,8 +232,8 @@ prepare_posts <- function(forum) {
 #' @param forum A forum dataframe.
 #' @return The same dataframe with a new column for activity_level.
 #' @examples
-#' @export
 #' get_activity_levels(forum)
+#' @export
 get_activity_levels <- function(forum) {
 
         # Get the activity level of the users.
@@ -258,8 +258,8 @@ get_activity_levels <- function(forum) {
 #' @param forum A forum dataframe.
 #' @return The same dataframe with a new column for post_type.
 #' @examples
+#' get_post_types(forum)
 #' @export
-#' get_post_type(forum)
 get_post_types <- function(forum) {
 
         forum_w_post_types <- forum %>% mutate(post_type = case_when(
@@ -283,14 +283,14 @@ get_post_types <- function(forum) {
 #' @param forum A forum dataframe.
 #' @return The same dataframe with commentable_id filled in for everything.
 #' @examples
-#' @export
 #' infer_post_subcategories(forum)
+#' @export
 infer_post_subcategories <- function(forum) {
 
         # Get only the initial posts.
         initial_posts <- forum %>%
                 filter(post_type == "initial_post")
-
+        
         # Remove extraneous variables for the join with response posts.
         initial_posts_for_join <- initial_posts %>%
                 select(mongoid, commentable_id)
@@ -298,7 +298,7 @@ infer_post_subcategories <- function(forum) {
         # Get only the response posts.
         response_posts <- forum %>%
                 filter(post_type == "response_post")
-
+        
         # Get only the comment posts.
         comment_posts <- forum %>%
                 filter(post_type == "comment_post")
@@ -329,41 +329,63 @@ infer_post_subcategories <- function(forum) {
         comment_counts <- comment_posts_w_sc %>%
                 group_by(comment_thread_id, parent_id) %>%
                 summarise(comments = n_distinct(mongoid)) %>%
-                #ungroup() %>% 
+                ungroup() %>% 
+                right_join(response_posts_w_sc_for_join, by = c("parent_id" = "mongoid")) %>% 
                 mutate(initial_post_id = comment_thread_id,
                        response_post_id = parent_id) %>%
-                select(-comment_thread_id, -parent_id) ## initial_post_id, response_post_id, comments
+                select(-comment_thread_id, -parent_id
+                       #-commentable_id.x, -commentable_id.y
+                       )
+        
+        comment_counts$comments[is.na(comment_counts$comments)] <- 0
         
         # Count up all the responses and comments for each initial post.
         print("          Counting responses...")
-        all_counts <- comment_counts %>%
-                group_by(initial_post_id) %>%
-                summarise(responses = n_distinct(response_post_id),
-                          comments = sum(comments))
+        response_counts <- response_posts_w_sc %>%
+                group_by(comment_thread_id) %>%
+                summarise(responses = n_distinct(mongoid, na.rm = TRUE)) %>% 
+                ungroup() %>% 
+                right_join(initial_posts_for_join, by = c("comment_thread_id" = "mongoid")) %>%
+                mutate(initial_post_id = comment_thread_id)
         
-        # Add back in the number of comments for each response post.
-        forum_posts <- forum_w_inferred_subcategories %>%
-                left_join(all_counts, by = c("mongoid" = "initial_post_id")) %>%
-                left_join(comment_counts, by = c("mongoid" = "response_post_id")) %>%
-                mutate(comment_thread_id = comment_thread_id.x,
-                       comments = case_when(
-
-                        is.na(.$comments.x) ~ .$comments.y,
-                        !is.na(.$comments.x) ~ .$comments.x
-
-                )) %>%
-                select(-comment_thread_id.x,
-                       -comment_thread_id.y,
-                       -comments.x,
-                       -comments.y,
-                       -initial_post_id)
+        response_counts$responses[is.na(response_counts$responses)] <- 0
+        
+        comment_counts_on_init <- comment_counts %>% 
+                group_by(initial_post_id) %>% 
+                summarise(comments = sum(comments))
+        
+        both_counts <- response_counts %>% 
+                left_join(comment_counts_on_init) %>% 
+                mutate(mongoid = initial_post_id) %>% 
+                select(-initial_post_id, -comment_thread_id)
+        
+        both_counts$comments[is.na(both_counts$comments)] <- 0
+        both_counts$responses[is.na(both_counts$responses)] <- 0
+        
+        comment_counts$responses <- 0
+        comment_counts <- comment_counts %>% 
+                mutate(mongoid = response_post_id) %>% 
+                select(-initial_post_id, -response_post_id)
+        
+        zero_counts <- comment_posts_w_sc %>% 
+                select(mongoid, commentable_id)
+        
+        zero_counts$responses <- 0
+        zero_counts$comments <- 0
+        
+        counts <- both_counts %>% 
+                rbind(comment_counts) %>% 
+                rbind(zero_counts)
+        
+        forum_posts <- forum_w_inferred_subcategories %>% 
+                left_join(counts)
 
         # Wherever the number of responses or comments is NA, set to zero.
         forum_posts$responses[is.na(forum_posts$responses)] <- 0
         forum_posts$responses <- as.integer(forum_posts$responses)
         forum_posts$comments[is.na(forum_posts$comments)] <- 0
         forum_posts$comments <- as.integer(forum_posts$comments)
-
+        
         # Convert commentable_id to a factor.
         forum_posts$commentable_id <- as.factor(forum_posts$commentable_id)
 
@@ -377,8 +399,8 @@ infer_post_subcategories <- function(forum) {
 #' @param forum A dataframe with one row per post.
 #' @return The dataframe with each row containing a word, prepared for joining with the forum elements.
 #' @examples
-#' @export
 #' prepare_words(forum)
+#' @export
 prepare_words <- function(forum) {
 
         # Get one word per row.
@@ -408,6 +430,7 @@ prepare_words <- function(forum) {
 #' @return The forum searches data with a new column for activity level.
 #' @examples
 #' prepare_searches(forum)
+#' @export
 prepare_searches <- function(forum) {
 
         # Get the activity level of the users.
@@ -423,8 +446,8 @@ prepare_searches <- function(forum) {
 #' @param json A JSON file containing information about the course elements.
 #' @return A dataframe with four columns: \code{commentable_id}, \code{display_name}, \code{discussion_category}, and \code{discussion_target}.
 #' @examples
-#' @export
 #' prepare_json(json)
+#' @export
 prepare_json <- function(json) {
 
         commentable_id = c()
@@ -488,8 +511,8 @@ prepare_json <- function(json) {
 #' @param xml An XML file containing information about the course elements.
 #' @return A dataframe with three columns: \code{display_name}, \code{discussion_category}, and \code{discussion_target}.
 #' @examples
-#' @export
 #' prepare_xml(xml)
+#' @export
 prepare_xml <- function(xml) {
 
         # Get the discussion nodes.
@@ -545,8 +568,8 @@ prepare_xml <- function(xml) {
 #' @param all_elements A nested list containing attributes for each course element.
 #' @return A vector containing the \code{commentable_id}, \code{display_name}, \code{discussion_category}, and \code{discussion_target} of a course element.
 #' @examples
+#' get_discussion_vars_json(i, all_elements)
 #' @export
-#' get_discussion_vars_json(i)
 get_discussion_vars_json <- function(i, all_elements){
 
         if ("discussion" %in% as.character(all_elements[[i]])) {
@@ -564,8 +587,8 @@ get_discussion_vars_json <- function(i, all_elements){
 #' @param all_parameters An XML tree containing all the parameters associated with each discussion node.
 #' @return A vector containing the \code{display_name}, \code{discussion_category}, and \code{discussion_target} of a course element.
 #' @examples
+#' get_discussion_vars_xml(i, all_parameters)
 #' @export
-#' get_discussion_vars_xml(i)
 get_discussion_vars_xml <- function(i, all_parameters) {
         c(all_parameters[[i]]['display_name'],
           all_parameters[[i]]['discussion_category'],

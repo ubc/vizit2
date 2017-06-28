@@ -2,7 +2,8 @@
 % Please edit documentation in R/overview_engagement_wrangling.R
 \name{wrangle_overview_engagement}
 \alias{wrangle_overview_engagement}
-\title{Output cleaned engagement data into corresponding course directory}
+\title{This function automatically reads a file named "tower_engage_dirt.csv"
+from the specified course directory and output a clean files named "tower_engage.csv" in the same directory}
 \usage{
 wrangle_overview_engagement(input_course)
 }
@@ -10,8 +11,8 @@ wrangle_overview_engagement(input_course)
 \item{input_course}{String of course directory name}
 }
 \description{
-This function will automatically read a file named "tower_engage_dirt.csv"
-from the specified course directory and output a csv named "tower_engage.csv" in the same directory
+This function automatically reads a file named "tower_engage_dirt.csv"
+from the specified course directory and output a clean files named "tower_engage.csv" in the same directory
 }
 \examples{
 wrangle_video(input_course = "psyc1")

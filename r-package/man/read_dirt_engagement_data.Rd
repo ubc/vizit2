@@ -2,7 +2,7 @@
 % Please edit documentation in R/overview_engagement_wrangling.R
 \name{read_dirt_engagement_data}
 \alias{read_dirt_engagement_data}
-\title{Reads in tower_engage_dirt.csv file}
+\title{Import untidy student engagement csv file as an R dataframe object}
 \usage{
 read_dirt_engagement_data(input_course)
 }
@@ -10,10 +10,10 @@ read_dirt_engagement_data(input_course)
 \item{input_course}{Name of course directory (ex. psyc1, spd1, marketing, etc)}
 }
 \value{
-\code{tower_engage}: Dataframe containing student engagement information with videos and problems
+tower_engage: Dataframe containing student engagement information with videos and problems
 }
 \description{
-Reads in tower_engage_dirt.csv file
+Import untidy student engagement csv file as an R dataframe object
 }
 \examples{
 read_dirt_engagement_data(input_course = 'psyc1')

@@ -24,10 +24,7 @@ videoModuleUI <- function(id) {
                                                                                      "Verified" = "verified",
                                                                                      "Audit" = "audit"),
                                                                          selected = "all"),
-                                                             selectInput(ns("module"),
-                                                                         "Module:",
-                                                                         choices = append("All",chap_name),
-                                                                         selected = "All"),
+                                                             htmlOutput(ns("moduleSelection")),
                                                              
                                                              h5(textOutput(ns("num_students")), align="center"),
                                                              
@@ -55,24 +52,25 @@ videoModuleUI <- function(id) {
                                          plotly::plotlyOutput(ns("video_heatmap")), 
                                          style='primary'))),
             
+            # Developer note: This plot was removed and to be re-implemented pending usability testing results
             # Up until plot
-            fluidRow(
-              bsCollapse(id=ns("up_unt"), multiple=TRUE,
-                         bsCollapsePanel("What part are students watching up until?",
-                                         plotly::plotlyOutput(ns("up_until")),
-                                         style='primary'))),
+            # fluidRow(
+            #   bsCollapse(id=ns("up_unt"), multiple=TRUE,
+            #              bsCollapsePanel("What part are students watching up until?",
+            #                              plotly::plotlyOutput(ns("up_until")),
+            #                              style='primary'))),
             
             # Top Heat
             fluidRow(
               bsCollapse(id=ns("top_surprise"), multiple=TRUE,
-                         bsCollapsePanel("Which part of my videos are the most surprising?",
-                                         plotly::plotlyOutput(ns("surprising")), 
+                         bsCollapsePanel("Which video segments have abnormally high or low watch rates?",
                                          selectInput(ns("top_selection"),
                                                      "Select segments to highlight:",
                                                      choices = c("Top 10" = 10,
                                                                  "Top 25" = 25,
                                                                  "Top 50" = 50),
                                                      selected = 10),
+                                         plotly::plotlyOutput(ns("surprising")), 
                                          style='primary'))),
             
             
@@ -80,7 +78,7 @@ videoModuleUI <- function(id) {
             fluidRow(
               bsCollapse(id=ns("summary_table"), multiple=TRUE,
                          bsCollapsePanel("Summary Table",
-                                         dataTableOutput("summary_tbl"),
+                                         dataTableOutput(ns("summary_tbl")),
                                          br(),
                                          style='primary')
               )))

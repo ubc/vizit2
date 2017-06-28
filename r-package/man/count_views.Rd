@@ -4,7 +4,7 @@
 \alias{count_views}
 \title{Count the number of view events for each subcategory in an input forum.}
 \usage{
-count_views(input_forum, wrangled_forum_elements = wrangled_forum_elements)
+count_views(input_forum, wrangled_forum_elements)
 }
 \arguments{
 \item{input_forum}{The input dataframe containing a row for each read event in the forum.}
@@ -13,6 +13,9 @@ count_views(input_forum, wrangled_forum_elements = wrangled_forum_elements)
 }
 \value{
 \code{view_counts} A dataframe containing the read counts for each subcategory in the forum.
+}
+\description{
+Count the number of view events for each subcategory in an input forum.
 }
 \examples{
 count_views(wrangled_forum_views)

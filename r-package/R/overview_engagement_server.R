@@ -1,15 +1,12 @@
-#' Filter student engagement dataframe by the selected demographics 
-#' 
+#' Filter input dataframe based on selected student demographics, 
 #' @param engage_df The student engagement dataframe.
 #' @param activity_level It refers to the total time each student spent on the course.There are 4 levels: "under_30_min", "30_min_to_5_hr", "over_5_hr", or (default) "all". 
 #' @param gender One of "male", "female", "other", or (default) "all".
 #' @param registration_status One of "audit", "verified", or (default) "all".
-#' @param module One of the modules of the course
+#' @param module One of the modules of the course.
 #' @return A dataframe filtered by the selected demographics.
 #' @examples
 #' filter_demographics(engage_df = tower_engage, gender = "all", mode = "all", activity_level = "all")
-
-
 filter_demographics <- function(engage_df, gender = "All", mode = "All",activity_level = "All") {
         filtered_df <- engage_df
         if (gender == "female") {
@@ -43,14 +40,17 @@ filter_demographics <- function(engage_df, gender = "All", mode = "All",activity
 
 
 #' Filter course items dataframe by the selected course module 
-#' 
 #' @param item_df The course items dataframe.
-#' @param module One of the modules of the course
-#' @return A dataframe filtered by the selected course module
+#' @param module One of the modules of the course.
+#' @return A dataframe filtered by the selected course module.
 #' @examples
-#' filter_chapter_oveview(tower_item, "all")
-
+#' filter_chapter_overview(tower_item, "all")
+#' @export
 filter_chapter_overview <- function(input_df, module ="All") {
+  
+                  if(is.null(module)){
+                    module = "All"
+                  }
                      
                   if (module == "All") {
                     return(input_df)
@@ -59,16 +59,15 @@ filter_chapter_overview <- function(input_df, module ="All") {
                     return(filtered_df)
                   }
 }
-     
-                     
 
 
-#' Create a module name vector sorted by the course structure index
-#' This vector is used in the module filtering select box in ui.R 
-#' @param item_df 
-#' @return chap_name
+
+#' Create a module name vector sorted by the course structure index.This vector is used in the module filtering select box in ui.R 
+#' @param item_df The course axis dataframe
+#' @return chap_name A vector containg all unique module names.
 #' @examples 
 #' get_module_vector(item_df = tower_item)
+#' @export
 get_module_vector <- function(item_df) {
   
   chap_name <- as.vector((item_df %>%
@@ -79,9 +78,10 @@ return(chap_name)
 
 }
 
-#' Create a new column "chapter_name" for course item dataframe in order to implementing module filtering
-#' @param item_df 
-#' @return item_df
+
+#' Create a new column "chapter_name" for course item dataframe in order to implement module filtering
+#' @param item_df A course axis dataframe only containing item name
+#' @return item_df A coure axis dataframe adding chapter_name column
 #' @examples 
 #' create_module_name(item_df = tower_item)
 create_module_name <- function(item_df){
@@ -111,11 +111,13 @@ create_module_name <- function(item_df){
 }
 
 
+
 #' Compute how many students engaged with each course item after filtering student demographic
-#' @param detail_df 
-#' @return summary_df
-#' @export 
-#' @examples get_nactive(detail_df = tower_engage)
+#' @param detail_df Filtered student engagement dataframe
+#' @return summary_df Summarized-view of engagement dataframe. 
+#' @examples
+#' get_nactive(detail_df = tower_engage)
+#' @export
 get_nactive <- function(detail_df){
   
    summary_df <- detail_df %>% 
@@ -129,15 +131,15 @@ get_nactive <- function(detail_df){
 }
 
 
+
 #' Join filtered summary engagement dataframe with filtered item dataframe to match "item " ,"item name"  and "nactive" 
 #' convert all module item nacitve number to a constant to draw seperator line later
-#' @param filtered_engagement 
-#' @param filtered_item 
-#' @return tower_df
+#' @param filtered_engagement Filtered engagement dataframe. 
+#' @param filtered_item Filtered course axis dataframe
+#' @return tower_df Dataframe containing item name, item category and how many student engaged with it
+#' @examples
+#' join_engagement_item(filtered_engagement = filtered_tower_engage,filtered_item = filtered_tower_item)
 #' @export
-#'
-#' @examples join_engagement_item(filtered_engagement = filtered_tower_engage,filtered_item = filtered_tower_item)
-
 join_engagement_item <- function(filtered_engagement,filtered_item){
   
    # Join two tables to get the item name 
@@ -195,10 +197,9 @@ join_engagement_item <- function(filtered_engagement,filtered_item){
 
 
 
-
 #' Count how many filtered students engaged with the filtered course module
-#' @param tower_df 
-#' @return student_num
+#' @param tower_df Student engagement dataframe.
+#' @return student_num A number refers to the maximum number of student engaged with one item witin the selected course module.
 #' @examples get_module_nactive(reactive_tower_df())
 get_module_nactive <- function(tower_df){
 
@@ -216,9 +217,9 @@ return(student_num)
 
   
 #' Make effiel tower plot :  all video/problem course items vs. number of engaging student 
-#' @param tower_data 
+#' @examples
+#' make_engagement_eiffel_tower(tower_data = reactive_tower_df())
 #' @export
-#' @examples make_engagement_eiffel_tower(tower_data = reactive_tower_df())
 make_engagement_eiffel_tower <- function(tower_data){
   
 # set up axis and size parameter
@@ -242,8 +243,4 @@ m <- list(l=50, r=50, b=0, t=50)
     
   }
   
-}  
-    
-
-
-
+}

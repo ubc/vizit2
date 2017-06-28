@@ -1,5 +1,66 @@
 linkpageModule <- function(input, output, session) {
   
+  # Import requested course 
+  requested_course <- reactive({
+    query <- parseQueryString(session$clientData$url_search)
+
+    if ("course" %in% names(query)) {
+      query$course
+    } else {
+      "no_course_selected"
+    }
+  })
+
+  
+  # Import clean overview dashboard data
+  root <- "../../data/"
+  result_root <- "../../results/"
+
+  course_axis <- reactiveFileReader(10000,
+                session,
+                paste0(root, requested_course(), "/course_axis.csv"),
+                read_csv)
+
+ 
+  link_dat <- reactiveFileReader(10000,
+                session,
+                paste0(root, requested_course(), "/external_link.csv"),
+                read_csv)
+  
+  log_dat <- reactiveFileReader(10000,
+                session,
+                paste0(root, requested_course(), "/page.csv"),
+                read_csv)
+  
+  page_name <- reactiveFileReader(10000,
+                session,
+                paste0(root, requested_course(), "/page_name.csv"),
+                read_csv)
+  
+ 
+  # Create module name vector for module filtering
+  
+
+  
+   output$chap_name_linkpage <- renderUI({
+                        
+                        ns <- NS("linkpageID")
+                        
+                        selectInput(ns("module"),
+                                    "Module:",
+                                    choices = append("All",get_module_vector(item_df = page_name())[-1]),
+                                    selected = "All")
+    })
+  
+  
+  
+ #set all threshold
+ student_num_threshold <- 10
+ min_click_threshold <- 5
+  
+  
+  
+  
   # Obtain user input for filters and selections:
   gender <- reactive({input$gender})
   activity_level <- reactive({input$activity_level})
@@ -60,16 +121,22 @@ linkpageModule <- function(input, output, session) {
   ############        Page summary table            ########### 
   ############################################################# 
   
-  reactive_page <- reactive({
-    
-    
   # Filter student demograpgic
-  log_dat <- filter_demographics_overview(log_dat, gender = input$gender, mode = input$mode,activity_level = input$activity_level)
-
+  log_dat_filtered <- reactive({
+    
+    log_dat <- filter_demographics(log_dat(), gender = input$gender, mode = input$mode,activity_level = input$activity_level)
+  
+    return(log_dat)
+  })
+  
+ 
+  
+  
+  reactive_page <- reactive({
     
   # Compute the pageview of each page
   
-  page_student <- get_pageview(filtered_log_df = log_dat)
+  page_student <- get_pageview(filtered_log_df = log_dat_filtered())
   
   # If there are no pages existent after summarization and filtering 
   
@@ -84,7 +151,7 @@ linkpageModule <- function(input, output, session) {
   
   
   # Join two tables for getting the name of each page, common column is path (two hash strings)
-  page_name_mapping <- inner_join(page_student,page_name,by = "path") 
+  page_name_mapping <- inner_join(page_student,page_name(),by = "path") 
   
   
   ## Filter page by chapter
@@ -126,7 +193,7 @@ linkpageModule <- function(input, output, session) {
   reactive_link_dat <- reactive({
     
 
-  link_dat <- filter_demographics_overview(link_dat, gender = input$gender, mode = input$mode,activity_level = input$activity_level)
+  link_dat <- filter_demographics(link_dat(), gender = input$gender, mode = input$mode,activity_level = input$activity_level)
   
   ## Filter chapter
   link_dat <- filter_chapter_linkpage(link_dat,module = input$module)
@@ -151,11 +218,11 @@ linkpageModule <- function(input, output, session) {
   #########################################################
   
   output$click_median <- renderText({
-        paste0("Click Median:",median(reactive_link_dat()$number_of_click,na.rm = TRUE))
+        paste0("Click Median: "," ",median(reactive_link_dat()$number_of_click,na.rm = TRUE))
         })
   
   output$pageview_median <- renderText({
-        paste0("Pageview Median:",median(reactive_page()$Pageview,na.rm = TRUE))
+        paste0("Pageview Median: "," ",median(reactive_page()$Pageview,na.rm = TRUE))
         })
   
   

@@ -17,8 +17,6 @@ source("../R/forum_wrangling.R")
 args <- commandArgs(TRUE)
 input_course <- args[1]
 
-input_course <- "psyc1"
-
 root <- "../data/"
 
 posts_input_path <- paste0(root, input_course, "/forum_posts.csv")

@@ -1,9 +1,9 @@
-
-#' Reads in tower_engage_dirt.csv file
+#' Import untidy student engagement csv file as an R dataframe object
 #' @param input_course Name of course directory (ex. psyc1, spd1, marketing, etc)
-#' @return \code{tower_engage}: Dataframe containing student engagement information with videos and problems
+#' @return tower_engage: Dataframe containing student engagement information with videos and problems
 #' @examples 
 #' read_dirt_engagement_data(input_course = 'psyc1')
+#' @export
 read_dirt_engagement_data <- function(input_course){
   input_csv_path <- paste0("../data/", input_course, "/tower_engage_dirt.csv")
   engage_dirt <- read_csv(input_csv_path)
@@ -11,14 +11,12 @@ read_dirt_engagement_data <- function(input_course){
 }
 
 
-
-#' Clean engagement data into tidy format
+#' Remove initial messy strings in module_id column and rename mode column 
 #' @param dirt_engagement_data tower_engage_dirt dataframe object
-#' @return dirt_engagement_data
-#' @export
+#' @return dirt_engagement_data : tidy dataframe adter wrangling
 #' @examples 
 #' clean_engagement_data(dirt_engagement_data = obtain_dirt_engagement_data)
-
+#' @export
 clean_engagement_data <- function(dirt_engagement_data){
   
   # Remove "i4x://" in column A_module_id
@@ -32,12 +30,13 @@ clean_engagement_data <- function(dirt_engagement_data){
 }
 
 
-#' Output cleaned student engagement data as csv
-#' @description Writes cleaned data as a csv into the course correct directory
+
+#' Write cleaned data as a csv into the specified course directory
 #' @param input_course Name of course directory (ex. psyc1, spd1, marketing, etc)
 #' @param cleaned_data Dataframe containing cleaned data. 
 #' @examples 
-#' write_tidy_engagement_data(input_course = 'psyc1', cleaned_data= clean_engagement_data)
+#' write_tidy_engagement_data(input_course = 'psyc1', cleaned_data = clean_engagement_data)
+#' @export
 write_tidy_engagement_data <- function(input_course, cleaned_data){
   
   # Make IO path
@@ -49,13 +48,12 @@ write_tidy_engagement_data <- function(input_course, cleaned_data){
 
 
 
-#' Output cleaned engagement data into corresponding course directory
-#' @description This function will automatically read a file named "tower_engage_dirt.csv"
-#' from the specified course directory and output a csv named "tower_engage.csv" in the same directory
+#' This function automatically reads a file named "tower_engage_dirt.csv"
+#' from the specified course directory and output a clean files named "tower_engage.csv" in the same directory
 #' @param input_course String of course directory name 
-#' @export
 #' @examples
 #' wrangle_video(input_course = "psyc1")
+#' @export
 wrangle_overview_engagement <- function(input_course){
   
   # Read in data
@@ -69,5 +67,3 @@ wrangle_overview_engagement <- function(input_course){
 
 
 }
-
-

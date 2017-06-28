@@ -1,0 +1,412 @@
+---
+title: "R functions for wrangling and serving the discussion forum data"
+output: github_document
+---
+
+# Discussion Forum Dashboard Functions
+
+## Wrangling Functions
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt_options(underline_titles=FALSE)
+root <- "../../r-package/man/"
+ext <- ".Rd"
+```
+
+
+### get_activity_levels
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "get_activity_levels", ext))
+```
+
+
+
+### get_discussion_vars_json
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "get_discussion_vars_json", ext))
+```
+
+
+
+### get_discussion_vars_xml
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "get_discussion_vars_xml", ext))
+```
+
+
+
+### infer_post_subcategories
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "infer_post_subcategories", ext))
+```
+
+
+
+### prepare_json
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "prepare_json", ext))
+```
+
+
+
+### prepare_posts
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "prepare_posts", ext))
+```
+
+
+
+### prepare_searches
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "prepare_searches", ext))
+```
+
+
+
+### prepare_views
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "prepare_views", ext))
+```
+
+
+
+### prepare_words
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "prepare_words", ext))
+```
+
+
+
+### prepare_xml
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "prepare_xml", ext))
+```
+
+
+
+### wrangle_forum
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "wrangle_forum", ext))
+```
+
+
+
+## Server Functions
+
+### apply_forum_filters
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "apply_forum_filters", ext))
+```
+
+
+
+
+### calculate_forum_searches
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "calculate_forum_searches", ext))
+```
+
+
+
+
+### count_authors
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "count_authors", ext))
+```
+
+
+
+
+### count_posts
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "count_posts", ext))
+```
+
+
+
+
+### count_views
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "count_views", ext))
+```
+
+
+
+
+### filter_forum_elements
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "filter_forum_elements", ext))
+```
+
+
+
+
+### filter_wordcloud_data
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "filter_wordcloud_data", ext))
+```
+
+
+
+
+### gather_post_types
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "gather_post_types", ext))
+```
+
+
+
+
+### get_author_count
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "get_author_count", ext))
+```
+
+
+
+
+### get_forum_threads
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "get_forum_threads", ext))
+```
+
+
+
+
+### get_label_lengths
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "get_label_lengths", ext))
+```
+
+
+
+
+### get_post_types
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "get_post_types", ext))
+```
+
+
+
+
+### get_subcategory_options
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "get_subcategory_options", ext))
+```
+
+
+
+
+### get_target_word_counts
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "get_target_word_counts", ext))
+```
+
+
+
+
+### get_wordcloud_data
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "get_wordcloud_data", ext))
+```
+
+
+
+
+### make_forum_barplot
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "make_forum_barplot", ext))
+```
+
+
+
+
+### make_forum_breakdown_barplot
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "make_forum_breakdown_barplot", ext))
+```
+
+
+
+
+### make_wordcloud
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "make_wordcloud", ext))
+```
+
+
+
+
+### set_axis_limit
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "set_axis_limit", ext))
+```
+
+
+
+
+### set_breakdown
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "set_breakdown", ext))
+```
+
+
+
+
+### set_forum_plot_title
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "set_forum_plot_title", ext))
+```
+
+
+
+
+### set_forum_plot_ylabel
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "set_forum_plot_ylabel", ext))
+```
+
+
+
+
+### set_forum_threads_title
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "set_forum_threads_title", ext))
+```
+
+
+
+
+### set_wordcloud_title
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "set_wordcloud_title", ext))
+```
+
+
+
+
+### specify_forum_data_selection
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "specify_forum_data_selection", ext))
+```
+
+
+
+
+### update_forum_data
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "update_forum_data", ext))
+```
+
+

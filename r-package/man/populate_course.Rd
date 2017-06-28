@@ -6,6 +6,9 @@
 \usage{
 populate_course()
 }
+\description{
+Populate a course from within R.
+}
 \details{
 This function runs the bash script \code{populate_course.sh}, which is located in exec/.
 }

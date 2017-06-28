@@ -4,11 +4,13 @@
 \alias{apply_forum_filters}
 \title{Apply the selected filter settings to the forum data.}
 \usage{
-apply_forum_filters(input_df, activity_level = "All", gender = "All",
-  registration_status = "All", category = "All")
+apply_forum_filters(input_df, forum_elements, activity_level = "All",
+  gender = "All", registration_status = "All", category = "All")
 }
 \arguments{
 \item{input_df}{The input dataframe.}
+
+\item{forum_elements}{The forum elements dataframe.}
 
 \item{activity_level}{One of \code{under_30_min}, \code{30_min_to_5_hr}, \code{over_5_hr}, or (default) \code{All}.}
 
@@ -25,5 +27,5 @@ apply_forum_filters(input_df, activity_level = "All", gender = "All",
 Apply the selected filter settings to the forum data.
 }
 \examples{
-apply_forum_filters(forum_posts, "All", "All", "All")
+apply_forum_filters(forum_posts, forum_elements, "All", "All", "All")
 }

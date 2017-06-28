@@ -5,7 +5,7 @@ linkpageModuleUI <- function(id) {
   fluidPage( fluidRow(
                         bsCollapse(id= ns('demo_dropdown_collapse'), multiple=TRUE, open = "Apply filters",
                                     bsCollapsePanel("Apply filters",  
-                        splitLayout(cellWidths =  c("20%", "20%", "20%", "20%", "15%", "5%", "0%"),
+                        splitLayout(cellWidths =  c("17.5%", "17.5%", "17.5%", "17.5%", "15%", "15%", "0%"),
                           
                                   
                                     
@@ -34,19 +34,17 @@ linkpageModuleUI <- function(id) {
                                                             "Audit" = "audit"),
                                                 selected = "All"),
                                     
-                                   selectInput(ns("module"),
-                                               "Module:",
-                                               choices = append("All",chap_name_linkpage), 
-                                               selected = "All"),
+                                    htmlOutput(ns("chap_name_linkpage")),
+                          
                                     column(width = 1.2,
                                                        
                                                 # Add text for showing the click median and pageview median
                                                 tags$head(tags$style(HTML("
                                                                                  #category_header, #click_median, #pageview_median {
-                                                                                 text-align: left;
+                                                                                 text-align: center;
                                                                                  }
                                                                                  div.box-header {
-                                                                                 text-align: left;
+                                                                                 text-align: center;
                                                                                  }
                                                                                  "))),
                                                        

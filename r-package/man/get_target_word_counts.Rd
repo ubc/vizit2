@@ -12,6 +12,9 @@ get_target_word_counts(input_forum)
 \value{
 \code{word_counts} A dataframe containing the counts for each word in each subcategory.
 }
+\description{
+Get the top words for each subcategory.
+}
 \examples{
 get_target_word_counts(wrangled_forum_words)
 }

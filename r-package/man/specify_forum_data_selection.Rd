@@ -16,8 +16,8 @@ specify_forum_data_selection(updated_forum_data, category, selected_subcategory)
 \value{
 \code{forum_w_selection} The same dataframe with a new column, \code{selected}.
 }
-\details{
-
+\description{
+Specify which subcategory has been selected.
 }
 \examples{
 specify_forum_data_selection(updated_forum_data, "Part 1", "Part 1 Video Discussion")

@@ -15,3 +15,6 @@ The dataframe with each row containing a word, prepared for joining with the for
 \description{
 Prepare the forum words.
 }
+\examples{
+prepare_words(forum)
+}

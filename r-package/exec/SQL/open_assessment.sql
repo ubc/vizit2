@@ -21,5 +21,3 @@ LIMIT
 LEFT JOIN [ubcxdata:{course}.person_course] AS B
 ON
   A.username = B.username
-
--- TODO: event_type == "edx.grades.problem.submitted" (Is this needed?)

@@ -4,11 +4,13 @@
 \alias{filter_wordcloud_data}
 \title{Filter the wordcloud data by the selected filters.}
 \usage{
-filter_wordcloud_data(forum_words = wrangled_forum_words, activity_level,
-  gender, registration_status, category)
+filter_wordcloud_data(forum_words, forum_elements, activity_level, gender,
+  registration_status, category)
 }
 \arguments{
 \item{forum_words}{The forum words dataframe passed in from the wrangling script.}
+
+\item{forum_elements}{The forum elements dataframe.}
 
 \item{activity_level}{The activity level of the students.}
 
@@ -21,9 +23,9 @@ filter_wordcloud_data(forum_words = wrangled_forum_words, activity_level,
 \value{
 \code{filtered_wordcloud_data} The filtered forum words dataframe.
 }
-\details{
-
+\description{
+Filter the wordcloud data by the selected filters.
 }
 \examples{
-filter_wordcloud_data(wrangled_forum_words, "30_min_to_5_hr", "female", "All", "General")
+filter_wordcloud_data(wrangled_forum_words, forum_elements, "30_min_to_5_hr", "female", "All", "General")
 }

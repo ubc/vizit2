@@ -4,8 +4,7 @@
 \name{get_module_vector}
 \alias{get_module_vector}
 \alias{get_module_vector}
-\title{Create a module name vector sorted by the course structure index
-This vector is used in the module filtering select box in ui.R}
+\title{Create a module name vector sorted by the course structure index. This vector is used in the module filtering select box in ui.R}
 \usage{
 get_module_vector(item_df)
 
@@ -14,19 +13,17 @@ get_module_vector(item_df)
 \arguments{
 \item{item_df}{}
 
-\item{item_df}{}
+\item{item_df}{The course axis dataframe}
 }
 \value{
 chap_name
 
-chap_name
+chap_name A vector containg all unique module names.
 }
 \description{
-Create a module name vector sorted by the course structure index
-This vector is used in the module filtering select box in ui.R
+Create a module name vector sorted by the course structure index. This vector is used in the module filtering select box in ui.R
 
-Create a module name vector sorted by the course structure index
-This vector is used in the module filtering select box in ui.R
+Create a module name vector sorted by the course structure index.This vector is used in the module filtering select box in ui.R
 }
 \examples{
 get_module_vector(item_df = tower_item)

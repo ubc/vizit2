@@ -2,9 +2,7 @@
 % Please edit documentation in R/link_page_wrangling.R
 \name{wrangle_link_page}
 \alias{wrangle_link_page}
-\title{Reads in three csv files getting from rbq.py : course_axis.csv, external_link_dirt.csv and page_dirt.csv
-Perform wrangling 
-Export three csv files for building link_page_dashabord: external_link.csv, page.csv and page_name.csv}
+\title{Read in three csv files getting from rbq.py : course_axis.csv, external_link_dirt.csv and page_dirt.csv; perform wrangling; export three csv files for building link_page_dashabord: external_link.csv, page.csv and page_name.csv}
 \usage{
 wrangle_link_page(input_course)
 }
@@ -12,9 +10,7 @@ wrangle_link_page(input_course)
 \item{input_course}{}
 }
 \description{
-Reads in three csv files getting from rbq.py : course_axis.csv, external_link_dirt.csv and page_dirt.csv
-Perform wrangling 
-Export three csv files for building link_page_dashabord: external_link.csv, page.csv and page_name.csv
+Read in three csv files getting from rbq.py : course_axis.csv, external_link_dirt.csv and page_dirt.csv; perform wrangling; export three csv files for building link_page_dashabord: external_link.csv, page.csv and page_name.csv
 }
 \examples{
 wrangle_link_page(input_cours = "psyc1")

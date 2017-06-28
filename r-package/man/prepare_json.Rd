@@ -15,3 +15,6 @@ A dataframe with four columns: \code{commentable_id}, \code{display_name}, \code
 \description{
 Prepare the JSON file for joining with the XML file.
 }
+\examples{
+prepare_json(json)
+}

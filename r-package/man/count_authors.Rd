@@ -4,7 +4,7 @@
 \alias{count_authors}
 \title{Count the number of authors for each subcategory in an input forum.}
 \usage{
-count_authors(input_forum, wrangled_forum_elements = wrangled_forum_elements)
+count_authors(input_forum, wrangled_forum_elements)
 }
 \arguments{
 \item{input_forum}{The input dataframe containing a row for each post in the forum.}
@@ -13,6 +13,9 @@ count_authors(input_forum, wrangled_forum_elements = wrangled_forum_elements)
 }
 \value{
 \code{author_counts} A dataframe containing the unique author counts for each subcategory in the forum.
+}
+\description{
+Count the number of authors for each subcategory in an input forum.
 }
 \examples{
 count_authors(wrangled_forum_posts)

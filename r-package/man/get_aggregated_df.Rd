@@ -4,7 +4,7 @@
 \alias{get_aggregated_df}
 \title{Aggregates dataframe by video and segment}
 \usage{
-get_aggregated_df(filt_segs, top_selection, top_selection2)
+get_aggregated_df(filt_segs, top_selection)
 }
 \arguments{
 \item{filt_segs}{Dataframe containing students that have been filtered by selected demographics. Typically
@@ -17,13 +17,17 @@ obtained via \code{filter_demographics()}}
 }
 \description{
 Aggregates input dataframe by video (video_id) and segment (min_into_video).
-Additionally, adds columns: 
+Additionally, adds columns:
 
 - \code{unique_views}/\code{`Students`} (number of learners who started the video),
 
 - \code{watch_rate}/\code{`Views per Student`} (number of students who have watched the segment divided by unique_views),
 
 - \code{avg_watch_rate} (average of watch_rate per video)
+
+- \code{high_low} ('High Watch Rate', 'Low Watch Rate, or 'Normal')
+
+- \code{up_until} (1 if the average learner had watched up until the particular min_into_video, 0 if they had not)
 }
 \examples{
 get_aggregated_df(filt_segs, 25)

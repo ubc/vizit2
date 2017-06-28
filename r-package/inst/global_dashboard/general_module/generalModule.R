@@ -1,4 +1,6 @@
 generalModule <- function(input, output, session) {
+  root <- "../../data/"
+  
   gender <- reactive({
     input$gender
   })
@@ -12,13 +14,29 @@ generalModule <- function(input, output, session) {
   })
   
   filtered_general <- reactive({
-    filt_gen <- filter_demographics(demo, gender=gender(), activity_level=activity_level(), mode=mode())
+    filt_gen <- filter_demographics(demo(), gender = gender(), activity_level = activity_level(), 
+                                    mode = mode())
     filt_gen
   })
   
+  # Obtain requested course to display:
+  requested_course <- reactive({
+    query <- parseQueryString(session$clientData$url_search)
+    
+    if ("course" %in% names(query)) {
+      query$course
+    } else {
+      "no_course_selected"
+    }
+  })
+  
+  ### Read data frame: ###
+  demo <- reactiveFileReader(1000, session, paste0(root, requested_course(), 
+                                                   "/wrangled_demographics.csv"), read_csv)
+  
   output$loe_demo <- renderPlot({
     # Level of Education:
-    loe_df <- get_loe_df(filtered_general()) 
+    loe_df <- get_loe_df(filtered_general())
     
     # Making plot:
     g <- get_loe_plot(loe_df)
@@ -28,7 +46,7 @@ generalModule <- function(input, output, session) {
   
   output$age_demo <- renderPlot({
     # Age:
-    age_df <- get_age_df(filtered_general()) 
+    age_df <- get_age_df(filtered_general())
     
     # Making plot:
     g <- get_age_plot(age_df)
@@ -41,7 +59,7 @@ generalModule <- function(input, output, session) {
     top_selection <- 10
     
     # Get aggregated country dataframe:
-    country_df <- get_top_country_df(filtered_general(), top_selection) 
+    country_df <- get_top_country_df(filtered_general(), top_selection)
     
     # Making plot:
     g <- get_country_plot(country_df, top_selection)
@@ -69,9 +87,7 @@ generalModule <- function(input, output, session) {
     return(num_students)
   })
   
-  ##########################################################
-  ################ Number of students ######################
-  ##########################################################
+  ### Number of students ###
   output$num_students <- renderText({
     paste0(filtered_students(), " students")
   })

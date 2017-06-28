@@ -7,10 +7,10 @@
 get_nactive(detail_df)
 }
 \arguments{
-\item{detail_df}{}
+\item{detail_df}{Filtered student engagement dataframe}
 }
 \value{
-summary_df
+summary_df Summarized-view of engagement dataframe.
 }
 \description{
 Compute how many students engaged with each course item after filtering student demographic

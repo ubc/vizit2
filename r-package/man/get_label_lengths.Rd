@@ -14,8 +14,8 @@ get_label_lengths(forum_data, category)
 \value{
 \code{label_lengths} A list with the lengths (in characters) of each label on the main plot.
 }
-\details{
-
+\description{
+Get the lengths of the labels on the main barplot (either the categories or the subcategories).
 }
 \examples{
 get_label_lengths(forum_data, "Technical Questions")

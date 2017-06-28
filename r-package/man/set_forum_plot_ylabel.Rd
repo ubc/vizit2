@@ -12,8 +12,8 @@ set_forum_plot_ylabel(plot_variable)
 \value{
 \code{forum_plot_ylabe} The label of the y-axis in the main barplot.
 }
-\details{
-
+\description{
+Set the label of the y-axis in the main barplot.
 }
 \examples{
 set_forum_plot_ylabel("authors")

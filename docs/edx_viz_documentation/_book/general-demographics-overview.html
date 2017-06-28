@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>edXviz: Interactive Visualization of Student Engagement with edX MOOCs</title>
+  <meta name="description" content="edXviz: Interactive Visualization of Student Engagement with edX MOOCs">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="edXviz: Interactive Visualization of Student Engagement with edX MOOCs" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="edXviz: Interactive Visualization of Student Engagement with edX MOOCs" />
+  
+  
+  
+
+<meta name="author" content="Matt Emery, David Laing, Andrew Lim, Subi Zhang">
+
+
+<meta name="date" content="2017-06-23">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="engagement-overview-dashboard-functions.html">
+<link rel="next" href="general-demographics-dashboard-functions.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview of the Project</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#availability-of-data"><i class="fa fa-check"></i><b>1.2</b> Availability of Data</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#contents-of-this-document"><i class="fa fa-check"></i><b>1.3</b> Contents of this Document</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i><b>1.4</b> Acknowledgments</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#instructions-for-generating-this-bookdown-document"><i class="fa fa-check"></i><b>1.5</b> Instructions for generating this bookdown document</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="engagement-overview-dashboard-overview.html"><a href="engagement-overview-dashboard-overview.html"><i class="fa fa-check"></i><b>2</b> Engagement Overview Dashboard Overview</a><ul>
+<li class="chapter" data-level="2.1" data-path="engagement-overview-dashboard-overview.html"><a href="engagement-overview-dashboard-overview.html#data-cleaning-pipeline"><i class="fa fa-check"></i><b>2.1</b> Data Cleaning Pipeline</a></li>
+<li class="chapter" data-level="2.2" data-path="engagement-overview-dashboard-overview.html"><a href="engagement-overview-dashboard-overview.html#visualization-reasoning-and-caveats"><i class="fa fa-check"></i><b>2.2</b> Visualization Reasoning and Caveats</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="engagement-overview-dashboard-functions.html"><a href="engagement-overview-dashboard-functions.html"><i class="fa fa-check"></i><b>3</b> Engagement Overview Dashboard Functions</a><ul>
+<li class="chapter" data-level="3.1" data-path="engagement-overview-dashboard-functions.html"><a href="engagement-overview-dashboard-functions.html#wrangling-functions"><i class="fa fa-check"></i><b>3.1</b> Wrangling Functions</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="engagement-overview-dashboard-functions.html"><a href="engagement-overview-dashboard-functions.html#read_dirt_engagement_data"><i class="fa fa-check"></i><b>3.1.1</b> read_dirt_engagement_data</a></li>
+<li class="chapter" data-level="3.1.2" data-path="engagement-overview-dashboard-functions.html"><a href="engagement-overview-dashboard-functions.html#clean_engagement_data"><i class="fa fa-check"></i><b>3.1.2</b> clean_engagement_data</a></li>
+<li class="chapter" data-level="3.1.3" data-path="engagement-overview-dashboard-functions.html"><a href="engagement-overview-dashboard-functions.html#write_tidy_engagement_data"><i class="fa fa-check"></i><b>3.1.3</b> write_tidy_engagement_data</a></li>
+<li class="chapter" data-level="3.1.4" data-path="engagement-overview-dashboard-functions.html"><a href="engagement-overview-dashboard-functions.html#wrangle_overview_engagement"><i class="fa fa-check"></i><b>3.1.4</b> wrangle_overview_engagement</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="engagement-overview-dashboard-functions.html"><a href="engagement-overview-dashboard-functions.html#server-functions"><i class="fa fa-check"></i><b>3.2</b> Server Functions</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="engagement-overview-dashboard-functions.html"><a href="engagement-overview-dashboard-functions.html#filter_chapter_overview"><i class="fa fa-check"></i><b>3.2.1</b> filter_chapter_overview</a></li>
+<li class="chapter" data-level="3.2.2" data-path="engagement-overview-dashboard-functions.html"><a href="engagement-overview-dashboard-functions.html#get_module_vector"><i class="fa fa-check"></i><b>3.2.2</b> get_module_vector</a></li>
+<li class="chapter" data-level="3.2.3" data-path="engagement-overview-dashboard-functions.html"><a href="engagement-overview-dashboard-functions.html#create_module_name"><i class="fa fa-check"></i><b>3.2.3</b> create_module_name</a></li>
+<li class="chapter" data-level="3.2.4" data-path="engagement-overview-dashboard-functions.html"><a href="engagement-overview-dashboard-functions.html#get_nactive"><i class="fa fa-check"></i><b>3.2.4</b> get_nactive</a></li>
+<li class="chapter" data-level="3.2.5" data-path="engagement-overview-dashboard-functions.html"><a href="engagement-overview-dashboard-functions.html#join_engagement_item"><i class="fa fa-check"></i><b>3.2.5</b> join_engagement_item</a></li>
+<li class="chapter" data-level="3.2.6" data-path="engagement-overview-dashboard-functions.html"><a href="engagement-overview-dashboard-functions.html#get_module_nactive"><i class="fa fa-check"></i><b>3.2.6</b> get_module_nactive</a></li>
+<li class="chapter" data-level="3.2.7" data-path="engagement-overview-dashboard-functions.html"><a href="engagement-overview-dashboard-functions.html#make_engagement_eiffel_tower"><i class="fa fa-check"></i><b>3.2.7</b> make_engagement_eiffel_tower</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="general-demographics-overview.html"><a href="general-demographics-overview.html"><i class="fa fa-check"></i><b>4</b> General Demographics Overview</a><ul>
+<li class="chapter" data-level="4.1" data-path="general-demographics-overview.html"><a href="general-demographics-overview.html#data-cleaning-pipeline-1"><i class="fa fa-check"></i><b>4.1</b> Data Cleaning Pipeline</a></li>
+<li class="chapter" data-level="4.2" data-path="general-demographics-overview.html"><a href="general-demographics-overview.html#visualization-reasoning-and-caveats-1"><i class="fa fa-check"></i><b>4.2</b> Visualization Reasoning and Caveats:</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="general-demographics-dashboard-functions.html"><a href="general-demographics-dashboard-functions.html"><i class="fa fa-check"></i><b>5</b> General Demographics Dashboard Functions</a><ul>
+<li class="chapter" data-level="5.1" data-path="general-demographics-dashboard-functions.html"><a href="general-demographics-dashboard-functions.html#wrangling-functions-1"><i class="fa fa-check"></i><b>5.1</b> Wrangling Functions</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="general-demographics-dashboard-functions.html"><a href="general-demographics-dashboard-functions.html#wrangle_general"><i class="fa fa-check"></i><b>5.1.1</b> wrangle_general</a></li>
+<li class="chapter" data-level="5.1.2" data-path="general-demographics-dashboard-functions.html"><a href="general-demographics-dashboard-functions.html#obtain_raw_general_data"><i class="fa fa-check"></i><b>5.1.2</b> obtain_raw_general_data</a></li>
+<li class="chapter" data-level="5.1.3" data-path="general-demographics-dashboard-functions.html"><a href="general-demographics-dashboard-functions.html#obtain_language_info"><i class="fa fa-check"></i><b>5.1.3</b> obtain_language_info</a></li>
+<li class="chapter" data-level="5.1.4" data-path="general-demographics-dashboard-functions.html"><a href="general-demographics-dashboard-functions.html#obtain_country_info"><i class="fa fa-check"></i><b>5.1.4</b> obtain_country_info</a></li>
+<li class="chapter" data-level="5.1.5" data-path="general-demographics-dashboard-functions.html"><a href="general-demographics-dashboard-functions.html#prepare_general_data"><i class="fa fa-check"></i><b>5.1.5</b> prepare_general_data</a></li>
+<li class="chapter" data-level="5.1.6" data-path="general-demographics-dashboard-functions.html"><a href="general-demographics-dashboard-functions.html#write_general_data"><i class="fa fa-check"></i><b>5.1.6</b> write_general_data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="general-demographics-dashboard-functions.html"><a href="general-demographics-dashboard-functions.html#server-functions-1"><i class="fa fa-check"></i><b>5.2</b> Server Functions</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="general-demographics-dashboard-functions.html"><a href="general-demographics-dashboard-functions.html#convert_loe"><i class="fa fa-check"></i><b>5.2.1</b> convert_loe</a></li>
+<li class="chapter" data-level="5.2.2" data-path="general-demographics-dashboard-functions.html"><a href="general-demographics-dashboard-functions.html#get_loe_df"><i class="fa fa-check"></i><b>5.2.2</b> get_loe_df</a></li>
+<li class="chapter" data-level="5.2.3" data-path="general-demographics-dashboard-functions.html"><a href="general-demographics-dashboard-functions.html#get_loe_plot"><i class="fa fa-check"></i><b>5.2.3</b> get_loe_plot</a></li>
+<li class="chapter" data-level="5.2.4" data-path="general-demographics-dashboard-functions.html"><a href="general-demographics-dashboard-functions.html#get_age_df"><i class="fa fa-check"></i><b>5.2.4</b> get_age_df</a></li>
+<li class="chapter" data-level="5.2.5" data-path="general-demographics-dashboard-functions.html"><a href="general-demographics-dashboard-functions.html#get_age_plot"><i class="fa fa-check"></i><b>5.2.5</b> get_age_plot</a></li>
+<li class="chapter" data-level="5.2.6" data-path="general-demographics-dashboard-functions.html"><a href="general-demographics-dashboard-functions.html#get_top_country_df"><i class="fa fa-check"></i><b>5.2.6</b> get_top_country_df</a></li>
+<li class="chapter" data-level="5.2.7" data-path="general-demographics-dashboard-functions.html"><a href="general-demographics-dashboard-functions.html#get_country_plot"><i class="fa fa-check"></i><b>5.2.7</b> get_country_plot</a></li>
+<li class="chapter" data-level="5.2.8" data-path="general-demographics-dashboard-functions.html"><a href="general-demographics-dashboard-functions.html#get_top_language_df"><i class="fa fa-check"></i><b>5.2.8</b> get_top_language_df</a></li>
+<li class="chapter" data-level="5.2.9" data-path="general-demographics-dashboard-functions.html"><a href="general-demographics-dashboard-functions.html#get_language_plot"><i class="fa fa-check"></i><b>5.2.9</b> get_language_plot</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="link-and-page-overview.html"><a href="link-and-page-overview.html"><i class="fa fa-check"></i><b>6</b> Link and Page Overview</a><ul>
+<li class="chapter" data-level="6.1" data-path="link-and-page-overview.html"><a href="link-and-page-overview.html#data-cleaning-pipeline-2"><i class="fa fa-check"></i><b>6.1</b> Data Cleaning Pipeline</a></li>
+<li class="chapter" data-level="6.2" data-path="link-and-page-overview.html"><a href="link-and-page-overview.html#visualization-reasoning-and-caveats-2"><i class="fa fa-check"></i><b>6.2</b> Visualization Reasoning and Caveats</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="link-and-page-dashboard-functions.html"><a href="link-and-page-dashboard-functions.html"><i class="fa fa-check"></i><b>7</b> Link and Page Dashboard Functions</a><ul>
+<li class="chapter" data-level="7.1" data-path="link-and-page-dashboard-functions.html"><a href="link-and-page-dashboard-functions.html#wrangling-functions-2"><i class="fa fa-check"></i><b>7.1</b> Wrangling Functions</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="link-and-page-dashboard-functions.html"><a href="link-and-page-dashboard-functions.html#read_course_axis"><i class="fa fa-check"></i><b>7.1.1</b> read_course_axis</a></li>
+<li class="chapter" data-level="7.1.2" data-path="link-and-page-dashboard-functions.html"><a href="link-and-page-dashboard-functions.html#read_link_dirt"><i class="fa fa-check"></i><b>7.1.2</b> read_link_dirt</a></li>
+<li class="chapter" data-level="7.1.3" data-path="link-and-page-dashboard-functions.html"><a href="link-and-page-dashboard-functions.html#hash_username"><i class="fa fa-check"></i><b>7.1.3</b> hash_username</a></li>
+<li class="chapter" data-level="7.1.4" data-path="link-and-page-dashboard-functions.html"><a href="link-and-page-dashboard-functions.html#set_activity_level"><i class="fa fa-check"></i><b>7.1.4</b> set_activity_level</a></li>
+<li class="chapter" data-level="7.1.5" data-path="link-and-page-dashboard-functions.html"><a href="link-and-page-dashboard-functions.html#get_module_of_link"><i class="fa fa-check"></i><b>7.1.5</b> get_module_of_link</a></li>
+<li class="chapter" data-level="7.1.6" data-path="link-and-page-dashboard-functions.html"><a href="link-and-page-dashboard-functions.html#write_link_clean"><i class="fa fa-check"></i><b>7.1.6</b> write_link_clean</a></li>
+<li class="chapter" data-level="7.1.7" data-path="link-and-page-dashboard-functions.html"><a href="link-and-page-dashboard-functions.html#read_page_dirt"><i class="fa fa-check"></i><b>7.1.7</b> read_page_dirt</a></li>
+<li class="chapter" data-level="7.1.8" data-path="link-and-page-dashboard-functions.html"><a href="link-and-page-dashboard-functions.html#prepare_tidy_page"><i class="fa fa-check"></i><b>7.1.8</b> prepare_tidy_page</a></li>
+<li class="chapter" data-level="7.1.9" data-path="link-and-page-dashboard-functions.html"><a href="link-and-page-dashboard-functions.html#prepare_page_name"><i class="fa fa-check"></i><b>7.1.9</b> prepare_page_name</a></li>
+<li class="chapter" data-level="7.1.10" data-path="link-and-page-dashboard-functions.html"><a href="link-and-page-dashboard-functions.html#write_page_clean"><i class="fa fa-check"></i><b>7.1.10</b> write_page_clean</a></li>
+<li class="chapter" data-level="7.1.11" data-path="link-and-page-dashboard-functions.html"><a href="link-and-page-dashboard-functions.html#wrangle_link_page"><i class="fa fa-check"></i><b>7.1.11</b> wrangle_link_page</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="link-and-page-dashboard-functions.html"><a href="link-and-page-dashboard-functions.html#server-functions-2"><i class="fa fa-check"></i><b>7.2</b> Server Functions</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="link-and-page-dashboard-functions.html"><a href="link-and-page-dashboard-functions.html#filter_chapter_linkpage"><i class="fa fa-check"></i><b>7.2.1</b> filter_chapter_linkpage</a></li>
+<li class="chapter" data-level="7.2.2" data-path="link-and-page-dashboard-functions.html"><a href="link-and-page-dashboard-functions.html#get_pageview"><i class="fa fa-check"></i><b>7.2.2</b> get_pageview</a></li>
+<li class="chapter" data-level="7.2.3" data-path="link-and-page-dashboard-functions.html"><a href="link-and-page-dashboard-functions.html#get_page_name"><i class="fa fa-check"></i><b>7.2.3</b> get_page_name</a></li>
+<li class="chapter" data-level="7.2.4" data-path="link-and-page-dashboard-functions.html"><a href="link-and-page-dashboard-functions.html#get_unique_page_name"><i class="fa fa-check"></i><b>7.2.4</b> get_unique_page_name</a></li>
+<li class="chapter" data-level="7.2.5" data-path="link-and-page-dashboard-functions.html"><a href="link-and-page-dashboard-functions.html#creat_page_table"><i class="fa fa-check"></i><b>7.2.5</b> creat_page_table</a></li>
+<li class="chapter" data-level="7.2.6" data-path="link-and-page-dashboard-functions.html"><a href="link-and-page-dashboard-functions.html#get_click_per_link"><i class="fa fa-check"></i><b>7.2.6</b> get_click_per_link</a></li>
+<li class="chapter" data-level="7.2.7" data-path="link-and-page-dashboard-functions.html"><a href="link-and-page-dashboard-functions.html#creat_link_table"><i class="fa fa-check"></i><b>7.2.7</b> creat_link_table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="discussion-forum-overview.html"><a href="discussion-forum-overview.html"><i class="fa fa-check"></i><b>8</b> Discussion Forum Overview</a><ul>
+<li class="chapter" data-level="8.1" data-path="discussion-forum-overview.html"><a href="discussion-forum-overview.html#data-cleaning-pipeline-3"><i class="fa fa-check"></i><b>8.1</b> Data Cleaning Pipeline</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="discussion-forum-overview.html"><a href="discussion-forum-overview.html#hierarchy-of-the-discussion-forums"><i class="fa fa-check"></i><b>8.1.1</b> Hierarchy of the Discussion Forums</a></li>
+<li class="chapter" data-level="8.1.2" data-path="discussion-forum-overview.html"><a href="discussion-forum-overview.html#hierarchy-data-integrity-issues"><i class="fa fa-check"></i><b>8.1.2</b> Hierarchy Data Integrity Issues</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="discussion-forum-overview.html"><a href="discussion-forum-overview.html#visualization-reasoning-and-caveats-3"><i class="fa fa-check"></i><b>8.2</b> Visualization Reasoning and Caveats</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="discussion-forum-overview.html"><a href="discussion-forum-overview.html#filter-panel"><i class="fa fa-check"></i><b>8.2.1</b> Filter panel</a></li>
+<li class="chapter" data-level="8.2.2" data-path="discussion-forum-overview.html"><a href="discussion-forum-overview.html#barchart"><i class="fa fa-check"></i><b>8.2.2</b> Barchart</a></li>
+<li class="chapter" data-level="8.2.3" data-path="discussion-forum-overview.html"><a href="discussion-forum-overview.html#wordcloud"><i class="fa fa-check"></i><b>8.2.3</b> Wordcloud</a></li>
+<li class="chapter" data-level="8.2.4" data-path="discussion-forum-overview.html"><a href="discussion-forum-overview.html#threads-table"><i class="fa fa-check"></i><b>8.2.4</b> Threads Table</a></li>
+<li class="chapter" data-level="8.2.5" data-path="discussion-forum-overview.html"><a href="discussion-forum-overview.html#searches-table"><i class="fa fa-check"></i><b>8.2.5</b> Searches Table</a></li>
+<li class="chapter" data-level="8.2.6" data-path="discussion-forum-overview.html"><a href="discussion-forum-overview.html#interactivity-and-navigation"><i class="fa fa-check"></i><b>8.2.6</b> Interactivity and Navigation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html"><i class="fa fa-check"></i><b>9</b> Discussion Forum Dashboard Functions</a><ul>
+<li class="chapter" data-level="9.1" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#wrangling-functions-3"><i class="fa fa-check"></i><b>9.1</b> Wrangling Functions</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#get_activity_levels"><i class="fa fa-check"></i><b>9.1.1</b> get_activity_levels</a></li>
+<li class="chapter" data-level="9.1.2" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#get_discussion_vars_json"><i class="fa fa-check"></i><b>9.1.2</b> get_discussion_vars_json</a></li>
+<li class="chapter" data-level="9.1.3" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#get_discussion_vars_xml"><i class="fa fa-check"></i><b>9.1.3</b> get_discussion_vars_xml</a></li>
+<li class="chapter" data-level="9.1.4" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#infer_post_subcategories"><i class="fa fa-check"></i><b>9.1.4</b> infer_post_subcategories</a></li>
+<li class="chapter" data-level="9.1.5" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#prepare_json"><i class="fa fa-check"></i><b>9.1.5</b> prepare_json</a></li>
+<li class="chapter" data-level="9.1.6" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#prepare_posts"><i class="fa fa-check"></i><b>9.1.6</b> prepare_posts</a></li>
+<li class="chapter" data-level="9.1.7" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#prepare_searches"><i class="fa fa-check"></i><b>9.1.7</b> prepare_searches</a></li>
+<li class="chapter" data-level="9.1.8" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#prepare_views"><i class="fa fa-check"></i><b>9.1.8</b> prepare_views</a></li>
+<li class="chapter" data-level="9.1.9" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#prepare_words"><i class="fa fa-check"></i><b>9.1.9</b> prepare_words</a></li>
+<li class="chapter" data-level="9.1.10" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#prepare_xml"><i class="fa fa-check"></i><b>9.1.10</b> prepare_xml</a></li>
+<li class="chapter" data-level="9.1.11" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#wrangle_forum"><i class="fa fa-check"></i><b>9.1.11</b> wrangle_forum</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#server-functions-3"><i class="fa fa-check"></i><b>9.2</b> Server Functions</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#apply_forum_filters"><i class="fa fa-check"></i><b>9.2.1</b> apply_forum_filters</a></li>
+<li class="chapter" data-level="9.2.2" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#calculate_forum_searches"><i class="fa fa-check"></i><b>9.2.2</b> calculate_forum_searches</a></li>
+<li class="chapter" data-level="9.2.3" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#count_authors"><i class="fa fa-check"></i><b>9.2.3</b> count_authors</a></li>
+<li class="chapter" data-level="9.2.4" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#count_posts"><i class="fa fa-check"></i><b>9.2.4</b> count_posts</a></li>
+<li class="chapter" data-level="9.2.5" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#count_views"><i class="fa fa-check"></i><b>9.2.5</b> count_views</a></li>
+<li class="chapter" data-level="9.2.6" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#filter_forum_elements"><i class="fa fa-check"></i><b>9.2.6</b> filter_forum_elements</a></li>
+<li class="chapter" data-level="9.2.7" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#filter_wordcloud_data"><i class="fa fa-check"></i><b>9.2.7</b> filter_wordcloud_data</a></li>
+<li class="chapter" data-level="9.2.8" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#gather_post_types"><i class="fa fa-check"></i><b>9.2.8</b> gather_post_types</a></li>
+<li class="chapter" data-level="9.2.9" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#get_author_count"><i class="fa fa-check"></i><b>9.2.9</b> get_author_count</a></li>
+<li class="chapter" data-level="9.2.10" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#get_forum_threads"><i class="fa fa-check"></i><b>9.2.10</b> get_forum_threads</a></li>
+<li class="chapter" data-level="9.2.11" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#get_label_lengths"><i class="fa fa-check"></i><b>9.2.11</b> get_label_lengths</a></li>
+<li class="chapter" data-level="9.2.12" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#get_post_types"><i class="fa fa-check"></i><b>9.2.12</b> get_post_types</a></li>
+<li class="chapter" data-level="9.2.13" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#get_subcategory_options"><i class="fa fa-check"></i><b>9.2.13</b> get_subcategory_options</a></li>
+<li class="chapter" data-level="9.2.14" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#get_target_word_counts"><i class="fa fa-check"></i><b>9.2.14</b> get_target_word_counts</a></li>
+<li class="chapter" data-level="9.2.15" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#get_wordcloud_data"><i class="fa fa-check"></i><b>9.2.15</b> get_wordcloud_data</a></li>
+<li class="chapter" data-level="9.2.16" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#make_forum_barplot"><i class="fa fa-check"></i><b>9.2.16</b> make_forum_barplot</a></li>
+<li class="chapter" data-level="9.2.17" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#make_forum_breakdown_barplot"><i class="fa fa-check"></i><b>9.2.17</b> make_forum_breakdown_barplot</a></li>
+<li class="chapter" data-level="9.2.18" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#make_wordcloud"><i class="fa fa-check"></i><b>9.2.18</b> make_wordcloud</a></li>
+<li class="chapter" data-level="9.2.19" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#set_axis_limit"><i class="fa fa-check"></i><b>9.2.19</b> set_axis_limit</a></li>
+<li class="chapter" data-level="9.2.20" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#set_breakdown"><i class="fa fa-check"></i><b>9.2.20</b> set_breakdown</a></li>
+<li class="chapter" data-level="9.2.21" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#set_forum_plot_title"><i class="fa fa-check"></i><b>9.2.21</b> set_forum_plot_title</a></li>
+<li class="chapter" data-level="9.2.22" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#set_forum_plot_ylabel"><i class="fa fa-check"></i><b>9.2.22</b> set_forum_plot_ylabel</a></li>
+<li class="chapter" data-level="9.2.23" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#set_forum_threads_title"><i class="fa fa-check"></i><b>9.2.23</b> set_forum_threads_title</a></li>
+<li class="chapter" data-level="9.2.24" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#set_wordcloud_title"><i class="fa fa-check"></i><b>9.2.24</b> set_wordcloud_title</a></li>
+<li class="chapter" data-level="9.2.25" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#specify_forum_data_selection"><i class="fa fa-check"></i><b>9.2.25</b> specify_forum_data_selection</a></li>
+<li class="chapter" data-level="9.2.26" data-path="discussion-forum-dashboard-functions.html"><a href="discussion-forum-dashboard-functions.html#update_forum_data"><i class="fa fa-check"></i><b>9.2.26</b> update_forum_data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="problem-overview.html"><a href="problem-overview.html"><i class="fa fa-check"></i><b>10</b> Problem Overview</a><ul>
+<li class="chapter" data-level="10.1" data-path="problem-overview.html"><a href="problem-overview.html#data-cleaning-pipeline-4"><i class="fa fa-check"></i><b>10.1</b> Data Cleaning Pipeline</a></li>
+<li class="chapter" data-level="10.2" data-path="problem-overview.html"><a href="problem-overview.html#the-structure-of-problems-and-assessments"><i class="fa fa-check"></i><b>10.2</b> The Structure of Problems and Assessments</a></li>
+<li class="chapter" data-level="10.3" data-path="problem-overview.html"><a href="problem-overview.html#visualization-reasoning-and-caveats-4"><i class="fa fa-check"></i><b>10.3</b> Visualization Reasoning and Caveats</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="problem-overview.html"><a href="problem-overview.html#module-overview"><i class="fa fa-check"></i><b>10.3.1</b> Module Overview</a></li>
+<li class="chapter" data-level="10.3.2" data-path="problem-overview.html"><a href="problem-overview.html#hardest-problems"><i class="fa fa-check"></i><b>10.3.2</b> Hardest Problems</a></li>
+<li class="chapter" data-level="10.3.3" data-path="problem-overview.html"><a href="problem-overview.html#assessments"><i class="fa fa-check"></i><b>10.3.3</b> Assessments</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html"><i class="fa fa-check"></i><b>11</b> Problem Dashboard Functions</a><ul>
+<li class="chapter" data-level="11.1" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#assessment-functions"><i class="fa fa-check"></i><b>11.1</b> Assessment Functions</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#extract_assessment_json"><i class="fa fa-check"></i><b>11.1.1</b> extract_assessment_json</a></li>
+<li class="chapter" data-level="11.1.2" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#extract_assessment_csv"><i class="fa fa-check"></i><b>11.1.2</b> extract_assessment_csv</a></li>
+<li class="chapter" data-level="11.1.3" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#join_extracted_assessment_data"><i class="fa fa-check"></i><b>11.1.3</b> join_extracted_assessment_data</a></li>
+<li class="chapter" data-level="11.1.4" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#summarise_joined_assessment_data"><i class="fa fa-check"></i><b>11.1.4</b> summarise_joined_assessment_data</a></li>
+<li class="chapter" data-level="11.1.5" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#plot_assessment"><i class="fa fa-check"></i><b>11.1.5</b> plot_assessment</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#problems-functions"><i class="fa fa-check"></i><b>11.2</b> Problems Functions</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#clean_multiple_choice"><i class="fa fa-check"></i><b>11.2.1</b> clean_multiple_choice</a></li>
+<li class="chapter" data-level="11.2.2" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#create_question_lookup_from_json"><i class="fa fa-check"></i><b>11.2.2</b> create_question_lookup_from_json</a></li>
+<li class="chapter" data-level="11.2.3" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#filter_valid_questions"><i class="fa fa-check"></i><b>11.2.3</b> filter_valid_questions</a></li>
+<li class="chapter" data-level="11.2.4" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#get_mean_scores"><i class="fa fa-check"></i><b>11.2.4</b> get_mean_scores</a></li>
+<li class="chapter" data-level="11.2.5" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#tally_correct_answers"><i class="fa fa-check"></i><b>11.2.5</b> tally_correct_answers</a></li>
+<li class="chapter" data-level="11.2.6" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#calculate_percent_correct_tbl"><i class="fa fa-check"></i><b>11.2.6</b> calculate_percent_correct_tbl</a></li>
+<li class="chapter" data-level="11.2.7" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#get_mean_scores_filterable"><i class="fa fa-check"></i><b>11.2.7</b> get_mean_scores_filterable</a></li>
+<li class="chapter" data-level="11.2.8" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#join_summary_lookup"><i class="fa fa-check"></i><b>11.2.8</b> join_summary_lookup</a></li>
+<li class="chapter" data-level="11.2.9" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#summarise_scores_by_chapter"><i class="fa fa-check"></i><b>11.2.9</b> summarise_scores_by_chapter</a></li>
+<li class="chapter" data-level="11.2.10" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#prepare_filterable_problems"><i class="fa fa-check"></i><b>11.2.10</b> prepare_filterable_problems</a></li>
+<li class="chapter" data-level="11.2.11" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#get_extreme_summarised_scores"><i class="fa fa-check"></i><b>11.2.11</b> get_extreme_summarised_scores</a></li>
+<li class="chapter" data-level="11.2.12" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#join_problems_to_lookup"><i class="fa fa-check"></i><b>11.2.12</b> join_problems_to_lookup</a></li>
+<li class="chapter" data-level="11.2.13" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#join_users_problems"><i class="fa fa-check"></i><b>11.2.13</b> join_users_problems</a></li>
+<li class="chapter" data-level="11.2.14" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#filter_counts"><i class="fa fa-check"></i><b>11.2.14</b> filter_counts</a></li>
+<li class="chapter" data-level="11.2.15" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#filter_extreme_problem_choices"><i class="fa fa-check"></i><b>11.2.15</b> filter_extreme_problem_choices</a></li>
+<li class="chapter" data-level="11.2.16" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#aggregate_extracted_problems"><i class="fa fa-check"></i><b>11.2.16</b> aggregate_extracted_problems</a></li>
+<li class="chapter" data-level="11.2.17" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#aggregate_melted_problems"><i class="fa fa-check"></i><b>11.2.17</b> aggregate_melted_problems</a></li>
+<li class="chapter" data-level="11.2.18" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#plot_aggregated_problems"><i class="fa fa-check"></i><b>11.2.18</b> plot_aggregated_problems</a></li>
+<li class="chapter" data-level="11.2.19" data-path="problem-dashboard-functions.html"><a href="problem-dashboard-functions.html#plot_problem_chapter_summaries"><i class="fa fa-check"></i><b>11.2.19</b> plot_problem_chapter_summaries</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="video-overview.html"><a href="video-overview.html"><i class="fa fa-check"></i><b>12</b> Video Overview</a><ul>
+<li class="chapter" data-level="12.1" data-path="video-overview.html"><a href="video-overview.html#data-cleaning-pipeline-5"><i class="fa fa-check"></i><b>12.1</b> Data Cleaning Pipeline</a></li>
+<li class="chapter" data-level="12.2" data-path="video-overview.html"><a href="video-overview.html#visualization-reasoning-and-caveats-5"><i class="fa fa-check"></i><b>12.2</b> Visualization Reasoning and Caveats:</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html"><i class="fa fa-check"></i><b>13</b> Video Dashboard Functions</a><ul>
+<li class="chapter" data-level="13.1" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#wrangling-functions-4"><i class="fa fa-check"></i><b>13.1</b> Wrangling Functions</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#wrangle_video"><i class="fa fa-check"></i><b>13.1.1</b> wrangle_video</a></li>
+<li class="chapter" data-level="13.1.2" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#obtain_raw_video_data"><i class="fa fa-check"></i><b>13.1.2</b> obtain_raw_video_data</a></li>
+<li class="chapter" data-level="13.1.3" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#obtain_video_axis_data"><i class="fa fa-check"></i><b>13.1.3</b> obtain_video_axis_data</a></li>
+<li class="chapter" data-level="13.1.4" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#write_wrangled_video_data"><i class="fa fa-check"></i><b>13.1.4</b> write_wrangled_video_data</a></li>
+<li class="chapter" data-level="13.1.5" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#prepare_video_data"><i class="fa fa-check"></i><b>13.1.5</b> prepare_video_data</a></li>
+<li class="chapter" data-level="13.1.6" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_start_end_df"><i class="fa fa-check"></i><b>13.1.6</b> get_start_end_df</a></li>
+<li class="chapter" data-level="13.1.7" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_watched_segments"><i class="fa fa-check"></i><b>13.1.7</b> get_watched_segments</a></li>
+<li class="chapter" data-level="13.1.8" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#make_tidy_segments"><i class="fa fa-check"></i><b>13.1.8</b> make_tidy_segments</a></li>
+<li class="chapter" data-level="13.1.9" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#check_integrity"><i class="fa fa-check"></i><b>13.1.9</b> check_integrity</a></li>
+<li class="chapter" data-level="13.1.10" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_end_time"><i class="fa fa-check"></i><b>13.1.10</b> get_end_time</a></li>
+<li class="chapter" data-level="13.1.11" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_mode"><i class="fa fa-check"></i><b>13.1.11</b> get_mode</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#server-functions-4"><i class="fa fa-check"></i><b>13.2</b> Server Functions</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_aggregated_df"><i class="fa fa-check"></i><b>13.2.1</b> get_aggregated_df</a></li>
+<li class="chapter" data-level="13.2.2" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_ch_markers"><i class="fa fa-check"></i><b>13.2.2</b> get_ch_markers</a></li>
+<li class="chapter" data-level="13.2.3" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_video_lengths"><i class="fa fa-check"></i><b>13.2.3</b> get_video_lengths</a></li>
+<li class="chapter" data-level="13.2.4" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_summary_table"><i class="fa fa-check"></i><b>13.2.4</b> get_summary_table</a></li>
+<li class="chapter" data-level="13.2.5" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_video_comparison_plot"><i class="fa fa-check"></i><b>13.2.5</b> get_video_comparison_plot</a></li>
+<li class="chapter" data-level="13.2.6" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_segment_comparison_plot"><i class="fa fa-check"></i><b>13.2.6</b> get_segment_comparison_plot</a></li>
+<li class="chapter" data-level="13.2.7" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_top_hotspots_plot"><i class="fa fa-check"></i><b>13.2.7</b> get_top_hotspots_plot</a></li>
+<li class="chapter" data-level="13.2.8" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_high_low_plot"><i class="fa fa-check"></i><b>13.2.8</b> get_high_low_plot</a></li>
+<li class="chapter" data-level="13.2.9" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_up_until_plot"><i class="fa fa-check"></i><b>13.2.9</b> get_up_until_plot</a></li>
+<li class="chapter" data-level="13.2.10" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_rank"><i class="fa fa-check"></i><b>13.2.10</b> get_rank</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="deployment-walkthrough.html"><a href="deployment-walkthrough.html"><i class="fa fa-check"></i><b>14</b> Deployment Walkthrough</a><ul>
+<li class="chapter" data-level="14.1" data-path="deployment-walkthrough.html"><a href="deployment-walkthrough.html#step-by-step-guide"><i class="fa fa-check"></i><b>14.1</b> Step-by-step Guide</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">edXviz: Interactive Visualization of Student Engagement with edX MOOCs</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="general-demographics-overview" class="section level1">
+<h1><span class="header-section-number">4</span> General Demographics Overview</h1>
+<div id="data-cleaning-pipeline-1" class="section level2">
+<h2><span class="header-section-number">4.1</span> Data Cleaning Pipeline</h2>
+<div class="figure">
+<img src="img/diagrams/demographics_pipeline.png" />
+
+</div>
+<p>The figure above shows the data cleaning pipeline for demographics data. Raw student demographics data is initially stored in Google BigQuery. It is downloaded and cleaned programatically through the <code>populate_courses.py</code> script. Next, the cleaned <code>wrangle_demographics.csv</code> file is used to generate the video visualizations.</p>
+<p>It should be noted that the data obtained through the use of <code>generalized_demographics.sql</code> and <code>rbq.py</code> is not the entire dataset of students. Instead, only students with a known IP address are obtained. This was done because IP address is used to infer statistics such as country and language. Please see <code>generalized_demographics.sql</code> for details.</p>
+</div>
+<div id="visualization-reasoning-and-caveats-1" class="section level2">
+<h2><span class="header-section-number">4.2</span> Visualization Reasoning and Caveats:</h2>
+<p>In this section, we show visualizations included within our video dashboard. Additionally, the reasoning that went into their design as well as the caveats that go along with those decisions are provided.</p>
+<div class="figure">
+<img src="img/visualizations/general_demographics/level_of_education.png" />
+
+</div>
+<p>The plot above shows the level of education of the students. This is obtained from the <code>LoE</code> variable within the <code>person_course</code> table found on Google BigQuery. In order to transform the level of education code to its actual human readable format such as “Doctorate” or “High School”, the function <code>convert_loe</code> is used. This function <strong>assumes</strong> that the codes of “<code>p</code>”, “<code>p_se</code>”, and “<code>p_oth</code>” all refer to PhD which translates to a level of education of “Doctorate” in the visualization above. This assumption may not be entirely correct but are based off of the options available on EdX account profiles:</p>
+<div class="figure">
+<img src="img/diagrams/general_loe.png" />
+
+</div>
+<div class="figure">
+<img src="img/visualizations/general_demographics/countries.png" />
+
+</div>
+<p>The plot above shows the top ten countries according to the number of students enrolled. Student’s country is inferred from their IP addresses within the variable <code>cc_by_ip</code>. This was done because the variable <code>countryLabel</code> available in the <code>person_course</code> BigQuery table is relatively sparse compared to <code>cc_by_ip</code>.</p>
+<div class="figure">
+<img src="img/visualizations/general_demographics/language.png" />
+
+</div>
+<p>The plot above shows the top ten languages according to the number of students that speak it. The students’ language is inferred from their country which is in turn, inferred from their IP address. This was done because the <code>language</code> variable within the <code>person_course</code> table in BigQuery was obtained through their modal video transcripts. The original <code>language</code> variable seemed very biased towards English and as a result, the the students’ language was chosen to be inferred from their country.</p>
+<div class="figure">
+<img src="img/visualizations/general_demographics/age.png" />
+
+</div>
+<p>The plot above shows the distribution of ages amongst the learners. It should be noted that all ages less than 5 and greater than 100 have been filtered out. This was done because their are often fake accounts that entered a year of birth such that their age would be 200 or greater. As a result, the histogram would be difficult to read. The thresholds of 5 and 100 can be adjusted through the constants <code>MIN_AGE</code> and <code>MAX_AGE</code> found within the <code>general_server.R</code> file.</p>
+<p><strong>Developer Note</strong>: The global constants should be transitioned into arguments passed into the <code>get_age_plot</code> function within the <code>general_server.R</code> file.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="engagement-overview-dashboard-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="general-demographics-dashboard-functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

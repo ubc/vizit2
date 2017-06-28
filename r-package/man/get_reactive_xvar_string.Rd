@@ -12,8 +12,8 @@ get_reactive_xvar_string(category)
 \value{
 \code{reactive_xvar_string} A string that matches the function to call for the x value of aes_string().
 }
-\details{
-
+\description{
+Get the function to pass into the x value of aes_string() in the main barplot.
 }
 \examples{
 get_reactive_xvar_string("Part 2")

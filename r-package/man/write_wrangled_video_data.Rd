@@ -9,7 +9,9 @@ write_wrangled_video_data(input_course, cleaned_data, testing = FALSE)
 \arguments{
 \item{input_course}{Name of course directory (ex. psyc1, spd1, marketing, etc)}
 
-\item{cleaned_data}{Dataframe containing cleaned data. This cleaned data is typically obtained through 
+\item{cleaned_data}{Dataframe containing cleaned data. This cleaned data is typically obtained through}
+
+\item{testing}{For developer use only. Boolean used to indicate to use testing data. 
 \code{make_tidy_segments()}}
 }
 \value{

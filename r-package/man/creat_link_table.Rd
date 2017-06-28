@@ -2,16 +2,19 @@
 % Please edit documentation in R/link_page_server.R
 \name{creat_link_table}
 \alias{creat_link_table}
-\title{create the link summary table : external hyperlink and number of click}
+\title{Create a page summary table to show page(name,clickable hyperlink) and its page view sorted by pageview in descending order}
 \usage{
 creat_link_table(link_summary)
 }
+\arguments{
+\item{page_summary}{}
+}
 \value{
-link_df
+page_df
 }
 \description{
-create the link summary table : external hyperlink and number of click
+Create a page summary table to show page(name,clickable hyperlink) and its page view sorted by pageview in descending order
 }
 \examples{
-creat_link_table(link_summary = reactive_link_dat())
+creat_page_table(page_summary = reactive_page())
 }

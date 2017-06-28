@@ -17,3 +17,6 @@ A vector containing the \code{commentable_id}, \code{display_name}, \code{discus
 \description{
 Get the variables associated with each forum element in the JSON file. (for use in \code{prepare_json}).
 }
+\examples{
+get_discussion_vars_json(i, all_elements)
+}

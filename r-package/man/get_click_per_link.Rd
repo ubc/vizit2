@@ -2,18 +2,18 @@
 % Please edit documentation in R/link_page_server.R
 \name{get_click_per_link}
 \alias{get_click_per_link}
-\title{Compute how many times each external link have been clicked}
+\title{Compute how many times each external link have been clicked.}
 \usage{
 get_click_per_link(link_df)
 }
 \arguments{
-\item{link_df}{}
+\item{link_df}{A link dataframe.}
 }
 \value{
-link_num
+link_num A link dataframe with number of click information.
 }
 \description{
-Compute how many times each external link have been clicked
+Compute how many times each external link have been clicked.
 }
 \examples{
 get_click_per_link(link_df = link_dat)

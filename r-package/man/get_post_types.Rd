@@ -15,3 +15,6 @@ The same dataframe with a new column for post_type.
 \description{
 Get the post types.
 }
+\examples{
+get_post_types(forum)
+}

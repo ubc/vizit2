@@ -12,6 +12,9 @@ reset_filters(session)
 \value{
 None.
 }
+\description{
+Resets all the user-defined filters to "All".
+}
 \details{
 The function is called when the user presses the "Reset" button.
 }

@@ -14,8 +14,8 @@ get_subcategory_options(category, filtered_forum_elements)
 \value{
 \code{subcategory_options} A list of options for the user to select from.
 }
-\details{
-
+\description{
+Get the options for the subcategory options, given the selected category.
 }
 \examples{
 get_subcategory_options("Part 1", filtered_forum_elements)

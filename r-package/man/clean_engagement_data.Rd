@@ -2,7 +2,7 @@
 % Please edit documentation in R/overview_engagement_wrangling.R
 \name{clean_engagement_data}
 \alias{clean_engagement_data}
-\title{Clean engagement data into tidy format}
+\title{Remove initial messy strings in module_id column and rename mode column}
 \usage{
 clean_engagement_data(dirt_engagement_data)
 }
@@ -10,10 +10,10 @@ clean_engagement_data(dirt_engagement_data)
 \item{dirt_engagement_data}{tower_engage_dirt dataframe object}
 }
 \value{
-dirt_engagement_data
+dirt_engagement_data : tidy dataframe adter wrangling
 }
 \description{
-Clean engagement data into tidy format
+Remove initial messy strings in module_id column and rename mode column
 }
 \examples{
 clean_engagement_data(dirt_engagement_data = obtain_dirt_engagement_data)

@@ -1,4 +1,21 @@
+aggregate_single_problem <- function(joined_user_problems, problem_url) {
 
+  filtered_counts <- joined_user_problems %>%
+    filter(!is.na(problem)) %>%
+    group_by(problem) %>%
+    summarise(filtered_users = n_distinct(user_id))
+
+  agg_melted_problems <- joined_user_problems %>%
+    filter(problem_url_name == problem_url) %>%
+    mutate(correct_bool = ifelse(correct == "true", TRUE, FALSE)) %>%
+    group_by(problem, choice, users) %>%
+    summarise(responses = n(),
+              correct = any(correct_bool)) %>%
+    inner_join(filtered_counts) %>%
+    mutate(freq_responses = responses / filtered_users,
+           trunc_question = str_trunc(problem, 50),
+           trunc_choice = str_trunc(choice, 50))
+}
 
 
 plot_single_problem <- function(agg_melted_problems) {

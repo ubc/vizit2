@@ -1,0 +1,190 @@
+---
+title: "Video Functions"
+output: github_document
+---
+
+# Video Dashboard Functions
+
+## Wrangling Functions
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt_options(underline_titles=FALSE)
+```
+
+### wrangle_video 
+
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/wrangle_video.Rd")
+```
+
+#### Additional Notes:
+* In order for this function to execute properly, there must be two files in the course directory named "generalized_video_heat.csv" and "generalized_video_axis.csv". These files are obtained from Google BigQuery. Typically, these files are automatically obtained through the "populate_courses.py" script within the "exec" directory. 
+* `input_course` corresponds to the "short name" within the ".config.json" file
+* The following are descriptions of the columns within the output csv file:
+    * `video_id`: Video ID hash string
+    * `video_name`: Name of the video
+    * `username`: Username of the learner
+    * `min_into_video`: Minute into video of the segment that the learner has watched
+    * `count`: Number of times the learner has watched the segment
+    * `mode`: Whether or not the learner is auditing or a verified student
+    * `certified`: Whether or not the student has been certified
+    * `gender`: Gender of the learner
+    * `activity_level`: Length of time that the student has spent on the course
+    * `max_stop_position`: The mode time at which `video_stop` events occur. The **mode** is used instead of the **maximum** because some videos have `video_stop` events that occur at incorrect times such as 3 days.  
+    * `course_order`: Order in which the video appears in the course
+    * `index_chapter`: Index of the chapter in which the video appears in
+    * `chapter`: Name of the chapter
+* Each video segment is 20 seconds in length. This can be adjusted by changing the global constant `SEGMENT_SIZE` in the `video_wrangling.R` file. 
+* In order for a segment to be counted as being "viewed", the user would have to watch the segment for at least 1 second before carrying out another event such as `video_pause`, `video_seek`, `page_close` etc. This threshold of 1 second can be adjusted via the global constant `MIN_DURATION` in the `video_wrangling.R` file. 
+* The largest length of a video is set to be 1 hour. Any segments passed 1 hour will simply be ignored/truncated. This can be adjusted by changing the global constant `MAX_DURATION` in the `video_wrangling.R` file. 
+
+### obtain_raw_video_data 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/obtain_raw_video_data.Rd")
+```
+
+### obtain_video_axis_data 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/obtain_video_axis_data.Rd")
+```
+
+### write_wrangled_video_data 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/write_wrangled_video_data.Rd")
+```
+
+### prepare_video_data 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/prepare_video_data.Rd")
+```
+
+### get_start_end_df 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/get_start_end_df.Rd")
+```
+
+### get_watched_segments 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/get_watched_segments.Rd")
+```
+
+### make_tidy_segments 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/make_tidy_segments.Rd")
+```
+
+### check_integrity 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/check_integrity.Rd")
+```
+
+### get_end_time 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/get_end_time.Rd")
+```
+
+### get_mode 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/get_mode.Rd")
+```
+
+
+## Server Functions
+
+### get_aggregated_df 
+
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/get_aggregated_df.Rd")
+```
+
+#### Additional Notes:
+* This function will read the filtered data frame version of the output csv file from `wrangle_video `. As an example, this function can be used in the following way:
+```
+tidy_segment_df <- read_csv("path/to/course/wrangled_video_heat.csv")
+filt_segs <- filter_demographics(tidy_segment_df)
+aggregated_df <- get_aggregated_df(filt_segs, 10)
+```
+* The `high_low` segment classification is based off a linear model (using `lm `) using the following features:
+  * `course_order`: Index of the video arranged by course structure
+  * `min_into_video`: How far into the video the segment is
+* The `up_until` variable is simply obtained by looking at the maximum time that a `video_stop` event had occurred. As a consequence, if many students frequently skip to the end of the video without watching anything in between, this statistic may be misinterpreted. There are plans to change this in the future as it is very doable 
+
+### get_ch_markers 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/get_ch_markers.Rd")
+```
+
+### get_video_lengths 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/get_video_lengths.Rd")
+```
+
+### get_summary_table 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/get_ch_markers.Rd")
+```
+
+### get_video_comparison_plot 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/get_video_comparison_plot.Rd")
+```
+
+### get_segment_comparison_plot 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/get_segment_comparison_plot.Rd")
+```
+
+### get_top_hotspots_plot 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/get_top_hotspots_plot.Rd")
+```
+#### Additional Notes:
+* This function is no longer used the plot was discarded after usability testing.
+
+### get_high_low_plot 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/get_high_low_plot.Rd")
+```
+#### Additional Notes:
+* This function returns a plot where segments with abnormally high and low watch rates are highlighted.
+* "High" and "low" watch rates are determined by the residuals from a linear model obtained via `lm `
+* Please see source code and documentation for `get_aggregated_df` for more details.
+
+### get_up_until_plot 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/get_up_until_plot.Rd")
+```
+#### Additional Notes:
+* This function returns a plot in which segments are highlighted up until the average *maximum* stop time per student.
+* It should be noted that this diagram may be misleading. Please see documentation for `get_aggregated_df` for more details. 
+
+### get_rank 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/get_rank.Rd")
+```
+
+#### Additional Notes:
+* This function returns a data frame in which the the duration watched per minute video is calculated.
+* This is calculated by (average time spent on video (minutes) by all learners who have started the video)/(length of video (minutes))
+* It should be noted that the average time spent on video is calculated via the `count` in which the segment has been watched multiplied by the segment length. As a result, if users are consistently only watching 3 seconds of a 20 second segment, this number may be artificially inflated. This is because if a student watches more than 1 second of a segment, it will count as a "view"/"count" of the segment. This 1 second threshold can be adjusted via adjusting the global constant `MIN_DURATION` found in the `video_wrangling.R` file. 

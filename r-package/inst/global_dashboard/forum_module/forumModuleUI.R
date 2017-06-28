@@ -103,11 +103,8 @@ forumModuleUI <- function(id) {
                                                                               overflow: visible;
                                                                               }
                                                                               "))),
-
-                                                    selectInput(ns("category"),
-                                                                "Category:",
-                                                                choices = append(c("All"), unique(as.character(wrangled_forum_elements$discussion_category))),
-                                                                selected = "All"),
+                                                    
+                                                    htmlOutput(ns("category_select")),
 
                                                     conditionalPanel("input['forumID-category'] != 'All'",
                                                                      htmlOutput(ns("subcategory_select"))

@@ -2,6 +2,45 @@ forumModule <- function(input, output, session) {
         
         observe({
                 
+                # Get the requested course.
+                requested_course <- reactive({
+                        query <- parseQueryString(session$clientData$url_search)
+                        
+                        if ("course" %in% names(query)) {
+                                query$course
+                        } else {
+                                "no_course_selected"
+                        }
+                })
+                
+                # Read in the data.
+                root <- "../../data/"
+
+                wrangled_forum_posts <- reactiveFileReader(10000,
+                                                           session,
+                                                           paste0(root, requested_course(), "/wrangled_forum_posts.csv"),
+                                                           read_csv)
+
+                wrangled_forum_words <- reactiveFileReader(10000,
+                                                           session,
+                                                           paste0(root, requested_course(), "/wrangled_forum_words.csv"),
+                                                           read_csv)
+                
+                wrangled_forum_views <- reactiveFileReader(10000,
+                                                           session,
+                                                           paste0(root, requested_course(), "/wrangled_forum_views.csv"),
+                                                           read_csv)
+                
+                wrangled_forum_elements <- reactiveFileReader(10000,
+                                                              session,
+                                                              paste0(root, requested_course(), "/wrangled_forum_elements.csv"),
+                                                              read_csv)
+                
+                wrangled_forum_searches <- reactiveFileReader(10000,
+                                                              session,
+                                                              paste0(root, requested_course(), "/wrangled_forum_searches.csv"),
+                                                              read_csv)
+
                 # Update the activity level.
                 activity_level <- reactive({
                         
@@ -20,6 +59,18 @@ forumModule <- function(input, output, session) {
                 registration_status <- reactive({
 
                         input$registration_status
+                        
+                })
+                
+                # Get the category options, based on the course.
+                output$category_select <- renderUI({
+                        
+                        ns <- NS("forumID")
+                        
+                        selectInput(ns("category"),
+                                    "Category:",
+                                    choices = append(c("All"), unique(as.character(wrangled_forum_elements()$discussion_category))),
+                                    selected = "All")
                         
                 })
                 
@@ -52,7 +103,7 @@ forumModule <- function(input, output, session) {
                 # Update the forum elements according to the category filter.
                 filtered_forum_elements <- reactive({
                         
-                        filter_forum_elements(forum_elements = wrangled_forum_elements,
+                        filter_forum_elements(forum_elements = wrangled_forum_elements(),
                                               category = category())
                         
                 })
@@ -67,7 +118,8 @@ forumModule <- function(input, output, session) {
                 # Calculate the top forum searches for the selected demographics.
                 forum_searches <- reactive({
                         
-                        calculate_forum_searches(forum_searches = wrangled_forum_searches,
+                        calculate_forum_searches(forum_searches = wrangled_forum_searches(),
+                                                 forum_elements = wrangled_forum_elements(),
                                                  activity_level = activity_level(),
                                                  gender = gender(),
                                                  registration_status = registration_status(),
@@ -108,8 +160,8 @@ forumModule <- function(input, output, session) {
                 # Update the counts for the forum data, based on the selected filters.
                 updated_forum_data <- reactive({
                         
-                        update_forum_data(forum_posts = wrangled_forum_posts,
-                                          forum_views = wrangled_forum_views,
+                        update_forum_data(forum_posts = wrangled_forum_posts(),
+                                          forum_views = wrangled_forum_views(),
                                           forum_elements = filtered_forum_elements(),
                                           activity_level = activity_level(),
                                           gender = gender(),
@@ -121,7 +173,8 @@ forumModule <- function(input, output, session) {
                 # Filter the wordcloud data.
                 filtered_wordcloud_data <- reactive({
                         
-                        filter_wordcloud_data(forum_words = wrangled_forum_words,
+                        filter_wordcloud_data(forum_words = wrangled_forum_words(),
+                                              forum_elements = wrangled_forum_elements(),
                                               activity_level = activity_level(),
                                               gender = gender(),
                                               registration_status = registration_status(),
@@ -219,7 +272,8 @@ forumModule <- function(input, output, session) {
                 # Render the author count.
                 output$author_count <- renderText({
                         
-                        get_author_count(forum_posts = wrangled_forum_posts,
+                        get_author_count(forum_posts = wrangled_forum_posts(),
+                                         forum_elements = wrangled_forum_elements(),
                                          activity_level = activity_level(),
                                          gender = gender(),
                                          registration_status = registration_status(),
@@ -230,7 +284,8 @@ forumModule <- function(input, output, session) {
                 # Render the viewer count.
                 output$viewer_count <- renderText({
                         
-                        get_viewer_count(forum_views = wrangled_forum_views,
+                        get_viewer_count(forum_views = wrangled_forum_views(),
+                                         forum_elements = wrangled_forum_elements(),
                                          activity_level = activity_level(),
                                          gender = gender(),
                                          registration_status = registration_status(),
@@ -274,7 +329,8 @@ forumModule <- function(input, output, session) {
                 output$forum_threads <- renderDataTable(
                         
                         {
-                                get_forum_threads(forum_posts = wrangled_forum_posts,
+                                get_forum_threads(forum_posts = wrangled_forum_posts(),
+                                                  forum_elements = wrangled_forum_elements(),
                                                   activity_level = activity_level(),
                                                   gender = gender(),
                                                   registration_status = registration_status(),

@@ -4,11 +4,13 @@
 \alias{get_author_count}
 \title{Get the number of authors for which the selected filter settings apply.}
 \usage{
-get_author_count(forum_posts = wrangled_forum_posts, activity_level, gender,
+get_author_count(forum_posts, forum_elements, activity_level, gender,
   registration_status, category)
 }
 \arguments{
 \item{forum_posts}{The forum posts dataframe that was passed in from the wrangling script.}
+
+\item{forum_elements}{The forum elements dataframe.}
 
 \item{activity_level}{The activity level of the students.}
 
@@ -21,9 +23,9 @@ get_author_count(forum_posts = wrangled_forum_posts, activity_level, gender,
 \value{
 \code{author_count} A string showing the number of authors.
 }
-\details{
-
+\description{
+Get the number of authors for which the selected filter settings apply.
 }
 \examples{
-get_author_count(wrangled_forum_posts, "All", "male", "verified", "All")
+get_author_count(wrangled_forum_posts, forum_elements, "All", "male", "verified", "All")
 }

@@ -34,10 +34,7 @@ overviewModuleUI <- function(id) {
                                                             "Audit" = "audit"),
                                                             selected = "All"), 
                                  
-                                      selectInput(ns("module"),
-                                                  "Module:",
-                                                   choices = append("All",chap_name_overview[-1]), 
-                                                   selected = "All"),
+                                      htmlOutput(ns("chap_name_overview")),
                                  
                                       
                                         

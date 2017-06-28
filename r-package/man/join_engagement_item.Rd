@@ -8,12 +8,12 @@ convert all module item nacitve number to a constant to draw seperator line late
 join_engagement_item(filtered_engagement, filtered_item)
 }
 \arguments{
-\item{filtered_engagement}{}
+\item{filtered_engagement}{Filtered engagement dataframe.}
 
-\item{filtered_item}{}
+\item{filtered_item}{Filtered course axis dataframe}
 }
 \value{
-tower_df
+tower_df Dataframe containing item name, item category and how many student engaged with it
 }
 \description{
 Join filtered summary engagement dataframe with filtered item dataframe to match "item " ,"item name"  and "nactive" 

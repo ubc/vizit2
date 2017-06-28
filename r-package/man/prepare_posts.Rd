@@ -15,3 +15,6 @@ The prepared forum posts data.
 \description{
 Prepare the forum posts.
 }
+\examples{
+prepare_posts(forum)
+}

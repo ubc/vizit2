@@ -2,7 +2,7 @@
 % Please edit documentation in R/overview_engagement_server.R
 \name{filter_demographics}
 \alias{filter_demographics}
-\title{Filter student engagement dataframe by the selected demographics}
+\title{Filter input dataframe based on selected student demographics,}
 \usage{
 filter_demographics(engage_df, gender = "All", mode = "All",
   activity_level = "All")
@@ -22,7 +22,7 @@ filter_demographics(engage_df, gender = "All", mode = "All",
 A dataframe filtered by the selected demographics.
 }
 \description{
-Filter student engagement dataframe by the selected demographics
+Filter input dataframe based on selected student demographics,
 }
 \examples{
 filter_demographics(engage_df = tower_engage, gender = "all", mode = "all", activity_level = "all")

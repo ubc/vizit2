@@ -15,3 +15,6 @@ The same dataframe with commentable_id filled in for everything.
 \description{
 Infer the subcategories of each post, even if it's a response post or a comment.
 }
+\examples{
+infer_post_subcategories(forum)
+}

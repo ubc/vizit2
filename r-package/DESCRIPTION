@@ -7,24 +7,28 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
-	DT,
-	ggthemes,
-	gsubfn,
-	lubridate,
-	plotly,
-	reshape2,
-	tidyjson,
-	viridis,
-	wordcloud,
-	XML,
-	zoo
+    anonymizer,
+    digest,
+    DT,
+    ggthemes,
+    gsubfn,
+    lubridate,
+    plotly,
+    reshape2,
+    roxygen2,
+    testthat,
+    tidyjson,
+    tidytext,
+    viridis,
+    wordcloud,
+    XML,
+    zoo
 Depends:
-	shiny,
-	shinyBS,
-	tidyverse
+    shiny,
+    shinyBS,
+    tidyverse
 Suggests:
   devtools,
-  testthat,
-    packagedocs
+  packagedocs
 RoxygenNote: 6.0.1
 VignetteBuilder: packagedocs

@@ -1,0 +1,104 @@
+---
+title: "General Demographics Functions"
+output: github_document
+---
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt_options(underline_titles=FALSE)
+```
+
+# General Demographics Dashboard Functions
+
+## Wrangling Functions
+
+### wrangle_general 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/wrangle_general.Rd")
+```
+
+### obtain_raw_general_data 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/obtain_raw_general_data.Rd")
+```
+
+### obtain_language_info 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/obtain_language_info.Rd")
+```
+
+### obtain_country_info 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/obtain_country_info.Rd")
+```
+
+### prepare_general_data 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/prepare_general_data.Rd")
+```
+
+### write_general_data 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/write_general_data.Rd")
+```
+
+## Server Functions
+
+### convert_loe 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/convert_loe.Rd")
+```
+
+### get_loe_df 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/get_loe_df.Rd")
+```
+
+### get_loe_plot 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/get_loe_plot.Rd")
+```
+
+### get_age_df 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/get_age_df.Rd")
+```
+
+### get_age_plot 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/get_age_plot.Rd")
+```
+
+### get_top_country_df 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/get_top_country_df.Rd")
+```
+
+### get_country_plot 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/get_country_plot.Rd")
+```
+
+### get_top_language_df 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/get_top_language_df.Rd")
+```
+
+### get_language_plot 
+#### Main Documentation
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt("../../r-package/man/get_language_plot.Rd")
+```

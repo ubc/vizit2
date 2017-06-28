@@ -1,6 +1,6 @@
 context("Testing Asessment Plot")
 
-json_string <- '[{"url_name": "06ccb4a9c0204159bb176fac6fe95bf0", "title": "Assessment", "labels": [{"label": "Label1", "name": "Ideas"}, {"label": "Label2", "name": "name2"}]}]'
+json_string <- '[{"url_name": "06ccb4a9c0204159bb176fac6fe95bf0", "title": "Assessment", "labels": [{"label": "Label1", "name": "Ideas"}, {"label": "Label2", "name": "name2"}]}, {"url_name": "06bcb4a9c0204159bb176fac6fe95bf0", "title": "Assessment2", "labels": [{"label": "Label1", "name": "Ideas"}]}]'
 
 extractable_tbl <- read_csv("./data/assessment_stub.csv")
 

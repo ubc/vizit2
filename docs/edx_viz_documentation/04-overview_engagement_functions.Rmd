@@ -1,0 +1,99 @@
+---
+title: "R functions for wrangling and serving the eiffel tower related data"
+output: github_document
+---
+
+# Engagement Overview Dashboard Functions
+
+## Wrangling Functions
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt_options(underline_titles=FALSE)
+root <- "../../r-package/man/"
+ext <- ".Rd"
+```
+
+
+### read_dirt_engagement_data
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "read_dirt_engagement_data", ext))
+```
+
+
+### clean_engagement_data 
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "clean_engagement_data", ext))
+```
+
+
+### write_tidy_engagement_data
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "write_tidy_engagement_data", ext))
+```
+
+
+### wrangle_overview_engagement
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "wrangle_overview_engagement", ext))
+```
+
+
+## Server Functions
+
+
+### filter_chapter_overview
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "filter_chapter_overview", ext))
+```
+
+
+### get_module_vector
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "get_module_vector", ext))
+```
+
+
+### create_module_name 
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "create_module_name", ext))
+```
+
+
+### get_nactive 
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "get_nactive", ext))
+```
+
+
+### join_engagement_item
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "join_engagement_item", ext))
+```
+
+
+### get_module_nactive
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "get_module_nactive", ext))
+```
+
+
+### make_engagement_eiffel_tower
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "make_engagement_eiffel_tower", ext))
+```
+
+
+
+
+

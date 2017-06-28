@@ -12,8 +12,8 @@ set_fill_value(plot_variable)
 \value{
 \code{fill_value} A hex value representing the color for the bar fill.
 }
-\details{
-
+\description{
+Set the fill value of the bars in the main barplot, given the plot variable.
 }
 \examples{
 set_fill_value("views")

@@ -1,22 +1,61 @@
 overviewModule <- function(input, output, session) {
   
   
+ 
+  # Import requested course 
+  requested_course <- reactive({
+    query <- parseQueryString(session$clientData$url_search)
+
+    if ("course" %in% names(query)) {
+      query$course
+    } else {
+      "psyc1"
+    }
+  })
 
   
+  # Import clean overview dashboard data
+  root <- "../../data/"
+  result_root <- "../../results/"
+
+  tower_item <- reactiveFileReader(10000,
+                session,
+                paste0(root, requested_course(), "/tower_item.csv"),
+                read_csv)
+
+ 
+  tower_engage <- reactiveFileReader(10000,
+                session,
+                paste0(root, requested_course(), "/tower_engage.csv"),
+                read_csv)
   
+  
+   # Create module name vector for module filtering
+  
+
+  
+   output$chap_name_overview <- renderUI({
+                        
+                        ns <- NS("overviewID")
+                        
+                        selectInput(ns("module"),
+                                    "Module:",
+                                    choices = append("All",get_module_vector(item_df = tower_item())[-1]),
+                                    selected = "All")
+    })
+  
+  
+
   # Obtain user input for filters and selections:
   gender <- reactive({input$gender})
   activity_level <- reactive({input$activity_level})
   mode <- reactive({input$mode})
   module <- reactive({input$module})
   
-  
-  
-  
-  
  
+  
   # Add reset filtering button
-   observeEvent(input$reset_filters, autoDestroy = FALSE, {
+  observeEvent(input$reset_filters, autoDestroy = FALSE, {
                         
                         # Update the activity level.
                         activity_level <- reactive({
@@ -61,6 +100,8 @@ overviewModule <- function(input, output, session) {
 })
    
   
+  # Create module name column for course items dataframe
+  tower_item_new <- create_module_name(item_df = tower_item())
   
   
   
@@ -72,7 +113,7 @@ overviewModule <- function(input, output, session) {
    filtered_tower_engage <- reactive({
   
    
-       tower_engage <- filter_demographics_overview(tower_engage, 
+       tower_engage <- filter_demographics(tower_engage(), 
                                            gender = input$gender, 
                                            mode = input$mode,
                                            activity_level = input$activity_level)
@@ -122,6 +163,7 @@ overviewModule <- function(input, output, session) {
   output$student_count <- renderText({
                         paste0(reactive_student_num())
   })
+  
   
   
   

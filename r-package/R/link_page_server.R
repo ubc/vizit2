@@ -1,29 +1,31 @@
-
-#' Filter course items dataframe by the selected course module module  
-#' @param item_df The course items dataframe.
-#' @param module One of the modules of the course
-#' @return A dataframe filtered by the selected course module
+#' Filter course item dataframe by the selected course module. 
+#' @param input_df The link dataframe or page dataframe.
+#' @param module One of the modules in the course
+#' @return A dataframe filtered by the selected course module.
 #' @examples
 #' filter_chapter(tower_item, "all")
-
 filter_chapter_linkpage <- function(input_df, module = "All") {
-                     
+                   
+                  if(is.null(module)){
+                    module = "All"
+                  }
+  
                   if (module == "All") {
                     return(input_df)
                     }
                   else {
                     filtered_df <- input_df %>%
                       filter(chapter_location == module) 
-                    return(filtered_df)
+                  return(filtered_df)
                   }  
 }     
                      
 
-#' Create a module name vector sorted by the course structure index
-#' This vector is used in the module filtering select box in ui.R 
+
+#'  Create a module name vector sorted by the course structure index. This vector is used in the module filtering select box in ui.R 
 #' @param item_df 
 #' @return chap_name
-#' @examples
+
 get_module_vector <- function(item_df) {
   
   chap_name <- as.vector((item_df %>%
@@ -35,10 +37,9 @@ return(chap_name)
 }
 
 
-#' Count the pageview of each page
-#' Here, we set a threshold for only counting pages have been viewed by more than certain amount of students 
-#' @param filtered_log_df 
-#' @return page_student
+#' Count the pageview of each page.Here, we set a threshold for only counting pages have been viewed by more than certain amount of students. 
+#' @param filtered_log_df A page related tracklog dataframe after filtering.
+#' @return page_student A page summary dataframe containing the pageview of each pages.
 #' @export
 #' @examples 
 #' get_pageview(filtered_log_df = log_dat)
@@ -58,8 +59,8 @@ get_pageview <- function(filtered_log_df){
 }
 
 
-#' Get the name description of each page
-#' @param page_name_df 
+#' Get the name description of each page.
+#' @param page_name_df A dataframe we get after joining page dataframe and page name dataframe.
 #' @return each_page
 #' @export
 #' @examples 
@@ -83,9 +84,7 @@ get_page_name <- function(page_name_df){
 
 
 
-
-
-#' Remove duplicated name for each page
+#' Remove duplicated name for each page.
 #' @param each_page_df 
 #' @return all_pages
 #' @examples get_unique_page_name(each_page_df = each_page)
@@ -133,7 +132,7 @@ creat_page_table <- function(page_summary){
         select(Page_url,Pageview) %>% 
         arrange(desc(Pageview))
       
-      colnames(page_df) <- c("Page URL","Pageview")
+      colnames(page_df) <- c("Page URL","Pageviews")
     }else{
       page_df <- page_summary
     }
@@ -145,10 +144,9 @@ creat_page_table <- function(page_summary){
 
 
 
-#' Compute how many times each external link have been clicked
-#'
-#' @param link_df 
-#' @return link_num
+#' Compute how many times each external link have been clicked.
+#' @param link_df A link dataframe. 
+#' @return link_num A link dataframe with number of click information.
 #' @export
 #' @examples get_click_per_link(link_df = link_dat)
 get_click_per_link <- function(link_df){
@@ -187,12 +185,12 @@ get_click_per_link <- function(link_df){
 
 
 
-#' create the link summary table : external hyperlink and number of click
-#' @param link_summary
-#' @return link_df
+#' Create a page summary table to show page(name,clickable hyperlink) and its page view sorted by pageview in descending order
+#' @param page_summary 
+#' @return page_df
 #' @export
-#' @examples creat_link_table(link_summary = reactive_link_dat())
-
+#' @examples 
+#' creat_page_table(page_summary = reactive_page())
 creat_link_table <- function(link_summary){
   
   # If link summary table is not 1-row warning and empty table   
@@ -202,7 +200,7 @@ creat_link_table <- function(link_summary){
       arrange(desc(number_of_click)) 
       
       link_df$link <-  paste0("<a href='",link_df$link,"'>",substr(link_df$link,1,60),"</a>")
-      colnames(link_df) <- c('Link','Number of Click') 
+      colnames(link_df) <- c('Link','Number of Clicks') 
    
   # If link summary table is 1-row warning or empty table  
     }else{

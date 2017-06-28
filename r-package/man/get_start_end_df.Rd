@@ -17,13 +17,6 @@ through \code{prepare_video_data()}}
 Parses dataframe and adds columns \code{start} and \code{end} showing
 the start and end time that a user watched a video
 }
-\details{
-This will have warning messages that can be ignored. Not sure why
-they are popping up. Something to do with get_end_time and it being
-evaluated with an entire column of data instead of just one value.
-This only occurs once per call of get_end_time. I think its an
-initialization issue.
-}
 \examples{
 get_start_end_df(data = data)
 }

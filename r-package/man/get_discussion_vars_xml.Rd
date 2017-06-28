@@ -17,3 +17,6 @@ A vector containing the \code{display_name}, \code{discussion_category}, and \co
 \description{
 Get the variables associated with each forum element in the XML file (for use in \code{prepare_xml}).
 }
+\examples{
+get_discussion_vars_xml(i, all_parameters)
+}

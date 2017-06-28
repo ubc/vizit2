@@ -14,8 +14,8 @@ set_wordcloud_title(category, selected_subcategory)
 \value{
 \code{wordcloud_title} A string for the wordcloud title.
 }
-\details{
-
+\description{
+Set the title of the wordcloud.
 }
 \examples{
 set_wordcloud_title("Part 3", "All")

@@ -3,8 +3,11 @@ FROM rocker/shiny
 MAINTAINER matthew.emery44@gmail.com
 
 RUN apt-get update --fix-missing && apt-get install -y wget \
+ apt-utils \
+ apt-transport-https \
  bzip2 \
  ca-certificates \
+ gnupg \
  libglib2.0-0 \
  libxext6 \
  libsm6 \
@@ -33,10 +36,14 @@ RUN TINI_VERSION=`curl https://github.com/krallin/tini/releases/latest | grep -o
 
 ENV PATH /opt/conda/bin:$PATH
 
-RUN curl https://sdk.cloud.google.com | bash
+RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
+echo "deb https://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - && \
+sudo apt-get update && sudo apt-get install -y google-cloud-sdk \
+ google-cloud-sdk-app-engine-python
 
 RUN R -e "install.packages(c('devtools'), repos='https://cran.rstudio.com/')"
 
-RUN R -e "devtools::install_github('alim1990/mooc_capstone_private/r-package', host = 'https://github.ubc.ca/api/v3')"
+RUN R -e "devtools::install_github('AndrewLim1990/mooc_capstone_public/r-package')"
 
 CMD ["/usr/bin/shiny-server.sh"]

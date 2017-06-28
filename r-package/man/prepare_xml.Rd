@@ -15,3 +15,6 @@ A dataframe with three columns: \code{display_name}, \code{discussion_category},
 \description{
 Prepare the XML file for joining with the JSON file.
 }
+\examples{
+prepare_xml(xml)
+}

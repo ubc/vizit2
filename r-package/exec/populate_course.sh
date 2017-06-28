@@ -33,11 +33,14 @@ python3 ./rbq.py page_dirt -c ${SHORT} -l 1000000 --auto
 
 bash ./download_gcp_material.sh ${SHORT} "${GCLOUD}"
 
+python3 xml_extraction.py ${SHORT} --problems
+python3 xml_extraction.py ${SHORT} --assessments
+
 Rscript ./wrangle_overview_engagement.R ${SHORT}
 Rscript ./wrangle_forum.R ${SHORT}
 Rscript ./wrangle_video.R ${SHORT}
 Rscript ./wrangle_link_page.R ${SHORT}
 Rscript ./wrangle_general.R ${SHORT}
+Rscript ./wrangle_assessments.R ${SHORT}
 
-python3 xml_extraction.py ${SHORT} --problems
-python3 xml_extraction.py ${SHORT} --assessments
+

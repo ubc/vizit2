@@ -301,7 +301,15 @@ aggregate_extracted_problems <- function(joined_user_problems, extreme_problems,
     mutate(correct = forcats::fct_recode(correct, "Correct" = "TRUE", "Incorrect" = "FALSE"))
 }
 
-aggregate_melted_problems <- function(joined_user_problems, extreme_problems) {
+#' Aggregate questions before plotting
+#'
+#' @param lookup_table The result of `create_question_lookup_from_json`
+#' @param joined_user_problems The result of `join_users_problems`
+#' @param extreme_problems The result of `get_extreme_summarised_score`
+#'
+#' @return A dataframe ready to be plotted by `plot_aggregated_problems`
+#' @export
+aggregate_melted_problems <- function(lookup_table, joined_user_problems, extreme_problems) {
 
   filtered_counts <- filter_counts(joined_user_problems)
 
@@ -310,25 +318,15 @@ aggregate_melted_problems <- function(joined_user_problems, extreme_problems) {
   agg_melted_problems <- aggregate_extracted_problems(joined_user_problems, extreme_problems, question_choices)
 }
 
-aggregate_single_problem <- function(joined_user_problems, problem_url) {
 
-  filtered_counts <- joined_user_problems %>%
-    filter(!is.na(problem)) %>%
-    group_by(problem) %>%
-    summarise(filtered_users = n_distinct(user_id))
-
-  agg_melted_problems <- joined_user_problems %>%
-    filter(problem_url_name == problem_url) %>%
-    mutate(correct_bool = ifelse(correct == "true", TRUE, FALSE)) %>%
-    group_by(problem, choice, users) %>%
-    summarise(responses = n(),
-              correct = any(correct_bool)) %>%
-    inner_join(filtered_counts) %>%
-    mutate(freq_responses = responses / filtered_users,
-           trunc_question = str_trunc(problem, 50),
-           trunc_choice = str_trunc(choice, 50))
-}
-
+#' Plot aggregated problems
+#'
+#' This funciton is used to plot the top or bottom questions.
+#'
+#' @param agg_melted_problems A dataframe with the problem and choice names as well as the number of students who chose each option.
+#'
+#' @return A facetted ggplot bar chart
+#' @export
 plot_aggregated_problems <- function(agg_melted_problems) {
 
   id_to_questions <- as_labeller(setNames(as.character(agg_melted_problems$trunc_question),
@@ -353,7 +351,8 @@ plot_aggregated_problems <- function(agg_melted_problems) {
           strip.text.y = element_text(angle = 180),
           axis.title.y.right = element_text(color = "red"),
           strip.switch.pad.grid = unit(15, "cm"),
-          legend.justification = "top") +
+          legend.justification = "top",
+          axis.ticks.y = element_blank()) +
     scale_y_continuous(labels=scales::percent,
                        limits = c(0, 1),
                        position = "right") + # Add percentage scaling
@@ -363,8 +362,12 @@ plot_aggregated_problems <- function(agg_melted_problems) {
     scale_fill_manual(values = fill_scheme)
 }
 
-# Overview plot (Chapter by Course)
-
+#' Overview plot (Chapter by Course)
+#'
+#' @param chapter_summary_tbl The aggregated data on a per chapter basis
+#'
+#' @return A ggplot bar chart
+#' @export
 plot_problem_chapter_summaries <- function(chapter_summary_tbl) {
 
   ggplot(chapter_summary_tbl, aes(x = chapter, y = percent_correct)) +
@@ -374,18 +377,4 @@ plot_problem_chapter_summaries <- function(chapter_summary_tbl) {
     scale_y_continuous(labels=scales::percent, limits = c(0, 1)) +
     labs(x = "Module",
          y = "Average Score of Module Problems")
-}
-
-# Overview plot (Problem by Chapter)
-
-plot_problems_per_chapter <- function(problem_by_chapter, chapter_name) {
-
-  ggplot(problem_by_chapter, aes(x = trunc_question, y = percent_correct)) +
-    geom_bar(stat= "identity", fill = "#66c2a5") +
-    coord_flip() +
-    ggthemes::theme_few(base_family = "sans-serif") +
-    scale_y_continuous(labels=scales::percent, limits = c(0, 1)) +
-    labs(x = "Chapter",
-         y = "Percent Correct",
-         title = paste0("How Did Students Do in \"", chapter_name, "\"?"))
 }

@@ -3,10 +3,13 @@
 # Link data wrangling functions #
 #################################
 
+
 #' Import course_axis.csv files based on specified course folder name
 #' @param input_course 
 #' @return course_axis
-#' @examples read_course_axis(input_couse = "psyc1")
+#' @examples
+#' read_course_axis(input_couse = "psyc1")
+#' @export
 read_course_axis <- function(input_course){
   input_csv_path <- paste0("../data/", input_course, "/course_axis.csv")
   course_axis <- read_csv(input_csv_path)
@@ -14,10 +17,13 @@ read_course_axis <- function(input_course){
 }
 
 
+
 #' Import external_link_dirt.csv files based on specified course folder name
 #' @param input_course 
 #' @return link_dirt
-#' @examples read_link_dirt(input_couse = "psyc1")
+#' @examples
+#' read_link_dirt(input_couse = "psyc1")
+#' @export
 read_link_dirt <- function(input_course){
   input_csv_path <- paste0("../data/", input_course, "/external_link_dirt.csv")
   link_dirt <- read_csv(input_csv_path)
@@ -25,13 +31,13 @@ read_link_dirt <- function(input_course){
 }
 
 
+
 #' Anonyanonymize the username column as hash strings in the input_df 
-#'
 #' @param input_df A dataframe containing username column
 #' @return secure_df
-#' @export
 #' @examples
 #' hash_username(input_df = link_dat)
+#' @export
 hash_username <- function(input_df){
   secure_df <- input_df %>% 
     mutate(username = anonymizer::hash(username))
@@ -44,6 +50,7 @@ hash_username <- function(input_df){
 #' @param link_data dataframe containing the information of student click any links in the edx course
 #' @return link_data
 #' @examples set_activity_level(link_data = read_link_dirt)
+#' @export
 set_activity_level <- function(link_data){
   
   # Rename columns 
@@ -61,14 +68,12 @@ set_activity_level <- function(link_data){
 
 
 
-
 #' Get which module each external link locate based on link tracklog data and course axis data
-#'
 #' @param link_data dataframe containing the information of student click any links in the edx course
 #' @param course_axis dataframe containing all elements in the edx course
 #' @return link_data
-#' @export
 #' @examples get_module_of_link(link_data = set_activity_level, course_axis = read_course_axis)
+#' @export
 get_module_of_link <- function(link_data,course_axis){
   
   # Get the module name where each link locates
@@ -95,7 +100,8 @@ get_module_of_link <- function(link_data,course_axis){
 #' Export the tidy link dataframe
 #' @param input_course 
 #' @param cleaned_data tidy link dataframe 
-#' @examples write_link_clean(input_course = "psyc1",cleaned_data = get_module_of_link )
+#' @examples write_link_clean(input_course = "psyc1",cleaned_data = get_module_of_link)
+#' @export
 write_link_clean <- function(input_course,cleaned_data){
   output_csv_path <- paste0("../data/", input_course, "/external_link.csv")
   write_csv(x=cleaned_data, path= output_csv_path)
@@ -109,7 +115,9 @@ write_link_clean <- function(input_course,cleaned_data){
 #' Import page_dirt.csv files from specified course folder name
 #' @param input_course 
 #' @return page_dirt
-#' @examples read_page_dirt(input_couse = "psyc1")
+#' @examples
+#' read_page_dirt(input_couse = "psyc1")
+#' @export
 read_page_dirt <- function(input_course){
   input_csv_path <- paste0("../data/", input_course, "/page_dirt.csv")
   page_dirt <- read_csv(input_csv_path)
@@ -118,12 +126,12 @@ read_page_dirt <- function(input_course){
 
 
 
-
 #' Prepare tidy page tracklog data for making page summary table 
 #' @param page_data 
 #' @return log_data
+#' @examples
+#' prepare_tidy_page(page_data = read_page_dirt)
 #' @export
-#' @examples prepare_tidy_page(page_data = read_page_dirt)
 prepare_tidy_page <- function(page_data){
   
   # Rename page_data column 
@@ -131,8 +139,8 @@ prepare_tidy_page <- function(page_data){
   colnames(page_data)[colnames(page_data) == 'B_mode'] <- 'mode'
 
   # Manipulate duplicated messy URLs 
-  # why do this: Some page URL still have characters after the 8th "/" in page URL, which is messy and might cause problem in the mapping name phase
-  # Solution: If a page URL have characters after the 8th "/", we remove characters after the 8th "/"
+  # Why do this: Some page URL still have characters after the 8th "/" in page URL, which is messy and might cause problem in the mapping name phase
+  # Solution: If a page URL have characters after the 8th "/", we remove these characters 
   page_data$page <- sub(sprintf("^((?:[^/]*/){%s}).*", 8), "\\1", page_data$page)
 
   # Remove the last '/ 'in page URL where there is an'/ 'at the end, in order to match page name in the future
@@ -161,6 +169,7 @@ prepare_tidy_page <- function(page_data){
     arrange(time) 
 
   # Filter out tracklog data where students has course navigation activity: each_session_time < 10s
+  # each_session_time is defined as for per student per day per page, the time interval between each event's time stamp
   course_navigation_threshold <- 10 
   sig_student_time <- log_dat %>% 
      group_by(date,page,username) %>% 
@@ -176,12 +185,11 @@ prepare_tidy_page <- function(page_data){
 }
 
 
-#' Get non-video and non-problem element name 
-#' And create a chapter/module column for all these course elements
+#' Get non-video and non-problem element name then create a chapter/module column for all these course elements
 #' @param course_axis dataframe containing all course elements information
 #' @return page_name
-#' @export
 #' @examples prepare_page_name(course_axis =  read_course_axis)
+#' @export
 prepare_page_name <- function(course_axis){
   
   # Wrangle course axis table to remove video and problem elements 
@@ -194,13 +202,13 @@ prepare_page_name <- function(course_axis){
     filter(grepl("Question",name)==FALSE) %>%
     mutate(path = substr(path,1,66))
   
-  # Get a module name list
+  # Get a module name vector
   chap_name <- as.vector((page_name %>%arrange(index) %>% filter(category == "chapter") %>% select(name))$name)
 
   # Get module index 
   chap_index <- as.vector((page_name %>% arrange(index) %>%filter(category == "chapter") %>% select(index))$index)
 
-  # create a chapter_location column for each course element
+  # create a chapter_location column for non-video and non-problem element
   page_name["chapter_location"] <- "no info"
   
   for (i in seq(length(chap_index))){
@@ -213,19 +221,22 @@ prepare_page_name <- function(course_axis){
 
 
 
+
 #' Export the tidy page dataframe
 #' @param input_course 
-#' @param cleaned_data tidy page dataframe 
+#' @param cleaned_data A tidy page dataframe. 
 #' @examples write_page_clean(input_course = "psyc1",cleaned_data = prepare_tidy_page)
+#' @export
 write_page_clean <- function(input_course,cleaned_data){
   output_csv_path <- paste0("../data/", input_course, "/page.csv")
   write_csv(x=cleaned_data, path= output_csv_path)
   
 }
 
+
 #' Export the tidy course axis dataframe containing all non-video and non-problem elements with module/chapter information
 #' @param input_course 
-#' @param cleaned_data tidy page_name dataframe 
+#' @param cleaned_data A tidy page_name dataframe 
 #' @examples write_page_name(input_course = "psyc1",cleaned_data = prepare_page_name)
 write_page_name <- function(input_course,cleaned_data){
   output_csv_path <- paste0("../data/", input_course, "/page_name.csv")
@@ -237,12 +248,12 @@ write_page_name <- function(input_course,cleaned_data){
 # wrangle_page_link  #
 ######################
 
-#' Reads in three csv files getting from rbq.py : course_axis.csv, external_link_dirt.csv and page_dirt.csv
-#' Perform wrangling 
-#' Export three csv files for building link_page_dashabord: external_link.csv, page.csv and page_name.csv 
+
+#' Read in three csv files getting from rbq.py : course_axis.csv, external_link_dirt.csv and page_dirt.csv; perform wrangling; export three csv files for building link_page_dashabord: external_link.csv, page.csv and page_name.csv 
 #' @param input_course 
+#' @examples
+#' wrangle_link_page(input_cours = "psyc1")
 #' @export
-#' @examples wrangle_link_page(input_cours = "psyc1")
 wrangle_link_page <- function(input_course){
   
   # read in link data 

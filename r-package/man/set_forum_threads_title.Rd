@@ -14,8 +14,8 @@ set_forum_threads_title(category, selected_subcategory)
 \value{
 \code{forum_threads_title} A string for the title of the forum threads table.
 }
-\details{
-
+\description{
+Set the title of the forum threads table.
 }
 \examples{
 set_forum_threads_title("Part 3", "All")

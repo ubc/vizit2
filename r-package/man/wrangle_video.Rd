@@ -2,21 +2,21 @@
 % Please edit documentation in R/video_wrangling.R
 \name{wrangle_video}
 \alias{wrangle_video}
-\title{Outputs cleaned video data into corresponding course directory}
+\title{Generates cleaned video data as a csv within a specified course directory}
 \usage{
 wrangle_video(input_course, testing = FALSE)
 }
 \arguments{
-\item{input_course}{String of course directory name}
+\item{input_course}{String of short name of course directory}
 }
 \value{
 No value returned
 }
 \description{
-This function will automatically read a file named "generalized_video_heat.csv"
-from the specified course directory and output a csv named "wrangled_video.csv" in the same
-directory
+This function will automatically read files named 'generalized_video_heat.csv'
+and 'generalized_video_axis.csv' from the specified course directory and output a csv named 
+'wrangled_video_heat.csv' in the same directory
 }
 \examples{
-wrangle_video(input_course = "psyc1")
+wrangle_video(input_course = 'psyc1')
 }

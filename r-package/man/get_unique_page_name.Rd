@@ -2,7 +2,7 @@
 % Please edit documentation in R/link_page_server.R
 \name{get_unique_page_name}
 \alias{get_unique_page_name}
-\title{Remove duplicated name for each page}
+\title{Remove duplicated name for each page.}
 \usage{
 get_unique_page_name(each_page_df)
 }
@@ -13,7 +13,7 @@ get_unique_page_name(each_page_df)
 all_pages
 }
 \description{
-Remove duplicated name for each page
+Remove duplicated name for each page.
 }
 \examples{
 get_unique_page_name(each_page_df = each_page)

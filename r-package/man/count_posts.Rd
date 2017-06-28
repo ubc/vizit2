@@ -4,7 +4,7 @@
 \alias{count_posts}
 \title{Count the number of posts for each subcategory in an input forum.}
 \usage{
-count_posts(input_forum, wrangled_forum_elements = wrangled_forum_elements)
+count_posts(input_forum, wrangled_forum_elements)
 }
 \arguments{
 \item{input_forum}{The input dataframe containing a row for each post in the forum.}
@@ -13,6 +13,9 @@ count_posts(input_forum, wrangled_forum_elements = wrangled_forum_elements)
 }
 \value{
 \code{post_counts} A dataframe containing the post counts for each subcategory in the forum.
+}
+\description{
+Count the number of posts for each subcategory in an input forum.
 }
 \examples{
 count_posts(wrangled_forum_posts)

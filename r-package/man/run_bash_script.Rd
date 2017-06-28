@@ -12,8 +12,8 @@ run_bash_script(script_name)
 \value{
 None.
 }
-\details{
-
+\description{
+Run a bash script.
 }
 \examples{
 run_bash_script("populate_course.sh")

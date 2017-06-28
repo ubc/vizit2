@@ -14,6 +14,9 @@ set_breakdown(plot_variable, breakdown)
 \value{
 \code{TRUE} or \code{FALSE}
 }
+\description{
+Determines whether the plot types breakdown will be shown.
+}
 \details{
 This option only comes into play if the plot variable is 'posts'.
 }

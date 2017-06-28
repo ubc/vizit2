@@ -18,5 +18,5 @@ A dataframe filtered by the selected course module
 Filter course items dataframe by the selected course module
 }
 \examples{
-filter_chapter_oveview(tower_item, "all")
+filter_chapter_overview(tower_item, "all")
 }

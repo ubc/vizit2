@@ -21,8 +21,8 @@ make_forum_breakdown_barplot(gathered, xvar_string, grouping_var, axis_limit,
 \value{
 \code{forum_breakdown_barplot} A ggplot2 object to be rendered as the main forum barplot.
 }
-\details{
-
+\description{
+Make the main forum barplot with the post types breakdown.
 }
 \examples{
 make_forum_breakdown_barplot(forum_data = forum_data, xvar_string = "fct_reorder(discussion_category, course_order, .desc = TRUE)", axis_limit = 100, grouping_var = "discussion_category", xlabel = "Category")

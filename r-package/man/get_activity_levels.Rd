@@ -15,3 +15,6 @@ The same dataframe with a new column for activity_level.
 \description{
 Convert sum_dt to activity_level.
 }
+\examples{
+get_activity_levels(forum)
+}

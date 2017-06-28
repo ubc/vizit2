@@ -19,8 +19,8 @@ get_wordcloud_data(filtered_wordcloud_data, filtered_forum_elements, category,
 \value{
 \code{wordcloud_data} A dataframe with the counts of each word in the selected subcategory(ies).
 }
-\details{
-
+\description{
+Get the counts of each word in the selected subcategories.
 }
 \examples{
 get_wordcloud_data(filtered_wordcloud_data, filtered_forum_elements, "Part 1", "Part 1 Lecture 1 Discussion")

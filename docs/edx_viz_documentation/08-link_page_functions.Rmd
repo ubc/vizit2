@@ -1,0 +1,138 @@
+---
+title: "R functions for wrangling and serving the link or page related data"
+output: github_document
+---
+
+# Link and Page Dashboard Functions
+
+## Wrangling Functions
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt_options(underline_titles=FALSE)
+root <- "../../r-package/man/"
+ext <- ".Rd"
+```
+
+
+### read_course_axis
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "read_course_axis", ext))
+```
+
+
+### read_link_dirt
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "read_link_dirt", ext))
+```
+
+
+### hash_username
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "hash_username", ext))
+```
+
+
+### set_activity_level
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "set_activity_level", ext))
+```
+
+
+### get_module_of_link
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "get_module_of_link", ext))
+```
+
+### write_link_clean 
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "write_link_clean", ext))
+```
+
+### read_page_dirt
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "read_page_dirt", ext))
+```
+
+
+### prepare_tidy_page
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "prepare_tidy_page", ext))
+```
+
+
+### prepare_page_name
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "prepare_page_name", ext))
+```
+
+### write_page_clean 
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "write_page_clean", ext))
+```
+
+### wrangle_link_page
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "wrangle_link_page", ext))
+```
+
+
+## Server Functions
+
+
+### filter_chapter_linkpage
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "filter_chapter_linkpage", ext))
+```
+
+
+### get_pageview 
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "get_pageview", ext))
+```
+
+
+### get_page_name  
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "get_page_name", ext))
+```
+
+
+### get_unique_page_name
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "get_unique_page_name", ext))
+```
+
+
+### creat_page_table
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "creat_page_table", ext))
+```
+
+
+### get_click_per_link
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "get_click_per_link", ext))
+```
+
+### creat_link_table
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "creat_link_table", ext))
+```

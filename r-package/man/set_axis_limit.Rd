@@ -21,6 +21,9 @@ set_axis_limit(forum_data, plot_variable, label_lengths,
 \value{
 \code{axis_limit} The maximum axis limit for the horizontal axis in the main barplot.
 }
+\description{
+Set the horizontal axis limit of the main barplot.
+}
 \details{
 Usually, the variance in bar lengths is greater than the variance in label lengths.
 If this is not the case, it is possible that the axis limit will need to be expanded further.

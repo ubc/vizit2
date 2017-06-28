@@ -2,7 +2,7 @@
 % Please edit documentation in R/overview_engagement_wrangling.R
 \name{write_tidy_engagement_data}
 \alias{write_tidy_engagement_data}
-\title{Output cleaned student engagement data as csv}
+\title{Write cleaned data as a csv into the specified course directory}
 \usage{
 write_tidy_engagement_data(input_course, cleaned_data)
 }
@@ -12,8 +12,8 @@ write_tidy_engagement_data(input_course, cleaned_data)
 \item{cleaned_data}{Dataframe containing cleaned data.}
 }
 \description{
-Writes cleaned data as a csv into the course correct directory
+Write cleaned data as a csv into the specified course directory
 }
 \examples{
-write_tidy_engagement_data(input_course = 'psyc1', cleaned_data= clean_engagement_data)
+write_tidy_engagement_data(input_course = 'psyc1', cleaned_data = clean_engagement_data)
 }

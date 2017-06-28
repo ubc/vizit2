@@ -6,7 +6,8 @@
 #' @return A flattened dataframe with the columns `url_name`, `title`, `label`, `name`
 #' @export
 extract_assessment_json <- function(assessment_json) {
-  assessment_content <- assessment_json %>%
+
+  extracted_content <- assessment_json %>%
     tidyjson::gather_array() %>%
     tidyjson::spread_values(url_name = tidyjson::jstring("url_name"),
                   title = tidyjson::jstring("title")) %>%
@@ -15,6 +16,14 @@ extract_assessment_json <- function(assessment_json) {
     tidyjson::spread_values(label = tidyjson::jstring("label"),
                             name = tidyjson::jstring("name")) %>%
     select(-document.id, -array.index)
+
+  counted_content <- extracted_content %>%
+    group_by(url_name) %>%
+    count() %>%
+    filter(n > 1) %>%
+    ungroup()
+
+  semi_join(extracted_content, counted_content)
 }
 
 #' Convert a CSV respresenting an open_assessment.sql query into a usable format
@@ -30,7 +39,6 @@ extract_assessment_csv <- function(assessment_tbl) {
   name_extraction <-
     "\\\"points_possible\\\": \\d+, \\\"name\\\": \\\"(\\S+)\\\""
 
-
   extracted_assessment <- assessment_tbl %>%
     mutate(assessment_id = stringr::str_extract(module_id, "[0-9a-f]{32}")) %>%
     mutate(
@@ -42,7 +50,6 @@ extract_assessment_csv <- function(assessment_tbl) {
     unnest() %>%
     filter(!is.na(sum_dt)) %>%
     select(-event, -module_id, -time, -sum_dt, -time)
-
 }
 
 #' Join the results of extract_assessment_csv and extract_assessment_json
@@ -56,8 +63,7 @@ extract_assessment_csv <- function(assessment_tbl) {
 #'
 #' @return A joined dataframe of the two incoming dataframes
 #' @export
-join_extracted_assessment_data <-
-  function(extracted_csv, extracted_json) {
+join_extracted_assessment_data <- function(extracted_csv, extracted_json) {
     joint_assessment <- left_join(extracted_csv,
                                   extracted_json,
                                   by = c(assessment_id = "url_name",
@@ -78,8 +84,7 @@ join_extracted_assessment_data <-
 #'
 #' @return A summarised dataframe of the average scores in each area.
 #' @export
-summarise_joined_assessment_data <-
-  function(joint_assessment, trunc_length = 20) {
+summarise_joined_assessment_data <- function(joint_assessment, trunc_length = 20) {
     points_possible_all_same <- joint_assessment %>%
       group_by(title, label) %>%
       filter(min(points_possible) != max(points_possible))

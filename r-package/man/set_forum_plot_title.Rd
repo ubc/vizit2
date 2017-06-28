@@ -12,8 +12,8 @@ set_forum_plot_title(plot_variable, category)
 \value{
 \code{forum_plot_title} A string for the plot title.
 }
-\details{
-
+\description{
+Set the title of the main barplot, according to the relevant variable and category.
 }
 \examples{
 set_forum_plot_title("views", "Part 1")

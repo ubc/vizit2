@@ -14,8 +14,8 @@ gather_post_types(forum_data, grouping_var)
 \value{
 \code{gathered} A dataframe with the post types gathered into a single column.
 }
-\details{
-
+\description{
+Gather the post types into a single column for easy plotting.
 }
 \examples{
 gather_post_types(forum_data, grouping_var = "discussion_category")

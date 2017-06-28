@@ -2,7 +2,7 @@
 % Please edit documentation in R/forum_server.R
 \name{make_wordcloud}
 \alias{make_wordcloud}
-\title{One-line description.}
+\title{Make the wordcloud.}
 \usage{
 make_wordcloud(wordcloud_data, max_words = 20, scale = c(3.5, 1))
 }
@@ -13,8 +13,11 @@ make_wordcloud(wordcloud_data, max_words = 20, scale = c(3.5, 1))
 
 \item{scale}{A list giving the range of sizes to for the display of words in the wordcloud. Default is c(3.5,1).}
 }
-\details{
-
+\value{
+A wordcloud object.
+}
+\description{
+Make the wordcloud.
 }
 \examples{
 make_wordcloud(wordcloud_data, max_words = 30, scale = c(4,1.5))

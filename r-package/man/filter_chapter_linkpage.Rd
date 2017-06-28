@@ -2,20 +2,20 @@
 % Please edit documentation in R/link_page_server.R
 \name{filter_chapter_linkpage}
 \alias{filter_chapter_linkpage}
-\title{Filter course items dataframe by the selected course module module}
+\title{Filter course item dataframe by the selected course module.}
 \usage{
 filter_chapter_linkpage(input_df, module = "All")
 }
 \arguments{
-\item{module}{One of the modules of the course}
+\item{input_df}{The link dataframe or page dataframe.}
 
-\item{item_df}{The course items dataframe.}
+\item{module}{One of the modules in the course}
 }
 \value{
-A dataframe filtered by the selected course module
+A dataframe filtered by the selected course module.
 }
 \description{
-Filter course items dataframe by the selected course module module
+Filter course item dataframe by the selected course module.
 }
 \examples{
 filter_chapter(tower_item, "all")

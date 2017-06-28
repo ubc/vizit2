@@ -1,0 +1,7 @@
+Start,Stop,Title,Description
+2017-05-04,2017-05-11,MVP,Finish the Marketing course MVP
+2017-05-11,2017-05-25,Generalized MVP,Ensure that the MVP works for for other courses (Climate Change- Programming- China- Creative Writing)
+2017-05-25,2017-06-08,User Testing,Connect with the administrators of each course and get their feedback for changes
+2017-06-08,2017-06-15,Deployment,Migrate the code from the GitHub repository to an external server
+2017-06-15,2017-06-22,Post-deployment tweaks,Polish the product before a presentation
+2017-06-22,2017-06-26,Report and Presentation,Write up everything

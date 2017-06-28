@@ -28,6 +28,9 @@ filter_demographics <- function(input_df, gender = "all", activity_level = "all"
 }
 
 filter_chapter <- function(input_df, chapter_filter = "All") {
+  if (is.null(chapter_filter)){
+    chapter_filter = "All"
+  }
   if (chapter_filter == "All") {
     input_df
   }

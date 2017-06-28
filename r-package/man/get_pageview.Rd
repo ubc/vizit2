@@ -2,20 +2,18 @@
 % Please edit documentation in R/link_page_server.R
 \name{get_pageview}
 \alias{get_pageview}
-\title{Count the pageview of each page
-Here, we set a threshold for only counting pages have been viewed by more than certain amount of students}
+\title{Count the pageview of each page.Here, we set a threshold for only counting pages have been viewed by more than certain amount of students.}
 \usage{
 get_pageview(filtered_log_df)
 }
 \arguments{
-\item{filtered_log_df}{}
+\item{filtered_log_df}{A page related tracklog dataframe after filtering.}
 }
 \value{
-page_student
+page_student A page summary dataframe containing the pageview of each pages.
 }
 \description{
-Count the pageview of each page
-Here, we set a threshold for only counting pages have been viewed by more than certain amount of students
+Count the pageview of each page.Here, we set a threshold for only counting pages have been viewed by more than certain amount of students.
 }
 \examples{
 get_pageview(filtered_log_df = log_dat)

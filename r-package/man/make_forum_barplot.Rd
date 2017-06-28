@@ -27,8 +27,8 @@ make_forum_barplot(forum_data, xvar_string, plot_variable, fill_value,
 \value{
 \code{forum_barplot} A ggplot2 object to be rendered as the main forum barplot.
 }
-\details{
-
+\description{
+Make the main barplot for displaying the forum data.
 }
 \examples{
 make_forum_barplot(forum_data, xvar_string = "fct_reorder(discussion_category, course_order, .desc = TRUE)", plot_variable = "authors", fill_value = "red", axis_limit = 100, category = "All", ylabel = "Category", breakdown = FALSE)

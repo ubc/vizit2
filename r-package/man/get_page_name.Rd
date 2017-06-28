@@ -2,18 +2,18 @@
 % Please edit documentation in R/link_page_server.R
 \name{get_page_name}
 \alias{get_page_name}
-\title{Get the name description of each page}
+\title{Get the name description of each page.}
 \usage{
 get_page_name(page_name_df)
 }
 \arguments{
-\item{page_name_df}{}
+\item{page_name_df}{A dataframe we get after joining page dataframe and page name dataframe.}
 }
 \value{
 each_page
 }
 \description{
-Get the name description of each page
+Get the name description of each page.
 }
 \examples{
 get_page_name(page_name_df = page_name_mapping)

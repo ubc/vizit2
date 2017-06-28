@@ -1,0 +1,212 @@
+---
+title: "R functions for wrangling and serving the discussion problem data"
+output: github_document
+---
+
+# Problem Dashboard Functions
+
+## Assessment Functions
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt_options(underline_titles=FALSE)
+root <- "../../r-package/man/"
+ext <- ".Rd"
+```
+
+
+### extract_assessment_json
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "extract_assessment_json", ext))
+```
+
+### extract_assessment_csv
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "extract_assessment_csv", ext))
+```
+
+### join_extracted_assessment_data
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "join_extracted_assessment_data", ext))
+```
+
+### summarise_joined_assessment_data
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "summarise_joined_assessment_data", ext))
+```
+
+### plot_assessment
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "plot_assessment", ext))
+```
+
+## Problems Functions
+
+### clean_multiple_choice
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "clean_multiple_choice", ext))
+```
+
+### create_question_lookup_from_json
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "create_question_lookup_from_json", ext))
+```
+
+### filter_valid_questions
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "filter_valid_questions", ext))
+```
+
+### get_mean_scores
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "get_mean_scores", ext))
+```
+
+### tally_correct_answers
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "tally_correct_answers", ext))
+```
+
+### calculate_percent_correct_tbl
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "calculate_percent_correct_tbl", ext))
+```
+
+### get_mean_scores_filterable
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "get_mean_scores_filterable", ext))
+```
+
+### join_summary_lookup
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "join_summary_lookup", ext))
+```
+
+### summarise_scores_by_chapter
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "summarise_scores_by_chapter", ext))
+```
+
+### prepare_filterable_problems
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "prepare_filterable_problems", ext))
+```
+
+### get_extreme_summarised_scores
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "get_extreme_summarised_scores", ext))
+```
+
+### join_problems_to_lookup
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "join_problems_to_lookup", ext))
+```
+
+### join_users_problems
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "join_users_problems", ext))
+```
+
+### filter_counts
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "filter_counts", ext))
+```
+
+### filter_extreme_problem_choices
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "filter_extreme_problem_choices", ext))
+```
+
+### aggregate_extracted_problems
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "aggregate_extracted_problems", ext))
+```
+
+### aggregate_melted_problems
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "aggregate_melted_problems", ext))
+```
+
+### plot_aggregated_problems
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "plot_aggregated_problems", ext))
+```
+
+### plot_problem_chapter_summaries
+
+#### Main Documentation
+
+```{r, comment=NA, echo=FALSE}
+tools::Rd2txt(paste0(root, "plot_problem_chapter_summaries", ext))
+```
+
+
+

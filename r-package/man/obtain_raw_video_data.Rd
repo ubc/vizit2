@@ -8,13 +8,14 @@ obtain_raw_video_data(input_course, testing = FALSE)
 }
 \arguments{
 \item{input_course}{Name of course directory (ex. psyc1, spd1, marketing, etc)}
+
+\item{testing}{For developer use only. Boolean used to indicate to use testing data.}
 }
 \value{
 \code{data}: Dataframe containing raw student track log information
 }
 \description{
-Reads the raw .csv obtained through rbq.py into a dataframe. For documentation on how to use
-rbq.py, please see www.temporaryreferencelink.com
+Reads the raw generalized_video_heat.csv obtained through rbq.py into a dataframe.
 }
 \examples{
 obtain_raw_video_data(input_course = 'psyc1')

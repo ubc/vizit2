@@ -4,11 +4,13 @@
 \alias{get_viewer_count}
 \title{Get the number of viewers for which the selected filter settings apply.}
 \usage{
-get_viewer_count(forum_views = wrangled_forum_views, activity_level, gender,
+get_viewer_count(forum_views, forum_elements, activity_level, gender,
   registration_status, category)
 }
 \arguments{
 \item{forum_views}{The forum views dataframe that was passed in from the wrangling script.}
+
+\item{forum_elements}{The forum elements dataframe.}
 
 \item{activity_level}{The activity level of the students.}
 
@@ -21,9 +23,9 @@ get_viewer_count(forum_views = wrangled_forum_views, activity_level, gender,
 \value{
 \code{author_count} A string showing the number of authors.
 }
-\details{
-
+\description{
+Get the number of viewers for which the selected filter settings apply.
 }
 \examples{
-get_viewer_count(wrangled_forum_views, "All", "male", "verified", "All")
+get_viewer_count(wrangled_forum_views, forum_elements, "All", "male", "verified", "All")
 }

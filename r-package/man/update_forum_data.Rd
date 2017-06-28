@@ -4,9 +4,8 @@
 \alias{update_forum_data}
 \title{Update the post, view, and author counts for the selected filters.}
 \usage{
-update_forum_data(forum_posts = wrangled_forum_posts,
-  forum_views = wrangled_forum_views, forum_elements, activity_level, gender,
-  registration_status, category)
+update_forum_data(forum_posts, forum_views, forum_elements, activity_level,
+  gender, registration_status, category)
 }
 \arguments{
 \item{forum_posts}{The forum posts dataframe passed in from the wrangling script.}
@@ -26,8 +25,8 @@ update_forum_data(forum_posts = wrangled_forum_posts,
 \value{
 \code{filtered_forum_data} A dataframe with one row per subcategory (or category), and counts for each variable.
 }
-\details{
-
+\description{
+Update the post, view, and author counts for the selected filters.
 }
 \examples{
 update_forum_data(wrangled_forum_posts, wrangled_forum_views, filtered_forum_elements(), "over_5_hr", "other", "audit", "All")

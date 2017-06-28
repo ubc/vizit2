@@ -4,7 +4,7 @@
 \alias{get_summary_table}
 \title{Obtains video summary table to be used on shiny app}
 \usage{
-get_summary_table(aggregate_df, vid_lengths)
+get_summary_table(aggregate_df, vid_lengths, avg_time_spent)
 }
 \arguments{
 \item{aggregate_df}{Dataframe containing students that have been filtered by selected demographics. Typically
