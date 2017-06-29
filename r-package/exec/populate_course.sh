@@ -17,7 +17,7 @@ fi
 Populate () {
 
     if [ ! -d "../data/$SHORT/$1" ]; then
-        python3 ./rbq.py $1 -c ${SHORT} -l 1000000 --auto
+        python3 ./rbq.py $1 -c ${SHORT} -l 1000000000 --auto
     fi
 
 }
