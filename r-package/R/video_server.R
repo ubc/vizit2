@@ -22,31 +22,35 @@
 #' @examples
 #' get_aggregated_df(filt_segs, 25)
 get_aggregated_df <- function(filt_segs, top_selection) {
-  aggregate_segment_df <- filt_segs %>% dplyr::filter(is.na(username) == 
-                                                        FALSE) %>% group_by(video_id, min_into_video) %>% summarize(count = sum(count), 
-                                                                                                                    course_order = unique(course_order), vid_length = unique(max_stop_position), 
-                                                                                                                    video_name = unique(video_name)) %>% mutate(min_into_video = as.double(min_into_video)) %>% 
+  aggregate_segment_df <- filt_segs %>% 
+    dplyr::filter(is.na(username) == FALSE) %>% 
+    group_by(video_id, min_into_video) %>% summarize(count = sum(count), 
+                                                     course_order = unique(course_order), 
+                                                     vid_length = unique(max_stop_position), 
+                                                     video_name = unique(video_name)) %>% 
+    mutate(min_into_video = as.double(min_into_video)) %>% 
     ungroup()
   
   # Getting dataframe with number of unique user views of videos Note:
   # This still counts scenarios if a person watches a video for 0.125
   # seconds No thresholding has been conducted.
-  unique_views <- filt_segs %>% group_by(video_id) %>% summarize(unique_views = n_distinct(username)) %>% 
+  unique_views <- filt_segs %>% 
+    group_by(video_id) %>% 
+    summarize(unique_views = n_distinct(username)) %>% 
     arrange(unique_views) %>% ungroup()
   
   # Place number of unique view column into dataframe:
-  aggregate_segment_df <- aggregate_segment_df %>% left_join(unique_views, 
-                                                             by = "video_id") %>% mutate(watch_rate = count/unique_views) %>% 
-    # mutate(watch_rate_rank = rank(-watch_rate, ties.method='min')) %>%
-    # mutate(top_watch_rate = as.integer(watch_rate_rank <= top_selection))
-    # %>%
-    mutate(`Views per Student` = round(watch_rate, 2)) %>% mutate(Students = unique_views) %>% 
+  aggregate_segment_df <- aggregate_segment_df %>% 
+    left_join(unique_views, by = "video_id") %>% 
+    mutate(watch_rate = count/unique_views) %>% 
+    mutate(`Views per Student` = round(watch_rate, 2)) %>% 
+    mutate(Students = unique_views) %>% 
     mutate(watch_rate = round(watch_rate, 2))
   
   # Only select segments within videos that have been watched at least
   # once This is the data frame that is used to make plots:
-  aggregate_segment_df <- aggregate_segment_df[aggregate_segment_df$count > 
-                                                 0, ] %>% ungroup()
+  aggregate_segment_df <- aggregate_segment_df[aggregate_segment_df$count > 0, ] %>% 
+    ungroup()
   
   # Create dataframe with average watch rate of videos:
   avg_watch_rate_df <- aggregate_segment_df %>% group_by(video_id) %>% 
