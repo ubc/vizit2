@@ -15,7 +15,7 @@ shinyServer(function(input, output, session) {
     query <- parseQueryString(session$clientData$url_search)
 
     if ("course" %in% names(query)) {
-      query$course
+      get_unhashed_course(query$course)
     } else {
       "no_course_selected"
     }
