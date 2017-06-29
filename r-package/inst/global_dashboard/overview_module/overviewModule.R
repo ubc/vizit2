@@ -5,11 +5,12 @@ overviewModule <- function(input, output, session) {
   # Import requested course 
   requested_course <- reactive({
     query <- parseQueryString(session$clientData$url_search)
-
+    
     if ("course" %in% names(query)) {
-      query$course
+      get_unhashed_course(query$course, 
+                          read_csv("../../data/.hashed_courses.csv"))
     } else {
-      "psyc1"
+      "no_course_selected"
     }
   })
 

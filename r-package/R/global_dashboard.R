@@ -24,6 +24,7 @@ run_dashboard_server <- function(requested_dashboard){
     callModule(forumModule, "forumID")
   }
   else {
+    print("Requested dashboard not found.")
     callModule(problemModule, "problemID")
   }
 }

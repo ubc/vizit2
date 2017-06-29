@@ -3,15 +3,16 @@ forumModule <- function(input, output, session) {
         observe({
                 
                 # Get the requested course.
-                requested_course <- reactive({
-                        query <- parseQueryString(session$clientData$url_search)
-                        
-                        if ("course" %in% names(query)) {
-                                query$course
-                        } else {
-                                "no_course_selected"
-                        }
-                })
+          requested_course <- reactive({
+            query <- parseQueryString(session$clientData$url_search)
+            
+            if ("course" %in% names(query)) {
+              get_unhashed_course(query$course, 
+                                  read_csv("../../data/.hashed_courses.csv"))
+            } else {
+              "no_course_selected"
+            }
+          })
                 
                 # Read in the data.
                 root <- "../../data/"
