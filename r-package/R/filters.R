@@ -24,6 +24,7 @@ filter_demographics <- function(input_df, gender = "all", activity_level = "all"
   if (mode == "verified") {
     filtered_df <- filtered_df %>% filter(mode == "verified")
   }
+  
   return(filtered_df)
 }
 
