@@ -16,8 +16,10 @@ fi
 
 Populate () {
 
-    if [ ! -d "../data/$SHORT/$1" ]; then
+    if [ ! -e "../data/$SHORT/$1.csv" ]; then
         python3 ./rbq.py $1 -c ${SHORT} -l 1000000000 --auto
+    else
+        echo "$SHORT $1 already exists. Ignoring."
     fi
 
 }
