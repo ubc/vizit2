@@ -2,8 +2,10 @@ problemModule <- function(input, output, session) {
 
   requested_course <- reactive({
     query <- parseQueryString(session$clientData$url_search)
+    
     if ("course" %in% names(query)) {
-      query$course
+      get_unhashed_course(query$course, 
+                          read_csv("../../data/.hashed_courses.csv"))
     } else {
       "no_course_selected"
     }

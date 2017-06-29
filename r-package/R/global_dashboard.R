@@ -80,11 +80,26 @@ get_unhashed_dashboard <- function(hashed_dashboard){
 #'
 #' @examples
 #' get_unhashed_dashboard("6c2915bad76b3214647edde0c0d0bdbe")
-get_unhashed_course <- function(hashed_course){
+get_unhashed_course <- function(hashed_course, course_checksum_df){
   
-  course_checksum_df <- read_csv("data/.hashed_courses.csv")
+  if (missing(course_checksum_df)) {
+    course_checksum_df <- read_csv("data/.hashed_courses.csv")
+  }
+  
+  
   
   selected_course <- course_checksum_df %>% 
     filter(checksum == hashed_course)
   return(selected_course$short_name)
 }
+
+
+requested_course_global <- reactive({
+  query <- parseQueryString(session$clientData$url_search)
+  
+  if ("course" %in% names(query)) {
+    get_unhashed_course(query$course)
+  } else {
+    "no_course_selected"
+  }
+})

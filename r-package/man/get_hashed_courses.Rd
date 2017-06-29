@@ -4,7 +4,7 @@
 \alias{get_hashed_courses}
 \title{Writes csv with course short names and their corresponding checksums to the data directory}
 \usage{
-get_hashed_courses()
+get_hashed_courses(input_json, output_csv)
 }
 \value{
 No value is returned

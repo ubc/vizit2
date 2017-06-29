@@ -11,16 +11,6 @@ shinyServer(function(input, output, session) {
     }
   })
 
-  requested_course <- reactive({
-    query <- parseQueryString(session$clientData$url_search)
-
-    if ("course" %in% names(query)) {
-      get_unhashed_course(query$course)
-    } else {
-      "no_course_selected"
-    }
-  })
-
   observe({run_dashboard_server(requested_dashboard())})
 
   output$chosenUI <- renderUI({
