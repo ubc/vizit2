@@ -1,18 +1,27 @@
-devtools::load_all()
-
 #' Writes csv with course short names and their corresponding checksums to the data directory
 #'
 #' @return No value is returned
 #'
 #' @examples get_hashed_courses()
-get_hashed_courses <- function(){
-  courses <- jsonlite::fromJSON("../../.config.json")$courses[[1]]
+#' @export
+get_hashed_courses <- function(input_json, output_csv) {
+  
+  if (missing(input_json)) {
+    input_json <- "../.config.json"
+  }
+  
+  if (missing(output_csv)) {
+    output_csv <- "data/.hashed_courses.csv"
+    
+  }
+  
+  courses <- jsonlite::fromJSON(input_json)$courses[[1]]
   
   hashed_courses_df <- courses %>% 
     mutate(checksum = sapply(short_name, digest::digest)) %>% 
     select(short_name, checksum)
   
-  write_csv(hashed_courses_df, "../data/.hashed_courses.csv")
+  write_csv(hashed_courses_df, output_csv)
 }
 
 
@@ -27,6 +36,6 @@ get_hashed_dashboard <- function(){
   hashed_dashboards_df <- data.frame(dashboard) %>% 
     mutate(checksum = sapply(dashboard, digest::digest))
   
-  write_csv(hashed_dashboards_df, "../data/.hashed_dashoards.csv")
+  write_csv(hashed_dashboards_df, "data/.hashed_dashoards.csv")
 }
 

@@ -42,7 +42,7 @@ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - 
 sudo apt-get update && sudo apt-get install -y google-cloud-sdk \
  google-cloud-sdk-app-engine-python
 
-RUN R -e "install.packages(c('devtools'), repos='https://cran.rstudio.com/')"
+RUN R -e "install.packages(c('devtools', 'roxygen2', 'tidytext'), repos='https://cran.rstudio.com/')"
 
 RUN R -e "devtools::install_github('AndrewLim1990/mooc_capstone_public/r-package')"
 

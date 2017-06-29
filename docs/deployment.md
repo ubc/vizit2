@@ -5,19 +5,18 @@ EdXViz is a Shiny server application that allows instructors and course designer
 1. Spin up a server instance.
 	This process was tested on an Azure instance with 7 Gb of RAM and 7 Gb of space. The amount of RAM needed is a function of the number of concurrent users you expect and whether they are working on multiple courses. This setup was tested with six separate courses and there was no lag.
 1. SSH into your instance,
-4. Type `git clone git@github.com:AndrewLim1990/mooc_capstone_public.git`
-4. cd mooc_capstone
+4. Type `git clone https://github.com/AndrewLim1990/mooc_capstone_public.git`
+4. cd mooc_capstone_public/
 	This will clone the git repo. All the necessary code is included.
 5. sudo docker run --rm -ti -p 3838:3838 -v $(pwd):/srv/shiny-server --name="populate" lstmemery/moocshiny bin/bash
 	This will download and deploy the docker image. The image is about 2 gigabytes and contains the scripts to populate the course and run the server.
 6. cd srv/shiny-server/
-7. conda env create -f environment.yml
-8. source activate mooc
+7. conda env create -f environment.yml && source activate mooc
 	This creates and activates a virtual Python. environment in which courses can be populated.
-10. gcloud auth application-default login
+8. gcloud auth application-default login
 	This grants access to Google BigQuery. Copy the URL into the browser and paste the result into the terminal.
-11. gcloud auth login
-11. nano .config.json 
+9. gcloud auth login
+11. nano .config.json
 	`.config.json` defines which courses should be populated. Each entry should have 
 	1. A short_name (which defines it's path on the site)
 	2. A BigQuery table name

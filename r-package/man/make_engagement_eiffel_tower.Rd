@@ -6,9 +6,6 @@
 \usage{
 make_engagement_eiffel_tower(tower_data)
 }
-\arguments{
-\item{tower_data}{}
-}
 \description{
 Make effiel tower plot :  all video/problem course items vs. number of engaging student
 }

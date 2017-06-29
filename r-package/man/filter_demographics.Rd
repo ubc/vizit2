@@ -16,7 +16,7 @@ filter_demographics(engage_df, gender = "All", mode = "All",
 
 \item{registration_status}{One of "audit", "verified", or (default) "all".}
 
-\item{module}{One of the modules of the course}
+\item{module}{One of the modules of the course.}
 }
 \value{
 A dataframe filtered by the selected demographics.
