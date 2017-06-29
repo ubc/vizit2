@@ -7,12 +7,12 @@
 filter_chapter_overview(input_df, module = "All")
 }
 \arguments{
-\item{module}{One of the modules of the course}
+\item{module}{One of the modules of the course.}
 
 \item{item_df}{The course items dataframe.}
 }
 \value{
-A dataframe filtered by the selected course module
+A dataframe filtered by the selected course module.
 }
 \description{
 Filter course items dataframe by the selected course module

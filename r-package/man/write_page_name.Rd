@@ -9,7 +9,7 @@ write_page_name(input_course, cleaned_data)
 \arguments{
 \item{input_course}{}
 
-\item{cleaned_data}{tidy page_name dataframe}
+\item{cleaned_data}{A tidy page_name dataframe}
 }
 \description{
 Export the tidy course axis dataframe containing all non-video and non-problem elements with module/chapter information

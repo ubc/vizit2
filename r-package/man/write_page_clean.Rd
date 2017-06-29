@@ -9,7 +9,7 @@ write_page_clean(input_course, cleaned_data)
 \arguments{
 \item{input_course}{}
 
-\item{cleaned_data}{tidy page dataframe}
+\item{cleaned_data}{A tidy page dataframe.}
 }
 \description{
 Export the tidy page dataframe
