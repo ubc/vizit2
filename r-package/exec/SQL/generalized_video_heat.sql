@@ -40,7 +40,7 @@ FROM
 
 
     FROM (TABLE_QUERY(  {course}_logs,
-                        "integer(regexp_extract(table_id, r'tracklog_([0-9]+)')) BETWEEN 20160401 and 20170501"
+                        "integer(regexp_extract(table_id, r'tracklog_([0-9]+)')) BETWEEN 20100101 and 20400101"
                      )
          )
 
