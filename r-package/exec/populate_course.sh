@@ -3,6 +3,7 @@
 SHORT=$1
 LONG=$2
 GCLOUD=$3
+OVERWRITE=$4
 
 
 if [ ! -d "../data/$SHORT" ]; then
@@ -16,7 +17,7 @@ fi
 
 Populate () {
 
-    if [ ! -e "../data/$SHORT/$1.csv" ]; then
+    if [[ ! -e "../data/$SHORT/$1.csv"  ||  .*"true".* =~ ${OVERWRITE} ]]; then
         python3 ./rbq.py $1 -c ${SHORT} -l 1000000000 --auto
     else
         echo "$SHORT $1 already exists. Ignoring."
@@ -46,9 +47,19 @@ bash ./download_gcp_material.sh ${SHORT} "${GCLOUD}"
 python3 xml_extraction.py ${SHORT} --problems
 python3 xml_extraction.py ${SHORT} --assessments
 
-Rscript ./wrangle_overview_engagement.R ${SHORT}
-Rscript ./wrangle_forum.R ${SHORT}
-Rscript ./wrangle_video.R ${SHORT}
-Rscript ./wrangle_link_page.R ${SHORT}
-Rscript ./wrangle_general.R ${SHORT}
-Rscript ./wrangle_assessments.R ${SHORT}
+RPopulate () {
+
+    if [[ ! -e "../data/$SHORT/$2.csv" ||  .*"true".* =~ ${OVERWRITE} ]]; then
+        Rscript ./$1.R ${SHORT}
+    else
+        echo "$SHORT $1 already exists. Ignoring."
+    fi
+
+}
+
+RPopulate wrangle_overview_engagement tower_engage
+RPopulate wrangle_forum wrangled_forum_elements
+RPopulate wrangle_video wrangled_video_heat
+RPopulate wrangle_link_page external_link
+RPopulate wrangle_general wrangled_demographics
+RPopulate wrangle_assessments wrangled_assessment_csv_info
