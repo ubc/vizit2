@@ -7,8 +7,6 @@ MAX_AGE <- 100  # Ages above this will be filtered out in the age plot
 #' @param LoE String value of level of education code
 #'
 #' @return Returns explicit string value of level of education
-#'
-#' @examples
 convert_loe <- function(LoE)
 {
   case_when(LoE == "hs" ~ "High School", LoE == "b" ~ "Bachelor's Degree", 
@@ -24,8 +22,6 @@ convert_loe <- function(LoE)
 #' @param data Data frame containing explicit level of education of students
 #'
 #' @return Data frame containing aggregated level of education 
-#'
-#' @examples
 get_loe_df <- function(data)
 {
   # define level of education by rank:
@@ -47,8 +43,6 @@ get_loe_df <- function(data)
 #' @param loe_df Data frame containing studentes aggregated by level of education
 #'
 #' @return Returns a ggplot geom_bar object
-#'
-#' @examples
 get_loe_plot <- function(loe_df)
 {
   g <- ggplot(loe_df, aes(LoE, count)) + geom_bar(stat = "identity", 
@@ -63,8 +57,6 @@ get_loe_plot <- function(loe_df)
 #' @param data Dataframe containing year of birth
 #'
 #' @return Returns a dataframe with student's ages
-#'
-#' @examples
 get_age_df <- function(data)
 {
   age_df <- data %>% mutate(age = as.integer(format(Sys.Date(), "%Y")) - 
@@ -78,8 +70,6 @@ get_age_df <- function(data)
 #' @param age_df Data frame containing age of students 
 #'
 #' @return Returns a ggplot geom_histogram object
-#'
-#' @examples
 get_age_plot <- function(age_df)
 {
   g <- ggplot(age_df, aes(age)) + geom_histogram(fill = "#e78ac3", bins = 10) + 
@@ -94,8 +84,6 @@ get_age_plot <- function(age_df)
 #' @param top_selection The number of countries to include in output data frame
 #'
 #' @return A data frame containing countries with the most number of students
-#'
-#' @examples
 get_top_country_df <- function(data, top_selection)
 {
   country_df <- data %>% group_by(country = countryLabel) %>% summarize(num_of_people = n()) %>% 
@@ -113,8 +101,6 @@ get_top_country_df <- function(data, top_selection)
 #' @param top_selection The number of countries to include in the plot
 #'
 #' @return Returns a ggplot geom_bar object
-#'
-#' @examples
 get_country_plot <- function(country_df, top_selection)
 {
   g <- ggplot(country_df, aes(country, num_of_people)) + geom_bar(stat = "identity", 
@@ -131,8 +117,6 @@ get_country_plot <- function(country_df, top_selection)
 #' @param top_selection Number of languages to include within the data frame
 #'
 #' @return A data frame containing languages with the most number of students who speak it
-#'
-#' @examples
 get_top_language_df <- function(data, top_selection)
 {
   language_df <- data %>% group_by(language) %>% summarize(num_of_people = n()) %>% 
@@ -150,8 +134,6 @@ get_top_language_df <- function(data, top_selection)
 #' @param top_selection Number of different languages to include within the plot
 #'
 #' @return Returns a plot languages with the most number of students who speak it
-#'
-#' @examples
 get_language_plot <- function(language_df, top_selection)
 {
   g <- ggplot(language_df, aes(language, num_of_people)) + geom_bar(stat = "identity", 

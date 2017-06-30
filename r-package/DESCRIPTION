@@ -12,6 +12,7 @@ Imports:
     DT,
     ggthemes,
     gsubfn,
+    magrittr,
     lubridate,
     plotly,
     reshape2,

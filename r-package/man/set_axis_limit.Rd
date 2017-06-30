@@ -16,7 +16,7 @@ set_axis_limit(forum_data, plot_variable, label_lengths,
 
 \item{min_axis_length}{The axis length to set if all the values are set to zero (i.e. all students have been filtered out). Default is 0.1 so that the axis is minimally affected when values are small.}
 
-\item{percent_addition_per_char}{The percentage by which to expand the axis per character in the label of the longest bar. Default is 0.023, i.e. 2.3%, because that tends to look good.}
+\item{percent_addition_per_char}{The percentage by which to expand the axis per character in the label of the longest bar. Default is 0.023 because that tends to look good.}
 }
 \value{
 \code{axis_limit} The maximum axis limit for the horizontal axis in the main barplot.
