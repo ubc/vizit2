@@ -17,7 +17,7 @@ fi
 
 Populate () {
 
-    if [[ ! -e "../data/$SHORT/$1.csv"  ||  .*"true".* =~ ${OVERWRITE} ]]; then
+    if [[ ! -e "../data/$SHORT/$1.csv"  || ${OVERWRITE} =~ .*"true".*  ]]; then
         python3 ./rbq.py $1 -c ${SHORT} -l 1000000000 --auto
     else
         echo "$SHORT $1 already exists. Ignoring."
@@ -49,7 +49,7 @@ python3 xml_extraction.py ${SHORT} --assessments
 
 RPopulate () {
 
-    if [[ ! -e "../data/$SHORT/$2.csv" ||  .*"true".* =~ ${OVERWRITE} ]]; then
+    if [[ ! -e "../data/$SHORT/$2.csv" ||  ${OVERWRITE} =~ .*"true".* ]]; then
         Rscript ./$1.R ${SHORT}
     else
         echo "$SHORT $1 already exists. Ignoring."
