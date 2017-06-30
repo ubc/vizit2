@@ -2,6 +2,7 @@ import subprocess
 import json
 import click as cl
 
+
 @cl.command()
 @cl.option("--overwrite", default=False)
 def populate(overwrite):
@@ -18,11 +19,12 @@ def populate(overwrite):
             else:
                 command = "{} --overwrite=false".format(command)
             subprocess.call(command, shell=True)
+    write_hashed_courses()
 
 
 def write_hashed_courses():
     subprocess.call('R -e "edxviz::get_hashed_courses(\'../../.config.json\','
-                    ' \'../data/.hashed_courses\')"',
+                    ' \'../data/.hashed_courses.csv\')"',
                     shell=True)
 
 

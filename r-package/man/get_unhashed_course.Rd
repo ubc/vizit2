@@ -4,7 +4,7 @@
 \alias{get_unhashed_course}
 \title{Returns plain text of md5 hashed course}
 \usage{
-get_unhashed_course(hashed_course)
+get_unhashed_course(hashed_course, course_checksum_df)
 }
 \arguments{
 \item{hashed_course}{String of md5 hash of the requested course short name}

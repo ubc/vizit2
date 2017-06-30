@@ -3,6 +3,7 @@
 #' @return No value is returned
 #'
 #' @examples get_hashed_courses()
+#' @importFrom magrittr "%>%"
 #' @export
 get_hashed_courses <- function(input_json, output_csv) {
   
@@ -18,10 +19,10 @@ get_hashed_courses <- function(input_json, output_csv) {
   courses <- jsonlite::fromJSON(input_json)$courses[[1]]
   
   hashed_courses_df <- courses %>% 
-    mutate(checksum = sapply(short_name, digest::digest)) %>% 
-    select(short_name, checksum)
+    dplyr::mutate(checksum = sapply(short_name, digest::digest)) %>% 
+    dplyr::select(short_name, checksum)
   
-  write_csv(hashed_courses_df, output_csv)
+  readr::write_csv(hashed_courses_df, output_csv)
 }
 
 
