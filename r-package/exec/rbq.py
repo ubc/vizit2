@@ -50,7 +50,10 @@ def construct_query(sql: str,
 
     with open(sql) as open_sql:
         sql_string = open_sql.read()
-        return sql_string.format(course=course, date=query_date, limit=limit)
+        return sql_string.format(course=course,
+                                 date=query_date,
+                                 limit=limit,
+                                 table_date=''.join(query_date.split("-")))
 
 
 def query_bigquery(query: str, output: str, confirm=True, full=True):

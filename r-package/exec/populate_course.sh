@@ -18,6 +18,7 @@ fi
 Populate () {
 
     if [[ ! -e "../data/$SHORT/$1.csv"  || ${OVERWRITE} =~ .*"true".*  ]]; then
+        echo "python3 ./rbq.py $1 -c ${SHORT} -l 1000000000 --auto"
         python3 ./rbq.py $1 -c ${SHORT} -l 1000000000 --auto
     else
         echo "$SHORT $1 already exists. Ignoring."
