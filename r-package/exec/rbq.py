@@ -53,15 +53,14 @@ def construct_query(sql: str,
         return sql_string.format(course=course, date=''.join(query_date.split('-')), limit=limit)
 
 
-def query_bigquery(query: str, output: str, confirm=True):
+def query_bigquery(query: str, output: str, confirm=True, full=True):
     if confirm:
         print(query)
         query_permission = input("Are you sure you wish to execute this query? [y/N] ")
 
         while True:
             if query_permission.lower() == 'y':
-                ubc_tbl = pd.read_gbq(query, "ubcxdata")
-                ubc_tbl.to_csv(output, index=False)
+                write_sql_csv(output, query, full)
                 return
             elif query_permission.lower() == 'n':
                 return
@@ -69,9 +68,16 @@ def query_bigquery(query: str, output: str, confirm=True):
                 print("Command not understood.")
                 query_permission = input("Are you sure you wish to execute this query? [y/N] ")
     else:
-        ubc_tbl = pd.read_gbq(query, "ubcxdata")
-        ubc_tbl.to_csv(output, index=False)
+        write_sql_csv(output, query, full)
         print("Saved to {output}".format(output=output))
+
+
+def write_sql_csv(output, query, full=True):
+    ubc_tbl = pd.read_gbq(query, "ubcxdata")
+    if full:
+        ubc_tbl.to_csv(output, index=False)
+    else:
+        ubc_tbl.to_csv(output, mode="a", index=False, header=False)
 
 
 @cl.command()
@@ -83,7 +89,9 @@ def query_bigquery(query: str, output: str, confirm=True):
 @cl.option('--limit', '-l', default=100, help="Maximum number of rows")
 @cl.option('--confirm/--auto', default=True, help="Warn before attempting BigQuery")
 @cl.option('--output', '-o', default=False, help="Output directory")
-def bigquery(sql, course, date, limit, confirm, output):
+@cl.option('--full/--increment', default=True,
+           help="Full update or incremental update. (Full purges previous data)")
+def bigquery(sql, course, date, limit, confirm, output, full):
     long_name = find_course_long_name(course)
     sql_path = os.path.join(os.path.dirname(__file__),
                                 "SQL",
