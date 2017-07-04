@@ -51,6 +51,7 @@ python3 xml_extraction.py ${SHORT} --assessments
 RPopulate () {
 
     if [[ ! -e "../data/$SHORT/$2.csv" ||  ${OVERWRITE} =~ .*"true".* ]]; then
+        echo "Rscript ./$1.R ${SHORT}"
         Rscript ./$1.R ${SHORT}
     else
         echo "$SHORT $1 already exists. Ignoring."
