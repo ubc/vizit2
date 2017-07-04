@@ -17,7 +17,7 @@ class MalformedCourseException(Exception):
 
 def construct_query(sql: str,
                     course: str,
-                    query_date=(d.today()).strftime("%Y-%m-%d"),
+                    query_date="1970-01-01",
                     limit=100):
     """Constructs a legal BigQuery from a string.
 
@@ -50,7 +50,7 @@ def construct_query(sql: str,
 
     with open(sql) as open_sql:
         sql_string = open_sql.read()
-        return sql_string.format(course=course, date=''.join(query_date.split('-')), limit=limit)
+        return sql_string.format(course=course, date=query_date, limit=limit)
 
 
 def query_bigquery(query: str, output: str, confirm=True, full=True):
@@ -84,7 +84,7 @@ def write_sql_csv(output, query, full=True):
 @cl.argument('sql')
 @cl.option('--course', '-c', help="The course you are interested in.")
 @cl.option('--date', '-d',
-           default=(d.today()).strftime("%Y-%m-%d"),
+           default="1970-01-01",
            help="The date of the query in YYYY-MM-DD format, if applicable.")
 @cl.option('--limit', '-l', default=100, help="Maximum number of rows")
 @cl.option('--confirm/--auto', default=True, help="Warn before attempting BigQuery")
@@ -104,7 +104,7 @@ def bigquery(sql, course, date, limit, confirm, output, full):
                               "data",
                               course,
                               "{sql}.csv".format(sql=sql))
-    query_bigquery(query, output, confirm)
+    query_bigquery(query, output, confirm, full)
 
 
 def find_course_long_name(short_name):

@@ -24,9 +24,9 @@ FROM (
   ON
     pa.problem_url_name=cp.problem_id
   WHERE
-    pa.row_date > {date}
+    pa.created > PARSE_UTC_USEC("{date} 00:00:00")
   ORDER BY
-    pa.row_date
+    pa.created
   LIMIT
     {limit}) AS A
 LEFT JOIN [ubcxdata:{course}.person_course] AS B
