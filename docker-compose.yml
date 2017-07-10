@@ -44,5 +44,5 @@ shiny:
     - VIRTUAL_PORT=80
     - LETSENCRYPT_HOST=vizit20dashdev.ctlt.ubc.ca
   volumes:
-    - r-package:/srv/shiny-server
-    - logs:/var/log/shiny-server
+    - `pwd`/r-package:/srv/shiny-server
+    - `pwd`/logs:/var/log/shiny-server
