@@ -2,3 +2,4 @@
 *.json
 *.xml
 .Rproj.user
+!/r-package/data/test_data/

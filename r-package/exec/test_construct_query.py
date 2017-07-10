@@ -1,6 +1,6 @@
 import pytest
 
-from ..rbq import *
+from .rbq import *
 
 
 def test_malicious_date():

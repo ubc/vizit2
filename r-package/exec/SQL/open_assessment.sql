@@ -10,7 +10,7 @@ SELECT
 FROM (
 SELECT
   *
-FROM (TABLE_QUERY( {course}_logs, "integer(regexp_extract(table_id, r'tracklog_([0-9]+)')) BETWEEN 20150101 and {date}" ) )
+FROM (TABLE_QUERY( {course}_logs, "integer(regexp_extract(table_id, r'tracklog_([0-9]+)')) BETWEEN {table_date} and 20380101" ) )
 WHERE
   event_type contains "openassessment" AND
   event contains "submission_uuid" AND

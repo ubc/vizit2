@@ -1,0 +1,2595 @@
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 481.0 KB
+
+Retrieving results...
+Got 6445 rows.
+
+Total time taken 3.06 s.
+Finished at 2017-06-29 17:05:09.
+Saved to ./../data/Biobank1x_1T2017/demographic_multiple_choice.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 69.7 MB
+
+Retrieving results...
+Got 0 rows.
+
+Total time taken 5.37 s.
+Finished at 2017-06-29 17:05:16.
+Saved to ./../data/Biobank1x_1T2017/open_assessment.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 64.3 MB
+
+Retrieving results...
+  Got page: 1; 60% done. Elapsed 11.54 s.
+  Got page: 2; 100% done. Elapsed 14.14 s.
+Got 39138 rows.
+
+Total time taken 15.3 s.
+Finished at 2017-06-29 17:05:32.
+Saved to ./../data/Biobank1x_1T2017/generalized_video_heat.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 4.1 KB
+
+Retrieving results...
+Got 45 rows.
+
+Total time taken 1.16 s.
+Finished at 2017-06-29 17:05:35.
+Saved to ./../data/Biobank1x_1T2017/generalized_video_axis.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 10.1 KB
+
+Retrieving results...
+Got 54 rows.
+
+Total time taken 1.04 s.
+Finished at 2017-06-29 17:05:37.
+Saved to ./../data/Biobank1x_1T2017/generalized_demographics.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 69.0 KB
+
+Retrieving results...
+Got 128 rows.
+
+Total time taken 1.74 s.
+Finished at 2017-06-29 17:05:40.
+Saved to ./../data/Biobank1x_1T2017/forum_posts.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 55.2 KB
+
+Retrieving results...
+Got 9 rows.
+
+Total time taken 1.52 s.
+Finished at 2017-06-29 17:05:43.
+Saved to ./../data/Biobank1x_1T2017/forum_searches.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 146.2 KB
+
+Retrieving results...
+Got 1199 rows.
+
+Total time taken 1.36 s.
+Finished at 2017-06-29 17:05:46.
+Saved to ./../data/Biobank1x_1T2017/forum_views.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 74.0 KB
+
+Retrieving results...
+Got 708 rows.
+
+Total time taken 0.87 s.
+Finished at 2017-06-29 17:05:48.
+Saved to ./../data/Biobank1x_1T2017/tower_item.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 4.7 MB
+
+Retrieving results...
+Got 8680 rows.
+
+Total time taken 2.34 s.
+Finished at 2017-06-29 17:05:51.
+Saved to ./../data/Biobank1x_1T2017/tower_engage_dirt.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 238.1 KB
+
+Retrieving results...
+Got 708 rows.
+
+Total time taken 1.03 s.
+Finished at 2017-06-29 17:05:53.
+Saved to ./../data/Biobank1x_1T2017/course_axis.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 70.7 MB
+
+Retrieving results...
+Got 165 rows.
+
+Total time taken 3.16 s.
+Finished at 2017-06-29 17:05:58.
+Saved to ./../data/Biobank1x_1T2017/external_link_dirt.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 10.4 MB
+
+Retrieving results...
+  Got page: 1; 94% done. Elapsed 13.35 s.
+  Got page: 2; 100% done. Elapsed 14.09 s.
+Got 51373 rows.
+
+Total time taken 14.93 s.
+Finished at 2017-06-29 17:06:14.
+Saved to ./../data/Biobank1x_1T2017/page_dirt.csv
+Could not parse Checkbox Group
+
+
+Before biospecimens are released from a biobank, the following documents will have been submitted by a researcher and reviewed as part of the application process: 
+
+Biobank application form
+A standard operating procedure for the collection of the biospecimen
+Document showing ethics approval of the research study
+Completed material transfer agreement
+
+
+
+Could not parse Checkbox Group
+
+
+Upon receipt of biospecimens, the following will be documented.
+
+Date and time the shipment was received 
+Confirmation that specimens received match those listed on the manifest 
+The number and types of labels affixed to the packaging
+Result of inspection of package and container for visible signs of damage 
+
+
+
+Could not parse problem
+
+
+Dr. Aldrin’s data generates interest from a pulmonary pathologist at St. Cloud Hospital in Minnesota, Dr. Marsha Eriksen, who obtains approval to obtain frozen sputum supernatants from the TB patients in Dr. Scherbatsky’s clinic. Dr. Aldrin asks Barnabus to arrange the shipment of these specimens to Dr. Eriksen. How will Barnabus verify that enough supernatant remains to send to Dr. Eriksen? 
+Choose an option from the dropdown menu
+
+Ask Dr. Aldrin how much of the supernatants she used in her ELISA experiments
+Check the computer inventory system
+
+
+
+Could not parse Checkbox Group
+
+
+What class of biospecimen will Barnabus be shipping to Minnesota? 
+
+UN2814
+UN3373
+UN2873
+
+
+
+Could not parse Checkbox Group
+
+
+Does the shipment Barnabus is preparing to send to Minnesota contain dangerous goods?  
+
+Yes
+No
+
+
+
+Could not parse Checkbox Group
+
+
+Read the following statements and select the items that apply. Biospecimen annotation:
+
+A.	Is the process by which a biospecimen is associated with participant and biospecimen related data such as patient demographics, diagnosis, collection, biospecimen type, storage conditions. 
+B.	Is the detailed location where biospecimen data is stored in a data management system. 
+C.	Allows for a better understanding of the banked biospecimen, making it more valuable for answering a researcher's complex questions 
+D.	Should be verified for accuracy. 
+
+
+
+Could not parse Checkbox Group
+
+
+Determining the level of annotation needed will depend on:  
+
+A.	The type of research the biospecimens will be used for.
+B.	The feasibility of annotation based on the timeframe, costs, and effort required for collection of required data.
+C.	An assessment of the MTA form provided to researchers. 
+D.	The ability to create a duplicate copy of all data from an existing database and store it in your own database.
+
+
+
+Could not parse Checkbox Group
+
+
+Select the three data sets that may be collected at the outset by a small biobank creating a prospective collection.
+
+Diagnosis
+Consent
+Biospecimen collection
+Patient outcomes
+
+
+
+Could not parse Checkbox Group
+
+
+Some data management systems may have interoperability and integration capabilities. The benefits of using an interoperable system are:
+
+A.	Reduced re-entry of data and lower risk of error. 
+B.	Addressing custodianship and privacy issues around transfer and data sharing. 
+C.	Identification and correction of data errors are replicated in all systems.
+D.	The ability to integrate and store scanned documents.
+
+
+
+Could not parse problem
+
+
+Data element definitions should be regularly reviewed and updated to ensure that interpretations of each data field correspond to current best practices.  
+
+True
+False
+
+
+
+Could not parse problem
+
+
+Information irrevocably stripped of direct identifiers where re-linkage is not possible is defined as: 
+
+
+
+Directly identifying information
+Anonymized information
+Coded information
+
+
+
+Could not parse Checkbox Group
+
+
+During your interview with the World Health Organization you were asked to define what a biobank is. Which of the following statements best describe the activity known as biobanking? 
+
+Any biological material taken from a person for medical or research purposes.
+A range of linked processes focused on participant enrollment, collection, processing, annotation, storage, release and distribution of biospecimens and data. 
+The structure or framework that defines how a biobank will operate, who is responsible for the biobank’s operations and how decisions involving the biobank’s activities are made.
+The activity of planning and starting a biobank.
+
+
+
+Could not parse problem
+
+
+The consensus from the participant organizations was that biobanking efforts emerging from the consultation process be multi-use, on a national or sub-regional level, and provide storage and oversight of samples from a wider array of diseases, and not focus exclusively on Ebola.
+
+True
+False
+
+
+
+Could not parse problem
+
+
+The draft proposal for the Ebola biobank has been given to you. The proposal has a complex organizational structure, spanning different countries, with multiple research priorities, and different cultural sensitivities. Defining a governance structure can help define how the biobank operates, and who has responsibility for operations and decisions. 
+
+True
+False
+
+
+
+Could not parse problem
+
+
+Biobank governance is the framework that serves to ensure that the biobank operates within the applicable laws and regulations, as well as within the cultural and ethical standards of the society in which it is located. Mechanisms can be categorized as internal or external. Internal mechanisms of governance are those that a biobank has no influence over but must fulfill or address. 
+
+True
+False
+
+
+
+Could not parse Checkbox Group
+
+
+In what cases may an ethics review board require additional information with your application?
+
+Use of biospecimens for genetic research
+Derivation of stem cell lines 
+Plans to aliquot biospecimens for storage and distribution at different times 
+Involvement of special populations 
+
+
+
+Could not parse problem
+
+
+Ebola virus is a contagious and highly dangerous virus. Storage of samples from the Ebola virus outbreak containing live virus requires a high-containment laboratory and special safety precautions. Each country will have its own specific safety requirements 
+
+True
+False
+
+
+
+Could not parse Checkbox Group
+
+
+Dry ice is commonly used to maintain frozen temperatures (at or below -70°C) during shipment of frozen biospecimens. When transferring frozen Ebola specimens between biobank sites, what are the requirements for shipping by air with dry ice? 
+
+The UN 1845 Class 9 miscellaneous "dry ice" label affixed on the outer packaging.
+The Category B, UN3373 biospecimens label affixed to the outer packaging.
+The amount of dry ice used in the shipment (in kilograms) is written on the dry ice label. 
+The IATA Checklist documentation for dry ice. 
+
+
+
+Could not parse Checkbox Group
+
+
+Biospecimens shipped on dry ice must be packaged in a specific manner to meet regulations. Which of the following are required when preparing a package for shipment? 
+
+Primary container 
+Secondary container 
+Tertiary container
+Absorbent material 
+Waterproof wrapping
+Outer container 
+
+
+
+Could not parse problem
+
+
+International partners from Medecins sans Frontiers, Italy, European Mobile Laboratories, South Africa, Public Health England, China, the US Centers for Disease Control, US National Institutes of Health have transferred approximately 16,000 samples out of Western Africa. A MTA may be required when transferring biospecimens to an outside centre. MTA is the abbreviation for material transport arrangement.
+
+True
+False
+
+
+
+Could not parse Checkbox Group
+
+
+What are some challenges the unified Ebola biobank has identified when managing transfers of biospecimens between sites? 
+
+Lack of centralized processes and single chain of command 
+Lack of availability of copies of MTAs used for prior transfers of samples 
+Differing national processes 
+Laboratories in different countries operate on different time zones and coordinating shipments is challenging
+High cost of shipping frozen biospecimens internationally will be prohibitive 
+
+
+
+Could not parse Checkbox Group
+
+
+Biospecimen labelling is an important component of tracking biospecimens throughout their pathway from point of collection and origin, storage and shipping, and distribution. Which of the following are best practices for creating a biospecimen label? 
+
+Remain tightly adhered to the container under all projected storage conditions
+Always use 2D barcodes because they are superior to 1D barcodes
+Placed in a location on the container that allows for label legibility
+Resistant to all common laboratory solvents (e.g. ethanol) 
+
+
+
+Could not parse problem
+
+
+What could be the impact of the issues highlighted by the H3 biobank on future research using these Ebola Virus specimens?
+Differences in the way biospecimens are collected and stored are examples of preanalytical variables and these can impact research results 
+
+True
+False
+
+
+
+Could not parse Checkbox Group
+
+
+Some of the biospecimens collected during the Ebola outbreak were likely preserved by formalin-fixation and embedding in paraffin. This method of preservation allows tissues to be prepared into FFPE tissue blocks, suitable for thin sectioning by microtome for morphological and molecular analysis. What are advantages of this format?
+
+Universal application in clinical pathology
+Considered best format for preserving proteins, RNA, DNA
+Provides optimal morphological preservation 
+It is the optimal fixation technique for fatty tissues and thick pieces of tissue
+
+
+
+Could not parse Checkbox Group
+
+
+Cryopreservation is a process used for slowing the activity of cellular pathways in biological tissues and preventing nucleic acid and protein degradation. Many of the biospecimens collected in the Ebola outbreak would have been cryopreserved to help maintain their utility long-term. Which of the following are examples of cryopreservation by ultra-rapid freezing? 
+
+Placing the tissue in 10:1 parts formalin to tissue sample volume for 12-24 hours
+Embedding the tissue in paraffin and placing it in the -80ºC freezer
+Embedding tissue in a cryomold with a cryoembedding compound and then freezing on with cooled isopetane  
+Placing the tissue into a liquid nitrogen charged dry shipper/vapour dewar 
+
+
+
+Could not parse Checkbox Group
+
+
+Sample type and associated data can impact a sample’s value for clinical and research applications. How are participants in the Ebola biobank considering increasing the value of collected samples?  
+
+Isolating viruses 
+Annotating biospecimens
+Extracting genetic information 
+Creating tissue arrays of infected tissue biospecimens
+Linking clinical and research databases 
+
+
+
+Could not parse Checkbox Group
+
+
+What should be considered when processing a biospecimen for storage in a biobank for future research?  
+
+Downstream research application and what is the most appropriate preservation method 
+Documenting the collection time so this factor can be considered in future analyses 
+Collecting biospecimens only in standard clinical formats, such as FFPE
+Collecting only a cryopreserved aliquot of each biospecimen to allow for high quality RNA extraction
+Setting achievable minimum and maximum collection time benchmarks 
+
+
+
+Could not parse Checkbox Group
+
+
+What factors affecting sample value were noted by the workshop participants? 
+
+Sample quality, storage time and conditions 
+Volume of sample and associated metadata
+Mutations in the isolated virus 
+Location of infected individual in the outbreak
+Relative timing in the course of the outbreak 
+
+
+
+Could not parse Checkbox Group
+
+
+It will be important for partners in the Ebola biobank to develop a quality management system that includes policies for quality control of biospecimens. Which of the following are examples of quality control approaches the Ebola biobank might adopt? 
+
+Microscopic examination by a pathologist of an aliquot representative of a tissue biospecimen to establish cellular composition 
+Assessing the quality of nucleic acids
+Create an empirical scoring system based on the collection time of the biospecimen
+Creating a tissue microarray from biospecimens
+
+
+
+Could not parse Checkbox Group
+
+
+Which samples in the existing Ebola virus collections were considered particularly valuable? 
+
+Positive samples, in a series, with associated clinical or epidemiological data 
+Positive samples, collected at random time-points from patients who survived infection with Ebola virus, with associated clinical or epidemiological data
+Negative samples from patients who were exposed to the disease but demonstrated resistance, with associated clinical and genetic data
+
+
+
+Could not parse Checkbox Group
+
+
+Your friend requires control samples of human plasma for her study to compare to those from Ebola virus survivors. What should she consider when deciding whether to collect biospecimens herself or use a biobank’s service?
+
+Her level of biobanking experience, time available to devote to biobanking, and whether she has sufficient funding to establish and maintain a biobank  
+Whether her research study is retrospective or prospective in design, and if she plans a series of studies based on the same biospecimens 
+Whether an application to the biobank to access biospecimens and data is required, and how much time it would take to complete
+Whether the biospecimens required need to be fresh or preserved, and associated with the patient outcome data 
+
+
+
+Could not parse Checkbox Group
+
+
+Which of the following are typical steps in the process of applying to a biobank for access to biospecimens and data? 
+
+Application Assessment 
+Submission of Application Form 
+Provision of documentation of biosafety training certificate
+Initial Inquiry 
+Completion of MTA
+
+
+
+Could not parse problem
+
+
+Your friend is interested in obtaining 500 Ebola positive blood samples with patient outcomes data. Is this available in the PHE-MOHS Ebola Biobank? 
+
+Yes
+No
+
+
+
+Multiple Choice JSON Ready
+Assessment JSON Ready
+[1] "Reading in the necessary files..."
+[1] "Preparing the forum views data..."
+[1] "Preparing the forum posts data..."
+[1] "     Getting activity levels..."
+[1] "     Getting post types..."
+[1] "     Inferring post subcategories..."
+[1] "          Counting comments..."
+[1] "          Counting responses..."
+[1] "Preparing the forum words data..."
+[1] "Preparing the forum searches data..."
+[1] "Preparing the JSON elements..."
+[1] "Getting `discussion_topics`"
+[1] "Preparing the XML elements..."
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 477.8 KB
+
+Retrieving results...
+Got 7253 rows.
+
+Total time taken 2.82 s.
+Finished at 2017-06-29 17:07:16.
+Saved to ./../data/CW1_1x_1T2016/demographic_multiple_choice.csv
+Requesting query... ok.
+Query running...
+  Elapsed 14.35 s. Waiting...
+Query done.
+Processed: 151.4 MB
+
+Retrieving results...
+Got 0 rows.
+
+Total time taken 19.63 s.
+Finished at 2017-06-29 17:07:37.
+Saved to ./../data/CW1_1x_1T2016/open_assessment.csv
+Requesting query... ok.
+Query running...
+  Elapsed 12.2 s. Waiting...
+Query done.
+Processed: 5.5 MB
+
+Retrieving results...
+  Got page: 1; 100% done. Elapsed 15.55 s.
+Got 8311 rows.
+
+Total time taken 15.8 s.
+Finished at 2017-06-29 17:07:54.
+Saved to ./../data/CW1_1x_1T2016/generalized_video_heat.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 5.0 KB
+
+Retrieving results...
+Got 58 rows.
+
+Total time taken 1.13 s.
+Finished at 2017-06-29 17:07:56.
+Saved to ./../data/CW1_1x_1T2016/generalized_video_axis.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 38.6 KB
+
+Retrieving results...
+Got 186 rows.
+
+Total time taken 0.98 s.
+Finished at 2017-06-29 17:07:59.
+Saved to ./../data/CW1_1x_1T2016/generalized_demographics.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 4.1 MB
+
+Retrieving results...
+Got 4732 rows.
+
+Total time taken 6.31 s.
+Finished at 2017-06-29 17:08:06.
+Saved to ./../data/CW1_1x_1T2016/forum_posts.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 1.8 MB
+
+Retrieving results...
+Got 675 rows.
+
+Total time taken 1.32 s.
+Finished at 2017-06-29 17:08:09.
+Saved to ./../data/CW1_1x_1T2016/forum_searches.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 5.6 MB
+
+Retrieving results...
+  Got page: 1; 100% done. Elapsed 7.09 s.
+Got 51484 rows.
+
+Total time taken 7.65 s.
+Finished at 2017-06-29 17:08:18.
+Saved to ./../data/CW1_1x_1T2016/forum_views.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 40.9 KB
+
+Retrieving results...
+Got 415 rows.
+
+Total time taken 0.9 s.
+Finished at 2017-06-29 17:08:20.
+Saved to ./../data/CW1_1x_1T2016/tower_item.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 5.6 MB
+
+Retrieving results...
+Got 14854 rows.
+
+Total time taken 2.44 s.
+Finished at 2017-06-29 17:08:24.
+Saved to ./../data/CW1_1x_1T2016/tower_engage_dirt.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 135.5 KB
+
+Retrieving results...
+Got 415 rows.
+
+Total time taken 0.92 s.
+Finished at 2017-06-29 17:08:26.
+Saved to ./../data/CW1_1x_1T2016/course_axis.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 6.4 MB
+
+Retrieving results...
+  Got page: 1; 100% done. Elapsed 10.85 s.
+Got 159 rows.
+
+Total time taken 10.85 s.
+Finished at 2017-06-29 17:08:38.
+Saved to ./../data/CW1_1x_1T2016/external_link_dirt.csv
+Requesting query... ok.
+Query running...
+  Elapsed 13.2 s. Waiting...
+Query done.
+Processed: 35.9 MB
+
+Retrieving results...
+  Got page: 1; 27% done. Elapsed 22.48 s.
+  Got page: 2; 53% done. Elapsed 28.75 s.
+  Got page: 3; 80% done. Elapsed 34.57 s.
+  Got page: 4; 100% done. Elapsed 39.12 s.
+Got 193337 rows.
+
+Total time taken 42.16 s.
+Finished at 2017-06-29 17:09:21.
+Saved to ./../data/CW1_1x_1T2016/page_dirt.csv
+Could not parse problem
+
+Use this list to determine which of your openings checks the most boxes; this should let you know which is the most effective opening for your novel and why. This exercise is being graded for completion, so remember to click 'CHECK' after typing your answers.
+Who are the main characters?
+
+
+
+Where is this set?
+
+
+
+When is this set?
+
+
+
+Have I packed my reader a carry-on (provided the basic who/what/where in the opening paragraphs / page that they’ll need to carry with them throughout the story)?
+
+
+
+Which POV have I chosen? What effect is this having on the piece as a whole?
+
+
+
+Am I writing in present tense or past tense? Why? What effect is this having on my story?
+
+
+
+What is my story about? Summarize as you would a news story.
+
+
+
+What is the catalyst for the telling of the story?
+
+
+
+What will be my theme? Have I gestured towards this in any way with my opening?
+
+
+
+Which of my three openings features the elements that are most important to me?
+
+
+
+Which of my three openings surprised me the most? Why?
+
+
+
+
+Multiple Choice JSON Ready
+Assessment JSON Ready
+[1] "Reading in the necessary files..."
+[1] "Preparing the forum views data..."
+[1] "Preparing the forum posts data..."
+[1] "     Getting activity levels..."
+[1] "     Getting post types..."
+[1] "     Inferring post subcategories..."
+[1] "          Counting comments..."
+[1] "          Counting responses..."
+[1] "Preparing the forum words data..."
+[1] "Preparing the forum searches data..."
+[1] "Preparing the JSON elements..."
+[1] "Getting `discussion_topics`"
+[1] "Preparing the XML elements..."
+[1] "Combining the JSON and XML elements..."
+[1] "Adding the course order to forum_elements..."
+[1] "Joining everything with forum elements..."
+[1] "Saving everything to CSV..."
+[1] "Complete. `wrangled_forum_posts`, `wrangled_forum_words`, `wrangled_forum_views`, `wrangled_forum_searches`, and `wrangled_forum_elements` have been saved to csv."
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 115.5 KB
+
+Retrieving results...
+Got 1564 rows.
+
+Total time taken 1.64 s.
+Finished at 2017-06-29 17:11:00.
+Saved to ./../data/CW1_1x_1T2017/demographic_multiple_choice.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 6.4 MB
+
+Retrieving results...
+Got 0 rows.
+
+Total time taken 4.57 s.
+Finished at 2017-06-29 17:11:05.
+Saved to ./../data/CW1_1x_1T2017/open_assessment.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 4.3 MB
+
+Retrieving results...
+Got 6804 rows.
+
+Total time taken 6.67 s.
+Finished at 2017-06-29 17:11:13.
+Saved to ./../data/CW1_1x_1T2017/generalized_video_heat.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 5.1 KB
+
+Retrieving results...
+Got 59 rows.
+
+Total time taken 0.98 s.
+Finished at 2017-06-29 17:11:16.
+Saved to ./../data/CW1_1x_1T2017/generalized_video_axis.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 21.5 KB
+
+Retrieving results...
+Got 79 rows.
+
+Total time taken 1.05 s.
+Finished at 2017-06-29 17:11:18.
+Saved to ./../data/CW1_1x_1T2017/generalized_demographics.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 3.4 MB
+
+Retrieving results...
+Got 3318 rows.
+
+Total time taken 4.07 s.
+Finished at 2017-06-29 17:11:23.
+Saved to ./../data/CW1_1x_1T2017/forum_posts.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 44.0 KB
+
+Retrieving results...
+Got 7 rows.
+
+Total time taken 1.34 s.
+Finished at 2017-06-29 17:11:26.
+Saved to ./../data/CW1_1x_1T2017/forum_searches.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 132.4 KB
+
+Retrieving results...
+Got 919 rows.
+
+Total time taken 1.27 s.
+Finished at 2017-06-29 17:11:28.
+Saved to ./../data/CW1_1x_1T2017/forum_views.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 36.0 KB
+
+Retrieving results...
+Got 363 rows.
+
+Total time taken 1.07 s.
+Finished at 2017-06-29 17:11:30.
+Saved to ./../data/CW1_1x_1T2017/tower_item.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 2.3 MB
+
+Retrieving results...
+Got 7296 rows.
+
+Total time taken 1.97 s.
+Finished at 2017-06-29 17:11:33.
+Saved to ./../data/CW1_1x_1T2017/tower_engage_dirt.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 117.2 KB
+
+Retrieving results...
+Got 363 rows.
+
+Total time taken 1.05 s.
+Finished at 2017-06-29 17:11:36.
+Saved to ./../data/CW1_1x_1T2017/course_axis.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 5.4 MB
+
+Retrieving results...
+Got 40 rows.
+
+Total time taken 3.63 s.
+Finished at 2017-06-29 17:11:40.
+Saved to ./../data/CW1_1x_1T2017/external_link_dirt.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 1.6 MB
+
+Retrieving results...
+Got 9079 rows.
+
+Total time taken 5.16 s.
+Finished at 2017-06-29 17:11:47.
+Saved to ./../data/CW1_1x_1T2017/page_dirt.csv
+Could not parse problem
+
+Use this list to determine which of your openings checks the most boxes; this should let you know which is the most effective opening for your novel and why. This exercise is being graded for completion, so remember to click 'CHECK' after typing your answers.
+Who are the main characters?
+
+
+
+Where is this set?
+
+
+
+When is this set?
+
+
+
+Have I packed my reader a carry-on (provided the basic who/what/where in the opening paragraphs / page that they’ll need to carry with them throughout the story)?
+
+
+
+Which POV have I chosen? What effect is this having on the piece as a whole?
+
+
+
+Am I writing in present tense or past tense? Why? What effect is this having on my story?
+
+
+
+What is my story about? Summarize as you would a news story.
+
+
+
+What is the catalyst for the telling of the story?
+
+
+
+What will be my theme? Have I gestured towards this in any way with my opening?
+
+
+
+Which of my three openings features the elements that are most important to me?
+
+
+
+Which of my three openings surprised me the most? Why?
+
+
+
+
+Multiple Choice JSON Ready
+Assessment JSON Ready
+[1] "Reading in the necessary files..."
+[1] "Preparing the forum views data..."
+[1] "Preparing the forum posts data..."
+[1] "     Getting activity levels..."
+[1] "     Getting post types..."
+[1] "     Inferring post subcategories..."
+[1] "          Counting comments..."
+[1] "          Counting responses..."
+[1] "Preparing the forum words data..."
+[1] "Preparing the forum searches data..."
+[1] "Preparing the JSON elements..."
+[1] "Getting `discussion_topics`"
+[1] "Preparing the XML elements..."
+[1] "Combining the JSON and XML elements..."
+[1] "Adding the course order to forum_elements..."
+[1] "Joining everything with forum elements..."
+[1] "Saving everything to CSV..."
+[1] "Complete. `wrangled_forum_posts`, `wrangled_forum_words`, `wrangled_forum_views`, `wrangled_forum_searches`, and `wrangled_forum_elements` have been saved to csv."
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 130.6 KB
+
+Retrieving results...
+Got 1644 rows.
+
+Total time taken 1.57 s.
+Finished at 2017-06-29 17:12:21.
+Saved to ./../data/CW1_1x_3T2016/demographic_multiple_choice.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 78.0 MB
+
+Retrieving results...
+Got 0 rows.
+
+Total time taken 9.79 s.
+Finished at 2017-06-29 17:12:32.
+Saved to ./../data/CW1_1x_3T2016/open_assessment.csv
+Requesting query... ok.
+Query running...
+  Elapsed 12.55 s. Waiting...
+Query done.
+Processed: 71.2 MB
+
+Retrieving results...
+  Got page: 1; 21% done. Elapsed 19.59 s.
+  Got page: 2; 43% done. Elapsed 24.13 s.
+  Got page: 3; 64% done. Elapsed 31.69 s.
+  Got page: 4; 85% done. Elapsed 37.08 s.
+  Got page: 5; 100% done. Elapsed 41.15 s.
+Got 109752 rows.
+
+Total time taken 44.53 s.
+Finished at 2017-06-29 17:13:18.
+Saved to ./../data/CW1_1x_3T2016/generalized_video_heat.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 5.1 KB
+
+Retrieving results...
+Got 59 rows.
+
+Total time taken 1.18 s.
+Finished at 2017-06-29 17:13:22.
+Saved to ./../data/CW1_1x_3T2016/generalized_video_axis.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 76.3 KB
+
+Retrieving results...
+Got 178 rows.
+
+Total time taken 1.19 s.
+Finished at 2017-06-29 17:13:24.
+Saved to ./../data/CW1_1x_3T2016/generalized_demographics.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 3.3 MB
+
+Retrieving results...
+  Got page: 1; 100% done. Elapsed 10.28 s.
+Got 3743 rows.
+
+Total time taken 10.36 s.
+Finished at 2017-06-29 17:13:36.
+Saved to ./../data/CW1_1x_3T2016/forum_posts.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 1.1 MB
+
+Retrieving results...
+Got 151 rows.
+
+Total time taken 1.54 s.
+Finished at 2017-06-29 17:13:39.
+Saved to ./../data/CW1_1x_3T2016/forum_searches.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 3.4 MB
+
+Retrieving results...
+Got 30162 rows.
+
+Total time taken 4.44 s.
+Finished at 2017-06-29 17:13:44.
+Saved to ./../data/CW1_1x_3T2016/forum_views.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 36.1 KB
+
+Retrieving results...
+Got 364 rows.
+
+Total time taken 0.75 s.
+Finished at 2017-06-29 17:13:47.
+Saved to ./../data/CW1_1x_3T2016/tower_item.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 2.3 MB
+
+Retrieving results...
+Got 7215 rows.
+
+Total time taken 1.87 s.
+Finished at 2017-06-29 17:13:50.
+Saved to ./../data/CW1_1x_3T2016/tower_engage_dirt.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 117.5 KB
+
+Retrieving results...
+Got 364 rows.
+
+Total time taken 0.95 s.
+Finished at 2017-06-29 17:13:52.
+Saved to ./../data/CW1_1x_3T2016/course_axis.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 88.4 MB
+
+Retrieving results...
+Got 968 rows.
+
+Total time taken 6.94 s.
+Finished at 2017-06-29 17:14:00.
+Saved to ./../data/CW1_1x_3T2016/external_link_dirt.csv
+Requesting query... ok.
+Query running...
+  Elapsed 11.99 s. Waiting...
+Query done.
+Processed: 26.5 MB
+
+Retrieving results...
+  Got page: 1; 34% done. Elapsed 26.71 s.
+  Got page: 2; 69% done. Elapsed 31.38 s.
+  Got page: 3; 100% done. Elapsed 36.04 s.
+Got 144674 rows.
+
+Total time taken 38.44 s.
+Finished at 2017-06-29 17:14:40.
+Saved to ./../data/CW1_1x_3T2016/page_dirt.csv
+Could not parse problem
+
+Use this list to determine which of your openings checks the most boxes; this should let you know which is the most effective opening for your novel and why. This exercise is being graded for completion, so remember to click 'CHECK' after typing your answers.
+Who are the main characters?
+
+
+
+Where is this set?
+
+
+
+When is this set?
+
+
+
+Have I packed my reader a carry-on (provided the basic who/what/where in the opening paragraphs / page that they’ll need to carry with them throughout the story)?
+
+
+
+Which POV have I chosen? What effect is this having on the piece as a whole?
+
+
+
+Am I writing in present tense or past tense? Why? What effect is this having on my story?
+
+
+
+What is my story about? Summarize as you would a news story.
+
+
+
+What is the catalyst for the telling of the story?
+
+
+
+What will be my theme? Have I gestured towards this in any way with my opening?
+
+
+
+Which of my three openings features the elements that are most important to me?
+
+
+
+Which of my three openings surprised me the most? Why?
+
+
+
+
+Multiple Choice JSON Ready
+Assessment JSON Ready
+[1] "Reading in the necessary files..."
+[1] "Preparing the forum views data..."
+[1] "Preparing the forum posts data..."
+[1] "     Getting activity levels..."
+[1] "     Getting post types..."
+[1] "     Inferring post subcategories..."
+[1] "          Counting comments..."
+[1] "          Counting responses..."
+[1] "Preparing the forum words data..."
+[1] "Preparing the forum searches data..."
+[1] "Preparing the JSON elements..."
+[1] "Getting `discussion_topics`"
+[1] "Preparing the XML elements..."
+[1] "Combining the JSON and XML elements..."
+[1] "Adding the course order to forum_elements..."
+[1] "Joining everything with forum elements..."
+[1] "Saving everything to CSV..."
+[1] "Complete. `wrangled_forum_posts`, `wrangled_forum_words`, `wrangled_forum_views`, `wrangled_forum_searches`, and `wrangled_forum_elements` have been saved to csv."
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 184.7 KB
+
+Retrieving results...
+Got 2281 rows.
+
+Total time taken 1.52 s.
+Finished at 2017-06-29 17:16:10.
+Saved to ./../data/CW1_2x_1T2016/demographic_multiple_choice.csv
+Requesting query... ok.
+Query running...
+  Elapsed 12.61 s. Waiting...
+Query done.
+Processed: 92.9 MB
+
+Retrieving results...
+Got 0 rows.
+
+Total time taken 13.46 s.
+Finished at 2017-06-29 17:16:25.
+Saved to ./../data/CW1_2x_1T2016/open_assessment.csv
+Requesting query... ok.
+Query running...
+  Elapsed 12.03 s. Waiting...
+Query done.
+Processed: 82.0 MB
+
+Retrieving results...
+  Got page: 1; 19% done. Elapsed 20.95 s.
+  Got page: 2; 37% done. Elapsed 27.58 s.
+  Got page: 3; 56% done. Elapsed 32.37 s.
+  Got page: 4; 74% done. Elapsed 37.7 s.
+  Got page: 5; 93% done. Elapsed 42.95 s.
+  Got page: 6; 100% done. Elapsed 45.39 s.
+Got 125491 rows.
+
+Total time taken 49.18 s.
+Finished at 2017-06-29 17:17:15.
+Saved to ./../data/CW1_2x_1T2016/generalized_video_heat.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 8.0 KB
+
+Retrieving results...
+Got 89 rows.
+
+Total time taken 0.72 s.
+Finished at 2017-06-29 17:17:19.
+Saved to ./../data/CW1_2x_1T2016/generalized_video_axis.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 22.1 KB
+
+Retrieving results...
+Got 103 rows.
+
+Total time taken 0.84 s.
+Finished at 2017-06-29 17:17:21.
+Saved to ./../data/CW1_2x_1T2016/generalized_demographics.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 2.9 MB
+
+Retrieving results...
+  Got page: 1; 100% done. Elapsed 11.81 s.
+Got 4314 rows.
+
+Total time taken 11.91 s.
+Finished at 2017-06-29 17:17:34.
+Saved to ./../data/CW1_2x_1T2016/forum_posts.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 1.1 MB
+
+Retrieving results...
+Got 330 rows.
+
+Total time taken 1.11 s.
+Finished at 2017-06-29 17:17:36.
+Saved to ./../data/CW1_2x_1T2016/forum_searches.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 3.5 MB
+
+Retrieving results...
+Got 31690 rows.
+
+Total time taken 4.63 s.
+Finished at 2017-06-29 17:17:42.
+Saved to ./../data/CW1_2x_1T2016/forum_views.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 51.5 KB
+
+Retrieving results...
+Got 516 rows.
+
+Total time taken 1.11 s.
+Finished at 2017-06-29 17:17:44.
+Saved to ./../data/CW1_2x_1T2016/tower_item.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 2.8 MB
+
+Retrieving results...
+Got 8770 rows.
+
+Total time taken 2.87 s.
+Finished at 2017-06-29 17:17:48.
+Saved to ./../data/CW1_2x_1T2016/tower_engage_dirt.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 167.0 KB
+
+Retrieving results...
+Got 516 rows.
+
+Total time taken 1.16 s.
+Finished at 2017-06-29 17:17:51.
+Saved to ./../data/CW1_2x_1T2016/course_axis.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 97.5 MB
+
+Retrieving results...
+  Got page: 1; 100% done. Elapsed 8.65 s.
+Got 924 rows.
+
+Total time taken 8.67 s.
+Finished at 2017-06-29 17:18:01.
+Saved to ./../data/CW1_2x_1T2016/external_link_dirt.csv
+Requesting query... ok.
+Query running...
+  Elapsed 12.93 s. Waiting...
+Query done.
+Processed: 32.6 MB
+
+Retrieving results...
+  Got page: 1; 28% done. Elapsed 25.77 s.
+  Got page: 2; 56% done. Elapsed 30.74 s.
+  Got page: 3; 85% done. Elapsed 36.9 s.
+  Got page: 4; 100% done. Elapsed 40.68 s.
+Got 173932 rows.
+
+Total time taken 43.5 s.
+Finished at 2017-06-29 17:18:45.
+Saved to ./../data/CW1_2x_1T2016/page_dirt.csv
+Could not parse problem
+
+
+Use this list to determine which of your openings checks the most boxes; this should let you know which is the most effective opening for your novel and why. This exercise is being graded for completion, so remember to click 'CHECK' after typing your answers. If you navigate away from the page before clicking 'CHECK' your answers will disappear.
+Who are the main characters?
+
+
+
+Where is this set?
+
+
+
+When is this set?
+
+
+
+Have I packed my reader a carry-on (provided the basic who/what/where in the opening paragraphs / page that they’ll need to carry with them throughout the story)?
+
+
+
+Which POV have I chosen? What effect is this having on the piece as a whole?
+
+
+
+Am I writing in present tense or past tense? Why? What effect is this having on my story?
+
+
+
+What is my story about? Summarize as you would a news story.
+
+
+
+What is the catalyst for the telling of the story?
+
+
+
+What will be my theme? Have I gestured towards this in any way with my opening?
+
+
+
+Which of my three openings features the elements that are most important to me?
+
+
+
+Which of my three openings surprised me the most? Why?
+
+
+
+
+
+Multiple Choice JSON Ready
+Assessment JSON Ready
+[1] "Reading in the necessary files..."
+[1] "Preparing the forum views data..."
+[1] "Preparing the forum posts data..."
+[1] "     Getting activity levels..."
+[1] "     Getting post types..."
+[1] "     Inferring post subcategories..."
+[1] "          Counting comments..."
+[1] "          Counting responses..."
+[1] "Preparing the forum words data..."
+[1] "Preparing the forum searches data..."
+[1] "Preparing the JSON elements..."
+[1] "Getting `discussion_topics`"
+[1] "Preparing the XML elements..."
+[1] "Combining the JSON and XML elements..."
+[1] "Adding the course order to forum_elements..."
+[1] "Joining everything with forum elements..."
+[1] "Saving everything to CSV..."
+[1] "Complete. `wrangled_forum_posts`, `wrangled_forum_words`, `wrangled_forum_views`, `wrangled_forum_searches`, and `wrangled_forum_elements` have been saved to csv."
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 117.9 KB
+
+Retrieving results...
+Got 1236 rows.
+
+Total time taken 2.38 s.
+Finished at 2017-06-29 17:20:38.
+Saved to ./../data/CW1_2x_1T2017/demographic_multiple_choice.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 29.2 MB
+
+Retrieving results...
+Got 0 rows.
+
+Total time taken 6.37 s.
+Finished at 2017-06-29 17:20:45.
+Saved to ./../data/CW1_2x_1T2017/open_assessment.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 24.9 MB
+
+Retrieving results...
+  Got page: 1; 63% done. Elapsed 16.6 s.
+  Got page: 2; 100% done. Elapsed 20.78 s.
+Got 37272 rows.
+
+Total time taken 21.85 s.
+Finished at 2017-06-29 17:21:08.
+Saved to ./../data/CW1_2x_1T2017/generalized_video_heat.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 8.0 KB
+
+Retrieving results...
+Got 89 rows.
+
+Total time taken 0.74 s.
+Finished at 2017-06-29 17:21:11.
+Saved to ./../data/CW1_2x_1T2017/generalized_video_axis.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 12.2 KB
+
+Retrieving results...
+Got 53 rows.
+
+Total time taken 0.89 s.
+Finished at 2017-06-29 17:21:12.
+Saved to ./../data/CW1_2x_1T2017/generalized_demographics.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 1.3 MB
+
+Retrieving results...
+Got 1979 rows.
+
+Total time taken 4.72 s.
+Finished at 2017-06-29 17:21:18.
+Saved to ./../data/CW1_2x_1T2017/forum_posts.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 318.2 KB
+
+Retrieving results...
+Got 56 rows.
+
+Total time taken 3.18 s.
+Finished at 2017-06-29 17:21:23.
+Saved to ./../data/CW1_2x_1T2017/forum_searches.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 1.0 MB
+
+Retrieving results...
+Got 8101 rows.
+
+Total time taken 2.48 s.
+Finished at 2017-06-29 17:21:26.
+Saved to ./../data/CW1_2x_1T2017/forum_views.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 53.5 KB
+
+Retrieving results...
+Got 534 rows.
+
+Total time taken 0.98 s.
+Finished at 2017-06-29 17:21:29.
+Saved to ./../data/CW1_2x_1T2017/tower_item.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 1.5 MB
+
+Retrieving results...
+Got 4628 rows.
+
+Total time taken 1.39 s.
+Finished at 2017-06-29 17:21:31.
+Saved to ./../data/CW1_2x_1T2017/tower_engage_dirt.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 172.9 KB
+
+Retrieving results...
+Got 534 rows.
+
+Total time taken 1.17 s.
+Finished at 2017-06-29 17:21:34.
+Saved to ./../data/CW1_2x_1T2017/course_axis.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 30.7 MB
+
+Retrieving results...
+Got 135 rows.
+
+Total time taken 3.44 s.
+Finished at 2017-06-29 17:21:38.
+Saved to ./../data/CW1_2x_1T2017/external_link_dirt.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 8.8 MB
+
+Retrieving results...
+  Got page: 1; 100% done. Elapsed 9.39 s.
+Got 48004 rows.
+
+Total time taken 10.11 s.
+Finished at 2017-06-29 17:21:49.
+Saved to ./../data/CW1_2x_1T2017/page_dirt.csv
+Could not parse problem
+
+
+Use this list to determine which of your openings checks the most boxes; this should let you know which is the most effective opening for your novel and why. This exercise is being graded for completion, so remember to click 'SUBMIT' after typing your answers. If you navigate away from the page before clicking 'SUBMIT' your answers will disappear.
+Who are the main characters?
+
+
+
+Where is this set?
+
+
+
+When is this set?
+    
+
+
+
+Have I packed my reader a carry-on (provided the basic who/what/where in the opening paragraphs / page that they’ll need to carry with them throughout the story)?
+
+
+
+Which POV have I chosen? What effect is this having on the piece as a whole?
+
+
+
+Am I writing in present tense or past tense? Why? What effect is this having on my story?
+
+
+
+What is my story about? Summarize as you would a news story.
+
+
+
+What is the catalyst for the telling of the story?
+
+
+
+What will be my theme? Have I gestured towards this in any way with my opening?
+
+
+
+Which of my three openings features the elements that are most important to me?
+
+
+
+Which of my three openings surprised me the most? Why?
+
+
+
+
+
+Multiple Choice JSON Ready
+Assessment JSON Ready
+[1] "Reading in the necessary files..."
+[1] "Preparing the forum views data..."
+[1] "Preparing the forum posts data..."
+[1] "     Getting activity levels..."
+[1] "     Getting post types..."
+[1] "     Inferring post subcategories..."
+[1] "          Counting comments..."
+[1] "          Counting responses..."
+[1] "Preparing the forum words data..."
+[1] "Preparing the forum searches data..."
+[1] "Preparing the JSON elements..."
+[1] "Getting `discussion_topics`"
+[1] "Preparing the XML elements..."
+[1] "Combining the JSON and XML elements..."
+[1] "Adding the course order to forum_elements..."
+[1] "Joining everything with forum elements..."
+[1] "Saving everything to CSV..."
+[1] "Complete. `wrangled_forum_posts`, `wrangled_forum_words`, `wrangled_forum_views`, `wrangled_forum_searches`, and `wrangled_forum_elements` have been saved to csv."
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 133.5 KB
+
+Retrieving results...
+Got 1687 rows.
+
+Total time taken 1.48 s.
+Finished at 2017-06-29 17:22:41.
+Saved to ./../data/CW1_2x_3T2016/demographic_multiple_choice.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 53.2 MB
+
+Retrieving results...
+Got 0 rows.
+
+Total time taken 8.19 s.
+Finished at 2017-06-29 17:22:50.
+Saved to ./../data/CW1_2x_3T2016/open_assessment.csv
+Requesting query... ok.
+Query running...
+  Elapsed 11.81 s. Waiting...
+Query done.
+Processed: 48.5 MB
+
+Retrieving results...
+  Got page: 1; 32% done. Elapsed 16.84 s.
+  Got page: 2; 64% done. Elapsed 22.72 s.
+  Got page: 3; 96% done. Elapsed 28.33 s.
+  Got page: 4; 100% done. Elapsed 29.25 s.
+Got 73188 rows.
+
+Total time taken 31.53 s.
+Finished at 2017-06-29 17:23:23.
+Saved to ./../data/CW1_2x_3T2016/generalized_video_heat.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 8.0 KB
+
+Retrieving results...
+Got 89 rows.
+
+Total time taken 0.81 s.
+Finished at 2017-06-29 17:23:26.
+Saved to ./../data/CW1_2x_3T2016/generalized_video_axis.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 17.3 KB
+
+Retrieving results...
+Got 87 rows.
+
+Total time taken 0.83 s.
+Finished at 2017-06-29 17:23:28.
+Saved to ./../data/CW1_2x_3T2016/generalized_demographics.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 2.1 MB
+
+Retrieving results...
+Got 2663 rows.
+
+Total time taken 3.46 s.
+Finished at 2017-06-29 17:23:33.
+Saved to ./../data/CW1_2x_3T2016/forum_posts.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 727.9 KB
+
+Retrieving results...
+Got 74 rows.
+
+Total time taken 1.03 s.
+Finished at 2017-06-29 17:23:35.
+Saved to ./../data/CW1_2x_3T2016/forum_searches.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 2.1 MB
+
+Retrieving results...
+Got 18801 rows.
+
+Total time taken 5.32 s.
+Finished at 2017-06-29 17:23:42.
+Saved to ./../data/CW1_2x_3T2016/forum_views.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 53.4 KB
+
+Retrieving results...
+Got 533 rows.
+
+Total time taken 1.05 s.
+Finished at 2017-06-29 17:23:44.
+Saved to ./../data/CW1_2x_3T2016/tower_item.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 2.1 MB
+
+Retrieving results...
+Got 6645 rows.
+
+Total time taken 1.67 s.
+Finished at 2017-06-29 17:23:47.
+Saved to ./../data/CW1_2x_3T2016/tower_engage_dirt.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 172.6 KB
+
+Retrieving results...
+Got 533 rows.
+
+Total time taken 0.97 s.
+Finished at 2017-06-29 17:23:49.
+Saved to ./../data/CW1_2x_3T2016/course_axis.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 59.7 MB
+
+Retrieving results...
+Got 519 rows.
+
+Total time taken 6.85 s.
+Finished at 2017-06-29 17:23:57.
+Saved to ./../data/CW1_2x_3T2016/external_link_dirt.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 17.2 MB
+
+Retrieving results...
+  Got page: 1; 53% done. Elapsed 16.02 s.
+  Got page: 2; 100% done. Elapsed 20.65 s.
+Got 92921 rows.
+
+Total time taken 22.15 s.
+Finished at 2017-06-29 17:24:21.
+Saved to ./../data/CW1_2x_3T2016/page_dirt.csv
+Could not parse problem
+
+
+Use this list to determine which of your openings checks the most boxes; this should let you know which is the most effective opening for your novel and why. This exercise is being graded for completion, so remember to click 'SUBMIT' after typing your answers. If you navigate away from the page before clicking 'SUBMIT' your answers will disappear.
+Who are the main characters?
+
+
+
+Where is this set?
+
+
+
+When is this set?
+    
+
+
+
+Have I packed my reader a carry-on (provided the basic who/what/where in the opening paragraphs / page that they’ll need to carry with them throughout the story)?
+
+
+
+Which POV have I chosen? What effect is this having on the piece as a whole?
+
+
+
+Am I writing in present tense or past tense? Why? What effect is this having on my story?
+
+
+
+What is my story about? Summarize as you would a news story.
+
+
+
+What is the catalyst for the telling of the story?
+
+
+
+What will be my theme? Have I gestured towards this in any way with my opening?
+
+
+
+Which of my three openings features the elements that are most important to me?
+
+
+
+Which of my three openings surprised me the most? Why?
+
+
+
+
+
+Multiple Choice JSON Ready
+Assessment JSON Ready
+[1] "Reading in the necessary files..."
+[1] "Preparing the forum views data..."
+[1] "Preparing the forum posts data..."
+[1] "     Getting activity levels..."
+[1] "     Getting post types..."
+[1] "     Inferring post subcategories..."
+[1] "          Counting comments..."
+[1] "          Counting responses..."
+[1] "Preparing the forum words data..."
+[1] "Preparing the forum searches data..."
+[1] "Preparing the JSON elements..."
+[1] "Getting `discussion_topics`"
+[1] "Preparing the XML elements..."
+[1] "Combining the JSON and XML elements..."
+[1] "Adding the course order to forum_elements..."
+[1] "Joining everything with forum elements..."
+[1] "Saving everything to CSV..."
+[1] "Complete. `wrangled_forum_posts`, `wrangled_forum_words`, `wrangled_forum_views`, `wrangled_forum_searches`, and `wrangled_forum_elements` have been saved to csv."
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 2.5 MB
+
+Retrieving results...
+  Got page: 1; 89% done. Elapsed 10.69 s.
+  Got page: 2; 100% done. Elapsed 11.77 s.
+Got 43872 rows.
+
+Total time taken 12.74 s.
+Finished at 2017-06-29 17:25:44.
+Saved to ./../data/China300_1x_1T2016/demographic_multiple_choice.csv
+Requesting query... ok.
+Query running...
+  Elapsed 13.2 s. Waiting...
+Query done.
+Processed: 397.0 MB
+
+Retrieving results...
+Got 0 rows.
+
+Total time taken 18.84 s.
+Finished at 2017-06-29 17:26:05.
+Saved to ./../data/China300_1x_1T2016/open_assessment.csv
+Requesting query... ok.
+Query running...
+  Elapsed 12.57 s. Waiting...
+  Elapsed 22.99 s. Waiting...
+Query done.
+Processed: 48.7 MB
+
+Retrieving results...
+  Got page: 1; 27% done. Elapsed 29.74 s.
+  Got page: 2; 54% done. Elapsed 33.88 s.
+  Got page: 3; 81% done. Elapsed 39.16 s.
+  Got page: 4; 100% done. Elapsed 42.8 s.
+Got 86232 rows.
+
+Total time taken 45.42 s.
+Finished at 2017-06-29 17:26:52.
+Saved to ./../data/China300_1x_1T2016/generalized_video_heat.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 6.1 KB
+
+Retrieving results...
+Got 52 rows.
+
+Total time taken 0.81 s.
+Finished at 2017-06-29 17:26:54.
+Saved to ./../data/China300_1x_1T2016/generalized_video_axis.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 289.3 KB
+
+Retrieving results...
+Got 1335 rows.
+
+Total time taken 1.46 s.
+Finished at 2017-06-29 17:26:57.
+Saved to ./../data/China300_1x_1T2016/generalized_demographics.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 499.6 KB
+
+Retrieving results...
+Got 637 rows.
+
+Total time taken 1.51 s.
+Finished at 2017-06-29 17:27:00.
+Saved to ./../data/China300_1x_1T2016/forum_posts.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 466.8 KB
+
+Retrieving results...
+Got 61 rows.
+
+Total time taken 1.15 s.
+Finished at 2017-06-29 17:27:02.
+Saved to ./../data/China300_1x_1T2016/forum_searches.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 1.3 MB
+
+Retrieving results...
+Got 11479 rows.
+
+Total time taken 2.54 s.
+Finished at 2017-06-29 17:27:06.
+Saved to ./../data/China300_1x_1T2016/forum_views.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 68.7 KB
+
+Retrieving results...
+Got 683 rows.
+
+Total time taken 0.79 s.
+Finished at 2017-06-29 17:27:08.
+Saved to ./../data/China300_1x_1T2016/tower_item.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 30.0 MB
+
+Retrieving results...
+  Got page: 1; 100% done. Elapsed 8.77 s.
+Got 55380 rows.
+
+Total time taken 9.35 s.
+Finished at 2017-06-29 17:27:18.
+Saved to ./../data/China300_1x_1T2016/tower_engage_dirt.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 233.3 KB
+
+Retrieving results...
+Got 683 rows.
+
+Total time taken 1.06 s.
+Finished at 2017-06-29 17:27:21.
+Saved to ./../data/China300_1x_1T2016/course_axis.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 42.1 MB
+
+Retrieving results...
+  Got page: 1; 100% done. Elapsed 9.65 s.
+Got 297 rows.
+
+Total time taken 9.66 s.
+Finished at 2017-06-29 17:27:32.
+Saved to ./../data/China300_1x_1T2016/external_link_dirt.csv
+Requesting query... ok.
+Query running...
+  Elapsed 12.06 s. Waiting...
+Query done.
+Processed: 81.0 MB
+
+Retrieving results...
+  Got page: 1; 12% done. Elapsed 23.16 s.
+  Got page: 2; 24% done. Elapsed 28.18 s.
+  Got page: 3; 36% done. Elapsed 34.03 s.
+  Got page: 4; 48% done. Elapsed 39.9 s.
+  Got page: 5; 59% done. Elapsed 46.22 s.
+  Got page: 6; 71% done. Elapsed 52.21 s.
+  Got page: 7; 83% done. Elapsed 58.62 s.
+  Got page: 8; 94% done. Elapsed 63.62 s.
+  Got page: 9; 100% done. Elapsed 67.07 s.
+Got 443340 rows.
+
+Total time taken 74.4 s.
+Finished at 2017-06-29 17:28:48.
+Saved to ./../data/China300_1x_1T2016/page_dirt.csv
+Multiple Choice JSON Ready
+Assessment JSON Ready
+[1] "Reading in the necessary files..."
+[1] "Preparing the forum views data..."
+[1] "Preparing the forum posts data..."
+[1] "     Getting activity levels..."
+[1] "     Getting post types..."
+[1] "     Inferring post subcategories..."
+[1] "          Counting comments..."
+[1] "          Counting responses..."
+[1] "Preparing the forum words data..."
+[1] "Preparing the forum searches data..."
+[1] "Preparing the JSON elements..."
+[1] "Getting `discussion_topics`"
+[1] "Preparing the XML elements..."
+Requesting query... ok.
+Query running...
+  Elapsed 10.78 s. Waiting...
+Query done.
+Processed: 4.7 MB
+
+Retrieving results...
+  Got page: 1; 47% done. Elapsed 19.65 s.
+  Got page: 2; 93% done. Elapsed 25.55 s.
+  Got page: 3; 100% done. Elapsed 26.93 s.
+Got 83236 rows.
+
+Total time taken 29.04 s.
+Finished at 2017-06-29 17:32:29.
+Saved to ./../data/China300_1x_3T2015/demographic_multiple_choice.csv
+Requesting query... ok.
+Query running...
+  Elapsed 15.02 s. Waiting...
+Query done.
+Processed: 785.4 MB
+
+Retrieving results...
+Got 0 rows.
+
+Total time taken 25.67 s.
+Finished at 2017-06-29 17:32:57.
+Saved to ./../data/China300_1x_3T2015/open_assessment.csv
+Requesting query... ok.
+Query running...
+  Elapsed 12.78 s. Waiting...
+Query done.
+Processed: 9.8 MB
+
+Retrieving results...
+  Got page: 1; 100% done. Elapsed 18.77 s.
+Got 16012 rows.
+
+Total time taken 19.24 s.
+Finished at 2017-06-29 17:33:18.
+Saved to ./../data/China300_1x_3T2015/generalized_video_heat.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 6.0 KB
+
+Retrieving results...
+Got 51 rows.
+
+Total time taken 0.8 s.
+Finished at 2017-06-29 17:33:20.
+Saved to ./../data/China300_1x_3T2015/generalized_video_axis.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 482.7 KB
+
+Retrieving results...
+Got 2332 rows.
+
+Total time taken 1.89 s.
+Finished at 2017-06-29 17:33:23.
+Saved to ./../data/China300_1x_3T2015/generalized_demographics.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 1.1 MB
+
+Retrieving results...
+Got 1644 rows.
+
+Total time taken 4.09 s.
+Finished at 2017-06-29 17:33:29.
+Saved to ./../data/China300_1x_3T2015/forum_posts.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 923.9 KB
+
+Retrieving results...
+Got 217 rows.
+
+Total time taken 4.91 s.
+Finished at 2017-06-29 17:33:35.
+Saved to ./../data/China300_1x_3T2015/forum_searches.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 2.6 MB
+
+Retrieving results...
+  Got page: 1; 100% done. Elapsed 7.4 s.
+Got 24386 rows.
+
+Total time taken 7.66 s.
+Finished at 2017-06-29 17:33:44.
+Saved to ./../data/China300_1x_3T2015/forum_views.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 68.0 KB
+
+Retrieving results...
+Got 679 rows.
+
+Total time taken 1.02 s.
+Finished at 2017-06-29 17:33:46.
+Saved to ./../data/China300_1x_3T2015/tower_item.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 54.7 MB
+
+Retrieving results...
+  Got page: 1; 57% done. Elapsed 11.38 s.
+  Got page: 2; 100% done. Elapsed 16.52 s.
+Got 102020 rows.
+
+Total time taken 17.7 s.
+Finished at 2017-06-29 17:34:05.
+Saved to ./../data/China300_1x_3T2015/tower_engage_dirt.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 231.6 KB
+
+Retrieving results...
+Got 679 rows.
+
+Total time taken 1.54 s.
+Finished at 2017-06-29 17:34:08.
+Saved to ./../data/China300_1x_3T2015/course_axis.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 9.2 MB
+
+Retrieving results...
+  Got page: 1; 100% done. Elapsed 9.63 s.
+Got 95 rows.
+
+Total time taken 9.64 s.
+Finished at 2017-06-29 17:34:19.
+Saved to ./../data/China300_1x_3T2015/external_link_dirt.csv
+Requesting query... ok.
+Query running...
+  Elapsed 13.36 s. Waiting...
+Query done.
+Processed: 8.0 MB
+
+Retrieving results...
+  Got page: 1; 100% done. Elapsed 22.26 s.
+Got 44265 rows.
+
+Total time taken 22.93 s.
+Finished at 2017-06-29 17:34:44.
+Saved to ./../data/China300_1x_3T2015/page_dirt.csv
+Multiple Choice JSON Ready
+Assessment JSON Ready
+[1] "Reading in the necessary files..."
+[1] "Preparing the forum views data..."
+[1] "Preparing the forum posts data..."
+[1] "     Getting activity levels..."
+[1] "     Getting post types..."
+[1] "     Inferring post subcategories..."
+[1] "          Counting comments..."
+[1] "          Counting responses..."
+[1] "Preparing the forum words data..."
+[1] "Preparing the forum searches data..."
+[1] "Preparing the JSON elements..."
+[1] "Getting `discussion_topics`"
+[1] "Preparing the XML elements..."
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 1.9 MB
+
+Retrieving results...
+  Got page: 1; 100% done. Elapsed 9.21 s.
+Got 32677 rows.
+
+Total time taken 9.96 s.
+Finished at 2017-06-29 17:35:38.
+Saved to ./../data/China300_1x_3T2016/demographic_multiple_choice.csv
+Requesting query... ok.
+Query running...
+  Elapsed 11.8 s. Waiting...
+Query done.
+Processed: 331.6 MB
+
+Retrieving results...
+Got 0 rows.
+
+Total time taken 13.69 s.
+Finished at 2017-06-29 17:35:53.
+Saved to ./../data/China300_1x_3T2016/open_assessment.csv
+Requesting query... ok.
+Query running...
+  Elapsed 12.28 s. Waiting...
+Query done.
+Processed: 287.0 MB
+
+Retrieving results...
+  Got page: 1; 6% done. Elapsed 22.03 s.
+  Got page: 2; 12% done. Elapsed 27.09 s.
+  Got page: 3; 17% done. Elapsed 34.32 s.
+  Got page: 4; 23% done. Elapsed 39.23 s.
+  Got page: 5; 29% done. Elapsed 43.78 s.
+  Got page: 6; 35% done. Elapsed 49.32 s.
+  Got page: 7; 41% done. Elapsed 53.38 s.
+  Got page: 8; 46% done. Elapsed 59.46 s.
+  Got page: 9; 52% done. Elapsed 64.36 s.
+  Got page: 10; 58% done. Elapsed 69.68 s.
+  Got page: 11; 64% done. Elapsed 74.98 s.
+  Got page: 12; 70% done. Elapsed 80.03 s.
+  Got page: 13; 76% done. Elapsed 86.15 s.
+  Got page: 14; 81% done. Elapsed 90.66 s.
+  Got page: 15; 87% done. Elapsed 94.99 s.
+  Got page: 16; 93% done. Elapsed 101.42 s.
+  Got page: 17; 99% done. Elapsed 106.72 s.
+  Got page: 18; 100% done. Elapsed 108.39 s.
+Got 401503 rows.
+
+Total time taken 121.15 s.
+Finished at 2017-06-29 17:37:56.
+Saved to ./../data/China300_1x_3T2016/generalized_video_heat.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 6.1 KB
+
+Retrieving results...
+Got 52 rows.
+
+Total time taken 1.5 s.
+Finished at 2017-06-29 17:38:04.
+Saved to ./../data/China300_1x_3T2016/generalized_video_axis.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 236.6 KB
+
+Retrieving results...
+Got 915 rows.
+
+Total time taken 1.71 s.
+Finished at 2017-06-29 17:38:07.
+Saved to ./../data/China300_1x_3T2016/generalized_demographics.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 415.8 KB
+
+Retrieving results...
+Got 523 rows.
+
+Total time taken 1.38 s.
+Finished at 2017-06-29 17:38:10.
+Saved to ./../data/China300_1x_3T2016/forum_posts.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 346.3 KB
+
+Retrieving results...
+Got 36 rows.
+
+Total time taken 1.26 s.
+Finished at 2017-06-29 17:38:12.
+Saved to ./../data/China300_1x_3T2016/forum_searches.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 925.9 KB
+
+Retrieving results...
+Got 7188 rows.
+
+Total time taken 2.03 s.
+Finished at 2017-06-29 17:38:15.
+Saved to ./../data/China300_1x_3T2016/forum_views.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 69.1 KB
+
+Retrieving results...
+Got 686 rows.
+
+Total time taken 0.98 s.
+Finished at 2017-06-29 17:38:17.
+Saved to ./../data/China300_1x_3T2016/tower_item.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 24.5 MB
+
+Retrieving results...
+Got 44724 rows.
+
+Total time taken 7.3 s.
+Finished at 2017-06-29 17:38:26.
+Saved to ./../data/China300_1x_3T2016/tower_engage_dirt.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 234.4 KB
+
+Retrieving results...
+Got 686 rows.
+
+Total time taken 1.68 s.
+Finished at 2017-06-29 17:38:29.
+Saved to ./../data/China300_1x_3T2016/course_axis.csv
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 341.7 MB
+
+Retrieving results...
+  Got page: 1; 100% done. Elapsed 7.55 s.
+Got 1366 rows.
+
+Total time taken 7.57 s.
+Finished at 2017-06-29 17:38:38.
+Saved to ./../data/China300_1x_3T2016/external_link_dirt.csv
+Requesting query... ok.
+Query running...
+  Elapsed 11.76 s. Waiting...
+Query done.
+Processed: 76.1 MB
+
+Retrieving results...
+  Got page: 1; 12% done. Elapsed 24.05 s.
+  Got page: 2; 24% done. Elapsed 31.2 s.
+  Got page: 3; 36% done. Elapsed 37.72 s.
+  Got page: 4; 48% done. Elapsed 44.53 s.
+  Got page: 5; 61% done. Elapsed 50.17 s.
+  Got page: 6; 73% done. Elapsed 56.93 s.
+  Got page: 7; 85% done. Elapsed 63.32 s.
+  Got page: 8; 97% done. Elapsed 70.77 s.
+  Got page: 9; 100% done. Elapsed 72.44 s.
+Got 430304 rows.
+
+Total time taken 79.64 s.
+Finished at 2017-06-29 17:39:59.
+Saved to ./../data/China300_1x_3T2016/page_dirt.csv
+Multiple Choice JSON Ready
+Assessment JSON Ready
+[1] "Reading in the necessary files..."
+[1] "Preparing the forum views data..."
+[1] "Preparing the forum posts data..."
+[1] "     Getting activity levels..."
+[1] "     Getting post types..."
+[1] "     Inferring post subcategories..."
+[1] "          Counting comments..."
+[1] "          Counting responses..."
+[1] "Preparing the forum words data..."
+[1] "Preparing the forum searches data..."
+[1] "Preparing the JSON elements..."
+[1] "Getting `discussion_topics`"
+[1] "Preparing the XML elements..."
+[1] "Combining the JSON and XML elements..."
+[1] "Adding the course order to forum_elements..."
+[1] "Joining everything with forum elements..."
+[1] "Saving everything to CSV..."
+[1] "Complete. `wrangled_forum_posts`, `wrangled_forum_words`, `wrangled_forum_views`, `wrangled_forum_searches`, and `wrangled_forum_elements` have been saved to csv."
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 900.1 KB
+
+Retrieving results...
+Got 15573 rows.
+
+Total time taken 4.21 s.
+Finished at 2017-06-29 17:41:10.
+Requesting query... ok.
+Query running...
+  Elapsed 12.75 s. Waiting...
+Query done.
+Processed: 128.5 MB
+
+Retrieving results...
+Got 0 rows.
+
+Total time taken 14.61 s.
+Finished at 2017-06-29 17:41:26.
+Requesting query... ok.
+Query running...
+  Elapsed 12.82 s. Waiting...
+Query done.
+Processed: 45.6 MB
+
+Retrieving results...
+  Got page: 1; 45% done. Elapsed 20.51 s.
+  Got page: 2; 91% done. Elapsed 24.62 s.
+  Got page: 3; 100% done. Elapsed 25.88 s.
+Got 51310 rows.
+
+Total time taken 27.41 s.
+Finished at 2017-06-29 17:41:55.
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 4.0 KB
+
+Retrieving results...
+Got 39 rows.
+
+Total time taken 0.96 s.
+Finished at 2017-06-29 17:41:57.
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 126.0 KB
+
+Retrieving results...
+Got 487 rows.
+
+Total time taken 1.45 s.
+Finished at 2017-06-29 17:42:00.
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 241.0 KB
+
+Retrieving results...
+Got 281 rows.
+
+Total time taken 1.21 s.
+Finished at 2017-06-29 17:42:02.
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 163.2 KB
+
+Retrieving results...
+Got 28 rows.
+
+Total time taken 2.94 s.
+Finished at 2017-06-29 17:42:06.
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 433.2 KB
+
+Retrieving results...
+Got 3591 rows.
+
+Total time taken 2.27 s.
+Finished at 2017-06-29 17:42:10.
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 52.2 KB
+
+Retrieving results...
+Got 523 rows.
+
+Total time taken 1.2 s.
+Finished at 2017-06-29 17:42:12.
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 10.2 MB
+
+Retrieving results...
+Got 19676 rows.
+
+Total time taken 4.16 s.
+Finished at 2017-06-29 17:42:18.
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 177.4 KB
+
+Retrieving results...
+Got 523 rows.
+
+Total time taken 1.26 s.
+Finished at 2017-06-29 17:42:20.
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 18.6 MB
+
+Retrieving results...
+  Got page: 1; 100% done. Elapsed 8.97 s.
+Got 94 rows.
+
+Total time taken 8.98 s.
+Finished at 2017-06-29 17:42:30.
+Requesting query... ok.
+Query running...
+  Elapsed 12.65 s. Waiting...
+Query done.
+Processed: 25.7 MB
+
+Retrieving results...
+  Got page: 1; 37% done. Elapsed 21.73 s.
+  Got page: 2; 74% done. Elapsed 27.14 s.
+  Got page: 3; 100% done. Elapsed 31.57 s.
+Got 142109 rows.
+
+Total time taken 33.75 s.
+Finished at 2017-06-29 17:43:05.
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 2.3 MB
+
+Retrieving results...
+  Got page: 1; 97% done. Elapsed 10.48 s.
+  Got page: 2; 100% done. Elapsed 11.1 s.
+Got 40249 rows.
+
+Total time taken 12.06 s.
+Finished at 2017-06-29 17:43:21.
+Requesting query... ok.
+Query running...
+  Elapsed 14.63 s. Waiting...
+Query done.
+Processed: 387.7 MB
+
+Retrieving results...
+Got 0 rows.
+
+Total time taken 21.41 s.
+Finished at 2017-06-29 17:43:44.
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 5.2 MB
+
+Retrieving results...
+  Got page: 1; 100% done. Elapsed 13.42 s.
+Got 8411 rows.
+
+Total time taken 13.67 s.
+Finished at 2017-06-29 17:43:59.
+Requesting query... ok.
+Query running...
+Query done.
+Processed: 4.1 KB
+
+Retrieving results...
+Got 40 rows.
+
+Total time taken 0.83 s.
+Finished at 20

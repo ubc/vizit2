@@ -30,12 +30,12 @@ wrangle_forum <- function(posts_input_path,
         forum_posts <- read_csv(file = posts_input_path)
         forum_views <- read_csv(file = views_input_path)
         forum_searches <- read_csv(file = searches_input_path)
-        course_json <- fromJSON(txt = json_input_path)
+        course_json <- jsonlite::fromJSON(txt = json_input_path)
         course_xml <- tryCatch({
                 xmlInternalTreeParse(file = xml_input_path)
         }, error = function(e) {
                 # In case the XML is malformed.
-                print("XML is malformed — using htmlInternalTreeParse.")
+                print("XML is malformed. Using htmlInternalTreeParse.")
                 htmlTreeParse(file = xml_input_path, useInternalNodes = TRUE)
         })
 

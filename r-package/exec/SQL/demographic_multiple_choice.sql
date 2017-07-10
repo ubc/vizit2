@@ -4,7 +4,7 @@ SELECT
     A.pa.item.response AS item_response,
     A.cp.avg_problem_pct_score AS avg_problem_pct_score,
     A.cp.problem_name AS problem_name,
-    A.pa.created AS created,
+    A.pa.created AS row_date,
     B.gender AS gender,
     B.mode AS mode,
     B.sum_dt AS sum_dt
@@ -23,6 +23,8 @@ FROM (
     [ubcxdata:{course}.course_problem] cp
   ON
     pa.problem_url_name=cp.problem_id
+  WHERE
+    pa.created > PARSE_UTC_USEC("{date} 00:00:00")
   ORDER BY
     pa.created
   LIMIT

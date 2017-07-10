@@ -17,7 +17,7 @@ class MalformedCourseException(Exception):
 
 def construct_query(sql: str,
                     course: str,
-                    query_date=(d.today()).strftime("%Y-%m-%d"),
+                    query_date="1970-01-01",
                     limit=100):
     """Constructs a legal BigQuery from a string.
 
@@ -50,18 +50,20 @@ def construct_query(sql: str,
 
     with open(sql) as open_sql:
         sql_string = open_sql.read()
-        return sql_string.format(course=course, date=''.join(query_date.split('-')), limit=limit)
+        return sql_string.format(course=course,
+                                 date=query_date,
+                                 limit=limit,
+                                 table_date=''.join(query_date.split("-")))
 
 
-def query_bigquery(query: str, output: str, confirm=True):
+def query_bigquery(query: str, output: str, confirm=True, full=True):
     if confirm:
         print(query)
         query_permission = input("Are you sure you wish to execute this query? [y/N] ")
 
         while True:
             if query_permission.lower() == 'y':
-                ubc_tbl = pd.read_gbq(query, "ubcxdata")
-                ubc_tbl.to_csv(output, index=False)
+                write_sql_csv(output, query, full)
                 return
             elif query_permission.lower() == 'n':
                 return
@@ -69,21 +71,30 @@ def query_bigquery(query: str, output: str, confirm=True):
                 print("Command not understood.")
                 query_permission = input("Are you sure you wish to execute this query? [y/N] ")
     else:
-        ubc_tbl = pd.read_gbq(query, "ubcxdata")
-        ubc_tbl.to_csv(output, index=False)
+        write_sql_csv(output, query, full)
         print("Saved to {output}".format(output=output))
+
+
+def write_sql_csv(output, query, full=True):
+    ubc_tbl = pd.read_gbq(query, "ubcxdata")
+    if full:
+        ubc_tbl.to_csv(output, index=False)
+    else:
+        ubc_tbl.to_csv(output, mode="a", index=False, header=False)
 
 
 @cl.command()
 @cl.argument('sql')
 @cl.option('--course', '-c', help="The course you are interested in.")
 @cl.option('--date', '-d',
-           default=(d.today()).strftime("%Y-%m-%d"),
+           default="1970-01-01",
            help="The date of the query in YYYY-MM-DD format, if applicable.")
 @cl.option('--limit', '-l', default=100, help="Maximum number of rows")
 @cl.option('--confirm/--auto', default=True, help="Warn before attempting BigQuery")
 @cl.option('--output', '-o', default=False, help="Output directory")
-def bigquery(sql, course, date, limit, confirm, output):
+@cl.option('--full/--increment', default=True,
+           help="Full update or incremental update. (Full purges previous data)")
+def bigquery(sql, course, date, limit, confirm, output, full):
     long_name = find_course_long_name(course)
     sql_path = os.path.join(os.path.dirname(__file__),
                                 "SQL",
@@ -96,7 +107,7 @@ def bigquery(sql, course, date, limit, confirm, output):
                               "data",
                               course,
                               "{sql}.csv".format(sql=sql))
-    query_bigquery(query, output, confirm)
+    query_bigquery(query, output, confirm, full)
 
 
 def find_course_long_name(short_name):
