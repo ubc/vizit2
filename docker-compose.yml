@@ -33,22 +33,12 @@ letsencrypt-nginx-proxy-companion:
 
 shiny:
   image: lstmemery/moocshiny
-<<<<<<< HEAD
-  container_name: mooc-shiny
-=======
   container_name: moocshiny
->>>>>>> 9da6af9bf252dee8996660959be4b5813eceae90
   restart: always
   expose:
     - "3838"
   environment:
     - VIRTUAL_HOST=vizit20dashdev.ctlt.ubc.ca
-<<<<<<< HEAD
-    - LETSENCRYPT_EMAIL=matthew.emery44@gmail.com
-    - LETSENCRYPT_HOST=vizit20dashdev.ctlt.ubc.ca
-  volumes:
-    - ~/mooc_capstone_public/r-package:/srv/shiny-server/
-=======
     - VIRTUAL_NETWORK=nginx-proxy
     - LETSENCRYPT_EMAIL=matthew.emery44@gmail.com
     - VIRTUAL_PORT=80
@@ -56,4 +46,3 @@ shiny:
   volumes:
     - ~/mooc_capstone_public/r-package:/srv/shiny-server/
     - ~/mooc_capstone_public/logs/:/var/log/shiny-server/
->>>>>>> 9da6af9bf252dee8996660959be4b5813eceae90
