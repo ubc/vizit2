@@ -3,8 +3,6 @@ devtools::load_all()
 args <- commandArgs(TRUE)
 input_course <- args[1]
 
-
-
 assessment_tbl <- read_csv(paste0("../data/",
                                   input_course,
                                   "/open_assessment.csv")) %>%
