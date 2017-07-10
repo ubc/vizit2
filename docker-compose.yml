@@ -35,6 +35,8 @@ shiny:
   image: lstmemery/moocshiny
   container_name: moocshiny
   restart: always
+  ports:
+    - "443:3838"
   expose:
     - "3838"
   environment:
