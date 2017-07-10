@@ -44,5 +44,5 @@ shiny:
     - VIRTUAL_PORT=80
     - LETSENCRYPT_HOST=vizit20dashdev.ctlt.ubc.ca
   volumes:
-    - ~/mooc_capstone_public/r-package:/srv/shiny-server
-    - ~/mooc_capstone_public/logs:/var/log/shiny-server
+    - r-package:/srv/shiny-server
+    - logs:/var/log/shiny-server
