@@ -11,7 +11,7 @@ FROM
         page AS path
 		
 	 FROM (TABLE_QUERY({course}_logs,
-                        "integer(regexp_extract(table_id, r'tracklog_([0-9]+)')) BETWEEN 20160501 and 20170501"))
+                        "integer(regexp_extract(table_id, r'tracklog_([0-9]+)')) BETWEEN {table_date} and 20380101"))
 
 
      WHERE  event_type == "edx.ui.lms.link_clicked"
@@ -26,3 +26,4 @@ FROM
 LEFT JOIN [ubcxdata:{course}.person_course] AS B
 
 ON A.username = B.username
+WHERE B.sum_dt IS NOT NULL
