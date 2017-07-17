@@ -29,6 +29,16 @@ FROM (
     pa.created
   LIMIT
     {limit}) AS A
-LEFT JOIN [ubcxdata:{course}.person_course] AS B
+LEFT JOIN (
+  SELECT
+    user_id,
+    gender,
+    mode,
+    sum_dt
+  FROM [ubcxdata:{course}.person_course]
+     WHERE
+    sum_dt IS NOT NULL) AS B
 ON
   A.user_id = B.user_id
+WHERE
+  B.sum_dt IS NOT NULL
