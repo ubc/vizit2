@@ -19,7 +19,7 @@ FROM (
     pa.created
   FROM
     [ubcxdata:{course}.problem_analysis] pa
-  LEFT JOIN
+  INNER JOIN
     [ubcxdata:{course}.course_problem] cp
   ON
     pa.problem_url_name=cp.problem_id
@@ -29,7 +29,7 @@ FROM (
     pa.created
   LIMIT
     {limit}) AS A
-LEFT JOIN (
+INNER JOIN (
   SELECT
     user_id,
     gender,
