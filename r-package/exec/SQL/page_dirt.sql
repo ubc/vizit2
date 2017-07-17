@@ -1,17 +1,33 @@
-SELECT A.time, 
-       A.username as username,
-	   A.page as page,
-       B.mode,
-	   B.gender as gender,
-	   B.sum_dt as activity_level
-FROM       
-
-(SELECT time,username,event_type,page 
- FROM  (TABLE_QUERY( ubcxdata:{course}_logs,
-                     "integer(regexp_extract(table_id, r'tracklog_([0-9]+)')) BETWEEN 20160101 and 20170501"))
- WHERE (page is not null) AND page!= "https://courses.edx.org/xblock" AND page != "x_module"
- ORDER BY time
- LIMIT {limit}) as A 
-
-LEFT JOIN [ubcxdata:{course}.person_course] AS B 
-ON A.username = B.username
+SELECT
+  A.time,
+  A.user_id AS user_id,
+  A.page AS page,
+  B.mode,
+  B.gender AS gender,
+  B.sum_dt AS activity_level
+FROM (
+  SELECT
+    time,
+    context.user_id AS user_id,
+    event_type,
+    page
+  FROM (TABLE_QUERY( ubcxdata:{course}_logs, "integer(regexp_extract(table_id, r'tracklog_([0-9]+)')) BETWEEN {table_date} and 20380101"))
+  WHERE
+    (page IS NOT NULL)
+    AND page!= "https://courses.edx.org/xblock"
+    AND page != "x_module"
+  ORDER BY
+    time
+  LIMIT
+    {limit}) AS A
+INNER JOIN (
+  SELECT
+    user_id,
+    gender,
+    mode,
+    sum_dt
+  FROM [ubcxdata:{course}.person_course]
+     WHERE
+    sum_dt IS NOT NULL) AS B
+ON
+  A.user_id = B.user_id
