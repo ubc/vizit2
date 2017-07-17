@@ -1,5 +1,5 @@
 SELECT
-  A.username AS username,
+  A.user_id AS user_id,
   A.link AS link,
   A.path,
   A.time,
@@ -9,10 +9,11 @@ SELECT
 FROM (
   SELECT
     username,
+    context.user_id as user_id,
     REGEXP_EXTRACT(event, r'(.*)current') AS link,
     page AS path,
     time
-  FROM (TABLE_QUERY({table_date}_logs, "integer(regexp_extract(table_id, r'tracklog_([0-9]+)')) BETWEEN {table_date} and 20380101"))
+  FROM (TABLE_QUERY({course}_logs, "integer(regexp_extract(table_id, r'tracklog_([0-9]+)')) BETWEEN {table_date} and 20380101"))
   WHERE
     event_type == "edx.ui.lms.link_clicked"
     AND event NOT LIKE '%target_url": "https://courses.edx.org%'
@@ -24,6 +25,6 @@ FROM (
 INNER JOIN
   [ubcxdata:{course}.person_course] AS B
 ON
-  A.username = B.username
+  A.user_id = B.user_id
 WHERE
   B.sum_dt IS NOT NULL
