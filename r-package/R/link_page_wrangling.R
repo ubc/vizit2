@@ -30,22 +30,6 @@ read_link_dirt <- function(input_course){
   return(link_dirt)
 }
 
-
-
-#' Anonyanonymize the username column as hash strings in the input_df 
-#' @param input_df A dataframe containing username column
-#' @return secure_df
-#' @examples
-#' hash_username(input_df = link_dat)
-#' @export
-hash_username <- function(input_df){
-  secure_df <- input_df %>% 
-    mutate(username = anonymizer::hash(username))
-  return(secure_df)
-}
-
-
-
 #' Set three levels for students total spending time on course based on tracklog link data
 #' @param link_data dataframe containing the information of student click any links in the edx course
 #' @return link_data
@@ -159,7 +143,7 @@ prepare_tidy_page <- function(page_data){
   
   # Remove NA pages and classify activity level into 3 groups
   log_dat <- page_data %>% 
-    filter(!is.na(username)) %>% 
+    filter(!is.na(user_id)) %>% 
     filter(path!="/NA/NA") %>% 
     mutate(date = as.Date(lubridate::ymd_hms(time))) %>%
     mutate(activity_level = case_when(
@@ -172,7 +156,7 @@ prepare_tidy_page <- function(page_data){
   # each_session_time is defined as for per student per day per page, the time interval between each event's time stamp
   course_navigation_threshold <- 10 
   sig_student_time <- log_dat %>% 
-     group_by(date,page,username) %>% 
+     group_by(date, page, user_id) %>% 
      mutate(next_stamp = lead(time)) %>% 
      mutate(each_session_time = abs(as.double(difftime(time,next_stamp,units = "secs")))) %>%
      filter(each_session_time > course_navigation_threshold) 
@@ -261,7 +245,6 @@ wrangle_link_page <- function(input_course){
   link_dat <- read_link_dirt(input_course)
   
   # clean link data
-  link_dat <- hash_username(link_dat)
   link_dat <- set_activity_level(link_dat)
   link_dat <- get_module_of_link(link_dat,course_axis)
   
@@ -272,7 +255,6 @@ wrangle_link_page <- function(input_course){
   page_dat <- read_page_dirt(input_course)
   
   # clean page data
-  page_dat <- hash_username(page_dat)
   page_dat <- prepare_tidy_page(page_dat)
   page_name <- prepare_page_name(course_axis)
   
@@ -281,5 +263,3 @@ wrangle_link_page <- function(input_course){
   write_page_name(input_course,page_name)
   
 }
-
-
