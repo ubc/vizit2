@@ -5,13 +5,27 @@ SELECT
   gender,
   mode AS registration_status,
   sum_dt
-FROM
-  (SELECT
+FROM (
+  SELECT
     *
-   FROM
+  FROM
     [ubcxdata:{course}.forum_events]
-   WHERE search_query IS NOT NULL) AS A
-LEFT JOIN [ubcxdata:{course}.person_course] AS B
-ON A.username = B.username
-ORDER BY date DESC
-LIMIT {limit}
+  WHERE
+    search_query IS NOT NULL
+    AND time > PARSE_UTC_USEC("{date} 00:00:00")) AS A
+INNER JOIN (
+  SELECT
+    username,
+    gender,
+    mode,
+    sum_dt
+  FROM
+    [ubcxdata:{course}.person_course]
+  WHERE
+    sum_dt IS NOT NULL) AS B
+ON
+  A.username = B.username
+ORDER BY
+  date DESC
+LIMIT
+  {limit}
