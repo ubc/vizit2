@@ -2,8 +2,8 @@
 # wrangle_video.R
 # Andrew Lim, May 2017
 #
-# This script reads in a course's video csv and performs necessary wrangling
-# Example: Rscript wrangle_video.R marketing
+# This script reads in a course's demographic csv and performs necessary wrangling
+# Example: Rscript wrangle_general.R marketing
 
 # Load functions and libraries:
 devtools::load_all()
