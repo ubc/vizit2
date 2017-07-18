@@ -81,7 +81,7 @@ videoModule <- function(input, output, session)
     filt_segs <- filter_chapter(filt_segs, chapter = module())
     
     # Get number of filtered students
-    num_students <- length(unique(filt_segs$username))
+    num_students <- length(unique(filt_segs$user_id))
     
     return(num_students)
   })
