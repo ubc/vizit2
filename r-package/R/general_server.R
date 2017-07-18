@@ -119,8 +119,12 @@ get_country_plot <- function(country_df, top_selection)
 #' @return A data frame containing languages with the most number of students who speak it
 get_top_language_df <- function(data, top_selection)
 {
-  language_df <- data %>% group_by(language) %>% summarize(num_of_people = n()) %>% 
+  language_df <- data %>% 
+    group_by(language) %>% 
+    summarize(num_of_people = n()) %>% 
     mutate(language = forcats::fct_reorder(language, num_of_people)) %>% 
+    ungroup() %>% 
+    arrange(desc(language)) %>% 
     filter(is.na(language) == FALSE)
   
   top_language_df <- head(language_df, top_selection)
