@@ -1,6 +1,10 @@
-SELECT   category,
-         index,
-         name,
-         module_id,
-         graded
-FROM {course}.course_axis
+SELECT
+  category,
+  index,
+  name,
+  module_id,
+  graded
+FROM
+  [ubcxdata:{course}.course_axis]
+LIMIT
+  {limit}
