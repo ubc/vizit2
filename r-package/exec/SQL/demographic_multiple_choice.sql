@@ -24,7 +24,7 @@ FROM (
   ON
     pa.problem_url_name=cp.problem_id
   WHERE
-    pa.created > PARSE_UTC_USEC("{date} 00:00:00")
+    pa.created > PARSE_UTC_USEC("{date}")
   ORDER BY
     pa.created
   LIMIT

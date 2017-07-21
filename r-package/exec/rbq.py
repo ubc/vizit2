@@ -5,7 +5,7 @@ from datetime import datetime
 import pandas as pd
 import click as cl
 
-from .latest_time import perform_timestamp_json_transaction, read_timestamp_json, TimeStampJSONException
+from latest_time import perform_timestamp_json_transaction, find_most_recent_job, TimeStampJSONException
 
 
 class MalformedQueryException(Exception):
@@ -41,7 +41,7 @@ def construct_query(sql: str,
     if not isinstance(course, str):
         raise MalformedQueryException("Course is not a string")
     try:
-        datetime.strptime(query_date, "%Y-%m-%d")
+        datetime.strptime(query_date, "%Y-%m-%d %H:%M:%S")
     except ValueError:
         raise MalformedQueryException("Query date is not a date")
     try:
@@ -99,7 +99,7 @@ def bigquery(sql, course, date, limit, confirm, output, full):
 
     if not full and date == "1970-01-01":
         try:
-            date = read_timestamp_json()
+            date = find_most_recent_job(course, sql)
             print("Incremental update selected with no datetime specified. Selecting "
                   "most recent date: {}".format(date))
         except TimeStampJSONException:
@@ -118,7 +118,7 @@ def bigquery(sql, course, date, limit, confirm, output, full):
                               "data",
                               course,
                               "{sql}.csv".format(sql=sql))
-    timestamp = datetime.utcnow()
+    timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
     query_bigquery(query, output, confirm, full)
     perform_timestamp_json_transaction(course, sql, timestamp)
 

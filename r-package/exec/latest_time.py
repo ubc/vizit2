@@ -4,6 +4,7 @@ import json
 class TimeStampJSONException(Exception):
     pass
 
+
 def read_timestamp_json():
     with open("../data/job_timestamps.json", "r") as timestamp_file:
         return json.load(timestamp_file)
