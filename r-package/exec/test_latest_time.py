@@ -37,9 +37,6 @@ def test_update_timestamp_json_same_course_same_job(timestamp):
         for key in new_timestamps['courses']]))
 
 
-def test_most_recent_job(timestamp):
-    pass
-
 @pytest.fixture()
 def timestamp():
     return {

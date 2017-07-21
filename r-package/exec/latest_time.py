@@ -47,9 +47,12 @@ def find_most_recent_job(course, job):
 
     for course_dict in timestamp_dict["courses"]:
         if course_dict["course"] == course:
-            for jobs_dict in course_dict:
+            for jobs_dict in course_dict["jobs"]:
                 if jobs_dict["job"] == job:
                     return jobs_dict["time"]
             raise TimeStampJSONException("Previous job {} doesn't exist for course {}".format(course, job))
 
     raise TimeStampJSONException("Course {} doesn't exist".format(course))
+
+if __name__ == '__main__':
+    print(find_most_recent_job("PSYC_1x_3T2016", "demographic_multiple_choice"))
