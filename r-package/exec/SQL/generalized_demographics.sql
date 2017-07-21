@@ -28,7 +28,7 @@ FROM
   [ubcxdata:{course}.person_course]
 WHERE
   cc_by_ip IS NOT NULL
-  AND start_time > PARSE_UTC_USEC("{date} 00:00:00")
+  AND start_time > PARSE_UTC_USEC("{date}")
 ORDER BY
   start_time
 LIMIT

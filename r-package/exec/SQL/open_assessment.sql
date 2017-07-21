@@ -18,7 +18,8 @@ FROM (TABLE_QUERY( {course}_logs, "integer(regexp_extract(table_id, r'tracklog_(
 WHERE
   event_type contains "openassessment" AND
   event contains "submission_uuid" AND
-  event contains "score_type"
+  event contains "score_type" AND
+  time > PARSE_UTC_USEC("{date}")
 LIMIT
   {limit}
 ) AS A

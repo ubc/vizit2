@@ -58,6 +58,7 @@ FROM (
         OR event_type = "seq_prev"
         OR event_type = "page_close"
         OR event_type LIKE "problem%" )
+      AND time > PARSE_UTC_USEC("{date}")
     ORDER BY
       time
     LIMIT

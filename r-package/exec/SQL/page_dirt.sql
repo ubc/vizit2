@@ -16,6 +16,7 @@ FROM (
     (page IS NOT NULL)
     AND page!= "https://courses.edx.org/xblock"
     AND page != "x_module"
+    AND time > PARSE_UTC_USEC("{date}")
   ORDER BY
     time
   LIMIT

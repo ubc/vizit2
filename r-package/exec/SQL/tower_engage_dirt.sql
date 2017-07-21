@@ -22,7 +22,7 @@ FROM (
     OR module_type IN ('openassessment',
       'chapter',
       'html')
-    AND created > PARSE_UTC_USEC("{date} 00:00:00")
+    AND created > PARSE_UTC_USEC("{date}")
   ORDER BY
     id
   LIMIT
