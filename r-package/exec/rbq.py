@@ -5,7 +5,7 @@ from datetime import datetime
 import pandas as pd
 import click as cl
 
-from .latest_time import perform_timestamp_json_transaction
+from .latest_time import perform_timestamp_json_transaction, read_timestamp_json, TimeStampJSONException
 
 
 class MalformedQueryException(Exception):
@@ -98,8 +98,13 @@ def write_sql_csv(output, query, full=True):
 def bigquery(sql, course, date, limit, confirm, output, full):
 
     if not full and date == "1970-01-01":
-
-        print("Incremental update selected with no datetime specified. Selecting most recent")
+        try:
+            date = read_timestamp_json()
+            print("Incremental update selected with no datetime specified. Selecting "
+                  "most recent date: {}".format(date))
+        except TimeStampJSONException:
+            full = True
+            print("Incremental update has no record of previous query. performing full update.")
 
     long_name = find_course_long_name(course)
     sql_path = os.path.join(os.path.dirname(__file__),
@@ -116,7 +121,6 @@ def bigquery(sql, course, date, limit, confirm, output, full):
     timestamp = datetime.utcnow()
     query_bigquery(query, output, confirm, full)
     perform_timestamp_json_transaction(course, sql, timestamp)
-
 
 
 def find_course_long_name(short_name):

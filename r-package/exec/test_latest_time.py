@@ -4,6 +4,7 @@ from itertools import chain
 
 import pytest
 
+
 def test_update_timestamp_json(timestamp):
     new_timestamps = update_timestamp_json(timestamp, "c_b", "j_b", "2018-01-01 00:00:00")
 
