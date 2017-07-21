@@ -16,14 +16,14 @@ def update_timestamp_json(timestamp_dict, course, job, timestamp):
             for jobs_dict in jobs:
                 if jobs_dict['job'] == job:
                     jobs_dict['time'] = timestamp
+                    return timestamp_dict
 
-            else:
-                jobs.append({"job": job, "time": timestamp})
+            jobs.append({"job": job, "time": timestamp})
+            return timestamp_dict
 
-    else:
-        courses.append({"course": course,
-                        "jobs": [{"job": job,
-                                  "time": timestamp}]})
+    courses.append({"course": course,
+                    "jobs": [{"job": job,
+                              "time": timestamp}]})
     return timestamp_dict
 
 
