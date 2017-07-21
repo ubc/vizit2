@@ -18,7 +18,7 @@ class MalformedCourseException(Exception):
 
 def construct_query(sql: str,
                     course: str,
-                    query_date="1970-01-01",
+                    query_date="1970-01-01 00:00:00",
                     limit=100):
     """Constructs a legal BigQuery from a string.
 
@@ -54,7 +54,7 @@ def construct_query(sql: str,
         return sql_string.format(course=course,
                                  date=query_date,
                                  limit=limit,
-                                 table_date=''.join(query_date.split("-")))
+                                 table_date=''.join(query_date.split(" ")[0].split("-")))
 
 
 def query_bigquery(query: str, output: str, confirm=True, full=True):
@@ -88,7 +88,7 @@ def write_sql_csv(output, query, full=True):
 @cl.argument('sql')
 @cl.option('--course', '-c', help="The course you are interested in.")
 @cl.option('--date', '-d',
-           default="1970-01-01",
+           default="1970-01-01 00:00:00",
            help="The date of the query in YYYY-MM-DD format, if applicable.")
 @cl.option('--limit', '-l', default=100, help="Maximum number of rows")
 @cl.option('--confirm/--auto', default=True, help="Warn before attempting BigQuery")
@@ -97,7 +97,7 @@ def write_sql_csv(output, query, full=True):
            help="Full update or incremental update. (Full purges previous data)")
 def bigquery(sql, course, date, limit, confirm, output, full):
 
-    if not full and date == "1970-01-01":
+    if not full and date == "1970-01-01 00:00:00":
         try:
             date = find_most_recent_job(course, sql)
             print("Incremental update selected with no datetime specified. Selecting "

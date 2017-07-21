@@ -20,6 +20,7 @@ FROM (
     AND event NOT LIKE '%target_url": "https://www.edx.org/%'
     AND event NOT LIKE '%target_url": "https://studio.edx.org%'
     AND event NOT LIKE '%target_url": "javascript:void(0)%'
+    AND time > PARSE_UTC_USEC("{date}")
   LIMIT
     {limit}) AS A
 INNER JOIN
