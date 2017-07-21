@@ -32,20 +32,7 @@ def write_timestamp_json(timestamp_dict):
         json.dump(timestamp_dict, timestamp_file)
 
 
-if __name__ == '__main__':
-    # df = pd.read_csv("../data/PSYC_1x_3T2016/demographic_multiple_choice.csv")
-    # timestamps = read_timestamp_json()
-    # new_timestamps = update_timestamp_json(timestamps, "test_course", "test_job", datetime.utcnow())
-    # print(new_timestamps)
-
-    test_timestamp = {
-        "courses": [{
-            "course": "c_a",
-            "jobs": [{
-                "job": "j_a",
-                "time": "2017-07-03 18:05:38"
-            }]
-        }]
-    }
-
-    print(update_timestamp_json(test_timestamp, "c_b", "j_b", "2017-07-03 18:05:38"))
+def perform_timestamp_json_transaction(course, job, time):
+    timestamp_dict = read_timestamp_json()
+    new_timestamp_dict = update_timestamp_json(timestamp_dict, course, job, time)
+    write_timestamp_json(new_timestamp_dict)
