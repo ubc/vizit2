@@ -93,5 +93,5 @@ dependencies:
   - rsa==3.4.2
   - uritemplate==3.0.0
   - urllib3==1.21.1
-prefix: /home/deadhand/anaconda3/envs/mooc2
+prefix: /home/deadhand/anaconda3/envs/mooc
 

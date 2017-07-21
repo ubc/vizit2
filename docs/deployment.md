@@ -24,7 +24,6 @@ EdXViz is a Shiny server application that allows instructors and course designer
 12. cd r-package/exec/
 13. python populate_courses.py
 	This step can take a significant amount of time to complete, depending on the number of courses being populated.
-14. exit
-15. sudo docker rm -f populate
-13. sudo docker run -d -p 80:3838 -v ~/mooc_capstone_public/r-package/:/srv/shiny-server/ -v ~/mooc_capstone_public/docs/:/var/log/shiny-server/ lstmemery/moocshiny
+14. Ctrl + p + q to exit out
+15. sudo docker run -d -p 80:3838 -v ~/mooc_capstone_public/r-package/inst/:/srv/shiny-server/ -v ~/mooc_capstone_public/logs/:/var/log/shiny-server/ lstmemery/moocshiny
 	This runs the shiny server.
