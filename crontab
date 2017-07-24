@@ -1,2 +1,2 @@
-00 00 * * 02 root source activate mooc && python srv/shiny-server/r-package/exec/populate_courses.py >> srv/shiny-server/logs/cron.log 2>&1
+00 00 * * 02 root docker run --rm -ti --volumes-from gcloud-config --volumes-from gcloud-config-project -v $(pwd):/srv/shiny-server --name="populate-test" lstmemery/moocshiny bin/bash -c "source activate mooc && python srv/shiny-server/r-package/exec/populate_courses.py >> srv/shiny-server/logs/cron.log 2>&1"
 # Don't remove the empty line at the end of this file. It is required to run the cron job
