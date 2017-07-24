@@ -1,0 +1,2 @@
+00 00 * * 02 root source activate mooc && python srv/shiny-server/r-package/exec/populate_courses.py >> srv/shiny-server/logs/cron.log 2>&1
+# Don't remove the empty line at the end of this file. It is required to run the cron job

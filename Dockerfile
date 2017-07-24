@@ -7,7 +7,6 @@ RUN apt-get update --fix-missing && apt-get install -y wget \
  apt-transport-https \
  bzip2 \
  ca-certificates \
- cron \
  gnupg \
  libglib2.0-0 \
  libxext6 \
