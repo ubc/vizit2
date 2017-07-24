@@ -1,6 +1,6 @@
 #!/opt/conda/envs/mooc/bin/python
 
-
+import os
 import subprocess
 import json
 import click as cl
@@ -31,4 +31,5 @@ def write_hashed_courses():
 
 
 if __name__ == '__main__':
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
     populate()
