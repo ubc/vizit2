@@ -1,5 +1,6 @@
 import json
 
+import click as cl
 
 class TimeStampJSONException(Exception):
     pass
@@ -54,6 +55,12 @@ def find_most_recent_job(course, job):
             raise TimeStampJSONException("Previous job {} doesn't exist for course {}".format(course, job))
 
     raise TimeStampJSONException("Course {} doesn't exist".format(course))
+
+
+def latest_time():
+    pass
+
+
 
 if __name__ == '__main__':
     print(find_most_recent_job("PSYC_1x_3T2016", "demographic_multiple_choice"))

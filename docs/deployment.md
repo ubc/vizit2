@@ -10,9 +10,9 @@ EdXViz is a Shiny server application that allows instructors and course designer
 	This will clone the git repo. All the necessary code is included.
 4. cd mooc_capstone_public/
 4. Type `sudo docker run -ti --name gcloud-config google/cloud-sdk gcloud auth login` and authenticate your account.
-5. `sudo docker run --rm -ti -p 3838:3838 --volumes-from gcloud-config -v $(pwd):/srv/shiny-server --name="populate" lstmemery/moocshiny bin/bash`
+5. `sudo docker run --rm -ti -p 3838:3838 --volumes-from gcloud-config --volumes-from gcloud-config-project -v $(pwd):/srv/shiny-server --name="populate" lstmemery/moocshiny bin/bash`
 	This will download and deploy the docker image. The image is about 2 gigabytes and contains the scripts to populate the course and run the server.
-6. cd srv/shiny-server/
+6. `cd srv/shiny-server/`
 7. Type `source activate mooc`
 	This activates a virtual Python environment in which courses can be populated.
 11. nano .config.json
@@ -20,7 +20,7 @@ EdXViz is a Shiny server application that allows instructors and course designer
 	1. A short_name (which defines it's path on the site)
 	2. A BigQuery table name
 	3. A Google Cloud Storage table name (likely similar to the BigQuery name)
-12. cd r-package/exec/
+12. `cd r-package/exec/`
 13. python populate_courses.py
 	This step can take a significant amount of time to complete, depending on the number of courses being populated.
 14. Ctrl + p + q to exit out
