@@ -46,4 +46,8 @@ RUN R -e "install.packages('devtools', repos='https://cran.rstudio.com/')"
 
 RUN R -e "devtools::install_github('AndrewLim1990/mooc_capstone_public/r-package')"
 
+ADD environment.yml /
+
+RUN conda env create -f environment.yml
+
 CMD ["/usr/bin/shiny-server.sh"]

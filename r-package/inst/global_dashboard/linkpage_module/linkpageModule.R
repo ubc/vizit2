@@ -225,10 +225,4 @@ linkpageModule <- function(input, output, session) {
   output$pageview_median <- renderText({
         paste0("Pageview Median: "," ",median(reactive_page()$Pageview,na.rm = TRUE))
         })
-  
-  
-  
-  
- 
-  
 }

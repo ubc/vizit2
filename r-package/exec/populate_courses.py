@@ -1,3 +1,6 @@
+#!/opt/conda/envs/mooc/bin/python
+
+import os
 import subprocess
 import json
 import click as cl
@@ -16,8 +19,7 @@ def populate(overwrite):
                 gcloud=course["cloud_platform"])
             if overwrite:
                 command = "{} --overwrite=true".format(command)
-            else:
-                command = "{} --overwrite=false".format(command)
+            print(command)
             subprocess.call(command, shell=True)
     write_hashed_courses()
 
@@ -29,4 +31,5 @@ def write_hashed_courses():
 
 
 if __name__ == '__main__':
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
     populate()

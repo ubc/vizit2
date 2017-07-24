@@ -19,16 +19,26 @@ FROM (
     pa.created
   FROM
     [ubcxdata:{course}.problem_analysis] pa
-  LEFT JOIN
+  INNER JOIN
     [ubcxdata:{course}.course_problem] cp
   ON
     pa.problem_url_name=cp.problem_id
   WHERE
-    pa.created > PARSE_UTC_USEC("{date} 00:00:00")
+    pa.created > PARSE_UTC_USEC("{date}")
   ORDER BY
     pa.created
   LIMIT
     {limit}) AS A
-LEFT JOIN [ubcxdata:{course}.person_course] AS B
+INNER JOIN (
+  SELECT
+    user_id,
+    gender,
+    mode,
+    sum_dt
+  FROM [ubcxdata:{course}.person_course]
+     WHERE
+    sum_dt IS NOT NULL) AS B
 ON
   A.user_id = B.user_id
+WHERE
+  B.sum_dt IS NOT NULL

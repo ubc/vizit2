@@ -84,7 +84,7 @@ generalModule <- function(input, output, session) {
   
   filtered_students <- reactive({
     filt_segs <- filtered_general()
-    num_students <- n_distinct(filt_segs$username)
+    num_students <- n_distinct(filt_segs$user_id)
     return(num_students)
   })
   

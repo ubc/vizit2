@@ -23,7 +23,7 @@
 #' get_aggregated_df(filt_segs, 25)
 get_aggregated_df <- function(filt_segs, top_selection) {
   aggregate_segment_df <- filt_segs %>% 
-    dplyr::filter(is.na(username) == FALSE) %>% 
+    dplyr::filter(is.na(user_id) == FALSE) %>% 
     group_by(video_id, min_into_video) %>% summarize(count = sum(count), 
                                                      course_order = unique(course_order), 
                                                      vid_length = unique(max_stop_position), 
@@ -36,7 +36,7 @@ get_aggregated_df <- function(filt_segs, top_selection) {
   # seconds No thresholding has been conducted.
   unique_views <- filt_segs %>% 
     group_by(video_id) %>% 
-    summarize(unique_views = n_distinct(username)) %>% 
+    summarize(unique_views = n_distinct(user_id)) %>% 
     arrange(unique_views) %>% ungroup()
   
   # Place number of unique view column into dataframe:
@@ -78,7 +78,7 @@ get_aggregated_df <- function(filt_segs, top_selection) {
   # Adding positive and negative residual ranks to dataframe:
   aggregate_segment_df <- aggregate_segment_df %>% mutate(high_low = model_df$high_low)
   
-  up_until_df <- filt_segs %>% group_by(video_id, username) %>% summarize(max_min = max(min_into_video)) %>% 
+  up_until_df <- filt_segs %>% group_by(video_id, user_id) %>% summarize(max_min = max(min_into_video)) %>% 
     ungroup() %>% group_by(video_id) %>% summarize(up_until = mean(max_min))
   
   aggregate_segment_df <- aggregate_segment_df %>% left_join(up_until_df, 
@@ -312,7 +312,7 @@ get_rank <- function(x) {
 #' get_avg_time_spent(filtered_segments)
 get_avg_time_spent <- function(filtered_segments) {
   
-  avg_time_spent <- filtered_segments %>% group_by(username, video_id) %>% 
+  avg_time_spent <- filtered_segments %>% group_by(user_id, video_id) %>% 
     summarize(time_spent = sum(count) * SEGMENT_SIZE) %>% ungroup() %>% 
     group_by(video_id) %>% summarize(avg_time_spent = mean(time_spent))
   

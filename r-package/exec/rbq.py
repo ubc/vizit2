@@ -1,10 +1,11 @@
 import json
 import os.path
 
-from datetime import date as d
 from datetime import datetime
 import pandas as pd
 import click as cl
+
+from latest_time import perform_timestamp_json_transaction, find_most_recent_job, TimeStampJSONException
 
 
 class MalformedQueryException(Exception):
@@ -17,7 +18,7 @@ class MalformedCourseException(Exception):
 
 def construct_query(sql: str,
                     course: str,
-                    query_date="1970-01-01",
+                    query_date="1970-01-01 00:00:00",
                     limit=100):
     """Constructs a legal BigQuery from a string.
 
@@ -40,7 +41,7 @@ def construct_query(sql: str,
     if not isinstance(course, str):
         raise MalformedQueryException("Course is not a string")
     try:
-        datetime.strptime(query_date, "%Y-%m-%d")
+        datetime.strptime(query_date, "%Y-%m-%d %H:%M:%S")
     except ValueError:
         raise MalformedQueryException("Query date is not a date")
     try:
@@ -53,7 +54,7 @@ def construct_query(sql: str,
         return sql_string.format(course=course,
                                  date=query_date,
                                  limit=limit,
-                                 table_date=''.join(query_date.split("-")))
+                                 table_date=''.join(query_date.split(" ")[0].split("-")))
 
 
 def query_bigquery(query: str, output: str, confirm=True, full=True):
@@ -77,6 +78,7 @@ def query_bigquery(query: str, output: str, confirm=True, full=True):
 
 def write_sql_csv(output, query, full=True):
     ubc_tbl = pd.read_gbq(query, "ubcxdata")
+    print("Full Update? {}".format(full))
     if full:
         ubc_tbl.to_csv(output, index=False)
     else:
@@ -87,7 +89,7 @@ def write_sql_csv(output, query, full=True):
 @cl.argument('sql')
 @cl.option('--course', '-c', help="The course you are interested in.")
 @cl.option('--date', '-d',
-           default="1970-01-01",
+           default="1970-01-01 00:00:00",
            help="The date of the query in YYYY-MM-DD format, if applicable.")
 @cl.option('--limit', '-l', default=100, help="Maximum number of rows")
 @cl.option('--confirm/--auto', default=True, help="Warn before attempting BigQuery")
@@ -95,6 +97,16 @@ def write_sql_csv(output, query, full=True):
 @cl.option('--full/--increment', default=True,
            help="Full update or incremental update. (Full purges previous data)")
 def bigquery(sql, course, date, limit, confirm, output, full):
+
+    if not full and date == "1970-01-01 00:00:00":
+        try:
+            date = find_most_recent_job(course, sql)
+            print("Incremental update selected with no datetime specified. Selecting "
+                  "most recent date: {}".format(date))
+        except TimeStampJSONException:
+            full = True
+            print("Incremental update has no record of previous query. performing full update.")
+
     long_name = find_course_long_name(course)
     sql_path = os.path.join(os.path.dirname(__file__),
                                 "SQL",
@@ -107,7 +119,9 @@ def bigquery(sql, course, date, limit, confirm, output, full):
                               "data",
                               course,
                               "{sql}.csv".format(sql=sql))
+    timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
     query_bigquery(query, output, confirm, full)
+    perform_timestamp_json_transaction(course, sql, timestamp)
 
 
 def find_course_long_name(short_name):

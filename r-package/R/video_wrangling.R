@@ -89,8 +89,8 @@ prepare_video_data <- function(video_data, video_axis)
 {
   
   # Doing conversions:
-  prepared_data <- video_data %>% dplyr::filter(is.na(username) == FALSE) %>% 
-    mutate(time = lubridate::ymd_hms(time)) %>% arrange(time) %>% arrange(username) %>% 
+  prepared_data <- video_data %>% dplyr::filter(is.na(user_id) == FALSE) %>% 
+    mutate(time = lubridate::ymd_hms(time)) %>% arrange(time) %>% arrange(user_id) %>% 
     mutate(new_speed = as.double(new_speed)) %>% mutate(old_speed = as.double(old_speed)) %>% 
     mutate(new_time = as.double(new_time)) %>% mutate(old_time = as.double(old_time)) %>% 
     mutate(speed_change_position = as.double(speed_change_position)) %>% 
@@ -134,10 +134,10 @@ prepare_video_data <- function(video_data, video_axis)
 get_start_end_df <- function(data)
 {
   start_end_df <- data %>% dplyr::filter(event_type != "load_video") %>% 
-    group_by(username) %>% mutate(event_group = cumsum(event_type == 
+    group_by(user_id) %>% mutate(event_group = cumsum(event_type == 
                                                          "play_video")) %>% ungroup() %>% dplyr::filter(event_group > 0) %>% 
     mutate(stop_event = (event_type != "speed_change_video" & event_type != 
-                           "seek_video")) %>% group_by(username, event_group) %>% mutate(stop_events = cumsum(stop_event)) %>% 
+                           "seek_video")) %>% group_by(user_id, event_group) %>% mutate(stop_events = cumsum(stop_event)) %>% 
     dplyr::filter(stop_events <= 2) %>% mutate(event_type_next = lead(event_type), 
                                                position_next = lead(position), old_time_next = lead(old_time), 
                                                speed_change_position_next = lead(speed_change_position), time_ahead = lead(time), 
@@ -161,7 +161,7 @@ get_start_end_df <- function(data)
     mutate(valid = check_integrity(start, end, max_stop_position)) %>% 
     dplyr::filter(valid == TRUE) %>% select(video_id, video_name, mode, 
                                             certified, gender, activity_level, max_stop_position, course_order, 
-                                            index_chapter, chapter = chapter_name, username, start, end)
+                                            index_chapter, chapter = chapter_name, user_id, start, end)
   
   return(start_end_df)
 }
@@ -229,10 +229,10 @@ make_tidy_segments <- function(data)
   
   # Filter out unwatched segments and select relevant columns:
   tidy_segment_df <- tidy_segment_df %>% dplyr::filter(count > 0) %>% 
-    dplyr::filter(is.na(username) == FALSE) %>% select(-start, -end, 
+    dplyr::filter(is.na(user_id) == FALSE) %>% select(-start, -end, 
                                                        -count, -segment)
   
-  tidy_segment_df <- tidy_segment_df %>% group_by(video_id, username, 
+  tidy_segment_df <- tidy_segment_df %>% group_by(video_id, user_id, 
                                                   min_into_video, video_name, mode, certified, gender, activity_level, 
                                                   max_stop_position, course_order, index_chapter, chapter) %>% summarize(count = n())
   

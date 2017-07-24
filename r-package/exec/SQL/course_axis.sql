@@ -1,3 +1,3 @@
 SELECT * FROM [ubcxdata:{course}.course_axis]
-WHERE start > PARSE_UTC_USEC("{date} 00:00:00")
+WHERE start > PARSE_UTC_USEC("{date}")
 LIMIT {limit}

@@ -17,11 +17,17 @@ fi
 
 Populate () {
 
+    echo "../data/$SHORT/$1.csv"
     if [[ ! -e "../data/$SHORT/$1.csv"  || ${OVERWRITE} =~ .*"true".*  ]]; then
-        echo "python3 ./rbq.py $1 -c ${SHORT} -l 1000000000 --auto"
-        python3 ./rbq.py $1 -c ${SHORT} -l 1000000000 --auto
+        echo "python ./rbq.py $1 -c ${SHORT} -l 1000000000 --auto"
+        python ./rbq.py $1 -c ${SHORT} -l 1000000000 --auto
     else
-        echo "$SHORT $1 already exists. Ignoring."
+        if [[ ! ${OVERWRITE} =~ .*"true".* ]]; then
+            echo "python ./rbq.py $1 -c ${SHORT} -l 1000000000 -d '$(python ./latest_time.py ${SHORT} $1)' --increment --auto"
+             python ./rbq.py $1 -c ${SHORT} -l 1000000000 -d "$(python ./latest_time.py ${SHORT} $1)" --increment --auto
+        else
+            echo "$SHORT $1 already exists. Ignoring."
+        fi
     fi
 
 }
@@ -45,8 +51,8 @@ Populate page_dirt
 
 bash ./download_gcp_material.sh ${SHORT} "${GCLOUD}"
 
-python3 xml_extraction.py ${SHORT} --problems
-python3 xml_extraction.py ${SHORT} --assessments
+python xml_extraction.py ${SHORT} --problems
+python xml_extraction.py ${SHORT} --assessments
 
 RPopulate () {
 
