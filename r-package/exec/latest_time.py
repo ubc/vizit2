@@ -57,10 +57,14 @@ def find_most_recent_job(course, job):
     raise TimeStampJSONException("Course {} doesn't exist".format(course))
 
 
-def latest_time():
-    pass
-
-
+@cl.command()
+@cl.argument('course')
+@cl.argument('job')
+def latest_time(course, job):
+    try:
+        cl.echo(find_most_recent_job(course, job))
+    except TimeStampJSONException:
+        cl.echo("1970-01-01 00:00:00")
 
 if __name__ == '__main__':
-    print(find_most_recent_job("PSYC_1x_3T2016", "demographic_multiple_choice"))
+    latest_time()
