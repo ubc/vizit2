@@ -16,8 +16,7 @@ def populate(overwrite):
                 gcloud=course["cloud_platform"])
             if overwrite:
                 command = "{} --overwrite=true".format(command)
-            else:
-                command = "{} --overwrite=false".format(command)
+            print(command)
             subprocess.call(command, shell=True)
     write_hashed_courses()
 
