@@ -18,15 +18,16 @@ fi
 Populate () {
 
     echo "../data/$SHORT/$1.csv"
-    echo ${OVERWRITE}
     if [[ ! -e "../data/$SHORT/$1.csv"  || ${OVERWRITE} =~ .*"true".*  ]]; then
-        echo "python3 ./rbq.py $1 -c ${SHORT} -l 1000000000 --auto"
-        python3 ./rbq.py $1 -c ${SHORT} -l 1000000000 --auto
+        echo "python ./rbq.py $1 -c ${SHORT} -l 1000000000 --auto"
+        python ./rbq.py $1 -c ${SHORT} -l 1000000000 --auto
     else
         if [[ ! ${OVERWRITE} =~ .*"true".* ]]; then
-            sqldate=python3 ./latest_time.py ${SHORT} $1
+            sqldate=$(python ./latest_time.py ${SHORT} $1)
             echo ${sqldate}
-            python3 ./rbq.py $1 -c ${SHORT} -l 1000000000 -d ${sqldate} --auto
+            echo "python ./rbq.py $1 -c ${SHORT} -l 1000000000 -d ${sqldate}"
+             python ./rbq.py $1 -c ${SHORT} -l 1000000000 -d ${sqldate}
+             sleep 600
         else
             echo "$SHORT $1 already exists. Ignoring."
         fi
@@ -53,8 +54,8 @@ Populate page_dirt
 
 bash ./download_gcp_material.sh ${SHORT} "${GCLOUD}"
 
-python3 xml_extraction.py ${SHORT} --problems
-python3 xml_extraction.py ${SHORT} --assessments
+python xml_extraction.py ${SHORT} --problems
+python xml_extraction.py ${SHORT} --assessments
 
 RPopulate () {
 

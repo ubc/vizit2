@@ -1,6 +1,9 @@
+#!/opt/conda/envs/mooc/bin/python
+
 import json
 
 import click as cl
+
 
 class TimeStampJSONException(Exception):
     pass
@@ -12,7 +15,6 @@ def read_timestamp_json():
 
 
 def update_timestamp_json(timestamp_dict, course, job, timestamp):
-
     courses = timestamp_dict['courses']
 
     for course_dict in courses:

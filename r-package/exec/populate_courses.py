@@ -1,3 +1,6 @@
+#!/opt/conda/envs/mooc/bin/python
+
+
 import subprocess
 import json
 import click as cl

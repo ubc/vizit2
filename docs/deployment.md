@@ -10,6 +10,8 @@ EdXViz is a Shiny server application that allows instructors and course designer
 	This will clone the git repo. All the necessary code is included.
 4. cd mooc_capstone_public/
 4. Type `sudo docker run -ti --name gcloud-config google/cloud-sdk gcloud auth login` and authenticate your account.
+
+
 5. `sudo docker run --rm -ti -p 3838:3838 --volumes-from gcloud-config --volumes-from gcloud-config-project -v $(pwd):/srv/shiny-server --name="populate" lstmemery/moocshiny bin/bash`
 	This will download and deploy the docker image. The image is about 2 gigabytes and contains the scripts to populate the course and run the server.
 6. `cd srv/shiny-server/`
