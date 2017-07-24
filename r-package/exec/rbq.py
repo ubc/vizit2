@@ -78,6 +78,7 @@ def query_bigquery(query: str, output: str, confirm=True, full=True):
 
 def write_sql_csv(output, query, full=True):
     ubc_tbl = pd.read_gbq(query, "ubcxdata")
+    print("Full Update? {}".format(full))
     if full:
         ubc_tbl.to_csv(output, index=False)
     else:

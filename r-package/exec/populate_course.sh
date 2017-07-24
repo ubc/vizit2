@@ -23,8 +23,8 @@ Populate () {
         python ./rbq.py $1 -c ${SHORT} -l 1000000000 --auto
     else
         if [[ ! ${OVERWRITE} =~ .*"true".* ]]; then
-            echo "python ./rbq.py $1 -c ${SHORT} -l 1000000000 -d '$(python ./latest_time.py ${SHORT} $1)' --auto"
-             python ./rbq.py $1 -c ${SHORT} -l 1000000000 -d "$(python ./latest_time.py ${SHORT} $1)" --auto
+            echo "python ./rbq.py $1 -c ${SHORT} -l 1000000000 -d '$(python ./latest_time.py ${SHORT} $1)' --increment --auto"
+             python ./rbq.py $1 -c ${SHORT} -l 1000000000 -d "$(python ./latest_time.py ${SHORT} $1)" --increment --auto
         else
             echo "$SHORT $1 already exists. Ignoring."
         fi
