@@ -64,9 +64,9 @@ def find_most_recent_job(course, job):
 @cl.argument('job')
 def latest_time(course, job):
     try:
-        cl.echo("{}".format('\ '.join(find_most_recent_job(course, job).split(' '))))
+        cl.echo(find_most_recent_job(course, job))
     except TimeStampJSONException:
-        cl.echo("1970-01-01\ 00:00:00")
+        cl.echo("1970-01-01 00:00:00")
 
 if __name__ == '__main__':
     latest_time()

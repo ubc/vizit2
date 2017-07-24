@@ -23,11 +23,8 @@ Populate () {
         python ./rbq.py $1 -c ${SHORT} -l 1000000000 --auto
     else
         if [[ ! ${OVERWRITE} =~ .*"true".* ]]; then
-            sqldate=$(python ./latest_time.py ${SHORT} $1)
-            echo ${sqldate}
-            echo "python ./rbq.py $1 -c ${SHORT} -l 1000000000 -d ${sqldate}"
-             python ./rbq.py $1 -c ${SHORT} -l 1000000000 -d ${sqldate}
-             sleep 600
+            echo "python ./rbq.py $1 -c ${SHORT} -l 1000000000 -d '$(python ./latest_time.py ${SHORT} $1)' --auto"
+             python ./rbq.py $1 -c ${SHORT} -l 1000000000 -d "$(python ./latest_time.py ${SHORT} $1)" --auto
         else
             echo "$SHORT $1 already exists. Ignoring."
         fi
