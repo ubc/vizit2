@@ -7,7 +7,7 @@ shinyServer(function(input, output, session) {
     if ("dash" %in% names(query)) {
       query$dash
     } else {
-      "video"
+      "problems"
     }
   })
 

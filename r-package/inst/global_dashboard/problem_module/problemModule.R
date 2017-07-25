@@ -35,6 +35,7 @@ problemModule <- function(input, output, session) {
   })
 
   filtered_students <- reactive({
+    validate(need(try(nrow(filtered_general()) > 0), "No students found."))
     filt_segs <- filtered_general()
     n_distinct(filt_segs$user_id)
   })
@@ -89,6 +90,7 @@ problemModule <- function(input, output, session) {
   })
 
   chap_name <- reactive({
+    validate(need(try(unique(joined_users_problems()$chapter)), "No Chapters Found"))
     chapters <- unique(joined_users_problems()$chapter)
     chapters[!is.na(chapters)]
   })
@@ -108,6 +110,7 @@ problemModule <- function(input, output, session) {
                                                  read_csv)
 
   bottom_melted_problems <- reactive({
+    validate(need(try(nrow(joined_users_problems()) > 0), "No problems found."))
     filtered_joined_problems <- filter_demographics(joined_users_problems(),
                                                     gender = gender(),
                                                     mode = mode(),
@@ -128,6 +131,7 @@ problemModule <- function(input, output, session) {
   })
 
   reactive_overview <- reactive({
+    validate(need(try(nrow(problems_tbl()) > 0), "No problems found."))
     filter_summary_scores <- problems_tbl() %>%
       filter_demographics(gender = gender(),
                           mode = mode(),
@@ -142,6 +146,7 @@ problemModule <- function(input, output, session) {
   })
 
   reactive_chapter_overview <- reactive({
+    validate(need(try(nrow(problems_tbl()) > 0), "No problems found."))
     filter_joined_users_problems <- problems_tbl() %>%
       filter_demographics(gender = gender(),
                           mode = mode(),
@@ -160,6 +165,7 @@ problemModule <- function(input, output, session) {
   })
 
   reactive_assessment <- reactive({
+    validate(need(try(nrow(extracted_assessment_tbl()) > 0), "No assessments found"))
     extracted_assessment_tbl() %>%
       filter_demographics(gender = gender(),
                           mode = mode(),
