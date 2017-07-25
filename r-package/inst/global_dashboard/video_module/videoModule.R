@@ -47,6 +47,7 @@ videoModule <- function(input, output, session)
   
   ### Get Chap Name ###
   chap_name <- reactive({
+    validate(need(try(nrow(tidy_segment_df()) > 0), "No chapters found."))
     chap_name <- unique(tidy_segment_df()$chapter)
     chap_name <- chap_name[!is.na(chap_name)]
     return(chap_name)
@@ -62,6 +63,7 @@ videoModule <- function(input, output, session)
   
   #### Filtering for video heat maps: ###
   filtered_segments <- reactive({
+    validate(need(try(nrow(tidy_segment_df()) > 0), "No segments found."))
     # Filter students by selected demographics
     filt_segs <- filter_demographics(tidy_segment_df(), gender = gender(), 
                                      activity_level = activity_level(), mode = mode())
@@ -75,6 +77,7 @@ videoModule <- function(input, output, session)
   
   #### Filtering for number of students: ###
   filtered_students <- reactive({
+    validate(need(try(nrow(tidy_segment_df()) > 0), "No students found."))
     # Filter students by selected demographics
     filt_segs <- filter_demographics(tidy_segment_df(), gender = gender(), 
                                      activity_level = activity_level(), mode = mode())
@@ -101,6 +104,7 @@ videoModule <- function(input, output, session)
   
   ### Filtering for summary table ###
   filtered_table <- reactive({
+    validate(need(try(nrow(tidy_segment_df()) > 0), "No videos found."))
     # Filter students by selected demographics
     filt_segs <- filter_demographics(tidy_segment_df(), gender = gender(), 
                                      activity_level = activity_level(), mode = mode())

@@ -165,7 +165,7 @@ problemModule <- function(input, output, session) {
   })
 
   reactive_assessment <- reactive({
-    validate(need(try(nrow(extracted_assessment_tbl()) > 0), "No assessments found"))
+    validate(need(try(nrow(extracted_assessment_tbl()) > 0), "No assessments found."))
     extracted_assessment_tbl() %>%
       filter_demographics(gender = gender(),
                           mode = mode(),

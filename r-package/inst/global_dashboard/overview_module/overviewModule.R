@@ -1,7 +1,5 @@
 overviewModule <- function(input, output, session) {
   
-  
- 
   # Import requested course 
   requested_course <- reactive({
     query <- parseQueryString(session$clientData$url_search)
