@@ -102,7 +102,7 @@ get_nactive <- function(detail_df){
 join_engagement_item <- function(filtered_engagement,filtered_item){
   
    # Join two tables to get the item name 
-  tower_df <- left_join(filtered_item,filtered_engagement,by = "module_id") %>% 
+  tower_df <- left_join(filtered_item(), filtered_engagement,by = "module_id") %>% 
   mutate(nactive=replace(nactive, is.na(nactive)==TRUE,0)) %>% 
   dplyr::filter(category == "chapter" |category == "video"| category == "problem") %>% 
   arrange(index)
@@ -179,10 +179,10 @@ return(student_num)
 #' @examples
 #' make_engagement_eiffel_tower(tower_data = reactive_tower_df())
 #' @export
-make_engagement_eiffel_tower <- function(tower_data){
+make_engagement_eiffel_tower <- function(tower_data) {
   
 # set up axis and size parameter
-a <- list(autotick = TRUE, ticks = "outside", title = "Number of student",side = "top" )
+a <- list(autotick = TRUE, ticks = "outside", title = "Number of student", side = "top" )
 m <- list(l=50, r=50, b=0, t=50)
     
   if(all(is.na(tower_data$nactive)==TRUE)){
