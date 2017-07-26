@@ -18,7 +18,7 @@ def populate(overwrite):
                 big_table=course['big_table'],
                 gcloud=course["cloud_platform"])
             if overwrite:
-                command = "{} --overwrite=true".format(command)
+                command = "{} --overwrite=true >> srv/shiny-server/logs/cron.log 2>&1".format(command)
             print(command)
             subprocess.call(command, shell=True)
     write_hashed_courses()

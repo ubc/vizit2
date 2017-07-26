@@ -1,7 +1,5 @@
 overviewModule <- function(input, output, session) {
   
-  
- 
   # Import requested course 
   requested_course <- reactive({
     query <- parseQueryString(session$clientData$url_search)
@@ -33,7 +31,10 @@ overviewModule <- function(input, output, session) {
   
    # Create module name vector for module filtering
   
-
+  reactive_get_module_vector <- reactive({
+    validate(need(try(nrow(tower_item()) > 0), "No modules found."))
+    get_module_vector(item_df = tower_item())[-1]
+  })
   
    output$chap_name_overview <- renderUI({
                         
@@ -41,7 +42,7 @@ overviewModule <- function(input, output, session) {
                         
                         selectInput(ns("module"),
                                     "Module:",
-                                    choices = append("All",get_module_vector(item_df = tower_item())[-1]),
+                                    choices = append("All", reactive_get_module_vector()),
                                     selected = "All")
     })
   
@@ -102,9 +103,10 @@ overviewModule <- function(input, output, session) {
    
   
   # Create module name column for course items dataframe
-  tower_item_new <- create_module_name(item_df = tower_item())
-  
-  
+  tower_item_new <- reactive({
+    validate(need(try(nrow(tower_item()) > 0), "No course components found."))
+    create_module_name(item_df = tower_item())
+  })
   
    ##################################################
    ############        Tower  Plot      ############# 
@@ -139,13 +141,11 @@ overviewModule <- function(input, output, session) {
    
    
   # Join engagement dataframe and item dataframe together 
-  reactive_tower_df <- reactive({ 
-    
-        
-       tower_df <- join_engagement_item(filtered_engagement = filtered_tower_engage(),
-                                        filtered_item = filtered_tower_item())
-    
-       return(tower_df)
+  reactive_tower_df <- reactive({
+    validate(need(try(nrow(filtered_tower_engage()) > 0), "No engagement found."))
+    tower_df <- join_engagement_item(filtered_engagement = filtered_tower_engage(),
+                                      filtered_item = filtered_tower_item())
+    return(tower_df)
    
   })
   
@@ -170,8 +170,7 @@ overviewModule <- function(input, output, session) {
   
   # Make tower plot visualization
   output$tower_plot <- plotly::renderPlotly ({
-    
-         make_engagement_eiffel_tower(reactive_tower_df())
+    make_engagement_eiffel_tower(reactive_tower_df())
     
 })
   

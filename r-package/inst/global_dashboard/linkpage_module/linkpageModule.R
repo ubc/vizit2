@@ -17,26 +17,45 @@ linkpageModule <- function(input, output, session) {
   root <- "../../data/"
   result_root <- "../../results/"
 
-  course_axis <- reactiveFileReader(10000,
+  course_axis_csv <- reactiveFileReader(10000,
                 session,
                 paste0(root, requested_course(), "/course_axis.csv"),
                 read_csv)
 
+  course_axis <- reactive({
+    validate(need(try(nrow(course_axis_csv()) > 0), "No course axis found."))
+    course_axis_csv()
+  })
  
-  link_dat <- reactiveFileReader(10000,
+  link_dat_csv <- reactiveFileReader(10000,
                 session,
                 paste0(root, requested_course(), "/external_link.csv"),
                 read_csv)
   
-  log_dat <- reactiveFileReader(10000,
+  link_dat <- reactive({
+    validate(need(try(nrow(link_dat_csv()) > 0), "No links found."))
+    link_dat_csv()
+  })
+  
+  log_dat_csv <- reactiveFileReader(10000,
                 session,
                 paste0(root, requested_course(), "/page.csv"),
                 read_csv)
   
-  page_name <- reactiveFileReader(10000,
+  log_dat <- reactive({
+    validate(need(try(nrow(log_dat_csv()) > 0), "No log data found."))
+    log_dat_csv()
+  })
+  
+  page_name_csv <- reactiveFileReader(10000,
                 session,
                 paste0(root, requested_course(), "/page_name.csv"),
                 read_csv)
+  
+  page_name <- reactive({
+    validate(need(try(nrow(page_name_csv()) > 0), "No pages found."))
+    page_name_csv()
+  })
   
  
   # Create module name vector for module filtering
