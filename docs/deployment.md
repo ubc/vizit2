@@ -27,7 +27,7 @@ EdXViz is a Shiny server application that allows instructors and course designer
 14. Ctrl + p + q to exit out
 15. `sudo docker-compose up`
 
-## Running Shiny server without SSL
+### Running Shiny server without SSL
 - Type `sudo docker run -d -p 80:3838 -v ~/mooc_capstone_public/r-package/inst/:/srv/shiny-server/ -v ~/mooc_capstone_public/logs/:/var/log/shiny-server/ lstmemery/moocshiny`
 
 ## Population Command
