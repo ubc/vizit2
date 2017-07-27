@@ -14,9 +14,11 @@ generalModule <- function(input, output, session) {
   })
   
   filtered_general <- reactive({
-    filt_gen <- filter_demographics(demo(), gender = gender(), activity_level = activity_level(), 
-                                    mode = mode())
-    filt_gen
+    validate(need(try(nrow(demo()) > 0), "No demographics found."))
+    filter_demographics(demo(), 
+                        gender = gender(), 
+                        activity_level = activity_level(), 
+                        mode = mode())
   })
   
   # Obtain requested course to display:

@@ -17,30 +17,55 @@ forumModule <- function(input, output, session) {
                 # Read in the data.
                 root <- "../../data/"
 
-                wrangled_forum_posts <- reactiveFileReader(10000,
+                wrangled_forum_posts_csv <- reactiveFileReader(10000,
                                                            session,
                                                            paste0(root, requested_course(), "/wrangled_forum_posts.csv"),
                                                            read_csv)
 
-                wrangled_forum_words <- reactiveFileReader(10000,
+                wrangled_forum_posts <- reactive({
+                  validate(need(try(nrow(wrangled_forum_posts_csv()) > 0), "No forum posts found."))
+                  wrangled_forum_posts_csv()
+                })
+                
+                wrangled_forum_words_csv <- reactiveFileReader(10000,
                                                            session,
                                                            paste0(root, requested_course(), "/wrangled_forum_words.csv"),
                                                            read_csv)
                 
-                wrangled_forum_views <- reactiveFileReader(10000,
+                wrangled_forum_words <- reactive({
+                  validate(need(try(nrow(wrangled_forum_words_csv()) > 0), "No forum words found."))
+                  wrangled_forum_words_csv()
+                })
+                
+                wrangled_forum_views_csv <- reactiveFileReader(10000,
                                                            session,
                                                            paste0(root, requested_course(), "/wrangled_forum_views.csv"),
                                                            read_csv)
                 
-                wrangled_forum_elements <- reactiveFileReader(10000,
+                wrangled_forum_views <- reactive({
+                  validate(need(try(nrow(wrangled_forum_views_csv()) > 0), "No forum views found."))
+                  wrangled_forum_views_csv()
+                })
+                
+                wrangled_forum_elements_csv <- reactiveFileReader(10000,
                                                               session,
                                                               paste0(root, requested_course(), "/wrangled_forum_elements.csv"),
                                                               read_csv)
                 
-                wrangled_forum_searches <- reactiveFileReader(10000,
+                wrangled_forum_elements <- reactive({
+                  validate(need(try(nrow(wrangled_forum_elements_csv()) > 0), "No forum elements found."))
+                  wrangled_forum_elements_csv()
+                })
+                
+                wrangled_forum_searches_csv <- reactiveFileReader(10000,
                                                               session,
                                                               paste0(root, requested_course(), "/wrangled_forum_searches.csv"),
                                                               read_csv)
+                
+                wrangled_forum_searches <- reactive({
+                  validate(need(try(nrow(wrangled_forum_searches_csv()) > 0), "No forum searches found."))
+                  wrangled_forum_searches_csv()
+                })
 
                 # Update the activity level.
                 activity_level <- reactive({
