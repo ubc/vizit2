@@ -1,4 +1,4 @@
-time,event_type,username,video_id,position,old_time,new_time,old_speed,new_speed,speed_change_position,video_name,mode,certified,gender,sum_dt
+time,event_type,user_id,video_id,position,old_time,new_time,old_speed,new_speed,speed_change_position,video_name,mode,certified,gender,sum_dt
 2017-04-31 16:14:50.000000,play_video,AndrewLim,dec5f7321e38481a9cdaba33dc06f071,0.0,,,,,,"Programming: Video I",audit,False,m,4575.065750999999
 2017-04-31 16:15:50.000000,seek_video,AndrewLim,dec5f7321e38481a9cdaba33dc06f071,,60.0,0.0,,,,"Programming: Video I",audit,False,m,4575.065750999999
 2017-04-31 16:16:50.000000,stop_video,AndrewLim,dec5f7321e38481a9cdaba33dc06f071,120.0,,,,,,"Programming: Video I",audit,False,m,4575.065750999999

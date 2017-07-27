@@ -4,11 +4,9 @@ test_that("Wrangling script properly counts rewatches via seek_video", {
   wrangle_video("testing", test=TRUE)
   wrangled_data <- read_csv("data/wrangled_video_heat.csv")
 
-  View(wrangled_data)
-
   # Check to see that watched time under a minute twice
   test_df <- wrangled_data %>%
-    filter(username == "AndrewLim",
+    filter(user_id == "AndrewLim",
            video_name == 'Programming: Video I',
            min_into_video <= 1)
   test_count <- test_df$count
@@ -22,7 +20,7 @@ test_that("Wrangling script properly cuts off with seek_video", {
 
   # Check to see that watched time over a minute once
   test_df <- wrangled_data %>%
-    filter(username == "AndrewLim",
+    filter(user_id == "AndrewLim",
            video_name == 'Programming: Video I',
            min_into_video > 1)
   test_count <- test_df$count
@@ -36,7 +34,7 @@ test_that("Wrangling script properly filters out small watch durations", {
 
   # Check to see that watched time over a minute once
   test_df <- wrangled_data %>%
-    filter(username == "MattEmery",
+    filter(user_id == "MattEmery",
            video_name == 'Programming: Video IV',
            min_into_video == 0)
 
@@ -51,7 +49,7 @@ test_that("Wrangling script properly parses seq_next, page_close, etc.", {
 
   # Check to see that watched time over a minute once
   test_df <- wrangled_data %>%
-    filter(username == "AndrewLim",
+    filter(user_id == "AndrewLim",
            video_name == 'Programming: Video III')
 
   test_end_time <- max(test_df$min_into_video)
