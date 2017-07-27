@@ -43,7 +43,7 @@ test_that("prepare_words() successfully tokenizes the forum posts and removes st
 
 test_that("prepare_json() works as expected.", {
         
-        course_json <- fromJSON(txt = "../../data/test_data/forum_wrangling/prepare_json/prod_analytics.json")
+        course_json <- jsonlite::fromJSON(txt = "../../data/test_data/forum_wrangling/prepare_json/prod_analytics.json")
         json_as_tidy_dataframe <- read.csv("../../data/test_data/forum_wrangling/prepare_json/json_as_tidy_dataframe.csv")
         
         json_as_tidy_dataframe <- json_as_tidy_dataframe %>% mutate_if(is.factor,as.character)
@@ -55,11 +55,16 @@ test_that("prepare_json() works as expected.", {
 
 test_that("prepare_xml() works as expected.", {
         
-        course_xml <- xmlInternalTreeParse(file = "../../data/test_data/forum_wrangling/prepare_xml/xbundle.xml")
+        course_xml <- XML::xmlInternalTreeParse(file = "../../data/test_data/forum_wrangling/prepare_xml/xbundle.xml")
+        
+        # read.csv is required for expect_equal to work here
         xml_as_tidy_dataframe <- read.csv("../../data/test_data/forum_wrangling/prepare_xml/xml_as_tidy_dataframe.csv")
         
-        xml_as_tidy_dataframe <- xml_as_tidy_dataframe %>% mutate_if(is.factor,as.character)
-        prepared <- prepare_xml(course_xml) %>% mutate_if(is.factor,as.character)
+        xml_as_tidy_dataframe <- xml_as_tidy_dataframe %>% 
+          mutate_if(is.factor, as.character)
+        
+        prepared <- prepare_xml(course_xml) %>% 
+          mutate_if(is.factor, as.character)
         
         expect_equal(prepared, xml_as_tidy_dataframe)
         

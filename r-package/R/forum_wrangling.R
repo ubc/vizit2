@@ -405,11 +405,11 @@ prepare_words <- function(forum) {
 
         # Get one word per row.
         tidy_words <- forum %>%
-                unnest_tokens(word, body)
+                tidytext::unnest_tokens(word, body)
 
         # Remove stop words.
         forum_words <- tidy_words %>%
-                anti_join(stop_words)
+                anti_join(tidytext::stop_words)
 
         # Keep only the relevant variables.
         forum_words <- forum_words %>%
@@ -514,12 +514,11 @@ prepare_json <- function(json) {
 #' prepare_xml(xml)
 #' @export
 prepare_xml <- function(xml) {
-
         # Get the discussion nodes.
-        discussion_nodes <- xpathApply(xml, "//discussion")
+        discussion_nodes <- XML::xpathApply(xml, "//discussion")
 
         # Get the attributes of each discussion node.
-        all_parameters <- sapply(discussion_nodes, xmlAttrs)
+        all_parameters <- sapply(discussion_nodes, XML::xmlAttrs)
 
         # Get the parameters of interest and save them as a dataframe.
         if (class(all_parameters) == "list") {  ## Some course XMLs spit out a nested list of discussion node parameters.
