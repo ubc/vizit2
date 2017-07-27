@@ -20,7 +20,7 @@ services:
     container_name: nginx-gen
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - ./proxy/templates:/etc/docker-gen/templates:ro
+      - ./../proxy/templates:/etc/docker-gen/templates:ro
     volumes_from:
       - nginx
     entrypoint: /bin/sh -c
