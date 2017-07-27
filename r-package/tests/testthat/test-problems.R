@@ -80,7 +80,7 @@ test_that("Get Mean Scores Filterable returns the expected percentages", {
   test_lookup_table <- data_frame(id = c("a", "a", "b", "b", "c", "c"),
                                   choice_id = c("1", "2", "1", "2", "1", "2"))
 
-  test_mean_scores_filterable <- get_mean_scores_filterable(test_joined_tbl, test_lookup_table)
+  test_mean_scores_filterable <- get_mean_scores_filterable(test_joined_tbl)
 
   reference_tbl <- data_frame(problem_url_name = c("a", "c"),
                               n = as.integer(c(4, 1)),
@@ -103,7 +103,7 @@ test_that("Summarise Scores by Chapter summarises chapters", {
                                   chapter = c("A", "A", "B", "B", "A", "A"),
                                   chapter_index = c(1, 1, 2, 2, 1, 1))
 
-  test_mean_scores <- get_mean_scores_filterable(test_joined_tbl, test_lookup_table)
+  test_mean_scores <- get_mean_scores_filterable(test_joined_tbl)
 
   test_chapter_summary_tbl <- summarise_scores_by_chapter(test_mean_scores, test_lookup_table)
 
@@ -123,13 +123,13 @@ test_that("Prepare Filterable Questions is the proper dimension", {
                                   choice_id = c("1", "2", "1", "2", "1", "2"),
                                   chapter = c("A", "A", "B", "B", "A", "A"),
                                   chapter_index = c(1, 1, 2, 2, 1, 1),
-                                  question = c("A1", "A1", "B1", "B1", "C1", "C1"))
+                                  problem = c("A1", "A1", "B1", "B1", "C1", "C1"))
 
-  test_mean_scores <- get_mean_scores_filterable(test_joined_tbl, test_lookup_table)
-
+  test_mean_scores <- get_mean_scores_filterable(test_joined_tbl)
+ 
   test_prepared_problems <- prepare_filterable_problems(test_mean_scores, test_lookup_table)
 
-  reference_tbl <- data_frame(Question = c("A1", "C1"),
+  reference_tbl <- data_frame(Problem = c("A1", "C1"),
                               "% Correct" = as.numeric(c(50, 100)))
 
   expect_equal(test_prepared_problems, reference_tbl, tolerance = 1e-2)
@@ -146,9 +146,9 @@ test_that("Get Extreme Summarised Scores is the proper dimension", {
                                   choice_id = c("1", "2", "1", "2", "1", "2"),
                                   chapter = c("A", "A", "B", "B", "A", "A"),
                                   chapter_index = c(1, 1, 2, 2, 1, 1),
-                                  question = c("A1", "A1", "B1", "B1", "C1", "C1"))
+                                  problem = c("A1", "A1", "B1", "B1", "C1", "C1"))
 
-  test_mean_scores <- get_mean_scores_filterable(test_joined_tbl, test_lookup_table)
+  test_mean_scores <- get_mean_scores_filterable(test_joined_tbl)
 
   test_top_problems <- get_extreme_summarised_scores(test_mean_scores, 1)
   test_bottom_problems <- get_extreme_summarised_scores(test_mean_scores, -1)
