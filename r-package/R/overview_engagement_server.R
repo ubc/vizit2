@@ -14,7 +14,8 @@ filter_chapter_overview <- function(input_df, module ="All") {
                   if (module == "All") {
                     return(input_df)
                   }else{
-                    filtered_df <- input_df %>% dplyr::filter(chapter_name == module)
+                    filtered_df <- input_df %>% 
+                      dplyr::filter(chapter_name == module)
                     return(filtered_df)
                   }
 }
@@ -99,10 +100,10 @@ get_nactive <- function(detail_df){
 #' @examples
 #' join_engagement_item(filtered_engagement = filtered_tower_engage,filtered_item = filtered_tower_item)
 #' @export
-join_engagement_item <- function(filtered_engagement,filtered_item){
+join_engagement_item <- function(filtered_engagement, filtered_item){
   
-   # Join two tables to get the item name 
-  tower_df <- left_join(filtered_item(), filtered_engagement,by = "module_id") %>% 
+   # Join two tables to get the item name
+  tower_df <- left_join(filtered_item, filtered_engagement, by = "module_id") %>% 
   mutate(nactive=replace(nactive, is.na(nactive)==TRUE,0)) %>% 
   dplyr::filter(category == "chapter" |category == "video"| category == "problem") %>% 
   arrange(index)
@@ -184,20 +185,20 @@ make_engagement_eiffel_tower <- function(tower_data) {
 # set up axis and size parameter
 a <- list(autotick = TRUE, ticks = "outside", title = "Number of student", side = "top" )
 m <- list(l=50, r=50, b=0, t=50)
-    
-  if(all(is.na(tower_data$nactive)==TRUE)){
-    
-    plotly::plot_ly(tower_data, x = ~ nactive,y = ~plot_index_desc,type = 'bar',orientation = 'h') %>% 
-              plotly::config(displayModeBar = F) 
   
-  }else{
-    plotly::plot_ly(tower_data, x = ~nactive,y = ~plot_index_desc,type = 'bar',orientation = 'h',
+  if (all(is.na(tower_data$nactive)==TRUE)) {
+    
+    plotly::plot_ly(tower_data, x = ~ nactive,y = ~plot_index_desc, type = 'bar', orientation = 'h') %>% 
+              plotly::config(displayModeBar = FALSE) 
+  
+  } else {
+    plotly::plot_ly(tower_data, x = ~nactive,y = ~plot_index_desc, type = 'bar', orientation = 'h',
                text = ~my_text, hoverinfo="text",color = ~category,
                colors = c("black","#66c2a5","#8da0cb")) %>%  
                plotly::layout(margin=m,xaxis = a,
                       yaxis = list(title = "Course element by module",showticklabels = FALSE),
                       showlegend = TRUE, legend = list(x = 0.9, y = 0.9)) %>% 
-               plotly::config(displayModeBar = F)
+               plotly::config(displayModeBar = FALSE)
     
     
   }

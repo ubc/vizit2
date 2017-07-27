@@ -132,8 +132,8 @@ overviewModule <- function(input, output, session) {
    
    # Filter chapter 
    filtered_tower_item <- reactive({
-   
-       tower_item <- filter_chapter_overview(input_df = tower_item_new,module = input$module)
+       tower_item <- filter_chapter_overview(input_df = tower_item_new(), 
+                                             module = input$module)
    
        return(tower_item)
    
@@ -162,12 +162,9 @@ overviewModule <- function(input, output, session) {
   
   # Render the number of student count
   output$student_count <- renderText({
-                        paste0(reactive_student_num())
+                        reactive_student_num()
   })
-  
-  
-  
-  
+
   # Make tower plot visualization
   output$tower_plot <- plotly::renderPlotly ({
     make_engagement_eiffel_tower(reactive_tower_df())
