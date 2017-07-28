@@ -17,11 +17,16 @@ test_that("apply_forum_filters() correctly filters the students.", {
 test_that("calculate_forum_searches() correctly computes the number of searches of each query for the selected filter settings.", {
         
         forum_searches <- read.csv("./data/forum_searches.csv")
-        calculated_searches <- read_csv("./data/calculated_searches.csv")
-        calculated_searches <- calculated_searches %>% mutate_if(is.character,as.factor) %>% 
-                mutate(`Search Query` = Search_Query,
-                       `Unique Users` = Unique_Users) %>% 
-                select(-Search_Query, -Unique_Users)
+        
+        calculated_searches <- tibble(
+          Search_Query = c("data science", "machine learning", "amazon web services", "computer science", "ggplot", "github", "regression", "statistics"),
+          Unique_Users = as.integer(c(3, 2, 1, 1, 1, 1, 1, 1))
+        )
+        
+        calculated_searches <- calculated_searches %>% 
+          mutate_if(is.character, as.factor) %>%
+          rename(`Search Query` = Search_Query,
+                 `Unique Users` = Unique_Users)
         
         expect_equal(calculate_forum_searches(forum_searches = forum_searches,
                                               activity_level = "All",
@@ -34,10 +39,29 @@ test_that("calculate_forum_searches() correctly computes the number of searches 
 
 test_that("count_posts() correctly counts the number of posts (including post types) in each subcategory.", {
         
-        wrangled_forum_elements <- read_csv("./data/wrangled_forum_elements.csv")
+        wrangled_forum_elements <- tibble(
+          commentable_id = c("123abc", "234bcd", "345cde"),
+          discussion_target = c("General", "Programming for Data Science", 
+                                "Computing Platforms for Data Science"),
+          display_name = c("General", "Block 1, Programming for Data Science", 
+                           "Block 1, Computing Platforms for Data Science"),
+          discussion_category = c("General", "Block 1", "Block 1"),
+          target_order = c(1, 2, 3),
+          category_order = c(1, 2, 2)
+        )
+        
         forum_posts_pre_count <- read_csv("./data/forum_posts_pre_count.csv")
-        forum_posts_post_count <- read_csv("./data/forum_posts_post_count.csv") %>% 
-                mutate_if(is.integer, as.numeric)
+        
+        forum_posts_post_count <- tibble(
+          display_name = c("General", "Block 1, Programming for Data Science", 
+                           "Block 1, Computing Platforms for Data Science"),
+          posts = c(4, 4, 0),
+          Discussion = c(0, 1, 0),
+          Question = c(1, 0, 0),
+          Response = c(1, 1, 0),
+          Comment = c(2, 2, 0)
+        ) %>% 
+          mutate_if(is.integer, as.numeric)
         
         counted_posts <- count_posts(forum_posts_pre_count, 
                                      wrangled_forum_elements = wrangled_forum_elements)
@@ -47,10 +71,21 @@ test_that("count_posts() correctly counts the number of posts (including post ty
 
 test_that("gather_post_types() correctly aggregates the post types.", {
         
-        post_counts_ungathered <- read_csv("./data/post_counts_ungathered.csv")
+        post_counts_ungathered <- tibble(
+          display_name = c("General", "Block 1, Programming for Data Science", 
+                           "Block 1, Computing Platforms for Data Science"),
+          posts = c(4, 4, 0),
+          Discussion = c(0, 1, 0),
+          Question = c(1, 0, 0),
+          Response = c(1, 1, 0),
+          Comment = c(2, 2, 0)
+        ) %>% 
+          mutate_if(is.integer, as.numeric)
+        
         post_counts_gathered <- read_csv("./data/post_counts_gathered.csv") %>% 
-                mutate(`Post Type` = Post_Type) %>% 
-                select(display_name, `Post Type`, count, tot_posts, -Post_Type)
+          mutate(`Post Type` = Post_Type) %>% 
+          select(display_name, `Post Type`, count, tot_posts, -Post_Type) %>%
+          mutate_if(is.integer, as.numeric)
         
         post_counts_gathered$`Post Type` <- as.character(post_counts_gathered$`Post Type`)
         post_counts_gathered$`Post Type` <- factor(post_counts_gathered$`Post Type`,
@@ -65,10 +100,14 @@ test_that("gather_post_types() correctly aggregates the post types.", {
 
 test_that("get_label_lengths() correctly gets the lengths of each label.", {
         
-        forum_data <- read_csv("../../data/test_data/forum_server/get_label_lengths/forum_data.csv")
+        forum_data <- tibble(
+          display_name = c("General", "Block 1, Programming for Data Science", 
+                           "Block 1, Computing Platforms for Data Science"),
+          discussion_category = c("General", "Block 1", "Block 1")
+        )
         
         expect_equal(get_label_lengths(forum_data, category = "All"),
-                     c(7,7,7))
+                     c(7, 7, 7))
         
         forum_data_filtered <- forum_data %>%
                 filter(discussion_category == "Block 1")
@@ -80,7 +119,17 @@ test_that("get_label_lengths() correctly gets the lengths of each label.", {
 
 test_that("set_axis_limit() correctly sets the axis limit.", {
         
-        forum_data <- read.csv("../../data/test_data/forum_server/set_axis_limit/forum_data.csv")
+        forum_data <- tibble(
+          display_name = c("Block 1, Programming for Data Science", 
+                           "Block 1, Computing Platforms for Data Science"),
+          posts = c(4, 0),
+          Discussion = c(1, 0),
+          Question = c(0, 0),
+          Response = c(1, 0),
+          Comment = c(2, 0),
+          views = c(100, 0),
+          authors = c(4, 0)
+        )
         label_lengths <- c(37,45)
         
         computed_axis_limit <- set_axis_limit(forum_data = forum_data,
@@ -95,7 +144,11 @@ test_that("set_axis_limit() correctly sets the axis limit.", {
 
 test_that("get_subcategory_options() correctly gets the subcategories for the chosen category.", {
         
-        forum_elements <- read_csv("../../data/test_data/forum_server/get_subcategory_options/forum_elements.csv")
+        forum_elements <- tibble(
+          display_name = c("General", "Block 1, Programming for Data Science", 
+                           "Block 1, Computing Platforms for Data Science"),
+          discussion_category = c("General", "Block 1", "Block 1")
+        )
         
         expect_equal(get_subcategory_options("All", forum_elements),
                      c("All", "General", "Block 1"))
@@ -104,7 +157,8 @@ test_that("get_subcategory_options() correctly gets the subcategories for the ch
                 filter(discussion_category == "Block 1")
         
         expect_equal(get_subcategory_options("Block 1", filtered_forum_elements),
-                     c("All", "Block 1, Programming for Data Science", "Block 1, Computing Platforms for Data Science"))
+                     c("All", "Block 1, Programming for Data Science", 
+                       "Block 1, Computing Platforms for Data Science"))
 })
 
 ########################################################################################
