@@ -47,10 +47,10 @@ test_that("count_posts() correctly counts the number of posts (including post ty
 
 test_that("gather_post_types() correctly aggregates the post types.", {
         
-        post_counts_ungathered <- read.csv("../../data/test_data/forum_server/gather_post_types/post_counts_ungathered.csv")
-        post_counts_gathered <- read.csv("../../data/test_data/forum_server/gather_post_types/post_counts_gathered.csv") %>% 
+        post_counts_ungathered <- read_csv("./data/post_counts_ungathered.csv")
+        post_counts_gathered <- read_csv("./data/post_counts_gathered.csv") %>% 
                 mutate(`Post Type` = Post_Type) %>% 
-                select(display_name,`Post Type`,count,tot_posts,-Post_Type)
+                select(display_name, `Post Type`, count, tot_posts, -Post_Type)
         
         post_counts_gathered$`Post Type` <- as.character(post_counts_gathered$`Post Type`)
         post_counts_gathered$`Post Type` <- factor(post_counts_gathered$`Post Type`,
