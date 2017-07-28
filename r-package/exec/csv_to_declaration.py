@@ -3,9 +3,13 @@ from numbers import Number
 
 
 def convert_to_declaration(r_csv):
+    return list([line] for line in zip(*r_csv))
 
-    for line in r_csv:
-        pass
+
+def is_numeric(num_string):
+    return num_string.lstrip('-').replace(".", "").replace("e", "").isdigit()
+
+
 
 def column_to_r_row(column):
     data = column[1:]
@@ -16,6 +20,10 @@ def column_to_r_row(column):
     else:
         return '{header} = c("{data}"),'.format(header=column[0],
                                                 data='", "'.join(data))
+
+
+def export_declaration(columns):
+    pass
 
 
 if __name__ == '__main__':
