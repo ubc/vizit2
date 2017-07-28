@@ -2,8 +2,21 @@ context("Testing forum wrangling functions.")
 
 test_that("get_activity_levels() adds activity_level and removes sum_dt.", {
         
-        post_w_sum_dt <- read_csv("../../data/test_data/forum_wrangling/get_activity_levels/post_w_sum_dt.csv")
-        post_w_activity_level <- read_csv("../../data/test_data/forum_wrangling/get_activity_levels/post_w_activity_level.csv")
+        post_w_sum_dt <- tibble(
+          author_id = c(12345678),
+          author_username = c("laingdk"),
+          gender = c("m"),
+          registration_status = c("audit"),
+          sum_dt = c(453334.5436576)
+        )
+        
+        post_w_activity_level <- tibble(
+          author_id = c(12345678),
+          author_username = c("laingdk"),
+          gender = c("m"),
+          registration_status = c("audit"),
+          activity_level = c("over_5_hr")
+        )
         
         expect_equal(get_activity_levels(post_w_sum_dt),
                      post_w_activity_level)
@@ -12,8 +25,33 @@ test_that("get_activity_levels() adds activity_level and removes sum_dt.", {
 
 test_that("get_post_types() adds post_type and removes bq_post_type.", {
         
-        forum_posts_w_bq_post_types <- read_csv("../../data/test_data/forum_wrangling/get_post_types/forum_posts_w_bq_post_types.csv")
-        forum_posts_w_post_types <- read_csv("../../data/test_data/forum_wrangling/get_post_types/forum_posts_w_post_types.csv")
+        forum_posts_w_bq_post_types <- tibble(
+          mongoid = c("57d7f32f51efa305bc000bda", "57d7f35851efa305b3000b67", 
+                      "57d7fbe6d3195b05a0000c17"),
+          bq_post_type = c("CommentThread", "Comment", "Comment"),
+          initial_post_type = c("Question", "", ""),
+          commentable_id = c("123abc", "", ""),
+          comment_thread_id = c("", "57d7f32f51efa305bc000bda", 
+                                "57d7f32f51efa305bc000bda"),
+          parent_id = c("", "", "57d7f35851efa305b3000b67"),
+          title = c("What is data science?", "", ""),
+          body = c("Body1", "Body2", "Body3")
+        )
+        
+        forum_posts_w_post_types <- tibble(
+          mongoid = c("57d7f32f51efa305bc000bda", "57d7f35851efa305b3000b67", 
+                      "57d7fbe6d3195b05a0000c17"),
+          post_type = c("initial_post", "response_post", "comment_post"),
+          initial_post_type = c("Question", "", ""),
+          commentable_id = c("123abc", "", ""),
+          comment_thread_id = c("", "57d7f32f51efa305bc000bda", 
+                                "57d7f32f51efa305bc000bda"),
+          parent_id = c("", "", "57d7f35851efa305b3000b67"),
+          title = c("What is data science?", "", ""),
+          body = c("Body1", "Body2", "Body3")
+        )
+        
+        print(get_post_types(forum_posts_w_bq_post_types)$post_type)
         
         expect_equal(get_post_types(forum_posts_w_bq_post_types),
                      forum_posts_w_post_types)

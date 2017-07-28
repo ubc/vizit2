@@ -45,4 +45,4 @@ def csv_to_r(csv_path):
 
 
 if __name__ == '__main__':
-    print(csv_to_r("../tests/testthat/data/forum_elements.csv"))
+    print(csv_to_r(r"../tests/testthat/forum_wrangling/get_post_types/forum_posts_w_post_types.csv"))
