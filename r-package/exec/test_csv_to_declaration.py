@@ -26,6 +26,15 @@ def test_is_numeric():
     assert not is_numeric('one')
     assert not is_numeric('1one')
 
+
+def test_convert_numeric():
+    assert isinstance(convert_numeric('5'), int)
+    assert isinstance(convert_numeric('-9'), int)
+    assert isinstance(convert_numeric('-1.5'), float)
+    assert isinstance(convert_numeric('1.234e56'), float)
+    assert isinstance(convert_numeric('one'), str)
+    assert isinstance(convert_numeric('1one'), str)
+
 def test_column_to_r_row():
     test_column = ["module_id", 5, 7, 7, 8, 9]
     test_r_row = "module_id = c(5, 7, 7, 8, 9),"
