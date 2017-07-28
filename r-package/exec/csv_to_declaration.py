@@ -36,5 +36,13 @@ def export_declaration(columns):
     return 'tibble(\n{}\n)'.format(column_string)
 
 
+def csv_to_r(csv_path):
+    with open(csv_path) as csv_file:
+        lines = [line for line in csv.reader(csv_file)]
+        columns = convert_to_declaration(lines)
+        string_columns = [column_to_r_column(column) for column in columns]
+        return export_declaration(string_columns)
+
+
 if __name__ == '__main__':
-    pass
+    print(csv_to_r("../tests/testthat/data/engage_df.csv"))

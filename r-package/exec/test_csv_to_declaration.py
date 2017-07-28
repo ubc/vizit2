@@ -67,6 +67,5 @@ index = c(2, 3, 4, 1, 5)
     test_columns = convert_to_declaration(test_csv_parsed)
     string_columns = [column_to_r_column(column) for column in test_columns]
 
-    print(string_columns)
 
     assert export_declaration(string_columns) == result_call
