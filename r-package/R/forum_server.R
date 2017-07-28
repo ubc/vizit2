@@ -122,7 +122,7 @@ get_target_word_counts <- function(input_forum) {
 count_posts <- function(input_forum, wrangled_forum_elements){
         
         # Make sure there is a row for every permutation of display names and post types.
-        types_dummy_set <- data.frame(
+        types_dummy_set <- data_frame(
                 "display_name" = rep(wrangled_forum_elements$display_name, each = 4),
                 "type" = rep(c("Discussion", "Question", "Response", "Comment"),
                              times = dim(wrangled_forum_elements)[1])

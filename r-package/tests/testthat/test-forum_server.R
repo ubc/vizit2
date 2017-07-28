@@ -2,8 +2,8 @@ context("Testing forum server functions.")
 
 test_that("apply_forum_filters() correctly filters the students.", {
         
-        forum_posts_unfiltered <- read_csv("../../data/test_data/forum_server/apply_forum_filters/forum_posts_unfiltered.csv")
-        forum_posts_filtered <- read_csv("../../data/test_data/forum_server/apply_forum_filters/forum_posts_filtered.csv")
+        forum_posts_unfiltered <- read_csv("./data/forum_posts_unfiltered.csv")
+        forum_posts_filtered <- read_csv("./data/forum_posts_filtered.csv")
         
         expect_equal(apply_forum_filters(input_df = forum_posts_unfiltered,
                                          activity_level = "30_min_to_5_hr",
@@ -16,8 +16,8 @@ test_that("apply_forum_filters() correctly filters the students.", {
 
 test_that("calculate_forum_searches() correctly computes the number of searches of each query for the selected filter settings.", {
         
-        forum_searches <- read.csv("../../data/test_data/forum_server/calculate_forum_searches/forum_searches.csv")
-        calculated_searches <- read_csv("../../data/test_data/forum_server/calculate_forum_searches/calculated_searches.csv")
+        forum_searches <- read.csv("./data/forum_searches.csv")
+        calculated_searches <- read_csv("./data/calculated_searches.csv")
         calculated_searches <- calculated_searches %>% mutate_if(is.character,as.factor) %>% 
                 mutate(`Search Query` = Search_Query,
                        `Unique Users` = Unique_Users) %>% 
@@ -34,13 +34,14 @@ test_that("calculate_forum_searches() correctly computes the number of searches 
 
 test_that("count_posts() correctly counts the number of posts (including post types) in each subcategory.", {
         
-        wrangled_forum_elements <- read_csv("../../data/test_data/forum_server/count_posts/wrangled_forum_elements.csv")
-        forum_posts_pre_count <- read_csv("../../data/test_data/forum_server/count_posts/forum_posts_pre_count.csv")
-        forum_posts_post_count <- read_csv("../../data/test_data/forum_server/count_posts/forum_posts_post_count.csv") %>% 
-                mutate_if(is.integer,as.numeric)
+        wrangled_forum_elements <- read_csv("./data/wrangled_forum_elements.csv")
+        forum_posts_pre_count <- read_csv("./data/forum_posts_pre_count.csv")
+        forum_posts_post_count <- read_csv("./data/forum_posts_post_count.csv") %>% 
+                mutate_if(is.integer, as.numeric)
         
-        expect_equal(count_posts(forum_posts_pre_count, wrangled_forum_elements = wrangled_forum_elements),
-                     forum_posts_post_count)
+        counted_posts <- count_posts(forum_posts_pre_count, 
+                                     wrangled_forum_elements = wrangled_forum_elements)
+        expect_equal(counted_posts, forum_posts_post_count)
         
 })
 
