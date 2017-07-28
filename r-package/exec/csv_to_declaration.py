@@ -13,6 +13,9 @@ def column_to_r_row(column):
     if isinstance(column[1], Number):
         return '{header} = c({data}),'.format(header=column[0],
                                               data=', '.join(str(datum) for datum in data))
+    else:
+        return '{header} = c("{data}"),'.format(header=column[0],
+                                                data='", "'.join(data))
 
 
 if __name__ == '__main__':
