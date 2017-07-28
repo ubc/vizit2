@@ -35,16 +35,17 @@ def test_convert_numeric():
     assert isinstance(convert_numeric('one'), str)
     assert isinstance(convert_numeric('1one'), str)
 
+
 def test_column_to_r_row():
     test_column = ["module_id", 5, 7, 7, 8, 9]
     test_r_row = "module_id = c(5, 7, 7, 8, 9),"
-    assert column_to_r_row(test_column) == test_r_row
+    assert column_to_r_column(test_column) == test_r_row
 
 
 def test_text_column_to_row():
     test_text_column = ["category", "video", "chapter", "html", "problem", "html"]
     test_text_r_row = 'category = c("video", "chapter", "html", "problem", "html"),'
-    assert column_to_r_row(test_text_column) == test_text_r_row
+    assert column_to_r_column(test_text_column) == test_text_r_row
 
 
 def test_export_declaration():
@@ -56,9 +57,16 @@ def test_export_declaration():
     9,html,5"""
 
     result_call = """tibble(
-    module_id = c(5, 7, 7, 8, 9),
-    category = c("video", "chapter", "html", "problem", "html"),
-    index = c(2, 3, 4, 1, 5)
-    )"""
+module_id = c(5, 7, 7, 8, 9),
+category = c("video", "chapter", "html", "problem", "html"),
+index = c(2, 3, 4, 1, 5)
+)"""
 
-    assert export_declaration(test_csv) == result_call
+    test_csv_parsed = [line.split(",") for line in test_csv.split('\n')]
+
+    test_columns = convert_to_declaration(test_csv_parsed)
+    string_columns = [column_to_r_column(column) for column in test_columns]
+
+    print(string_columns)
+
+    assert export_declaration(string_columns) == result_call
