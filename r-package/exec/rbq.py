@@ -1,11 +1,12 @@
 import json
 import os.path
+import re
 
 from datetime import datetime
 import pandas as pd
 import click as cl
 
-from latest_time import perform_timestamp_json_transaction, find_most_recent_job, TimeStampJSONException
+from .latest_time import perform_timestamp_json_transaction, find_most_recent_job, TimeStampJSONException
 
 
 class MalformedQueryException(Exception):
@@ -83,6 +84,10 @@ def write_sql_csv(output, query, full=True):
         ubc_tbl.to_csv(output, index=False)
     else:
         ubc_tbl.to_csv(output, mode="a", index=False, header=False)
+
+
+def extract_limit(query):
+    return int(re.search("LIMIT (\d+)", query).group(1))
 
 
 @cl.command()
