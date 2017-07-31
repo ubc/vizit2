@@ -33,7 +33,7 @@ test_that("get_post_types() adds post_type and removes bq_post_type.", {
           commentable_id = c("123abc", "", ""),
           comment_thread_id = c("", "57d7f32f51efa305bc000bda", 
                                 "57d7f32f51efa305bc000bda"),
-          parent_id = c("", "", "57d7f35851efa305b3000b67"),
+          parent_id = c(NA, NA, "57d7f35851efa305b3000b67"),
           title = c("What is data science?", "", ""),
           body = c("Body1", "Body2", "Body3")
         )
@@ -46,12 +46,14 @@ test_that("get_post_types() adds post_type and removes bq_post_type.", {
           commentable_id = c("123abc", "", ""),
           comment_thread_id = c("", "57d7f32f51efa305bc000bda", 
                                 "57d7f32f51efa305bc000bda"),
-          parent_id = c("", "", "57d7f35851efa305b3000b67"),
+          parent_id = c(NA, NA, "57d7f35851efa305b3000b67"),
           title = c("What is data science?", "", ""),
           body = c("Body1", "Body2", "Body3")
         )
         
         print(get_post_types(forum_posts_w_bq_post_types)$post_type)
+        print(forum_posts_w_post_types$post_type)
+        
         
         expect_equal(get_post_types(forum_posts_w_bq_post_types),
                      forum_posts_w_post_types)
