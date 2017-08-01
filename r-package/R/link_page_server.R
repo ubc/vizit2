@@ -48,7 +48,7 @@ get_pageview <- function(filtered_log_df){
   student_num_threshold <- 10
   
   page_student <- filtered_log_df %>% 
-     group_by(date,page,path,username) %>% 
+     group_by(date, page, path, user_id) %>% 
      summarise(student = n()) %>% 
      group_by(page,path) %>% 
      summarise(num_student = n()) %>% 

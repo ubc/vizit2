@@ -1,5 +1,6 @@
 import json
 import os.path
+import re
 
 from datetime import datetime
 import pandas as pd
@@ -77,12 +78,40 @@ def query_bigquery(query: str, output: str, confirm=True, full=True):
 
 
 def write_sql_csv(output, query, full=True):
+    limit = extract_limit(query)
     ubc_tbl = pd.read_gbq(query, "ubcxdata")
     print("Full Update? {}".format(full))
-    if full:
-        ubc_tbl.to_csv(output, index=False)
+    first = True
+    while ubc_tbl.shape[0] == limit:
+        ubc_tbl = pd.read_gbq(query, "ubcxdata")
+        if full and first:
+            ubc_tbl.to_csv(output, index=False)
+        else:
+            ubc_tbl.to_csv(output, mode="a", index=False, header=False)
+
+        if first:
+            first = False
+        query = add_offset(query)
+
+
+def add_offset(query):
+    offset = re.search("(?:OFFSET\s+)(\d+)", query, re.MULTILINE)
+    if offset:
+        limit = extract_limit(query)
+        offset_number = int(offset.group(1))
+        new_offset = str(limit + offset_number)
+        new_query = re.sub(r"(OFFSET)\s+(\d+)", r"\1 {}".format(new_offset), query, re.MULTILINE)
     else:
-        ubc_tbl.to_csv(output, mode="a", index=False, header=False)
+        limit = extract_limit(query)
+        new_query = re.sub(r"(LIMIT)\s+(\d+)", r"LIMIT \2 OFFSET {}".format(limit), query, re.MULTILINE)
+
+    return new_query
+
+
+
+
+def extract_limit(query):
+    return int(re.search("LIMIT\s+(\d+)", query, re.MULTILINE).group(1))
 
 
 @cl.command()
