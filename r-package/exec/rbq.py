@@ -82,8 +82,8 @@ def write_sql_csv(output, query, full=True):
     ubc_tbl = pd.read_gbq(query, "ubcxdata")
     print("Full Update? {}".format(full))
     first = True
-    while ubc_tbl.shape[0] != limit:
-
+    while ubc_tbl.shape[0] == limit:
+        ubc_tbl = pd.read_gbq(query, "ubcxdata")
         if full and first:
             ubc_tbl.to_csv(output, index=False)
         else:
@@ -91,6 +91,7 @@ def write_sql_csv(output, query, full=True):
 
         if first:
             first = False
+        query = add_offset(query)
 
 
 def add_offset(query):
