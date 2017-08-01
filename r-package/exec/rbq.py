@@ -79,10 +79,10 @@ def query_bigquery(query: str, output: str, confirm=True, full=True):
 
 def write_sql_csv(output, query, full=True):
     limit = extract_limit(query)
-    ubc_tbl = pd.read_gbq(query, "ubcxdata")
+    table_size = limit
     print("Full Update? {}".format(full))
     first = True
-    while ubc_tbl.shape[0] == limit:
+    while table_size > 0:
         ubc_tbl = pd.read_gbq(query, "ubcxdata")
         if full and first:
             ubc_tbl.to_csv(output, index=False)
@@ -91,23 +91,21 @@ def write_sql_csv(output, query, full=True):
 
         if first:
             first = False
-        query = add_offset(query)
+        table_size = ubc_tbl.shape[0]
+        query = add_offset(query, table_size)
 
 
-def add_offset(query):
+def add_offset(query, added_offset):
     offset = re.search("(?:OFFSET\s+)(\d+)", query, re.MULTILINE)
     if offset:
-        limit = extract_limit(query)
         offset_number = int(offset.group(1))
-        new_offset = str(limit + offset_number)
+        new_offset = str(added_offset + offset_number)
         new_query = re.sub(r"(OFFSET)\s+(\d+)", r"\1 {}".format(new_offset), query, re.MULTILINE)
     else:
-        limit = extract_limit(query)
-        new_query = re.sub(r"(LIMIT)\s+(\d+)", r"LIMIT \2 OFFSET {}".format(limit), query, re.MULTILINE)
+        new_query = re.sub(r"(LIMIT)\s+(\d+)", r"LIMIT \2 OFFSET {}".format(added_offset), query, re.MULTILINE)
 
+    print(new_query)
     return new_query
-
-
 
 
 def extract_limit(query):
