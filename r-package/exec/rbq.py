@@ -6,7 +6,7 @@ from datetime import datetime
 import pandas as pd
 import click as cl
 
-from .latest_time import perform_timestamp_json_transaction, find_most_recent_job, TimeStampJSONException
+from latest_time import perform_timestamp_json_transaction, find_most_recent_job, TimeStampJSONException
 
 
 class MalformedQueryException(Exception):
@@ -78,16 +78,36 @@ def query_bigquery(query: str, output: str, confirm=True, full=True):
 
 
 def write_sql_csv(output, query, full=True):
+    limit = extract_limit(query)
     ubc_tbl = pd.read_gbq(query, "ubcxdata")
     print("Full Update? {}".format(full))
-    if full:
-        ubc_tbl.to_csv(output, index=False)
-    else:
-        ubc_tbl.to_csv(output, mode="a", index=False, header=False)
+    first = True
+    while ubc_tbl.shape[0] != limit:
+
+        if full and first:
+            ubc_tbl.to_csv(output, index=False)
+        else:
+            ubc_tbl.to_csv(output, mode="a", index=False, header=False)
+
+        if first:
+            first = False
+
+
+def add_offset(query):
+    offset = re.search("(?:OFFSET\s+)(\d+)", query, re.MULTILINE)
+    if offset:
+        limit = extract_limit(query)
+        offset_number = int(offset.group(1))
+        new_offset = str(limit + offset_number)
+        new_query = re.sub(r"(OFFSET)\s+(\d+)", r"\1 {}".format(new_offset), query, re.MULTILINE)
+
+    return new_query
+
+
 
 
 def extract_limit(query):
-    return int(re.search("LIMIT (\d+)", query).group(1))
+    return int(re.search("LIMIT\s+(\d+)", query, re.MULTILINE).group(1))
 
 
 @cl.command()
