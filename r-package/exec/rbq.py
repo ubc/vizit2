@@ -100,6 +100,9 @@ def add_offset(query):
         offset_number = int(offset.group(1))
         new_offset = str(limit + offset_number)
         new_query = re.sub(r"(OFFSET)\s+(\d+)", r"\1 {}".format(new_offset), query, re.MULTILINE)
+    else:
+        limit = extract_limit(query)
+        new_query = re.sub(r"(LIMIT)\s+(\d+)", r"LIMIT \2 OFFSET {}".format(limit), query, re.MULTILINE)
 
     return new_query
 
