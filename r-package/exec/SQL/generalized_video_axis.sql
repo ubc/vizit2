@@ -5,5 +5,7 @@ SELECT
   chapter_name
 FROM
   [ubcxdata:{course}.video_axis]
+ORDER BY
+  video_id
 LIMIT
   {limit}

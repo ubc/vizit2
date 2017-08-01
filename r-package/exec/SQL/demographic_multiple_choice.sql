@@ -26,9 +26,7 @@ FROM (
   WHERE
     pa.created > PARSE_UTC_USEC("{date}")
   ORDER BY
-    pa.created
-  LIMIT
-    {limit}) AS A
+    pa.created) AS A
 INNER JOIN (
   SELECT
     user_id,
@@ -42,3 +40,5 @@ ON
   A.user_id = B.user_id
 WHERE
   B.sum_dt IS NOT NULL
+LIMIT
+    {limit}
