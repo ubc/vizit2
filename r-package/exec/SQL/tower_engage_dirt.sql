@@ -28,6 +28,6 @@ INNER JOIN
 ON
   A.user_id = B.user_id
 ORDER BY
-  id
+  A.user_id
 LIMIT
   {limit}

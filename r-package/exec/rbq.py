@@ -82,7 +82,7 @@ def write_sql_csv(output, query, full=True):
     table_size = limit
     print("Full Update? {}".format(full))
     first = True
-    while table_size > 0:
+    while table_size == limit:
         ubc_tbl = pd.read_gbq(query, "ubcxdata")
         if full and first:
             ubc_tbl.to_csv(output, index=False)
@@ -104,7 +104,6 @@ def add_offset(query, added_offset):
     else:
         new_query = re.sub(r"(LIMIT)\s+(\d+)", r"LIMIT \2 OFFSET {}".format(added_offset), query, re.MULTILINE)
 
-    print(new_query)
     return new_query
 
 
