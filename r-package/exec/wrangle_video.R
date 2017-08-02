@@ -12,6 +12,11 @@ devtools::load_all()
 args <- commandArgs(TRUE)
 input_course <- args[1]
 
-# Calling main function
-wrangle_video(input_course)
+profvis({
+  input_course <- "Biobank1x_1T2017"
+  
+  # Calling main function
+  wrangle_video(input_course)
+})
+
 
