@@ -80,9 +80,9 @@ test_that("iterative gather works like gather", {
   start_segment_column <- 3
   
   test_gathered_df <- test_gather_df %>% 
-    gather(tidy_segment_df, key = segment, value = count,
+    gather(key = segment, value = count,
            convert = TRUE,
-           (start_segment_column):ncol(test_gathered_df)) %>% 
+           (start_segment_column):ncol(test_gather_df)) %>% 
     filter(count > 0)
   
   expect_equal(iterative_gather(test_gather_df), test_gathered_df)
