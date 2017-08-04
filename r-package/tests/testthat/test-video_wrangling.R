@@ -70,3 +70,20 @@ test_that("gather_one_column gathers only one column", {
   )
   expect_equal(gather_one_column(test_gather_df, `0`), test_gathered_df)
 })
+
+test_that("iterative gather works like gather", {
+  test_gather_df <- tribble(
+    ~video_id, ~user_id, ~`0`, ~`1`,
+    1        , 1       , 1   , 0   ,
+    1        , 1       , 0   , 1  
+  )
+  start_segment_column <- 3
+  
+  test_gathered_df <- test_gather_df %>% 
+    gather(tidy_segment_df, key = segment, value = count,
+           convert = TRUE,
+           (start_segment_column):ncol(test_gathered_df)) %>% 
+    filter(count > 0)
+  
+  expect_equal(iterative_gather(test_gather_df), test_gathered_df)
+})
