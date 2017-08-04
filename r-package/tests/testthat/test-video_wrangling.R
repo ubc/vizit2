@@ -57,4 +57,16 @@ test_that("Wrangling script properly parses seq_next, page_close, etc.", {
   expect_equal(test_end_time, 1)
 })
 
-
+test_that("gather_one_column gathers only one column", {
+  test_gather_df <- tribble(
+    ~video_id, ~user_id, ~`0`, ~`1`,
+    1        , 1       , 1   , 0   ,
+    1        , 1       , 0   , 1  
+  )
+  
+  test_gathered_df <- tribble(
+    ~video_id, ~user_id, ~segment, ~count,
+    1        , 1       , 0L       , 1
+  )
+  expect_equal(gather_one_column(test_gather_df, `0`), test_gathered_df)
+})
