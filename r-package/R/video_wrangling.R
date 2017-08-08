@@ -213,22 +213,23 @@ get_start_end_df <- function(data)
   return(start_end_df)
 }
 
-calculate_segments_viewed <- function(start, end, segment_size, acceptence, criteria) {
+calculate_segments_viewed <- function(start, end, segment_size, acceptence_criteria) {
   end_segment <- end %/% segment_size
   start_segment <- start %/% segment_size
   
-  if ((end %% segment_size) > acceptence) {
+  if ((end %% segment_size) > acceptence_criteria) {
     end_segment <- end_segment + 1
   }
   
-  if ((start %% segment_size) > acceptence) {
+  if ((start %% segment_size) > (segment_size - acceptence_criteria)) {
     start_segment <- start_segment + 1
   }
   
   start_segment:end_segment
 }
 
-vector_calculate_segments_viewed <- Vectorize(calculate_segments_viewed, vectorize.args = c("start", "end"))
+vector_calculate_segments_viewed <- Vectorize(calculate_segments_viewed, 
+                                              vectorize.args = c("start", "end"))
 
 
 #' Returns original dataframe with segment columns

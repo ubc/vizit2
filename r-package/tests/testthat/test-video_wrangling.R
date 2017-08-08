@@ -57,33 +57,29 @@ test_that("Wrangling script properly parses seq_next, page_close, etc.", {
   expect_equal(test_end_time, 1)
 })
 
-test_that("gather_one_column gathers only one column", {
-  test_gather_df <- tribble(
-    ~video_id, ~user_id, ~`0`, ~`1`,
-    1        , 1       , 1   , 0   ,
-    1        , 1       , 0   , 1  
-  )
+test_that("calculate_segments_viewed properly counts segments", {
+  start <- 1
+  end <- 5
+  segment_size <- 2
+  acceptance_criteria <- 0.5
   
-  test_gathered_df <- tribble(
-    ~video_id, ~user_id, ~segment, ~count,
-    1        , 1       , 0L       , 1
-  )
-  expect_equal(gather_one_column(test_gather_df, `0`), test_gathered_df)
+  expect_equal(calculate_segments_viewed(start, end, segment_size, acceptance_criteria), 0:3)
 })
 
-test_that("iterative gather works like gather", {
-  test_gather_df <- tribble(
-    ~video_id, ~user_id, ~`0`, ~`1`,
-    1        , 1       , 1   , 0   ,
-    1        , 1       , 0   , 1  
-  )
-  start_segment_column <- 3
+test_that("calculate_segments_viewed works when the start is 0", {
+  start <- 0
+  end <- 5
+  segment_size <- 2
+  acceptance_criteria <- 0.5
   
-  test_gathered_df <- test_gather_df %>% 
-    gather(key = segment, value = count,
-           convert = TRUE,
-           (start_segment_column):ncol(test_gather_df)) %>% 
-    filter(count > 0)
+  expect_equal(calculate_segments_viewed(start, end, segment_size, acceptance_criteria), 0:3)
+})
+
+test_that("calculate_segments_viewed works when the first segment is not counted", {
+  start <- 1.75
+  end <- 5
+  segment_size <- 2
+  acceptance_criteria <- 0.5
   
-  expect_equal(iterative_gather(test_gather_df), test_gathered_df)
+  expect_equal(calculate_segments_viewed(start, end, segment_size, acceptance_criteria), 1:3)
 })
