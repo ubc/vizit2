@@ -12,9 +12,6 @@ devtools::load_all()
 args <- commandArgs(TRUE)
 input_course <- args[1]
 
-profvis({
-  input_course <- "Biobank1x_1T2017"
-  # input_course <- "HtC1x_2T2017"
-  # Calling main function
-  wrangle_video(input_course)
-})
+
+# Calling main function
+wrangle_video(input_course)

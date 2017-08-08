@@ -1,16 +1,18 @@
 context("Testing video wrangling.")
 
 test_that("Wrangling script properly counts rewatches via seek_video", {
-  wrangle_video("testing", test=TRUE)
+  wrangle_video("testing", test = TRUE)
   wrangled_data <- read_csv("data/wrangled_video_heat.csv")
 
+  
   # Check to see that watched time under a minute twice
   test_df <- wrangled_data %>%
     filter(user_id == "AndrewLim",
            video_name == 'Programming: Video I',
            min_into_video <= 1)
-  test_count <- test_df$count
-  expect_equal(test_count, rep(2, nrow(test_df)))
+  test_count <- test_df %>% pull(count)
+
+  expect_equal(test_count, c(2, 2, 2, 2))
 
 })
 
