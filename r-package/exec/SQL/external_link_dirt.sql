@@ -21,11 +21,13 @@ FROM (
     AND event NOT LIKE '%target_url": "https://studio.edx.org%'
     AND event NOT LIKE '%target_url": "javascript:void(0)%'
     AND time > PARSE_UTC_USEC("{date}")
-  LIMIT
-    {limit}) AS A
+  ORDER BY
+    time) AS A
 INNER JOIN
   [ubcxdata:{course}.person_course] AS B
 ON
   A.user_id = B.user_id
 WHERE
   B.sum_dt IS NOT NULL
+LIMIT
+  {limit}

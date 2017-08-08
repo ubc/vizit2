@@ -12,6 +12,6 @@ devtools::load_all()
 args <- commandArgs(TRUE)
 input_course <- args[1]
 
+
 # Calling main function
 wrangle_video(input_course)
-

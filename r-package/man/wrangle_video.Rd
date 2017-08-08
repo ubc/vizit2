@@ -14,7 +14,7 @@ No value returned
 }
 \description{
 This function will automatically read files named 'generalized_video_heat.csv'
-and 'generalized_video_axis.csv' from the specified course directory and output a csv named 
+and 'generalized_video_axis.csv' from the specified course directory and output a csv named
 'wrangled_video_heat.csv' in the same directory
 }
 \examples{

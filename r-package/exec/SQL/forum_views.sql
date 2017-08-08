@@ -19,4 +19,7 @@ LEFT JOIN
   [ubcxdata:{course}.person_course]
 AS B
 ON A.username = B.username
-LIMIT {limit}
+ORDER BY
+  comment_thread_id
+LIMIT
+  {limit}

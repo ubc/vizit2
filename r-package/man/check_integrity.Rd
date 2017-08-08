@@ -18,7 +18,7 @@ check_integrity(start, end, max_stop_position)
 }
 \description{
 Returns a boolean of whether or not start and end data makes sense. This checks for NA values,
-end times that are passed the maximum length of the video, and extremely long and short watch durations. 
+end times that are passed the maximum length of the video, and extremely long and short watch durations.
 The threshold for watch durations can be adjusted in the global constants: \code{MIN_DURATION} and \code{MAX_DURATION}
 }
 \examples{

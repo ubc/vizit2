@@ -20,8 +20,6 @@ WHERE
   event contains "submission_uuid" AND
   event contains "score_type" AND
   time > PARSE_UTC_USEC("{date}")
-LIMIT
-  {limit}
 ) AS A
 INNER JOIN (
   SELECT
@@ -34,3 +32,7 @@ INNER JOIN (
     sum_dt IS NOT NULL) AS B
 ON
   A.context.user_id == B.user_id
+ORDER BY
+  time
+LIMIT
+  {limit}

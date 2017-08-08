@@ -16,11 +16,7 @@ FROM (
     (page IS NOT NULL)
     AND page!= "https://courses.edx.org/xblock"
     AND page != "x_module"
-    AND time > PARSE_UTC_USEC("{date}")
-  ORDER BY
-    time
-  LIMIT
-    {limit}) AS A
+    AND time > PARSE_UTC_USEC("{date}")) AS A
 INNER JOIN (
   SELECT
     user_id,
@@ -32,3 +28,7 @@ INNER JOIN (
     sum_dt IS NOT NULL) AS B
 ON
   A.user_id = B.user_id
+ORDER BY
+  A.time
+LIMIT
+  {limit}

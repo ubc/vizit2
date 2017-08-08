@@ -22,12 +22,12 @@ FROM (
     OR module_type IN ('openassessment',
       'chapter',
       'html')
-    AND created > PARSE_UTC_USEC("{date}")
-  ORDER BY
-    id
-  LIMIT
-    {limit}) AS A
+    AND created > PARSE_UTC_USEC("{date}")) AS A
 INNER JOIN
   [ubcxdata:{course}.person_course] AS B
 ON
   A.user_id = B.user_id
+ORDER BY
+  A.user_id
+LIMIT
+  {limit}

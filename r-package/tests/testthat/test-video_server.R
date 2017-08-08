@@ -43,7 +43,8 @@ test_that("Count calculation test",{
     summarize(test_count = sum(count))
   
   # Using function to be tested
-  aggregated_segment_df <- get_aggregated_df(wrangled_data, 10)
+  aggregated_segment_df <- get_aggregated_df(wrangled_data, 10) %>% 
+    mutate(video_id = as.character(video_id))
   
   # Joining
   aggregated_segment_df <- aggregated_segment_df %>% 

@@ -17,7 +17,7 @@ prepare_video_data(video_data, video_axis)
 \description{
 Additional columns added:
 
-- \code{max_stop_times}: proxy for video length 
+- \code{max_stop_times}: proxy for video length
 
 - \code{course_order}: occurrence of video within course structure
 

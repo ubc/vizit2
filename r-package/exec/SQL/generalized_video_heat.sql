@@ -58,11 +58,7 @@ FROM (
         OR event_type = "seq_prev"
         OR event_type = "page_close"
         OR event_type LIKE "problem%" )
-      AND time > PARSE_UTC_USEC("{date}")
-    ORDER BY
-      time
-    LIMIT
-      {limit} ) AS A
+      AND time > PARSE_UTC_USEC("{date}")) AS A
   LEFT JOIN
     [ubcxdata:{course}.video_stats] AS B
   ON
@@ -71,3 +67,7 @@ INNER JOIN
   [ubcxdata:{course}.person_course] AS person_course
 ON
   video_heat.user_id = person_course.user_id
+ORDER BY
+  time
+LIMIT
+  {limit}
