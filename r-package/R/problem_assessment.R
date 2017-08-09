@@ -65,7 +65,8 @@ extract_assessment_csv <- function(assessment_tbl) {
 #'
 #' @return A joined dataframe of the two incoming dataframes
 #' @export
-#' @examples join_extracted_assessment(sample_extracted_assessment_tbl, extracted_content)
+#' @examples
+#' join_extracted_assessment(sample_extracted_assessment_tbl, extracted_content)
 join_extracted_assessment_data <- function(extracted_csv, extracted_json) {
     joint_assessment <- dplyr::left_join(extracted_csv,
                                   extracted_json,
@@ -75,34 +76,35 @@ join_extracted_assessment_data <- function(extracted_csv, extracted_json) {
   }
 
 
-
 #' Summarise assessment data for plotting
 #'
 #' This function checks that the number of points possible does not vary within
 #' title-label groups.
 #'
 #' @param joint_assessment The result of join_extracted_assessment_data
-#' @param trunc_length The length of that the label should be truncated to. Do
+#' @param trunc_length The length of that the label should be truncated to. Do not
 #'   set to less than 4
 #'
 #' @return A summarised dataframe of the average scores in each area.
 #' @export
+#' @examples
+#' summarise_joined_assessment_data(sample_join_extracted_assessment_data, 20)
 summarise_joined_assessment_data <- function(joint_assessment, trunc_length = 20) {
     points_possible_all_same <- joint_assessment %>%
-      group_by(title, label) %>%
-      filter(min(points_possible) != max(points_possible))
+      dplyr::group_by(title, label) %>%
+      dplyr::filter(min(points_possible) != max(points_possible))
 
     if (nrow(points_possible_all_same) != 0)  {
       warning("points_possible different within title/label group")
     }
 
     summary_assessment <- joint_assessment %>%
-      group_by(title, label) %>%
-      summarise(
+      dplyr::group_by(title, label) %>%
+      dplyr::summarise(
         avg_score = mean(points),
         avg_percent = mean(points) / max(points_possible)
       ) %>%
-      mutate(trunc_label = stringr::str_trunc(label, trunc_length))
+      dplyr::mutate(trunc_label = stringr::str_trunc(label, trunc_length))
   }
 
 #' Plot the summary assessment data

@@ -10,7 +10,7 @@ assessment_tbl <-
     "data",
     input_course,
     "open_assessment.csv",
-    collapse = "/"
+    sep = "/"
   )) %>%
   dplyr::mutate(
     activity_level = dplyr::case_when(
@@ -29,7 +29,7 @@ assessment_json <-
     "results",
     input_course,
     "assessments.json",
-    collapse = "/"
+    sep = "/"
   ))
 
 extracted_content <- extract_assessment_json(assessment_json)
@@ -43,7 +43,7 @@ readr::write_csv(
     "data",
     input_course,
     "wrangled_assessment_json_info.csv",
-    collapse = "/"
+    sep = "/"
   )
 )
 
@@ -60,6 +60,6 @@ readr::write_csv(
     "data",
     input_course,
     "wrangled_assessment_csv_info.csv",
-    collapse = "/"
+    sep = "/"
   )
 )
