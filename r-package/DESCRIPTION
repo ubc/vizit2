@@ -25,9 +25,12 @@ Imports:
     XML,
     zoo
 Depends:
+    dplyr,
+    ggplot2,
+    purrr,
+    readr,
     shiny,
-    shinyBS,
-    tidyverse
+    shinyBS
 Suggests:
   devtools,
   packagedocs
