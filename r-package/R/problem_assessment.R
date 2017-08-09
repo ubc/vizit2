@@ -47,7 +47,7 @@ extract_assessment_csv <- function(assessment_tbl) {
       points = gsubfn::strapply(event, "\\\"points\\\": (\\d+)", as.numeric),
       name = gsubfn::strapply(event, name_extraction)
     ) %>%
-    unnest() %>%
+    tidyr::unnest() %>%
     filter(!is.na(sum_dt)) %>%
     select(-event, -module_id, -time, -sum_dt, -time)
 }

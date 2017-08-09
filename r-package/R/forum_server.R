@@ -133,7 +133,7 @@ count_posts <- function(input_forum, wrangled_forum_elements){
                 group_by(display_name, type) %>%
                 summarize(posts = n_distinct(mongoid, na.rm = TRUE)) %>% 
                 right_join(types_dummy_set) %>% 
-                spread(key = type, value = posts, drop = FALSE) %>% 
+                tidyr::spread(key = type, value = posts, drop = FALSE) %>% 
                 mutate(posts = sum(Discussion, Question, Response, Comment, na.rm = TRUE))
         
         post_counts$posts[is.na(post_counts$posts)] <- 0
@@ -1060,7 +1060,7 @@ gather_post_types <- function(forum_data,
                               grouping_var) {
         
         gathered <- forum_data %>% 
-                gather(key = `Post Type`,
+                tidyr::gather(key = `Post Type`,
                        value = count,
                        Comment,
                        Discussion,
