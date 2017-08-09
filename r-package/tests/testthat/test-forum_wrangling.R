@@ -183,16 +183,26 @@ test_that("prepare_json() works as expected.", {
 
 test_that("prepare_xml() works as expected.", {
         
-        course_xml <- XML::xmlInternalTreeParse(file = "../../data/test_data/forum_wrangling/prepare_xml/xbundle.xml")
+        course_xml <- XML::xmlInternalTreeParse(file = "data/xbundle.xml")
         
         # read.csv is required for expect_equal to work here
-        xml_as_tidy_dataframe <- read.csv("../../data/test_data/forum_wrangling/prepare_xml/xml_as_tidy_dataframe.csv")
+        xml_as_tidy_dataframe <- tibble(
+          discussion_target = c("General", "Programming for Data Science", 
+                                "Computing Platforms for Data Science"),
+          display_name = c("General", "Block 1, Programming for Data Science", 
+                           "Block 1, Computing Platforms for Data Science"),
+          discussion_category = c("General", "Block 1", "Block 1"),
+          target_order = c(1, 2, 3),
+          category_order = c(1, 2, 2)
+        )
         
         xml_as_tidy_dataframe <- xml_as_tidy_dataframe %>% 
-          mutate_if(is.factor, as.character)
+          mutate_if(is.factor, as.character) 
         
         prepared <- prepare_xml(course_xml) %>% 
-          mutate_if(is.factor, as.character)
+          mutate_if(is.factor, as.character) %>%
+          as_tibble() %>% 
+          mutate_if(is.integer, as.numeric)
         
         expect_equal(prepared, xml_as_tidy_dataframe)
         
