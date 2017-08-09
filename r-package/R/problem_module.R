@@ -9,7 +9,7 @@
 #' @return A dataframe with the same dimensions as the CSV
 clean_multiple_choice <- function(raw_csv) {
 
-  raw_csv  %>%
+  raw_csv %>%
     mutate(activity_level = case_when((.$sum_dt < 1800) ~ "under_30_min",
                                       (.$sum_dt >= 1800) & (.$sum_dt < 18000) ~ "30_min_to_5_hr",
                                       (.$sum_dt >= 18000) ~ "over_5_hr",
@@ -17,7 +17,7 @@ clean_multiple_choice <- function(raw_csv) {
     filter(grepl("choice", item_response)) %>%  # Only multichoice problems
     mutate(item_response = stringr::str_extract_all(item_response, "choice_[0-9]+")) %>%
     select(-sum_dt) %>%
-    unnest()
+    tidyr::unnest()
 }
 
 
