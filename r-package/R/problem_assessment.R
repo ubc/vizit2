@@ -15,15 +15,15 @@ extract_assessment_json <- function(assessment_json) {
     tidyjson::gather_array() %>%
     tidyjson::spread_values(label = tidyjson::jstring("label"),
                             name = tidyjson::jstring("name")) %>%
-    select(-document.id, -array.index)
+    dplyr::select(-document.id, -array.index)
 
   counted_content <- extracted_content %>%
-    group_by(url_name) %>%
-    count() %>%
-    filter(n > 1) %>%
-    ungroup()
+    dplyr::group_by(url_name) %>%
+    dplyr::count() %>%
+    dplyr::filter(n > 1) %>%
+    dplyr::ungroup()
 
-  semi_join(extracted_content, counted_content)
+  dplyr::semi_join(extracted_content, counted_content)
 }
 
 #' Convert a CSV respresenting an open_assessment.sql query into a usable format
@@ -35,21 +35,23 @@ extract_assessment_json <- function(assessment_json) {
 #'
 #' @return An extracted table
 #' @export
+#' @examples
+#' extract_assessment_csv(raw_assessment)
 extract_assessment_csv <- function(assessment_tbl) {
   name_extraction <-
     "\\\"points_possible\\\": \\d+, \\\"name\\\": \\\"(\\S+)\\\""
 
   extracted_assessment <- assessment_tbl %>%
-    mutate(assessment_id = stringr::str_extract(module_id, "[0-9a-f]{32}")) %>%
-    mutate(
+    dplyr::mutate(assessment_id = stringr::str_extract(module_id, "[0-9a-f]{32}")) %>%
+    dplyr::mutate(
       points_possible = gsubfn::strapply(event, "\\\"points_possible\\\": (\\d+)",
                                  as.numeric),
       points = gsubfn::strapply(event, "\\\"points\\\": (\\d+)", as.numeric),
       name = gsubfn::strapply(event, name_extraction)
     ) %>%
     tidyr::unnest() %>%
-    filter(!is.na(sum_dt)) %>%
-    select(-event, -module_id, -time, -sum_dt, -time)
+    dplyr::filter(!is.na(sum_dt)) %>%
+    dplyr::select(-event, -module_id, -time, -sum_dt, -time)
 }
 
 #' Join the results of extract_assessment_csv and extract_assessment_json
