@@ -5,7 +5,7 @@ test_that("apply_forum_filters() correctly filters the students.", {
     read_csv("./data/forum_posts_unfiltered.csv")
   forum_posts_filtered <-
     read_csv("./data/forum_posts_filtered.csv")
-  
+
   expect_equal(
     apply_forum_filters(
       input_df = forum_posts_unfiltered,
@@ -16,14 +16,14 @@ test_that("apply_forum_filters() correctly filters the students.", {
     ),
     forum_posts_filtered
   )
-  
+
 })
 
 test_that(
   "calculate_forum_searches() correctly computes the number of searches of each query for the selected filter settings.",
   {
     forum_searches <- read.csv("./data/forum_searches.csv")
-    
+
     calculated_searches <- tibble(
       Search_Query = c(
         "data science",
@@ -37,12 +37,12 @@ test_that(
       ),
       Unique_Users = as.integer(c(3, 2, 1, 1, 1, 1, 1, 1))
     )
-    
+
     calculated_searches <- calculated_searches %>%
       mutate_if(is.character, as.factor) %>%
       rename(`Search Query` = Search_Query,
              `Unique Users` = Unique_Users)
-    
+
     expect_equal(
       calculate_forum_searches(
         forum_searches = forum_searches,
@@ -53,7 +53,7 @@ test_that(
       ),
       calculated_searches
     )
-    
+
   }
 )
 
@@ -76,10 +76,10 @@ test_that(
       target_order = c(1, 2, 3),
       category_order = c(1, 2, 2)
     )
-    
+
     forum_posts_pre_count <-
       read_csv("./data/forum_posts_pre_count.csv")
-    
+
     forum_posts_post_count <- tibble(
       display_name = c(
         "General",
@@ -93,11 +93,11 @@ test_that(
       Comment = c(2, 2, 0)
     ) %>%
       mutate_if(is.integer, as.numeric)
-    
+
     counted_posts <- count_posts(forum_posts_pre_count,
                                  wrangled_forum_elements = wrangled_forum_elements)
     expect_equal(counted_posts, forum_posts_post_count)
-    
+
   }
 )
 
@@ -115,13 +115,13 @@ test_that("gather_post_types() correctly aggregates the post types.", {
     Comment = c(2, 2, 0)
   ) %>%
     mutate_if(is.integer, as.numeric)
-  
+
   post_counts_gathered <-
     read_csv("./data/post_counts_gathered.csv") %>%
     mutate(`Post Type` = Post_Type) %>%
     select(display_name, `Post Type`, count, tot_posts,-Post_Type) %>%
     mutate_if(is.integer, as.numeric)
-  
+
   post_counts_gathered$`Post Type` <-
     as.character(post_counts_gathered$`Post Type`)
   post_counts_gathered$`Post Type` <-
@@ -129,13 +129,13 @@ test_that("gather_post_types() correctly aggregates the post types.", {
       post_counts_gathered$`Post Type`,
       levels = c("Comment", "Response", "Question", "Discussion")
     )
-  
+
   gathered <-
     gather_post_types(post_counts_ungathered, grouping_var = "display_name")
-  
+
   expect_equal(gathered,
                post_counts_gathered)
-  
+
 })
 
 test_that("get_label_lengths() correctly gets the lengths of each label.", {
@@ -147,16 +147,16 @@ test_that("get_label_lengths() correctly gets the lengths of each label.", {
     ),
     discussion_category = c("General", "Block 1", "Block 1")
   )
-  
+
   expect_equal(get_label_lengths(forum_data, category = "All"),
                c(7, 7, 7))
-  
+
   forum_data_filtered <- forum_data %>%
     filter(discussion_category == "Block 1")
-  
+
   expect_equal(get_label_lengths(forum_data_filtered, category = "Block 1"),
                c(37, 45))
-  
+
 })
 
 test_that("set_axis_limit() correctly sets the axis limit.", {
@@ -174,7 +174,7 @@ test_that("set_axis_limit() correctly sets the axis limit.", {
     authors = c(4, 0)
   )
   label_lengths <- c(37, 45)
-  
+
   computed_axis_limit <-
     set_axis_limit(
       forum_data = forum_data,
@@ -183,9 +183,9 @@ test_that("set_axis_limit() correctly sets the axis limit.", {
       min_axis_length = 0.1,
       percent_addition_per_char = 0.023
     )
-  
+
   expect_equal(computed_axis_limit, 185.2)
-  
+
 })
 
 test_that(
@@ -199,13 +199,13 @@ test_that(
       ),
       discussion_category = c("General", "Block 1", "Block 1")
     )
-    
+
     expect_equal(get_subcategory_options("All", forum_elements),
                  c("All", "General", "Block 1"))
-    
+
     filtered_forum_elements <- forum_elements %>%
       filter(discussion_category == "Block 1")
-    
+
     expect_equal(
       get_subcategory_options("Block 1", filtered_forum_elements),
       c(
@@ -225,9 +225,9 @@ test_that(
 
 # test_that("get_wordcloud_data() correctly transforms the forum posts for plotting with a wordcloud.", {
 #
-#         filtered_wordcloud_data <- read_csv("../../data/test_data/forum_server/get_wordcloud_data/filtered_wordcloud_data.csv")
-#         filtered_forum_elements <- read_csv("../../data/test_data/forum_server/get_wordcloud_data/filtered_forum_elements.csv")
-#         wordcloud_all_categories <- read_csv("../../data/test_data/forum_server/get_wordcloud_data/wordcloud_all_categories.csv")
+#         filtered_wordcloud_data <- read_csv("../data/test_data/forum_server/get_wordcloud_data/filtered_wordcloud_data.csv")
+#         filtered_forum_elements <- read_csv("../data/test_data/forum_server/get_wordcloud_data/filtered_forum_elements.csv")
+#         wordcloud_all_categories <- read_csv("../data/test_data/forum_server/get_wordcloud_data/wordcloud_all_categories.csv")
 #
 #         test1 <- get_wordcloud_data(filtered_wordcloud_data = filtered_wordcloud_data,
 #                                                        filtered_forum_elements = filtered_forum_elements,
@@ -245,10 +245,10 @@ test_that(
 
 # test_that("update_forum_data() correctly counts all the posts, post types, views, and authors in each subcategory.", {
 #
-#         forum_posts <- read_csv("../../data/test_data/forum_server/update_forum_data/forum_posts.csv")
-#         forum_views <- read_csv("../../data/test_data/forum_server/update_forum_data/forum_views.csv")
-#         forum_elements <- read_csv("../../data/test_data/forum_server/update_forum_data/forum_elements.csv")
-#         updated_forum_data <- read_csv("../../data/test_data/forum_server/update_forum_data/updated_forum_data.csv")
+#         forum_posts <- read_csv("../data/test_data/forum_server/update_forum_data/forum_posts.csv")
+#         forum_views <- read_csv("../data/test_data/forum_server/update_forum_data/forum_views.csv")
+#         forum_elements <- read_csv("../data/test_data/forum_server/update_forum_data/forum_elements.csv")
+#         updated_forum_data <- read_csv("../data/test_data/forum_server/update_forum_data/updated_forum_data.csv")
 #
 #         updated <- update_forum_data(forum_posts = forum_posts,
 #                                      forum_views = forum_views,

@@ -9,7 +9,7 @@ class CourseNotFoundException(Exception):
     pass
 
 
-def get_hashed_course(course_name, hash_path= "./../data/.hashed_courses.csv"):
+def get_hashed_course(course_name, hash_path= "./../inst/data/.hashed_courses.csv"):
     with open(hash_path) as hash_file:
         hash_csv = csv.reader(hash_file)
         for line in hash_csv:
