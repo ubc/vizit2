@@ -137,12 +137,12 @@ join_engagement_item <- function(filtered_engagement, filtered_item){
   tower_df$my_text <- ifelse(tower_df$category == "module seperator",
                       tower_df$name,
                       paste(tower_df$name,"Number of student engaged with:",tower_df$nactive , sep="<br>"))
-  }else{
+  } else {
     
   # If the filtered table is empty, set each column to zero 
       
     tower_df <- tower_df %>% 
-    mutate(nactive = "Sorry,no data matched this filtering condition",
+    mutate(nactive = "Sorry, no data matched this filtering condition",
              plot_index_desc = 0,
               my_text = 0,
               category = 0)
