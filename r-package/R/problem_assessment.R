@@ -61,16 +61,17 @@ extract_assessment_csv <- function(assessment_tbl) {
 #' does not occur in the XML, it is removed before preceding.
 #'
 #' @param extracted_csv the result of extract_assessment_csv
-#' @param extracted_json the result of extract_assessment_csv
+#' @param extracted_json the result of extract_assessment_json
 #'
 #' @return A joined dataframe of the two incoming dataframes
 #' @export
+#' @examples join_extracted_assessment(sample_extracted_assessment_tbl, extracted_content)
 join_extracted_assessment_data <- function(extracted_csv, extracted_json) {
-    joint_assessment <- left_join(extracted_csv,
+    joint_assessment <- dplyr::left_join(extracted_csv,
                                   extracted_json,
                                   by = c(assessment_id = "url_name",
                                          name = "name")) %>%
-      filter(!is.na(label))
+      dplyr::filter(!is.na(label))
   }
 
 
