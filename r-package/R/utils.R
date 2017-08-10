@@ -8,14 +8,14 @@
 #'
 #' @return dataframe of read_csv results
 read_course_csv <- function(course_name, csv_name, data_dir = c("..", "data")) {
-  if (endsWith(".csv")) {
+  if (!endsWith(csv_name, ".csv")) {
     csv_name <- paste0(csv_name, ".csv")
   }
 
   data_dir_string <- paste0(data_dir, collapse = "/")
 
   file_path <-
-    paste(data_dir_string, input_course, csv_name, sep = "/")
+    paste(data_dir_string, course_name, csv_name, sep = "/")
 
   readr::read_csv(file_path)
 }

@@ -6,12 +6,12 @@
 \usage{
 read_course_axis(input_course)
 }
+\arguments{
+\item{input_course}{the short name of the course}
+}
 \value{
-course_axis
+course_axis a dataframe containing course_axis information
 }
 \description{
 Import course_axis.csv files based on specified course folder name
-}
-\examples{
-read_course_axis(input_couse = "psyc1")
 }

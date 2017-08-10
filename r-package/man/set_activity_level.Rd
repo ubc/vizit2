@@ -2,18 +2,22 @@
 % Please edit documentation in R/link_page_wrangling.R
 \name{set_activity_level}
 \alias{set_activity_level}
-\title{Set three levels for students total spending time on course based on tracklog link data}
+\title{Set three levels for students total spending time on course based on tracklog
+link data}
 \usage{
 set_activity_level(link_data)
 }
 \arguments{
-\item{link_data}{dataframe containing the information of student click any links in the edx course}
+\item{link_data}{dataframe containing the information of student click any
+links in the edx course}
 }
 \value{
-link_data
+link_data a dataframe with renamed columns and factorized
+  activity_level
 }
 \description{
-Set three levels for students total spending time on course based on tracklog link data
+Set three levels for students total spending time on course based on tracklog
+link data
 }
 \examples{
 set_activity_level(link_data = read_link_dirt)
