@@ -1,0 +1,11 @@
+gender,registration_status,activity_level,discussion_category,display_name,word
+m,audit,over_5_hr,Block 1,"Block 1, Programming for Data Science",data
+m,audit,over_5_hr,Block 1,"Block 1, Programming for Data Science",science
+m,audit,over_5_hr,Block 1,"Block 1, Programming for Data Science",data
+m,audit,over_5_hr,Block 1,"Block 1, Programming for Data Science",data
+m,audit,over_5_hr,Block 1,"Block 1, Programming for Data Science",machine
+m,audit,over_5_hr,Block 1,"Block 1, Programming for Data Science",learning
+f,verified,30_min_to_5_hr,Block 1,"Block 1, Computing Platforms for Data Science",machine
+f,verified,30_min_to_5_hr,Block 1,"Block 1, Computing Platforms for Data Science",learning
+f,verified,30_min_to_5_hr,Block 1,"Block 1, Computing Platforms for Data Science",computer
+f,verified,30_min_to_5_hr,Block 1,"Block 1, Computing Platforms for Data Science",science

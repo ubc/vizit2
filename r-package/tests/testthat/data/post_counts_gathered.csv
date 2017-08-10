@@ -1,0 +1,13 @@
+display_name,Post_Type,count,tot_posts
+General,Comment,2,4
+"Block 1, Programming for Data Science",Comment,2,4
+"Block 1, Computing Platforms for Data Science",Comment,0,0
+General,Discussion,0,4
+"Block 1, Programming for Data Science",Discussion,1,4
+"Block 1, Computing Platforms for Data Science",Discussion,0,0
+General,Question,1,4
+"Block 1, Programming for Data Science",Question,0,4
+"Block 1, Computing Platforms for Data Science",Question,0,0
+General,Response,1,4
+"Block 1, Programming for Data Science",Response,1,4
+"Block 1, Computing Platforms for Data Science",Response,0,0
