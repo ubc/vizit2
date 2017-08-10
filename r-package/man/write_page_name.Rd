@@ -7,8 +7,6 @@
 write_page_name(input_course, cleaned_data)
 }
 \arguments{
-\item{input_course}{}
-
 \item{cleaned_data}{A tidy page_name dataframe}
 }
 \description{

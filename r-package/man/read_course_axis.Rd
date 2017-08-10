@@ -6,9 +6,6 @@
 \usage{
 read_course_axis(input_course)
 }
-\arguments{
-\item{input_course}{}
-}
 \value{
 course_axis
 }

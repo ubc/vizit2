@@ -6,9 +6,6 @@
 \usage{
 read_link_dirt(input_course)
 }
-\arguments{
-\item{input_course}{}
-}
 \value{
 link_dirt
 }
