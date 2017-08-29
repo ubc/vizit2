@@ -16,6 +16,7 @@ Imports:
     lubridate,
     plotly,
     reshape2,
+    rlang,
     roxygen2,
     testthat,
     tidyjson,
