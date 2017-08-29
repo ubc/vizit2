@@ -142,6 +142,7 @@ def bigquery(sql, course, date, limit, confirm, output, full):
     if not output:
         output = os.path.join(os.path.dirname( __file__ ),
                               "..",
+                              "inst",
                               "data",
                               course,
                               "{sql}.csv".format(sql=sql))

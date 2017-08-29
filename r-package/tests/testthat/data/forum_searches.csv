@@ -1,0 +1,12 @@
+date,search_query,username,gender,registration_status,sum_dt
+2017-06-07 22:08:43.698488,data science,laingdk,m,audit,4324.003029
+2017-06-07 22:15:53.698488,data science,memery,m,audit,11705.44343223234
+2017-06-07 22:15:08.345914,data science,ttimbers,f,verified,489232.2343322334
+2017-06-07 22:08:40.875942,machine learning,memery,m,audit,11705.44343223234
+2017-06-07 22:12:46.832342,machine learning,subizhangg,f,audit,23333.232229398
+2017-06-07 22:09:01.230912,statistics,andrew,m,audit,30.234221323
+2017-06-07 22:12:42.834942,computer science,subizhangg,f,audit,23333.232229398
+2017-06-07 22:13:10.230912,regression,mgelbart,m,verified,590900.93923939393
+2017-06-07 22:14:08.345914,github,ttimbers,f,verified,489232.2343322334
+2017-06-07 22:15:20.240932,ggplot,vcoia,m,verified,239842.234324222342
+2017-06-07 22:16:03.230232,amazon web services,gvdr,m,verified,344593.9945843383

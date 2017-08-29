@@ -10,7 +10,7 @@ class TimeStampJSONException(Exception):
 
 
 def read_timestamp_json():
-    with open("../data/job_timestamps.json", "r") as timestamp_file:
+    with open("../inst/data/job_timestamps.json", "r") as timestamp_file:
         return json.load(timestamp_file)
 
 
@@ -36,7 +36,7 @@ def update_timestamp_json(timestamp_dict, course, job, timestamp):
 
 
 def write_timestamp_json(timestamp_dict):
-    with open("../data/job_timestamps.json", "w+") as timestamp_file:
+    with open("../inst/data/job_timestamps.json", "w+") as timestamp_file:
         json.dump(timestamp_dict, timestamp_file)
 
 

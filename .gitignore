@@ -1,7 +1,6 @@
-*.csv
 *.json
 *.xml
 .Rproj.user
-!/r-package/data/test_data/
 *.log
-!/r-package/data/job_timestamps.json
+r-package/inst/data
+r-package/inst/results

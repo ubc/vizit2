@@ -12,7 +12,8 @@ join_problems_to_lookup(extracted_problems, lookup_table)
 \item{lookup_table}{The result of `create_question_lookup_from_json`}
 }
 \value{
-The left joined dataframe by id and choice_id, filtering out blank problems
+The left joined dataframe by id and choice_id, filtering out
+blank problems
 }
 \description{
 Left join extracted problems and lookup table

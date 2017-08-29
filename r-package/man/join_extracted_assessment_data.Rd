@@ -9,7 +9,7 @@ join_extracted_assessment_data(extracted_csv, extracted_json)
 \arguments{
 \item{extracted_csv}{the result of extract_assessment_csv}
 
-\item{extracted_json}{the result of extract_assessment_csv}
+\item{extracted_json}{the result of extract_assessment_json}
 }
 \value{
 A joined dataframe of the two incoming dataframes
@@ -18,4 +18,7 @@ A joined dataframe of the two incoming dataframes
 This function joins the BigQuery and XML data. This is needed to populate the
 BigQuery data with the title and label fields. If the ID of the assessment
 does not occur in the XML, it is removed before preceding.
+}
+\examples{
+join_extracted_assessment(sample_extracted_assessment_tbl, extracted_content)
 }

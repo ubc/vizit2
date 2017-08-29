@@ -7,14 +7,11 @@
 read_link_dirt(input_course)
 }
 \arguments{
-\item{input_course}{}
+\item{input_course}{the short name of the course}
 }
 \value{
-link_dirt
+link_dirt the raw link data in a dataframe
 }
 \description{
 Import external_link_dirt.csv files based on specified course folder name
-}
-\examples{
-read_link_dirt(input_couse = "psyc1")
 }

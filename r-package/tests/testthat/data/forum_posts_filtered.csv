@@ -1,0 +1,2 @@
+author_id,author_username,gender,registration_status,activity_level,mongoid,bq_post_type,initial_post_type,commentable_id,comment_thread_id,parent_id,title,body
+56789101,mgelbart,m,verified,30_min_to_5_hr,57e7ed56424a5d0788000c29,CommentThread,Discussion,234bcd,,,"Who is your favourite teaching fellow?","There is no right answer, but let's just say there are three wrong answers."

@@ -26,7 +26,7 @@ def populate(overwrite):
 
 def write_hashed_courses():
     subprocess.call('R -e "edxviz::get_hashed_courses(\'../../.config.json\','
-                    ' \'../data/.hashed_courses.csv\')"',
+                    ' \'../inst/data/.hashed_courses.csv\')"',
                     shell=True)
 
 

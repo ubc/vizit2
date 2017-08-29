@@ -1,11 +1,10 @@
 problemModule <- function(input, output, session) {
-
   requested_course <- reactive({
     query <- parseQueryString(session$clientData$url_search)
-    
+
     if ("course" %in% names(query)) {
-      get_unhashed_course(query$course, 
-                          read_csv("../../data/.hashed_courses.csv"))
+      get_unhashed_course(query$course,
+                          read_csv("../data/.hashed_courses.csv"))
     } else {
       "no_course_selected"
     }
@@ -28,20 +27,23 @@ problemModule <- function(input, output, session) {
   })
 
   filtered_general <- reactive({
-    filter_demographics(joined_users_problems(),
-                        gender = gender(),
-                        activity_level = activity_level(),
-                        mode = mode())
+    filter_demographics(
+      joined_users_problems(),
+      gender = gender(),
+      activity_level = activity_level(),
+      mode = mode()
+    )
   })
 
   filtered_students <- reactive({
-    validate(need(try(nrow(filtered_general()) > 0), "No students found."))
+    validate(need(try(nrow(filtered_general()) > 0)
+                  , "No students found."))
     filt_segs <- filtered_general()
     n_distinct(filt_segs$user_id)
   })
 
-  root <- "../../data/"
-  result_root <- "../../results/"
+  root <- "../data/"
+  result_root <- "../results/"
 
   output$moduleSelection <- renderUI({
     ns <- NS("problemID")
@@ -51,24 +53,32 @@ problemModule <- function(input, output, session) {
                 selected = "All")
   })
 
-  temp_raw_problems_tbl <- reactiveFileReader(1000,
-                                              session,
-                                              paste0(root,
-                                                     requested_course(),
-                                                     "/demographic_multiple_choice.csv"),
-                                              read_csv)
+  temp_raw_problems_tbl <- reactiveFileReader(
+    1000,
+    session,
+    paste0(
+      root,
+      requested_course(),
+      "/demographic_multiple_choice.csv"
+    ),
+    read_csv
+  )
 
   raw_problems_tbl <- reactive({
     temp_raw_problems_tbl() %>%
       clean_multiple_choice()
   })
 
-  temp_lookup_table <- reactiveFileReader(1000,
-                                          session,
-                                          paste0(result_root,
-                                                 requested_course(),
-                                                 "/multiple_choice_questions.json"),
-                                          tidyjson::read_json)
+  temp_lookup_table <- reactiveFileReader(
+    1000,
+    session,
+    paste0(
+      result_root,
+      requested_course(),
+      "/multiple_choice_questions.json"
+    ),
+    tidyjson::read_json
+  )
 
   lookup_table <- reactive({
     temp_lookup_table() %>%
@@ -90,31 +100,44 @@ problemModule <- function(input, output, session) {
   })
 
   chap_name <- reactive({
-    validate(need(try(unique(joined_users_problems()$chapter)), "No Chapters Found"))
+    validate(need(try(unique(joined_users_problems()$chapter))
+                  , "No Chapters Found"))
     chapters <- unique(joined_users_problems()$chapter)
     chapters[!is.na(chapters)]
   })
 
-  extracted_content <- reactiveFileReader(1000,
-                                          session,
-                                          paste0(root,
-                                                 requested_course(),
-                                                 "/wrangled_assessment_json_info.csv"),
-                                          read_csv)
+  extracted_content <- reactiveFileReader(
+    1000,
+    session,
+    paste0(
+      root,
+      requested_course(),
+      "/wrangled_assessment_json_info.csv"
+    ),
+    read_csv
+  )
 
-  extracted_assessment_tbl <- reactiveFileReader(1000,
-                                                 session,
-                                                 paste0(root,
-                                                        requested_course(),
-                                                        "/wrangled_assessment_csv_info.csv"),
-                                                 read_csv)
+  extracted_assessment_tbl <- reactiveFileReader(
+    1000,
+    session,
+    paste0(
+      root,
+      requested_course(),
+      "/wrangled_assessment_csv_info.csv"
+    ),
+    read_csv
+  )
 
   bottom_melted_problems <- reactive({
-    validate(need(try(nrow(joined_users_problems()) > 0), "No problems found."))
-    filtered_joined_problems <- filter_demographics(joined_users_problems(),
-                                                    gender = gender(),
-                                                    mode = mode(),
-                                                    activity_level = activity_level()) %>%
+    validate(need(try(nrow(joined_users_problems()) > 0)
+                  , "No problems found."))
+    filtered_joined_problems <-
+      filter_demographics(
+        joined_users_problems(),
+        gender = gender(),
+        mode = mode(),
+        activity_level = activity_level()
+      ) %>%
       filter_chapter(chapter())
 
     bottom_questions <- filtered_joined_problems %>%
@@ -131,11 +154,14 @@ problemModule <- function(input, output, session) {
   })
 
   reactive_overview <- reactive({
-    validate(need(try(nrow(problems_tbl()) > 0), "No problems found."))
+    validate(need(try(nrow(problems_tbl()) > 0)
+                  , "No problems found."))
     filter_summary_scores <- problems_tbl() %>%
-      filter_demographics(gender = gender(),
-                          mode = mode(),
-                          activity_level = activity_level()) %>%
+      filter_demographics(
+        gender = gender(),
+        mode = mode(),
+        activity_level = activity_level()
+      ) %>%
       get_mean_scores_filterable()
 
     summarise_scores_by_chapter(filter_summary_scores, lookup_table())
@@ -146,11 +172,14 @@ problemModule <- function(input, output, session) {
   })
 
   reactive_chapter_overview <- reactive({
-    validate(need(try(nrow(problems_tbl()) > 0), "No problems found."))
+    validate(need(try(nrow(problems_tbl()) > 0)
+                  , "No problems found."))
     filter_joined_users_problems <- problems_tbl() %>%
-      filter_demographics(gender = gender(),
-                          mode = mode(),
-                          activity_level = activity_level())
+      filter_demographics(
+        gender = gender(),
+        mode = mode(),
+        activity_level = activity_level()
+      )
 
     chapter_filtered_problems <- filter_joined_users_problems %>%
       filter_chapter(input$chapter)
@@ -165,11 +194,14 @@ problemModule <- function(input, output, session) {
   })
 
   reactive_assessment <- reactive({
-    validate(need(try(nrow(extracted_assessment_tbl()) > 0), "No assessments found."))
+    validate(need(try(nrow(extracted_assessment_tbl()) > 0)
+                  , "No assessments found."))
     extracted_assessment_tbl() %>%
-      filter_demographics(gender = gender(),
-                          mode = mode(),
-                          activity_level = activity_level()) %>%
+      filter_demographics(
+        gender = gender(),
+        mode = mode(),
+        activity_level = activity_level()
+      ) %>%
       join_extracted_assessment_data(extracted_content()) %>%
       summarise_joined_assessment_data()
   })

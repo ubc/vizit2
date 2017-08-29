@@ -1,0 +1,4 @@
+discussion_target,display_name,discussion_category,target_order,category_order,course_order
+General,General,General,1,1,1
+Programming for Data Science,"Block 1, Programming for Data Science",Block 1,2,2,2
+Computing Platforms for Data Science,"Block 1, Computing Platforms for Data Science",Block 1,3,2,3

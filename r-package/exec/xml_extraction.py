@@ -123,10 +123,10 @@ def filter_assessments(xml_soup: BeautifulSoup):
 @cl.argument("course")
 @cl.option("--problems/--assessments", default=True)
 def extract_xml(course, problems):
-    xml_files = glob("../data/{course}/xbundle.xml".format(course=course))
+    xml_files = glob("../inst/data/{course}/xbundle.xml".format(course=course))
 
-    if not os.path.exists("../results/{course}".format(course=course)):
-        os.mkdir("../results/{course}".format(course=course))
+    if not os.path.exists("../inst/results/{course}".format(course=course)):
+        os.mkdir("../inst/results/{course}".format(course=course))
 
     with open(xml_files[0]) as xml_file:
         xml_soup = BeautifulSoup(xml_file.read(), "lxml")
@@ -134,14 +134,14 @@ def extract_xml(course, problems):
         if problems:
             output_dict = filter_problems(xml_soup)
 
-            with open("../results/{course}/multiple_choice_questions.json".format(course=course), 'w+') as output:
+            with open("../inst/results/{course}/multiple_choice_questions.json".format(course=course), 'w+') as output:
                 json.dump(output_dict, output)
             print("Multiple Choice JSON Ready")
 
         else:
             output_dict = filter_assessments(xml_soup)
 
-            with open("../results/{course}/assessments.json".format(course=course), 'w+') as output:
+            with open("../inst/results/{course}/assessments.json".format(course=course), 'w+') as output:
                 json.dump(output_dict, output)
             print("Assessment JSON Ready")
 

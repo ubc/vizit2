@@ -263,7 +263,6 @@ get_activity_levels <- function(forum) {
 get_post_types <- function(forum) {
 
         forum_w_post_types <- forum %>% mutate(post_type = case_when(
-
                 .$bq_post_type == "CommentThread" ~ "initial_post",
                 (.$bq_post_type == "Comment") & (is.na(.$parent_id) == TRUE) ~ "response_post",
                 (.$bq_post_type == "Comment") & (is.na(.$parent_id) == FALSE) ~ "comment_post"

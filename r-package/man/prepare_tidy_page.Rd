@@ -6,9 +6,6 @@
 \usage{
 prepare_tidy_page(page_data)
 }
-\arguments{
-\item{page_data}{}
-}
 \value{
 log_data
 }

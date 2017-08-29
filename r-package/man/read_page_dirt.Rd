@@ -6,9 +6,6 @@
 \usage{
 read_page_dirt(input_course)
 }
-\arguments{
-\item{input_course}{}
-}
 \value{
 page_dirt
 }

@@ -7,7 +7,9 @@
 plot_aggregated_problems(agg_melted_problems)
 }
 \arguments{
-\item{agg_melted_problems}{A dataframe with the problem and choice names as well as the number of students who chose each option.}
+\item{agg_melted_problems}{A dataframe with the problem
+and choice names as well as the number of students who chose
+each option.}
 }
 \value{
 A facetted ggplot bar chart

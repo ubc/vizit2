@@ -7,7 +7,7 @@
 clean_multiple_choice(raw_csv)
 }
 \arguments{
-\item{raw_csv:}{A dataframe from the read_csv}
+\item{raw_csv}{A dataframe from the read_csv}
 }
 \value{
 A dataframe with the same dimensions as the CSV
