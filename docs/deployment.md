@@ -3,16 +3,16 @@ Remote deployment of the EdXViz dashboard.
 EdXViz is a Shiny server application that allows instructors and course designers to see how their students are interacting with their courses. For best results, this application should be run from a server and installed there. This step-by-step guide will you set up such a server.
 
 1. Spin up a server instance.
-	This process was tested on an Google Compute Instance instance with 7 Gb of RAM and 20 Gb of disk space. The amount of RAM needed is a function of the number of concurrent users you expect and whether they are working on multiple courses. This setup was tested with six separate courses and there was no lag.
+	This process was tested on an Google Compute Instance instance with 7 Gb of RAM and 20 Gb of disk space (running on CentOS 7). The amount of RAM needed is a function of the number of concurrent users you expect and whether they are working on multiple courses. This setup was tested with sixty separate courses the site was still responsive.
 2. SSH into your instance.
-3. Install git, docker and docker-compose. In Ubuntu, type `sudo apt install -y git docker python-pip && sudo pip install docker-compose`
+3. Install git, docker and docker-compose. In Ubuntu, type `sudo yum install -y git docker-ce python-pip && sudo pip install docker-compose`
 3. Type `git clone https://github.com/AndrewLim1990/mooc_capstone_public.git`
 	This will clone the git repo. All the necessary code is included.
-4. `sudo usermod -aG docker ${USER}` so that you do not need to use sudo when running docker
-5. cd mooc_capstone_public/
-6. Type `docker run -ti --name gcloud-config google/cloud-sdk gcloud auth login` and authenticate your account.
-7. Type `docker run -ti --name gcloud-config-project google/cloud-sdk gcloud auth application-default login` to authenticate the project.
-8. `docker run --rm -ti --volumes-from gcloud-config --volumes-from gcloud-config-project -v $(pwd):/srv/shiny-server --name="populate" lstmemery/moocshiny bin/bash -c "source activate mooc && python srv/shiny-server/r-package/exec/populate_courses.py >> srv/shiny-server/logs/cron.log 2>&1"`
+4. `sudo systemctl start docker && sudo systemctl enable docker`to start docker and ensure that it starts after reboot.
+5. `cd mooc_capstone_public/`
+6. Type `sudo docker run -ti --name gcloud-config google/cloud-sdk gcloud auth login` and authenticate your account.
+7. Type `sudo docker run -ti --name gcloud-config-project google/cloud-sdk gcloud auth application-default login` to authenticate the project.
+8. `sudo docker run --rm -ti --volumes-from gcloud-config --volumes-from gcloud-config-project -v $(pwd):/srv/shiny-server --name="populate" lstmemery/moocshiny bin/bash -c "source activate mooc && python srv/shiny-server/r-package/exec/populate_courses.py >> srv/shiny-server/logs/cron.log 2>&1"`
 	This will download and deploy the docker image. The image is about 2 gigabytes and contains the scripts to populate the course and run the server.
 9. `cd srv/shiny-server/`
 10. Type `source activate mooc`
