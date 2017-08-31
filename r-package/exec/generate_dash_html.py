@@ -45,4 +45,4 @@ if __name__ == '__main__':
 </p>"""
 
     for dashboard in list_of_dashboards:
-        generate_template(html, dashboard, "HtC1x_2T2017")
+        generate_template(html, dashboard, "EcodesignX_2T2017")
