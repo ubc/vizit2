@@ -2,7 +2,7 @@ Package: edxviz
 Title: Visualize EdX Student Data
 Version: 0.0.0.9000
 Authors@R: c(person("Matthew", "Emery", email = "matthew.emery44@gmail.com", role = c("aut", "cre")), person("David", "Laing", email = "davidkendalllaing@gmail.com", role = c("aut")), person("Andrew", "Lim", email = "andrewlim90@gmail.com", role = c("aut")), person("Subi", "Zhang", email = "subi.zhangg@gmail.com", role = c("aut")))
-Description: What the package does (one paragraph).
+Description: This package creates a shiny application that visualizes student   activity on EdX courses. The EdX data should be be accessible through BigQuery, using the edx2bigquery scripts found here: https://github.com/mitodl/edx2bigquery
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
