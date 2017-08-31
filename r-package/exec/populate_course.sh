@@ -12,7 +12,7 @@ fi
 
 
 if [ ! -d "../results/$SHORT" ]; then
-    mkdir ../results/${SHORT}
+    mkdir ./../results/${SHORT}
 fi
 
 Populate () {
