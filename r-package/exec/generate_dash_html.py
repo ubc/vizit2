@@ -1,3 +1,5 @@
+import click as cl
+
 from jinja2 import Environment
 from collections import namedtuple
 import csv
@@ -27,7 +29,9 @@ def generate_template(html, dashboard, course, url="dev.vizit.edx.learninganalyt
                           url=url,
                           hashed_course=hashed_course))
 
-if __name__ == '__main__':
+@cl.command()
+@cl.argument('coursename')
+def edxviz_html(coursename):
     list_of_dashboards = [Dashboard("Overview Engagement", "overview"),
                           Dashboard("General", "general"),
                           Dashboard("Link and Page", "linkpage"),
@@ -36,13 +40,17 @@ if __name__ == '__main__':
                           Dashboard("Video", "video")]
 
     html = """
-{{ dashboard.name }} Dashboard
+    {{ dashboard.name }} Dashboard
 
-<p>
-    <iframe title="{{ dashboard.name }} Dashboard" src="https://{{ url }}/inst/global_dashboard/?dash={{ dashboard.code }}&course={{ hashed_course }}" marginwidth="0" marginheight="0" scrolling="yes" width=900 height=1000 frameborder="0">
-        Your browser does not support IFrames.
-    </iframe>
-</p>"""
+    <p>
+        <iframe title="{{ dashboard.name }} Dashboard" src="https://{{ url }}/inst/global_dashboard/?dash={{ dashboard.code }}&course={{ hashed_course }}" marginwidth="0" marginheight="0" scrolling="yes" width=900 height=1000 frameborder="0">
+            Your browser does not support IFrames.
+        </iframe>
+    </p>"""
 
     for dashboard in list_of_dashboards:
-        generate_template(html, dashboard, "EcodesignX_2T2017")
+        generate_template(html, dashboard, coursename)
+
+
+if __name__ == '__main__':
+    edxviz_html()
