@@ -62,6 +62,11 @@ problemModuleUI <- function(id) {
 
     fluidRow(
       bsCollapse(id = ns("assessment_panel"),
+                 tags$p("Open Response Assessments are short essays that are reviewed by
+                        the students themselves, by their peers, and occasionally by 
+                        the instructor. If the instructor has completed an assessment,
+                        it will be recorded as the final grade. Otherwise, the final
+                        grade is determined by the peer assessments."),
                  bsCollapsePanel("How were students assessed on Open Response Assessments?",
                                  plotOutput(ns("assessment_plot")),
                                  style = "primary"))),
