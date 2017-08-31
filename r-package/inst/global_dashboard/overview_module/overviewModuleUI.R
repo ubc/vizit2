@@ -82,7 +82,7 @@ overviewModuleUI <- function(id) {
           
           # Add effiel tower panel
           fluidRow(
-                 bsCollapse(id=ns("effiel_towerplot"), multiple=TRUE,open = "How many student engaged with each course element?",
+                 bsCollapse(id=ns("effiel_towerplot"), multiple=TRUE,open = "How many students engaged with each course element?",
                  bsCollapsePanel("How many students engaged with each course element?",
                                  h4("Hover your mouse on each bar below for further details."),
                                  plotly::plotlyOutput(ns("tower_plot"),height='800px'),
