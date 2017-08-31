@@ -4,14 +4,6 @@
 
 ### edXviz: Interactive Visualization of Student Engagement with edX MOOCs
 
-Welcome to our capstone project.
-
-### Links
-
-* [Project proposal](https://github.ubc.ca/ubc-mds-2016/capstone_learning_analystics_students)
-* [Repository hosting our complete R package](https://github.ubc.ca/alim1990/mooc_capstone_private/tree/master/r-package)
-
-
 ### Documentation
 
 * [All documentation](https://andrewlim1990.github.io/edx_dashboard_documentation.github.io/index.html): This page contains all of our documentation, including the following topics:
@@ -33,4 +25,4 @@ Welcome to our capstone project.
 
 ## Deployment
 
-The whole process is enclosed in a Dockerfile. The container creates a Shiny Server instance that downloads all the necessary data files based off what is in `.config.json`. Once the app collected and cleaned the data it will update the course and insert the appropriate iFrames into the backend. From there the course instructor can see the dashboards.
+See [the deployment walkthrough here](./docs/deployment.md)
