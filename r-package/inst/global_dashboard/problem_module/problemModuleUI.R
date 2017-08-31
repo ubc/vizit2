@@ -47,6 +47,7 @@ problemModuleUI <- function(id) {
     fluidRow(
         bsCollapse(id = ns("overview_panel"),
                    multiple = TRUE,
+                   open = "How did students do in each module?",
                    bsCollapsePanel("How did students do in each module?",
                                    plotOutput(ns("overview_plot")),
                                    style = "primary"))),
