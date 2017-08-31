@@ -48,6 +48,8 @@ problemModuleUI <- function(id) {
         bsCollapse(id = ns("overview_panel"),
                    multiple = TRUE, open = "How did students do in each module?",
                    open = "How did students do in each module?",
+                   tags$p("This plot shows the average grade achieved by students
+                          on the multiple choice problems in each module."),
                    bsCollapsePanel("How did students do in each module?",
                                    plotOutput(ns("overview_plot")),
                                    style = "primary"))),
