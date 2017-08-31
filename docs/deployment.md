@@ -43,3 +43,8 @@ EdXViz is a Shiny server application that allows instructors and course designer
 
 ## Population Command
 `source activate mooc && python srv/shiny-server/r-package/exec/populate_courses.py >> srv/shiny-server/logs/cron.log 2>&1`
+
+## Populating a Single Course
+1. Add the relevant information to `.config.json`.
+2. Run the following command (replace the bracketed items with the course information):
+`docker run --rm --privileged -ti --volumes-from gcloud-config --volumes-from gcloud-config-project -v $(pwd):/srv/shiny-server --name="populate" lstmemery/moocshiny bin/bash -c "source activate mooc && bash /srv/shiny-server/r-package/exec/populate_course.sh <short_name> <big_table> <cloud_platform> --overwrite=FALSE && R -e "edxviz::get_hashed_courses('../../.config.json\',''../inst/data/.hashed_courses.csv')"`

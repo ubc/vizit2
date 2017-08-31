@@ -6,19 +6,19 @@ GCLOUD=$3
 OVERWRITE=$4
 
 
-if [ ! -d "../data/$SHORT" ]; then
-    mkdir ./../data/${SHORT}
+if [ ! -d "./../inst/data/$SHORT" ]; then
+    mkdir ./../inst/data/${SHORT}
 fi
 
 
-if [ ! -d "../results/$SHORT" ]; then
-    mkdir ./../results/${SHORT}
+if [ ! -d "./../inst/results/$SHORT" ]; then
+    mkdir ./../inst/results/${SHORT}
 fi
 
 Populate () {
 
-    echo "../data/$SHORT/$1.csv"
-    if [[ ! -e "../data/$SHORT/$1.csv"  || ${OVERWRITE} =~ .*"true".*  ]]; then
+    echo "../inst/data/$SHORT/$1.csv"
+    if [[ ! -e "../inst/data/$SHORT/$1.csv"  || ${OVERWRITE} =~ .*"true".*  ]]; then
         echo "python ./rbq.py $1 -c ${SHORT} -l 1000000 --auto"
         python ./rbq.py $1 -c ${SHORT} -l 1000000 --auto
     else
@@ -56,7 +56,7 @@ python xml_extraction.py ${SHORT} --assessments
 
 RPopulate () {
 
-    if [[ ! -e "../data/$SHORT/$2.csv" ||  ${OVERWRITE} =~ .*"true".* ]]; then
+    if [[ ! -e "../inst/data/$SHORT/$2.csv" ||  ${OVERWRITE} =~ .*"true".* ]]; then
         echo "Rscript ./$1.R ${SHORT}"
         Rscript ./$1.R ${SHORT}
     else
