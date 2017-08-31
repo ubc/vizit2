@@ -62,13 +62,13 @@ problemModuleUI <- function(id) {
 
     fluidRow(
       bsCollapse(id = ns("assessment_panel"),
-                 bsCollapsePanel("How were students assessed on Open Response Assignments?",
+                 bsCollapsePanel("How were students assessed on Open Response Assessments?",
                                  plotOutput(ns("assessment_plot")),
                                  style = "primary"))),
 
     fluidRow(
       bsCollapse(id = ns("chapter_overview_panel"),
-                 bsCollapsePanel("How did students do on each problem?",
+                 bsCollapsePanel("What was the average score on each problem?",
                                  DT::dataTableOutput(ns("chapter_table")),
                                  style = "primary")))
     )
