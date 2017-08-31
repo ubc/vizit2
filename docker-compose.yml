@@ -50,8 +50,8 @@ services:
       - VIRTUAL_PORT=80
       - LETSENCRYPT_HOST=dev.vizit.edx.learninganalytics.ubc.ca
     volumes:
-      - ./r-package:/srv/shiny-server
-      - ./logs:/var/log/shiny-server
+      - ~/mooc_capstone_shiny/r-package:/srv/shiny-server
+      - ~/mooc_capstone_shiny/logs:/var/log/shiny-server
     networks:
       - proxy-tier
 
