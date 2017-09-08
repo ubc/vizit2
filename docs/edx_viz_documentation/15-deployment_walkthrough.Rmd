@@ -7,7 +7,7 @@ output: html_document
 This is a guide for the remote deployment of the EdXViz dashboard. 
 
 ## Step-by-step Guide
-EdXViz is a Shiny server application that allows instructors and course designers to see how their students are interacting with their courses. For best results, this application should be run from a server and installed there. This step-by-step guide will you to set up such a server.
+EdXViz is a Shiny server application that allows instructors and course designers to see how their students are interacting with their courses. For best results, this application should be run from a server and installed there. This step-by-step guide will help you to set up such a server.
 
 1. Spin up a server instance.
 	This process was tested on an Azure instance with 7 Gb of RAM and 7 Gb of space. The amount of RAM needed is a function of the number of concurrent users you expect and whether they are working on multiple courses. This setup was tested with six separate courses and there was no lag.
