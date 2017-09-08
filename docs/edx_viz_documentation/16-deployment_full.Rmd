@@ -1,0 +1,17 @@
+---
+title: "Full documentation for deployment"
+output: html_document
+---
+
+# Full documentation for deployment
+
+To use VizIT in an edX course at your institution, you need two things:
+
+* A server to store the course data and serve the Shiny dashboard.
+* Staff access to the course in the edX website, so that you can insert an iFrame that shows the dashboard from within the HTML for a course element.
+
+At UBC, the dashboard is hosted on a virtual machine (VM) instance in [Google Compute Engine](https://console.cloud.google.com/compute/). If you wish to do the same, you will need to configure a [service account](https://cloud.google.com/compute/docs/access/service-accounts), since the VizIT application — which will be running on a VM instance — will need to identify itself to Google Cloud and Google BigQuery.
+
+Once you have configured a service account, make sure you have authorization to create and manage VM instances for your project. At minimum, you will probably require the `roles/iam.serviceAccountActor` role and the `roles/compute.instanceAdmin.v1` role.
+
+
