@@ -94,7 +94,7 @@ forumModuleUI <- function(id) {
                                                            conditionalPanel("input['forumID-x_axis'] == 'posts'",
                                                                             checkboxInput(ns("breakdown"),
                                                                                           label = "Show post types",
-                                                                                          value = FALSE)
+                                                                                          value = TRUE)
                                                            )
                                                     ),
 

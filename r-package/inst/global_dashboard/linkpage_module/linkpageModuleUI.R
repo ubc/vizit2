@@ -72,6 +72,9 @@ linkpageModuleUI <- function(id) {
                  bsCollapse(id= ns("link"), multiple=TRUE,
                  bsCollapsePanel("Which links do learners click most?",
                                  h5(strong("Click the 'Number of Clicks' header to reorder the links.")),
+                                 tags$p("The links in the table below are not only ones you may have
+                                        included as resources; they may also have been posted in the
+                                        discussion forums by learners."),
                                  br(),
                                  DT::dataTableOutput(ns("link_summary")),
                                  style='primary')
@@ -84,7 +87,7 @@ linkpageModuleUI <- function(id) {
           
           # Display page summary table
           fluidRow(
-                 bsCollapse(id= ns("page"), multiple=TRUE,
+                 bsCollapse(id= ns("page"), multiple=TRUE, open="Which pages do learners view most? (Not including videos or problems.)",
                  bsCollapsePanel("Which pages do learners view most? (Not including videos or problems.)",
                                  h5(strong("Click the 'Pageview' header to quickly find the most / least viewed pages")),
                                  DT::dataTableOutput(ns("page_summary")),

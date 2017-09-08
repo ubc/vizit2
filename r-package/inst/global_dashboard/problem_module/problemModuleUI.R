@@ -46,7 +46,10 @@ problemModuleUI <- function(id) {
 
     fluidRow(
         bsCollapse(id = ns("overview_panel"),
-                   multiple = TRUE,
+                   multiple = TRUE, open = "How did students do in each module?",
+                   open = "How did students do in each module?",
+                   tags$p("This plot shows the average grade achieved by students
+                          on the multiple choice problems in each module."),
                    bsCollapsePanel("How did students do in each module?",
                                    plotOutput(ns("overview_plot")),
                                    style = "primary"))),
@@ -59,13 +62,18 @@ problemModuleUI <- function(id) {
 
     fluidRow(
       bsCollapse(id = ns("assessment_panel"),
-                 bsCollapsePanel("How were students assessed on Open Response Assignments?",
+                 tags$p("Open Response Assessments are short essays that are reviewed by
+                        the students themselves, by their peers, and occasionally by 
+                        the instructor. If the instructor has completed an assessment,
+                        it will be recorded as the final grade. Otherwise, the final
+                        grade is determined by the peer assessments."),
+                 bsCollapsePanel("How were students assessed on Open Response Assessments?",
                                  plotOutput(ns("assessment_plot")),
                                  style = "primary"))),
 
     fluidRow(
       bsCollapse(id = ns("chapter_overview_panel"),
-                 bsCollapsePanel("How did students do on each problem?",
+                 bsCollapsePanel("What was the average score on each problem?",
                                  DT::dataTableOutput(ns("chapter_table")),
                                  style = "primary")))
     )
