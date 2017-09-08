@@ -5,3 +5,4 @@
 r-package/inst/data
 r-package/inst/results
 .DS_Store
+/r-package/inst/global_dashboard/overview_module/.Rhistory
