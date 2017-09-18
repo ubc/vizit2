@@ -40,3 +40,4 @@ Modify profile to update your $PATH and enable bash completion? (Y/n)
 
 Answer `Y`. Then restart Terminal. You should now be able to SSH into your VM instance using the gcloud command that you copy-pasted from the instances page.
 
+
