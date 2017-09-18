@@ -16,7 +16,7 @@ EdXViz is a Shiny server application that allows instructors and course designer
 ```json
 [{"courses": [{"short_name": "Biobank1x_1T2017", "big_table": "UBCx__Biobank1x__1T2017", "cloud_platform": "UBCx__Biobank1x__1T2017"}]
 ```
-8 ` cp moocshiny-nginx-tmpl/nginx.tmpl mooc_capstone_public`
+8. ` cp moocshiny-nginx-tmpl/nginx.tmpl mooc_capstone_public`
 9. `cd mooc_capstone_public/`
 10. Type `docker run -ti --name gcloud-config google/cloud-sdk gcloud auth login` and authenticate your account.
 11. Type `docker run -ti --name gcloud-config-project google/cloud-sdk gcloud auth application-default login` to authenticate the project.
