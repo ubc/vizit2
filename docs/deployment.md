@@ -25,9 +25,10 @@ EdXViz is a Shiny server application that allows instructors and course designer
 	1. A short_name (which defines it's path on the site)
 	2. A BigQuery table name
 	3. A Google Cloud Storage table name (likely similar to the BigQuery name)
-13. `docker run --rm --privileged -ti --volumes-from gcloud-config --volumes-from gcloud-config-project -v $(pwd):/srv/shiny-server --name="populate" lstmemery/moocshiny bin/bash -c "source activate mooc && python /srv/shiny-server/r-package/exec/populate_courses.py >> /srv/shiny-server/logs/first_populate.log 2>&1"`
+13. `docker run --rm --privileged -ti --volumes-from gcloud-config --volumes-from gcloud-config-project -v /mooc_capstone_public/r-package:/srv/shiny-server
+ --name="populate" lstmemery/moocshiny bin/bash -c "source activate mooc && python /srv/shiny-server/exec/populate_courses.py >> /srv/shiny-server/logs/first_populate.log 2>&1"`
 	This will download and deploy the docker image. The image is about 2 gigabytes and contains the scripts to populate the course and run the server.
-14. `sudo mkdir -p ~/proxy/docker-gen/templates/ && sudo cp ~/moocshiny-nginx-tmpl/nginx.tmpl ~/proxy/docker-gen/templates`
+14. `sudo mkdir -p /proxy/docker-gen/templates/ && sudo cp /moocshiny-nginx-tmpl/nginx.tmpl /proxy/docker-gen/templates`
 	Note: This step is only required for UBC. Non-UBC users will have to make their own `nginx.tmpl`
 15. Copy the contents of `crontab` into system crontab with `crontab -e`
 16. Create a DNS record in Google Compute Engine
@@ -39,7 +40,7 @@ EdXViz is a Shiny server application that allows instructors and course designer
 
 
 ### Running Shiny server without SSL
-- Type `docker run -d -p 80:3838 -v ~/mooc_capstone_public/r-package/inst/:/srv/shiny-server/ -v ~/mooc_capstone_public/logs/:/var/log/shiny-server/ lstmemery/moocshiny`
+- Type `docker run -d -p 80:3838 -v /mooc_capstone_public/r-package:/srv/shiny-server/ -v /mooc_capstone_public/logs/:/var/log/shiny-server/ lstmemery/moocshiny`
 
 ## Population Command
 `source activate mooc && python srv/shiny-server/r-package/exec/populate_courses.py >> srv/shiny-server/logs/cron.log 2>&1`
