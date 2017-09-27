@@ -64,7 +64,7 @@ get_module_of_link <- function(link_data, course_axis){
 #' @examples write_link_clean(input_course = "psyc1",cleaned_data = get_module_of_link)
 #' @export
 write_link_clean <- function(input_course, cleaned_data){
-  output_csv_path <- paste0("../data/", input_course, "/external_link.csv")
+  output_csv_path <- paste0("../inst/data/", input_course, "/external_link.csv")
   readr::write_csv(x=cleaned_data, path= output_csv_path)
 }
 
@@ -80,7 +80,7 @@ write_link_clean <- function(input_course, cleaned_data){
 #' read_page_dirt(input_couse = "psyc1")
 #' @export
 read_page_dirt <- function(input_course){
-  input_csv_path <- paste0("../data/", input_course, "/page_dirt.csv")
+  input_csv_path <- paste0("../inst/data/", input_course, "/page_dirt.csv")
   page_dirt <- readr::read_csv(input_csv_path)
   return(page_dirt)
 }
