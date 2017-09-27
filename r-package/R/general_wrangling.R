@@ -31,7 +31,7 @@ wrangle_general <- function(input_course)
 #' obtain_raw_general_data('psyc1')
 obtain_raw_general_data <- function(input_course)
 {
-  input_csv_path <- paste0("../data/", input_course, "/generalized_demographics.csv")
+  input_csv_path <- paste0("../inst/data/", input_course, "/generalized_demographics.csv")
   data <- read_csv(input_csv_path)
   return(data)
 }
@@ -44,7 +44,7 @@ obtain_raw_general_data <- function(input_course)
 #' @examples obtain_language_info()
 obtain_language_info <- function()
 {
-  input_csv_path <- "../data/helper_data/language_info.csv"
+  input_csv_path <- "../inst/data/helper_data/language_info.csv"
   language_info <- read_csv(input_csv_path)
   return(language_info)
 }
@@ -56,7 +56,7 @@ obtain_language_info <- function()
 #' @examples obtain_country_info()
 obtain_country_info <- function()
 {
-  input_tsv_path <- "../data/helper_data/countryInfo.tsv"
+  input_tsv_path <- "../inst/data/helper_data/countryInfo.tsv"
   country_info <- read_tsv(input_tsv_path)
   return(country_info)
 }
@@ -105,6 +105,6 @@ prepare_general_data <- function(data, language_info, country_info)
 #' @examples write_general_data('psyc1', cleaned_demographic_data)
 write_general_data <- function(input_course, data)
 {
-  output_csv_path <- paste0("../data/", input_course, "/wrangled_demographics.csv")
+  output_csv_path <- paste0("../inst/data/", input_course, "/wrangled_demographics.csv")
   write_csv(data, output_csv_path)
 }
