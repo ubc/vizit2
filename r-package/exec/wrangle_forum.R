@@ -17,13 +17,14 @@ source("../R/forum_wrangling.R")
 args <- commandArgs(TRUE)
 input_course <- args[1]
 
-root <- "../data/"
+root <- "../inst/data"
+base_root <- "../data/"
 
 posts_input_path <- paste0(root, input_course, "/forum_posts.csv")
 views_input_path <- paste0(root, input_course, "/forum_views.csv")
 searches_input_path <- paste0(root, input_course, "/forum_searches.csv")
-json_input_path <- paste0(root, input_course, "/prod_analytics.json")
-xml_input_path <- paste0(root, input_course, "/xbundle.xml")
+json_input_path <- paste0(base_root, input_course, "/prod_analytics.json")
+xml_input_path <- paste0(base_root, input_course, "/xbundle.xml")
 posts_output_path <- paste0(root, input_course, "/wrangled_forum_posts.csv")
 words_output_path <- paste0(root, input_course, "/wrangled_forum_words.csv")
 views_output_path <- paste0(root, input_course, "/wrangled_forum_views.csv")
