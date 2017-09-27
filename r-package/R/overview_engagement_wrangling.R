@@ -5,7 +5,7 @@
 #' read_dirt_engagement_data(input_course = 'psyc1')
 #' @export
 read_dirt_engagement_data <- function(input_course){
-  input_csv_path <- paste0("../data/", input_course, "/tower_engage_dirt.csv")
+  input_csv_path <- paste0("../inst/data/", input_course, "/tower_engage_dirt.csv")
   engage_dirt <- read_csv(input_csv_path)
   return(engage_dirt)
 }
@@ -40,7 +40,7 @@ clean_engagement_data <- function(dirt_engagement_data){
 write_tidy_engagement_data <- function(input_course, cleaned_data){
   
   # Make IO path
-  output_csv_path <- paste0("../data/", input_course, "/tower_engage.csv")
+  output_csv_path <- paste0("../inst/data/", input_course, "/tower_engage.csv")
   
   # Save data frame to csv
   write_csv(x=cleaned_data, path=output_csv_path)
