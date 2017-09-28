@@ -14,8 +14,8 @@ linkpageModule <- function(input, output, session) {
 
 
   # Import clean overview dashboard data
-  root <- "../data/"
-  result_root <- "../results/"
+  root <- "../../data/"
+  result_root <- "../../results/"
 
   course_axis_csv <- reactiveFileReader(10000,
                 session,
