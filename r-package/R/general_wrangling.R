@@ -56,7 +56,7 @@ obtain_language_info <- function()
 #' @examples obtain_country_info()
 obtain_country_info <- function()
 {
-  input_tsv_path <- "../inst/data/helper_data/countryInfo.tsv"
+  input_tsv_path <- "../inst/data/helper_data/countryInfo.csv"
   country_info <- read_tsv(input_tsv_path)
   return(country_info)
 }
