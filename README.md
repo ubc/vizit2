@@ -1,6 +1,6 @@
 # MDS Capstone Project:
 
-[![Travis-CI Build Status](https://travis-ci.org/AndrewLim1990/mooc_capstone_public.svg?branch=travis)](https://travis-ci.org/AndrewLim1990/mooc_capstone_public)
+[![Travis-CI Build Status](https://travis-ci.org/laingdk/mooc_capstone_public.svg?branch=travis)](https://travis-ci.org/laingdk/mooc_capstone_public)
 
 ### edXviz: Interactive Visualization of Student Engagement with edX MOOCs
 
