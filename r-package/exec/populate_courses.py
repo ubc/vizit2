@@ -9,7 +9,7 @@ import click as cl
 @cl.command()
 @cl.option("--overwrite", default=False)
 def populate(overwrite):
-    with open('../../.config.json') as config:
+    with open('../.config.json') as config:
         config_json = json.load(config)
         courses = config_json[0]["courses"]
         for course in courses:
@@ -25,7 +25,7 @@ def populate(overwrite):
 
 
 def write_hashed_courses():
-    subprocess.call('R -e "edxviz::get_hashed_courses(\'../../.config.json\','
+    subprocess.call('R -e "edxviz::get_hashed_courses(\'../.config.json\','
                     ' \'../inst/data/.hashed_courses.csv\')"',
                     shell=True)
 

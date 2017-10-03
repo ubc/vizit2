@@ -20,6 +20,8 @@ read_course_csv <- function(course_name, csv_name, data_dir = c("..", "data")) {
   readr::read_csv(file_path)
 }
 
+
+
 cut_activity_levels <- function(df, input_activity_name = "sum_dt", output_activity_name = "activity_level") {
   quo_input <- dplyr::enquo(input_activity_name)
   quo_output <- dplyr::enquo(output_activity_name)

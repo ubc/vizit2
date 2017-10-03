@@ -152,7 +152,7 @@ def bigquery(sql, course, date, limit, confirm, output, full):
 
 
 def find_course_long_name(short_name):
-    with open("../../.config.json") as config:
+    with open("../.config.json") as config:
         json_config = json.load(config)
         courses = json_config[0]["courses"]
         for course in courses:

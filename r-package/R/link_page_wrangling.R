@@ -3,6 +3,25 @@
 # Link data wrangling functions #
 #################################
 
+
+#' Import course_axis.csv files based on specified course folder name
+#' @param input_course the short name of the course
+#' @return course_axis a dataframe containing course_axis information
+read_course_axis <- function(input_course){
+  input_csv_path <- paste0("../inst/data/", input_course, "/course_axis.csv")
+  course_axis <- readr::read_csv(input_csv_path)
+  return(course_axis)
+}
+
+#' Import external_link_dirt.csv files based on specified course folder name
+#' @param input_course the short name of the course
+#' @return link_dirt the raw link data in a dataframe
+read_link_dirt <- function(input_course){
+  input_csv_path <- paste0("../inst/data/", input_course, "/external_link_dirt.csv")
+  link_dirt <- readr::read_csv(input_csv_path)
+  return(link_dirt)
+}
+
 #' Set three levels for students total spending time on course based on tracklog
 #' link data
 #' @param link_data dataframe containing the information of student click any
@@ -195,8 +214,8 @@ prepare_page_name <- function(course_axis){
 #' @examples write_page_clean(input_course = "psyc1",cleaned_data = prepare_tidy_page)
 #' @export
 write_page_clean <- function(input_course,cleaned_data){
-  output_csv_path <- paste0("../data/", input_course, "/page.csv")
-  dplyr::write_csv(x=cleaned_data, path= output_csv_path)
+  output_csv_path <- paste0("../inst/data/", input_course, "/page.csv")
+  readr::write_csv(x=cleaned_data, path= output_csv_path)
 
 }
 
@@ -206,8 +225,8 @@ write_page_clean <- function(input_course,cleaned_data){
 #' @param cleaned_data A tidy page_name dataframe
 #' @examples write_page_name(input_course = "psyc1",cleaned_data = prepare_page_name)
 write_page_name <- function(input_course,cleaned_data){
-  output_csv_path <- paste0("../data/", input_course, "/page_name.csv")
-  dplyr::write_csv(x=cleaned_data, path= output_csv_path)
+  output_csv_path <- paste0("../inst/data/", input_course, "/page_name.csv")
+  readr::write_csv(x=cleaned_data, path= output_csv_path)
 }
 
 
@@ -225,7 +244,7 @@ wrangle_link_page <- function(input_course){
 
   # read in link data
   course_axis <- read_course_axis(input_course)
-  link_dat <- read_course_csv(input_course, "external_link_dirt")
+  link_dat <- read_link_dirt(input_course)
 
   # clean link data
   link_dat <- set_activity_level(link_dat)
@@ -235,7 +254,7 @@ wrangle_link_page <- function(input_course){
   write_link_clean(input_course,link_dat)
 
   # read in page data
-  page_dat <- read_course_csv(input_course, "course_axis")
+  page_dat <- read_page_dirt(input_course)
 
   # clean page data
   page_dat <- prepare_tidy_page(page_dat)

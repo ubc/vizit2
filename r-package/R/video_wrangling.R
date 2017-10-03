@@ -18,10 +18,10 @@ SECONDS_IN_MINUTE <- 60  # Number of seconds in a minute
 obtain_raw_video_data <- function(input_course, testing = FALSE)
 {
   input_csv_path <-
-    paste0("../data/", input_course, "/generalized_video_heat.csv")
+    paste0("../inst/data/", input_course, "/generalized_video_heat.csv")
   if (testing == TRUE)
   {
-    input_csv_path <- "data/generalized_video_heat.csv"
+    input_csv_path <- "../inst/data/generalized_video_heat.csv"
   }
   data <- read_csv(input_csv_path)
   return(data)
@@ -38,10 +38,10 @@ obtain_raw_video_data <- function(input_course, testing = FALSE)
 obtain_video_axis_data <- function(input_course, testing = FALSE)
 {
   input_csv_path <-
-    paste0("../data/", input_course, "/generalized_video_axis.csv")
+    paste0("../inst/data/", input_course, "/generalized_video_axis.csv")
   if (testing == TRUE)
   {
-    input_csv_path <- "data/generalized_video_axis.csv"
+    input_csv_path <- "../inst/data/generalized_video_axis.csv"
   }
   video_axis <- read_csv(input_csv_path)
   return(video_axis)
@@ -61,11 +61,11 @@ write_wrangled_video_data <-
   {
     # Making IO paths:
     output_csv_path <-
-      paste0("../data/", input_course, "/wrangled_video_heat.csv")
+      paste0("../inst/data/", input_course, "/wrangled_video_heat.csv")
     
     if (testing == TRUE)
     {
-      output_csv_path <- "data/wrangled_video_heat.csv"
+      output_csv_path <- "../inst/data/wrangled_video_heat.csv"
     }
     
     # Save data frame to csv. This data frame is used for the video heat
