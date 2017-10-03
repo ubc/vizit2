@@ -240,9 +240,9 @@ get_activity_levels <- function(forum) {
         forum_w_activity_levels <- forum %>%
                 mutate(activity_level = case_when(
 
-                        (.$sum_dt < 30) ~ "under_30_min",
-                        (.$sum_dt >= 30) & (.$sum_dt < 300) ~ "30_min_to_5_hr",
-                        (.$sum_dt >= 300) ~ "over_5_hr",
+                        (.$sum_dt < 1800) ~ "under_30_min",
+                        (.$sum_dt >= 1800) & (.$sum_dt < 18000) ~ "30_min_to_5_hr",
+                        (.$sum_dt >= 18000) ~ "over_5_hr",
                         is.na(.$sum_dt) ~ "NA"
 
                 )) %>%
