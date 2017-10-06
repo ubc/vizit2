@@ -1,4 +1,4 @@
-SELECTT
+SELECT
 	author_id,
 	author_username,
 	gender,
