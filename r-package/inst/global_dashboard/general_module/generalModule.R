@@ -1,5 +1,5 @@
 generalModule <- function(input, output, session) {
-  root <- "../data/"
+  root <- "../../inst/data/"
 
   gender <- reactive({
     input$gender
@@ -27,7 +27,7 @@ generalModule <- function(input, output, session) {
 
     if ("course" %in% names(query)) {
       get_unhashed_course(query$course,
-                          read_csv("../data/.hashed_courses.csv"))
+                          read_csv("../../inst/data/.hashed_courses.csv"))
     } else {
       "no_course_selected"
     }

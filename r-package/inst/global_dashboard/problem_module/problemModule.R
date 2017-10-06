@@ -4,7 +4,7 @@ problemModule <- function(input, output, session) {
 
     if ("course" %in% names(query)) {
       get_unhashed_course(query$course,
-                          read_csv("../data/.hashed_courses.csv"))
+                          read_csv("../../data/.hashed_courses.csv"))
     } else {
       "no_course_selected"
     }
@@ -42,8 +42,8 @@ problemModule <- function(input, output, session) {
     n_distinct(filt_segs$user_id)
   })
 
-  root <- "../data/"
-  result_root <- "../results/"
+  root <- "../../../inst/data/"
+  result_root <- "../../../inst/results/"
 
   output$moduleSelection <- renderUI({
     ns <- NS("problemID")

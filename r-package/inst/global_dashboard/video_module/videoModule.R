@@ -1,7 +1,7 @@
 videoModule <- function(input, output, session)
 {
 
-  root <- "../data/"
+  root <- "../../inst/data/"
 
   # Obtain user input for filters and selections:
   gender <- reactive({
@@ -35,7 +35,7 @@ videoModule <- function(input, output, session)
 
     if ("course" %in% names(query)) {
       get_unhashed_course(query$course,
-                          read_csv("../data/.hashed_courses.csv"))
+                          read_csv("../../inst/data/.hashed_courses.csv"))
     } else {
       "no_course_selected"
     }

@@ -6,7 +6,7 @@ linkpageModule <- function(input, output, session) {
 
     if ("course" %in% names(query)) {
       get_unhashed_course(query$course,
-                          read_csv("../data/.hashed_courses.csv"))
+                          read_csv("../../inst/data/.hashed_courses.csv"))
     } else {
       "no_course_selected"
     }
@@ -14,8 +14,8 @@ linkpageModule <- function(input, output, session) {
 
 
   # Import clean overview dashboard data
-  root <- "../../data/"
-  result_root <- "../../results/"
+  root <- "../../inst/data/"
+  result_root <- "../../inst/results/"
 
   course_axis_csv <- reactiveFileReader(10000,
                 session,
