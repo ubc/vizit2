@@ -36,7 +36,7 @@ wrangle_forum <- function(posts_input_path,
         }, error = function(e) {
                 # In case the XML is malformed.
                 print("XML is malformed. Using htmlInternalTreeParse.")
-                htmlTreeParse(file = xml_input_path, useInternalNodes = TRUE)
+                XML::htmlTreeParse(file = xml_input_path, useInternalNodes = TRUE)
         })
 
         # Prepare the forum views data.
