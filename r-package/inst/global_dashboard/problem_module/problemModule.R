@@ -42,8 +42,8 @@ problemModule <- function(input, output, session) {
     n_distinct(filt_segs$user_id)
   })
 
-  root <- "../../../inst/data/"
-  result_root <- "../../../inst/results/"
+  root <- "../../inst/data/"
+  result_root <- "../../inst/results/"
 
   output$moduleSelection <- renderUI({
     ns <- NS("problemID")
