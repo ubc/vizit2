@@ -23,9 +23,12 @@ run_dashboard_server <- function(requested_dashboard){
   else if (requested_dashboard == "forum"){
     callModule(forumModule, "forumID")
   }
+  else if (requested_dashboard == "problem"){
+    callModule( problemModule, "problemID")
+  }
   else {
     print("Requested dashboard not found.")
-    callModule(problemModule, "problemID")
+    callModule(generalModule, "generalID")
   }
 }
 
@@ -52,8 +55,12 @@ run_dashboard_ui <- function(requested_dashboard){
   }
   else if(requested_dashboard == "forum") {
     shinyUI(fluidPage(forumModuleUI("forumID")))
-  } else {
+  } 
+  else if(requested_dashboard == "problem") {
     shinyUI(fluidPage(problemModuleUI("problemID")))
+  } 
+  else {
+    shinyUI(fluidPage(generalModuleUI("generalID")))
   }
 }
 
@@ -84,7 +91,7 @@ get_unhashed_dashboard <- function(hashed_dashboard){
 get_unhashed_course <- function(hashed_course, course_checksum_df){
   
   if (missing(course_checksum_df)) {
-    course_checksum_df <- read_csv("data/.hashed_courses.csv")
+    course_checksum_df <- read_csv("../inst/data/.hashed_courses.csv")
   }
   
   
