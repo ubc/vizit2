@@ -32,6 +32,7 @@ dependencies:
 - mkl=2017.0.1=0
 - numpy=1.12.1=py36_0
 - pip:
+  - jinja2==2.9
   - cachetools==2.0.0
   - chardet==3.0.3
   - dill==0.2.6
@@ -93,5 +94,5 @@ dependencies:
   - rsa==3.4.2
   - uritemplate==3.0.0
   - urllib3==1.21.1
-prefix: /home/deadhand/anaconda3/envs/mooc
+prefix: mooc
 

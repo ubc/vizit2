@@ -24,7 +24,7 @@ services:
     volumes_from:
       - nginx
     entrypoint: /bin/sh -c
-    command: ["/usr/local/bin/docker-gen -notify-sighup nginx -watch -only-exposed -wait 5s:30s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf"]
+    command: ["/usr/local/bin/docker-gen -notify-sighup nginx -watch -only-exposed -wait 5s:30s /etc/docker-gen/templates/nginx.tmpl  /etc/nginx/conf.d/default.conf"]
 
   letsencrypt-nginx-proxy-companion:
     image: jrcs/letsencrypt-nginx-proxy-companion
@@ -44,14 +44,14 @@ services:
     expose:
       - "3838"
     environment:
-      - VIRTUAL_HOST=YOURDOMAIN.COM
+      - VIRTUAL_HOST=dev.vizit.edx.learninganalytics.ubc.ca
       - VIRTUAL_NETWORK=nginx-proxy
-      - LETSENCRYPT_EMAIL=YOUREMAIL@DOMAIN.com
+      - LETSENCRYPT_EMAIL=scott.mcmillan@ubc.ca
       - VIRTUAL_PORT=80
-      - LETSENCRYPT_HOST=YOURDOMAIN.COM
+      - LETSENCRYPT_HOST=dev.vizit.edx.learninganalytics.ubc.ca
     volumes:
-      - /mooc_capstone_shiny/r-package:/srv/shiny-server
-      - /mooc_capstone_shiny/logs:/var/log/shiny-server
+      - /mooc_capstone_public/r-package:/srv/shiny-server
+      - /mooc_capstone_public/logs:/var/log/shiny-server
     networks:
       - proxy-tier
 
