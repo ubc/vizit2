@@ -56,9 +56,9 @@ obtain_language_info <- function()
 #' @examples obtain_country_info()
 obtain_country_info <- function()
 {
-  input_csv_path <- "../inst/data/helper_data/countryInfo.csv"
-  country_info <- read_csv(input_csv_path)
-  return(country_info)
+ input_csv_path <- "../inst/helper_data/countryInfo.csv"
+ country_info <- read_csv(input_csv_path)
+ return(country_info)
 }
 
 #' Cleans raw demographic data
@@ -83,7 +83,7 @@ prepare_general_data <- function(data, language_info, country_info)
   
   # Dataframe with country name and language code
   country_info <- country_info %>% select(ISO, Country, Languages) %>% 
-     tidyr::separate(Languages,:into = c("primary_lang", "secondary_lang", 
+    tidyr::separate(Languages, into = c("primary_lang", "secondary_lang", 
                                  "thirdary_lang"), sep = ",") %>% mutate(primary_lang = sub("-.*", 
                                                                                             "", primary_lang), secondary_lang = sub("-.*", "", secondary_lang), 
                                                                          thirdary_lang = sub("-.*", "", thirdary_lang))

@@ -158,7 +158,7 @@ wrangle_forum <- function(posts_input_path,
 
         # Write each dataframe to csv.
         print("Saving everything to CSV...")
-        write_csv(x =  wrangled_forum_posts, path = posts_output_path)
+        readr::write_csv(x =  wrangled_forum_posts, path = posts_output_path)
         write_csv(x = wrangled_forum_words, path = words_output_path)
         write_csv(x = wrangled_forum_views, path = views_output_path)
         write_csv(x = wrangled_forum_searches, path = searches_output_path)

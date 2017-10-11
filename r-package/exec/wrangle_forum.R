@@ -6,10 +6,12 @@
 # and performs the necessary wrangling for the data to be visualized in the CTLT dashboard.
 
 # Load libraries.
-library(jsonlite)
-library(tidytext)
-library(tidyverse)
-library(XML)
+#library(jsonlite)
+#library(tidytext)
+#library(tidyverse)
+#library(XML)
+#library(tidyr)
+devtools::load_all()
 
 source("../R/forum_wrangling.R")
 
@@ -17,8 +19,9 @@ source("../R/forum_wrangling.R")
 args <- commandArgs(TRUE)
 input_course <- args[1]
 
+
+
 root <- "../inst/data/"
-base_root <- "../data/"
 
 posts_input_path <- paste0(root, input_course, "/forum_posts.csv")
 views_input_path <- paste0(root, input_course, "/forum_views.csv")

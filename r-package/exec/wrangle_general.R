@@ -1,5 +1,5 @@
 #! /usr/bin/env Rscript 
-# wrangle_video.R
+# wrangle_general.R
 # Andrew Lim, May 2017
 #
 # This script reads in a course's demographic csv and performs necessary wrangling

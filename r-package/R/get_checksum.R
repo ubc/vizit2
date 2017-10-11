@@ -12,7 +12,7 @@ get_hashed_courses <- function(input_json, output_csv) {
   }
   
   if (missing(output_csv)) {
-    output_csv <- "data/.hashed_courses.csv"
+    output_csv <- "../inst/data/.hashed_courses.csv"
     
   }
   
@@ -37,6 +37,6 @@ get_hashed_dashboard <- function(){
   hashed_dashboards_df <- data.frame(dashboard) %>% 
     mutate(checksum = sapply(dashboard, digest::digest))
   
-  write_csv(hashed_dashboards_df, "data/.hashed_dashoards.csv")
+  write_csv(hashed_dashboards_df, "../data/.hashed_dashboards.csv")
 }
 

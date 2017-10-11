@@ -17,3 +17,5 @@ input_course <- args[1]
 
 # Calling main function
 edxviz::wrangle_overview_engagement(input_course)
+#wrangle_overview_engagement(input_course)
+
