@@ -13,7 +13,7 @@ gsutil cp gs://ubcxdata/${GCLOUD}/xbundle_${GCLOUD}.xml ../inst/data/${SHORT}/xb
 gsutil cp gs://ubcxdata/${GCLOUD}/course_structure-prod-analytics.json.gz ../inst/data/${SHORT}/prod_analytics.json.gz
 gunzip -f ../inst/data/${SHORT}/prod_analytics.json.gz
 
-if [ $? -eq 0]; then
+if [ $? -eq 0 ]; then
     gsutil cp gs://ubcxdata/${GCLOUD}/course_structure-prod-edge-analytics.json.gz ../inst/data/${SHORT}/prod_analytics.json.gz
     gunzip -f ../inst/data/${SHORT}/prod_analytics.json.gz
 fi
