@@ -347,6 +347,8 @@ infer_post_subcategories <- function(forum) {
                 right_join(initial_posts_for_join, by = c("comment_thread_id" = "mongoid")) %>%
                 mutate(initial_post_id = comment_thread_id)
         
+        
+        print("          Replacing null response counts in response_counts with 0...")
         response_counts$responses[is.na(response_counts$responses)] <- 0
         
         comment_counts_on_init <- comment_counts %>% 
@@ -358,9 +360,13 @@ infer_post_subcategories <- function(forum) {
                 mutate(mongoid = initial_post_id) %>% 
                 select(-initial_post_id, -comment_thread_id)
         
+        print("          Replacing null comment counts in both_counts with 0...")
         both_counts$comments[is.na(both_counts$comments)] <- 0
+        
+        print("          Replacing null response counts in both_counts with 0...")
         both_counts$responses[is.na(both_counts$responses)] <- 0
         
+        print("          Setting responses in comment_counts to 0...")
         comment_counts$responses <- 0
         comment_counts <- comment_counts %>% 
                 mutate(mongoid = response_post_id) %>% 
@@ -369,7 +375,10 @@ infer_post_subcategories <- function(forum) {
         zero_counts <- comment_posts_w_sc %>% 
                 select(mongoid, commentable_id)
         
+        print("          Setting responses in zero_counts to 0...")
         zero_counts$responses <- 0
+        
+        print("          Setting comments in zero_counts to 0...")
         zero_counts$comments <- 0
         
         counts <- both_counts %>% 
