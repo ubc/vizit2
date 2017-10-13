@@ -315,7 +315,7 @@ calculate_forum_searches <-
       # Count the number of unique users for each search query.
       forum_searches <- filtered %>%
         group_by(`Search Query` = search_query) %>%
-        summarize(`Unique Users` = n_distinct(username)) %>%
+        summarize(`Unique Users` = n_distinct(user_id)) %>%
         arrange(desc(`Unique Users`))
 
       return(forum_searches)

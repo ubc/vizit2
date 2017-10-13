@@ -1,7 +1,7 @@
 SELECT
   FORMAT_UTC_USEC(time) AS date,
   search_query,
-  A.username AS username,
+  user_id,
   gender,
   mode AS registration_status,
   sum_dt
