@@ -336,7 +336,10 @@ infer_post_subcategories <- function(forum) {
                        #-commentable_id.x, -commentable_id.y
                        )
         
-        comment_counts$comments[is.na(comment_counts$comments)] <- 0
+        if (sum(is.na(comment_counts$comments)) > 0) {
+          print("          Replacing null comment counts in comment_counts with 0...")
+          comment_counts$comments[is.na(comment_counts$comments)] <- 0
+        }
         
         # Count up all the responses and comments for each initial post.
         print("          Counting responses...")
@@ -347,9 +350,11 @@ infer_post_subcategories <- function(forum) {
                 right_join(initial_posts_for_join, by = c("comment_thread_id" = "mongoid")) %>%
                 mutate(initial_post_id = comment_thread_id)
         
+        if (sum(is.na(response_counts$responses)) > 0) {
+          print("          Replacing null response counts in response_counts with 0...")
+          response_counts$responses[is.na(response_counts$responses)] <- 0
+        }
         
-        print("          Replacing null response counts in response_counts with 0...")
-        response_counts$responses[is.na(response_counts$responses)] <- 0
         
         comment_counts_on_init <- comment_counts %>% 
                 group_by(initial_post_id) %>% 
@@ -360,11 +365,15 @@ infer_post_subcategories <- function(forum) {
                 mutate(mongoid = initial_post_id) %>% 
                 select(-initial_post_id, -comment_thread_id)
         
-        print("          Replacing null comment counts in both_counts with 0...")
-        both_counts$comments[is.na(both_counts$comments)] <- 0
+        if (sum(is.na(both_counts$comments)) > 0) {
+          print("          Replacing null comment counts in both_counts with 0...")
+          both_counts$comments[is.na(both_counts$comments)] <- 0
+        }
         
-        print("          Replacing null response counts in both_counts with 0...")
-        both_counts$responses[is.na(both_counts$responses)] <- 0
+        if (sum(is.na(both_counts$responses)) > 0) {
+          print("          Replacing null response counts in both_counts with 0...")
+          both_counts$responses[is.na(both_counts$responses)] <- 0
+        }
         
         print("          Setting responses in comment_counts to 0...")
         comment_counts$responses <- 0
@@ -389,9 +398,14 @@ infer_post_subcategories <- function(forum) {
                 left_join(counts)
 
         # Wherever the number of responses or comments is NA, set to zero.
-        forum_posts$responses[is.na(forum_posts$responses)] <- 0
+        if (sum(is.na(forum_posts$responses)) > 0) {
+          forum_posts$responses[is.na(forum_posts$responses)] <- 0
+        }
         forum_posts$responses <- as.integer(forum_posts$responses)
-        forum_posts$comments[is.na(forum_posts$comments)] <- 0
+        
+        if (sum(is.na(forum_posts$comments)) > 0) {
+          forum_posts$comments[is.na(forum_posts$comments)] <- 0
+        }
         forum_posts$comments <- as.integer(forum_posts$comments)
         
         # Convert commentable_id to a factor.
