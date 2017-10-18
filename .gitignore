@@ -1,6 +1,7 @@
 /r-package/exec/bigquery_credentials.dat
 edxviz_0.0.0.9000.tar.gz
-.DS_Store
+*.DS_Store
+*.Rhistory
 /r-package/inst/data/*.csv
 *.csv
 *.json
