@@ -71,7 +71,7 @@ linkpageModuleUI <- function(id) {
           fluidRow(
                  bsCollapse(id= ns("link"), multiple=TRUE,
                  bsCollapsePanel("Which links do learners click most?",
-                                 h5(strong("Click the 'Number of Clicks' header to reorder the links.")),
+                                 h5(strong("Click the 'Number of clicks' column header to reorder the links.")),
                                  tags$p("The links in the table below are not only ones you may have
                                         included as resources; they may also have been posted in the
                                         discussion forums by learners."),
