@@ -1224,7 +1224,7 @@ get_forum_threads <- function(forum_posts,
         select(
           Subcategory = display_name,
           ## Select the variables to be displayed in the table.
-          Author = author_username,
+          Author = author_id,
           Text = body,
           Views = views,
           Responses = responses,
@@ -1256,7 +1256,7 @@ get_forum_threads <- function(forum_posts,
         select(
           Subcategory = display_name,
           ## Select the variables to be displayed in the table.
-          Author = author_username,
+          Author = author_id,
           Text = body,
           Views = views,
           Responses = responses,
