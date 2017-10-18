@@ -33,7 +33,7 @@ def generate_template(html, dashboard, course, url="dev.vizit.edx.learninganalyt
 @cl.argument('coursename')
 def edxviz_html(coursename):
     list_of_dashboards = [Dashboard("Overview Engagement", "overview"),
-                          Dashboard("Demographics", "demographics"),
+                          Dashboard("General", "general"),
                           Dashboard("Link and Page", "linkpage"),
                           Dashboard("Forum", "forum"),
                           Dashboard("Problem", "problem"),

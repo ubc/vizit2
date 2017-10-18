@@ -8,8 +8,8 @@
 #' @return No value is returned
 #'
 #' @examples
-#' wrangle_demographics('psyc1')
-wrangle_demographics <- function(input_course)
+#' wrangle_general('psyc1')
+wrangle_general <- function(input_course)
 {
   # Reading data:
   data <- obtain_raw_general_data(input_course)
