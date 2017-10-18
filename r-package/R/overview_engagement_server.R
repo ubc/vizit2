@@ -183,7 +183,7 @@ return(student_num)
 make_engagement_eiffel_tower <- function(tower_data) {
   
 # set up axis and size parameter
-a <- list(autotick = TRUE, ticks = "outside", title = "Number of student", side = "top" )
+a <- list(autotick = TRUE, ticks = "outside", title = "Number of unique learners who engaged with this element", side = "top" )
 m <- list(l=50, r=50, b=0, t=50)
   
   if (all(is.na(tower_data$nactive)==TRUE)) {
@@ -196,7 +196,7 @@ m <- list(l=50, r=50, b=0, t=50)
                text = ~my_text, hoverinfo="text",color = ~category,
                colors = c("black","#66c2a5","#8da0cb")) %>%  
                plotly::layout(margin=m,xaxis = a,
-                      yaxis = list(title = "Course element by module",showticklabels = FALSE),
+                      yaxis = list(title = "Course elements (problems and videos)",showticklabels = FALSE),
                       showlegend = TRUE, legend = list(x = 0.9, y = 0.9)) %>% 
                plotly::config(displayModeBar = FALSE)
     
