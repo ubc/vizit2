@@ -41,29 +41,29 @@ generalModuleUI <- function(id) {
     
     # Education
     fluidRow(
-      bsCollapse(id=ns("level_of_education"), multiple=TRUE, open="What kind of education do my students have?",
-                 bsCollapsePanel("What kind of education do my students have?",
+      bsCollapse(id=ns("level_of_education"), multiple=TRUE, open="What are my learners' levels of education?",
+                 bsCollapsePanel("What are my learners' levels of education?",
                                  plotOutput(ns("loe_demo")),
                                  style='primary'))),
 
     # Location
     fluidRow(
       bsCollapse(id=ns("location"), multiple=TRUE,
-                 bsCollapsePanel("Where are my students from?",
+                 bsCollapsePanel("Where are my learners located?",
                                  plotOutput(ns("continent_demo")),
                                  style='primary'))),
 
     # Language
     fluidRow(
       bsCollapse(id=ns("language"), multiple=TRUE,
-                 bsCollapsePanel("What languages do my students speak?",
+                 bsCollapsePanel("What languages do my learners speak?",
                                  plotOutput(ns("language_demo")),
                                  style='primary'))),
 
     # Age
     fluidRow(
       bsCollapse(id=ns("age"), multiple=TRUE,
-                 bsCollapsePanel("What age are my students?",
+                 bsCollapsePanel("What age are my learners?",
                                  plotOutput(ns("age_demo")),
                                  style='primary')))
                         )
