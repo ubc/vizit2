@@ -73,7 +73,7 @@ get_age_df <- function(data)
 get_age_plot <- function(age_df)
 {
   g <- ggplot(age_df, aes(age)) + geom_histogram(fill = "#e78ac3", bins = 10) + 
-    ylab("Number of Students") + xlab("Age") + ggthemes::theme_few(base_family = "GillSans")
+    ylab("Number of learners") + xlab("Age") + ggthemes::theme_few(base_family = "GillSans")
   
   return(g)
 }
