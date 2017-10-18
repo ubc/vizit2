@@ -136,7 +136,7 @@ join_engagement_item <- function(filtered_engagement, filtered_item){
   # Add hovering text: for chapter item, only show item name ; for other items, show detail information 
   tower_df$my_text <- ifelse(tower_df$category == "module seperator",
                       tower_df$name,
-                      paste(tower_df$name,"Number of student engaged with:",tower_df$nactive , sep="<br>"))
+                      paste0(tower_df$nactive, " students engaged with this element."))
   } else {
     
   # If the filtered table is empty, set each column to zero 
