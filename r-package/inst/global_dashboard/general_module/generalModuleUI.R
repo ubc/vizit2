@@ -49,14 +49,14 @@ generalModuleUI <- function(id) {
     # Location
     fluidRow(
       bsCollapse(id=ns("location"), multiple=TRUE,
-                 bsCollapsePanel("Where are my learners located?",
+                 bsCollapsePanel("Where are my learners located? (top 10 countries)",
                                  plotOutput(ns("continent_demo")),
                                  style='primary'))),
 
     # Language
     fluidRow(
       bsCollapse(id=ns("language"), multiple=TRUE,
-                 bsCollapsePanel("What languages do my learners speak?",
+                 bsCollapsePanel("What languages do my learners speak? (top 10 languages)",
                                  plotOutput(ns("language_demo")),
                                  style='primary'))),
 
