@@ -121,7 +121,7 @@ get_ch_markers <- function(filt_segs) {
 #' @examples
 #' get_video_lengths(filt_segs)
 get_video_lengths <- function(filt_segs) {
-  vid_lengths <- filt_segs %>% group_by(video_id) %>% summarise(`Video Length` = round(unique(max_stop_position/SECONDS_IN_MINUTE), 
+  vid_lengths <- filt_segs %>% group_by(video_id) %>% summarise(`Video length (minutes)` = round(unique(max_stop_position/SECONDS_IN_MINUTE), 
                                                                                        2))
   
   return(vid_lengths)
@@ -144,11 +144,11 @@ get_summary_table <- function(aggregate_df, vid_lengths, avg_time_spent) {
     mutate(`Avg Views per Student` = round(`Avg Views per Student`, 
                                            2)) %>% left_join(vid_lengths, by = "video_id") %>% left_join(avg_time_spent, 
                                                                                                          by = "video_id") %>% mutate(avg_time_spent = avg_time_spent/SECONDS_IN_MINUTE) %>% 
-    mutate(time_spent_per_vid_length = round(avg_time_spent/`Video Length`, 
+    mutate(time_spent_per_vid_length = round(avg_time_spent/`Video length (minutes)`, 
                                              2)) %>% mutate(video_id = forcats::fct_reorder(video_id, course_order)) %>% 
     select(-video_id) %>% select(video_name, everything()) %>% arrange(desc(course_order)) %>% 
-    rename(`Video Name` = video_name) %>% rename(`Avg Time Spent per Video Length` = time_spent_per_vid_length) %>% 
-    select(-course_order, -avg_time_spent)
+    rename(`Video Name` = video_name) %>% #rename(`Avg Time Spent per Video Length` = time_spent_per_vid_length) %>% 
+    select(-course_order, -avg_time_spent, -time_spent_per_vid_length)
   
   return(summary_tbl)
 }
