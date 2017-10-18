@@ -3,8 +3,8 @@ generalModuleUI <- function(id) {
   
   fluidPage(
     # Top row for the demographic filtering panel.
-    fluidRow(bsCollapse(id=ns("demo_dropdown_collapse"), multiple=TRUE, open="Select demographics",
-                        bsCollapsePanel( "Select demographics",
+    fluidRow(bsCollapse(id=ns("demo_dropdown_collapse"), multiple=TRUE, open="Apply filters",
+                        bsCollapsePanel( "Apply filters",
                                          splitLayout(cellWidths = c("20%", "20%", "20%", "20%", "20%"),
                                                      selectInput(ns("activity_level"),
                                                                  "Activity Level:",
