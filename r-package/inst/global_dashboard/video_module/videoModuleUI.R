@@ -39,8 +39,8 @@ videoModuleUI <- function(id) {
                                                  style = "primary"))),
             # Most viewed
             fluidRow(
-              bsCollapse(id=ns("most_views"), multiple=TRUE, open = "Which of my videos is watched the most?",
-                         bsCollapsePanel("Which of my videos is watched the most?",
+              bsCollapse(id=ns("most_views"), multiple=TRUE, open = "Which of my videos are watched the most?",
+                         bsCollapsePanel("Which of my videos are watched the most?",
                                          plotly::plotlyOutput(ns("most_viewed")),
                                          style='primary'))),
             
@@ -48,7 +48,7 @@ videoModuleUI <- function(id) {
             # Video heat map:
             fluidRow(
               bsCollapse(id=ns("heat_map"), multiple=TRUE,
-                         bsCollapsePanel("Which part of my videos are being watched the most?",
+                         bsCollapsePanel("Which segments of my videos are being viewed the most?",
                                          plotly::plotlyOutput(ns("video_heatmap")), 
                                          style='primary'))),
             
