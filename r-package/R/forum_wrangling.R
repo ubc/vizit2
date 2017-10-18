@@ -120,7 +120,6 @@ wrangle_forum <- function(posts_input_path,
         # Reorder the variables in wrangled_forum_posts so they're easier to read by a human.
         wrangled_forum_posts <- wrangled_forum_posts %>%
                 select(author_id,
-                       author_username,
                        gender,
                        registration_status,
                        activity_level,
