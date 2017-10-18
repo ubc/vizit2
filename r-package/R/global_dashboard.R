@@ -28,7 +28,7 @@ run_dashboard_server <- function(requested_dashboard){
   }
   else {
     print("Requested dashboard not found.")
-    callModule(generalModule, "demographicsID")
+    callModule(demographicsModule, "demographicsID")
   }
 }
 
@@ -41,7 +41,7 @@ run_dashboard_server <- function(requested_dashboard){
 #' @examples
 #' run_dashboard_ui("forum")
 run_dashboard_ui <- function(requested_dashboard){
-  if (requested_dashboard == "general"){
+  if (requested_dashboard == "demographics"){
     shinyUI(fluidPage(demographicsModuleUI("demographicsID")))
   }
   else if(requested_dashboard == "video") {
@@ -60,7 +60,7 @@ run_dashboard_ui <- function(requested_dashboard){
     shinyUI(fluidPage(problemModuleUI("problemID")))
   } 
   else {
-    shinyUI(fluidPage(generalModuleUI("demographicsID")))
+    shinyUI(fluidPage(demographicsModuleUI("demographicsID")))
   }
 }
 
