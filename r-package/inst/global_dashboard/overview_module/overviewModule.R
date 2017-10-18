@@ -27,7 +27,12 @@ overviewModule <- function(input, output, session) {
                 session,
                 paste0(root, requested_course(), "/tower_engage.csv"),
                 read_csv)
-
+  
+  output$opening_paragraph <- renderUI({
+    HTML(
+      "Welcome! In this course section, you can view a sequence of dashboards that show how students are engaging with various elements of your course. For example, on this dashboard, you can see how many learners accessed each video and problem page in your course. <br/><br/> As you proceed to further dashboards, you will see information about the following:<br/>1) the demographics of your learners,<br/>2) the pages and links that learners use most,<br/>3) discussion forum activity,<br/>4) success rates on multiple-choice problems (if applicable), and<br/>5) engagement with course videos."
+    )
+  })
 
    # Create module name vector for module filtering
 

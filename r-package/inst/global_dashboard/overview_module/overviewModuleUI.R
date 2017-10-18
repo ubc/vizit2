@@ -5,15 +5,9 @@ overviewModuleUI <- function(id) {
   fluidPage(
     
     fluidRow(
-      tags$p("Welcome! In this course section, you can view a sequence of 
-             dashboards that show how students are engaging with various
-             elements of your course. For example, on this dashboard, you can 
-             see how many learners accessed each video and problem page in your 
-             course.<br><br>As you proceed to further dashboards, you will see
-             information about 1) the demographics of your learners, 2) the
-             pages and links that learners use most, 3) discussion forum
-             activity, 4) success rates on multiple-choice problems (if
-             applicable), and 5) engagement with course videos.")
+      htmlOutput(
+        outputId = "opening_paragraph"
+      )
     ),
     
     fluidRow(
