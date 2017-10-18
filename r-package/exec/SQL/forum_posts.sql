@@ -1,6 +1,5 @@
 SELECT
 	author_id,
-	author_username,
 	gender,
 	mode AS registration_status,
 	sum_dt,
@@ -15,7 +14,6 @@ SELECT
 FROM
   (SELECT
     author_id,
-    author_username,
     mongoid,
     _type,
     thread_type,
@@ -24,7 +22,7 @@ FROM
     parent_id,
     title,
     body,
-    created_at 
+    created_at
   FROM [ubcxdata:{course}.forum])
   as A
 LEFT JOIN [ubcxdata:{course}.person_course] AS B
