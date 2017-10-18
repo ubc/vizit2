@@ -5,7 +5,7 @@ EdXViz is a Shiny server application that allows instructors and course designer
 1. Spin up a server instance.
 	This process was tested on an Google Compute Instance instance with 7 Gb of RAM and 30 Gb of disk space (running on CentOS 7). The amount of RAM needed is a function of the number of concurrent users you expect and whether they are working on multiple courses. This setup was tested with sixty separate courses the site was still responsive.
 2. SSH into your instance.
-3. Install git, docker and docker-compose. In CentOs, type `sudo yum install -y git docker-ce python-pip && sudo pip install docker-compose`
+3. Install git, docker and docker-compose. In CentOs, type `sudo yum install -y git docker docker-ce python-pip && sudo pip install docker-compose`
 3. Type `git clone https://github.com/AndrewLim1990/mooc_capstone_public.git`
 	This will clone the git repo. All the necessary code is included.
 4. `sudo systemctl start docker && sudo systemctl enable docker`to start docker and ensure that it starts after reboot.
