@@ -428,5 +428,5 @@ plot_problem_chapter_summaries <- function(chapter_summary_tbl) {
     ggthemes::theme_few(base_family = "sans-serif") +
     ggplot2::scale_y_continuous(labels = scales::percent, limits = c(0, 1)) +
     ggplot2::labs(x = "Module",
-         y = "Average Score of Module Problems")
+         y = "Mean grade on problems")
 }
