@@ -46,7 +46,7 @@ get_loe_df <- function(data)
 get_loe_plot <- function(loe_df)
 {
   g <- ggplot(loe_df, aes(LoE, count)) + geom_bar(stat = "identity", 
-                                                  fill = "#e78ac3") + xlab("Level of Education") + ylab("Number of People") + 
+                                                  fill = "#e78ac3") + xlab("Level of education") + ylab("Number of learners with this level of education") + 
     coord_flip() + ggthemes::theme_few(base_family = "GillSans")
   
   return(g)
@@ -104,7 +104,7 @@ get_top_country_df <- function(data, top_selection)
 get_country_plot <- function(country_df, top_selection)
 {
   g <- ggplot(country_df, aes(country, num_of_people)) + geom_bar(stat = "identity", 
-                                                                  fill = "#e78ac3") + xlab("Country") + ylab("Number of People") + 
+                                                                  fill = "#e78ac3") + xlab("Country") + ylab("Number of learners") + 
     coord_flip() + ggthemes::theme_few(base_family = "GillSans")
   
   return(g)
@@ -140,7 +140,7 @@ get_top_language_df <- function(data, top_selection)
 get_language_plot <- function(language_df, top_selection)
 {
   g <- ggplot(language_df, aes(language, num_of_people)) + geom_bar(stat = "identity", 
-                                                                    fill = "#e78ac3") + xlab("Language") + ylab("Number of People") + 
+                                                                    fill = "#e78ac3") + xlab("Language") + ylab("Number of learners") + 
     coord_flip() + ggthemes::theme_few(base_family = "GillSans")
   
   return(g)
