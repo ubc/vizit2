@@ -44,11 +44,11 @@ services:
     expose:
       - "3838"
     environment:
-      - VIRTUAL_HOST=dev.vizit.edx.learninganalytics.ubc.ca
+      - VIRTUAL_HOST=YOURDOMAIN.COM
       - VIRTUAL_NETWORK=nginx-proxy
-      - LETSENCRYPT_EMAIL=scott.mcmillan@ubc.ca
+      - LETSENCRYPT_EMAIL=YOU@EMAIL.COM
       - VIRTUAL_PORT=80
-      - LETSENCRYPT_HOST=dev.vizit.edx.learninganalytics.ubc.ca
+      - LETSENCRYPT_HOST=YOURDOMAIN.COM
     volumes:
       - /mooc_capstone_public/r-package:/srv/shiny-server
       - /mooc_capstone_public/logs:/var/log/shiny-server
