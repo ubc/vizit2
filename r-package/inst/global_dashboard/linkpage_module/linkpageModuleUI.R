@@ -89,7 +89,7 @@ linkpageModuleUI <- function(id) {
           fluidRow(
                  bsCollapse(id= ns("page"), multiple=TRUE, open="Which pages do learners view most? (Not including videos or problems.)",
                  bsCollapsePanel("Which pages do learners view most? (Not including videos or problems.)",
-                                 h5(strong("Click the 'Pageview' header to quickly find the most / least viewed pages")),
+                                 h5(strong("Click the 'Pageviews' header to quickly find the most / least viewed pages")),
                                  DT::dataTableOutput(ns("page_summary")),
                                  br(),
                                  style='primary')
