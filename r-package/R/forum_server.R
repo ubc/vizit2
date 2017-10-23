@@ -119,7 +119,7 @@ get_target_word_counts <- function(input_forum) {
 count_posts <- function(input_forum, wrangled_forum_elements) {
   # Make sure there is a row for every permutation of display names and post types.
   types_dummy_set <- data_frame(
-    "display_name" = rep(wrangled_forum_elements$display_name, each = 4),
+    "commentable_id" = rep(wrangled_forum_elements$display_name, each = 4),
     "type" = rep(
       c("Discussion", "Question", "Response", "Comment"),
       times = dim(wrangled_forum_elements)[1]
@@ -128,7 +128,7 @@ count_posts <- function(input_forum, wrangled_forum_elements) {
 
   # Count up all the posts.
   post_counts <- input_forum %>%
-    group_by(display_name, type) %>%
+    group_by(commentable_id, display_name, type) %>%
     summarize(posts = n_distinct(mongoid, na.rm = TRUE)) %>%
     right_join(types_dummy_set) %>%
     tidyr::spread(key = type,
@@ -154,7 +154,7 @@ count_posts <- function(input_forum, wrangled_forum_elements) {
 #' count_authors(wrangled_forum_posts)
 count_authors <- function(input_forum, wrangled_forum_elements) {
   author_counts <- input_forum %>%
-    group_by(display_name) %>%
+    group_by(commentable_id, display_name) %>%
     summarize(authors = n_distinct(author_id)) %>%
     arrange(desc(authors))
 
@@ -175,7 +175,7 @@ count_authors <- function(input_forum, wrangled_forum_elements) {
 #' count_views(wrangled_forum_views)
 count_views <- function(input_forum, wrangled_forum_elements) {
   view_counts <- input_forum %>%
-    group_by(display_name) %>%
+    group_by(commentable_id, display_name) %>%
     count() %>%
     mutate(views = n) %>%
     select(-n) %>%
