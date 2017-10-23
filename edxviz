@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 start() {
-    mkdir -p /etc/docker-gen/templates/
-    cp ~/mooc_capstone_public/nginx.tmpl /etc/docker-gen/templates/nginx.tmpl
-    docker-compose -f ~/mooc_capstone_public/docker-compose.yml up
+	mkdir -p /etc/docker-gen/templates/
+	cp /mooc_capstone_public/nginx.tmpl /etc/docker-gen/templates/nginx.tmpl
+	docker-compose -f /mooc_capstone_public/docker-compose.yml up
 }
 
 stop() {
