@@ -135,13 +135,29 @@ count_posts <- function(input_forum, wrangled_forum_elements) {
                   value = posts,
                   drop = FALSE) %>%
     mutate(posts = sum(Discussion, Question, Response, Comment, na.rm = TRUE))
-
-  post_counts$posts[is.na(post_counts$posts)] <- 0
-  post_counts$Discussion[is.na(post_counts$Discussion)] <- 0
-  post_counts$Question[is.na(post_counts$Question)] <- 0
-  post_counts$Response[is.na(post_counts$Response)] <- 0
-  post_counts$Comment[is.na(post_counts$Comment)] <- 0
-
+  
+  if (sum(is.na(post_counts$posts)) > 0) {
+    post_counts$posts[is.na(post_counts$posts)] <- 0
+  }
+  if (sum(is.na(post_counts$Discussion)) > 0) {
+    post_counts <- post_counts %>%
+      mutate(Discussion = coalesce(Discussion, 0L))
+  }
+  if (sum(is.na(post_counts$Question)) > 0) {
+    post_counts <- post_counts %>%
+      mutate(Question = coalesce(Question, 0L))
+  }
+  if (sum(is.na(post_counts$Response)) > 0) {
+    post_counts <- post_counts %>%
+      mutate(Response = coalesce(Response, 0L))
+  }
+  if (sum(is.na(post_counts$Comment)) > 0) {
+    post_counts <- post_counts %>%
+      mutate(Comment = coalesce(Comment, 0L))
+  }
+  
+  print(post_counts)
+  
   return(post_counts)
 }
 
