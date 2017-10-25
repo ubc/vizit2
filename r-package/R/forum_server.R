@@ -128,7 +128,7 @@ count_posts <- function(input_forum, wrangled_forum_elements) {
 
   # Count up all the posts.
   post_counts <- input_forum %>%
-    group_by(commentable_id, display_name, type) %>%
+    group_by(commentable_id, type) %>%
     summarize(posts = n_distinct(mongoid, na.rm = TRUE)) %>%
     right_join(types_dummy_set) %>%
     tidyr::spread(key = type,
