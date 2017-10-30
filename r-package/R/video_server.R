@@ -198,7 +198,7 @@ get_segment_comparison_plot <- function(filtered_segments, module, filtered_ch_m
     geom_tile() + theme(axis.title.y = element_blank(), axis.text.y = element_blank(), 
                         axis.ticks.y = element_blank()) + ggthemes::theme_few(base_family = "GillSans") + 
     theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) + 
-    xlab("Length of video (minutes)") + ylab("Video") + viridis::scale_fill_viridis(name = "Views per learner who started the video ('watch rate')")
+    xlab("Length of video (minutes)") + ylab("Video") + viridis::scale_fill_viridis(name = "Views per learner<br>who started the<br>video ('watch rate')")
   
   if (module == "All") {
     g <- g + geom_hline(yintercept = filtered_ch_markers)
