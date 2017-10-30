@@ -93,7 +93,7 @@ get_nactive <- function(detail_df){
 
 
 #' Join filtered summary engagement dataframe with filtered item dataframe to match "item " ,"item name"  and "nactive" 
-#' convert all module item nacitve number to a constant to draw seperator line later
+#' convert all module item nacitve number to a constant to draw separator line later
 #' @param filtered_engagement Filtered engagement dataframe. 
 #' @param filtered_item Filtered course axis dataframe
 #' @return tower_df Dataframe containing item name, item category and how many student engaged with it
@@ -111,7 +111,7 @@ join_engagement_item <- function(filtered_engagement, filtered_item){
 
   # Change "chapter" to " module split line" for making plot later more clearly
   tower_df <- tower_df %>% 
-    mutate(category=replace(category, category=="chapter", "module seperator"))
+    mutate(category=replace(category, category=="chapter", "module separator"))
     
 
   # If the table is not empty after filtering
@@ -122,19 +122,19 @@ join_engagement_item <- function(filtered_engagement, filtered_item){
   tower_df["plot_index_asc"] <- seq(nrow(tower_df))
   tower_df["plot_index_desc"] <- (max(tower_df$plot_index_asc)+1) - tower_df$plot_index_asc
   
-  # Compute the nactive maximum as the length of module seperator 
+  # Compute the nactive maximum as the length of module separator 
   max_nacitve <- as.numeric(tower_df %>% 
-    filter(category != "module seperator") %>% 
+    filter(category != "module separator") %>% 
     mutate(max_nacitve = max(nactive)) %>% 
     select(max_nacitve) %>% 
     head(1))
 
   # Set all chapter nactive value to the nactive maximum to draw equal long module split line later 
   tower_df <- tower_df %>% 
-    mutate(nactive=replace(nactive, category=="module seperator", max_nacitve)) 
+    mutate(nactive=replace(nactive, category=="module separator", max_nacitve)) 
 
   # Add hovering text: for chapter item, only show item name ; for other items, show detail information 
-  tower_df$my_text <- ifelse(tower_df$category == "module seperator",
+  tower_df$my_text <- ifelse(tower_df$category == "module separator",
                       tower_df$name,
                       paste0(tower_df$name, "<br>", tower_df$nactive, " students engaged with this element."))
   } else {
