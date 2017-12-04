@@ -1,6 +1,7 @@
 /r-package/exec/bigquery_credentials.dat
 edxviz_0.0.0.9000.tar.gz
-*.DS_Store
+.DS_Store
+*/.DS_Store
 *.Rhistory
 /r-package/inst/data/*.csv
 *.csv
@@ -10,7 +11,7 @@ edxviz_0.0.0.9000.tar.gz
 *.log
 r-package/inst/data
 r-package/inst/results
-.DS_Store
 .config.json
 /r-package/inst/global_dashboard/overview_module/.Rhistory
-r-package/.DS_Store
+.RData
+.Rapp.history
