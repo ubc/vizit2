@@ -1,4 +1,4 @@
-# VizIT: Interactive Visualization of Student Engagement with edX MOOCs
+# Course Visualization for Instructional Teams (VizIT)
 
 VizIT is a capstone project completed by Matthew Emery, David Laing, Andrew Lim, and Subi Zhang, in partial fulfillment of the degree requirements for the Master of Data Science at the University of British Columbia (UBC). The project was completed in partnership with the Centre for Teaching, Learning and Technology (CTLT) at UBC.
 
