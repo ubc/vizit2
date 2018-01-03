@@ -154,22 +154,6 @@ overviewModule <- function(input, output, session) {
 
   })
 
-
-
-  # Compute the number of filtered student who engaged with the filtered module
-  reactive_student_num <- reactive({
-
-       student_num <- get_module_nactive(tower_df = reactive_tower_df())
-       return(student_num)
-
-
-  })
-
-  # Render the number of student count
-  output$student_count <- renderText({
-                        reactive_student_num()
-  })
-
   # Make tower plot visualization
   output$tower_plot <- plotly::renderPlotly ({
     make_engagement_eiffel_tower(reactive_tower_df())

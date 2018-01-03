@@ -49,24 +49,6 @@ overviewModuleUI <- function(id) {
             
             htmlOutput(ns("chap_name_overview")),
             
-            # # Add filtering reset button here
-            # column(
-            #   
-            #   width = 1.2,
-            #   
-            #   # Right-align the text showing the author/viewer counts.
-            #   tags$head(tags$style(HTML("
-            #                             #student_count {
-            #                             text-align: right;
-            #                             }
-            #                             div.box-header {
-            #                             text-align: right;
-            #                             }"))),
-            #   
-            #   h5(textOutput(ns("student_count")))
-            # 
-            # ),
-            
             h3(actionButton(ns("reset_filters"), "Reset"),align = "center"),
             
             tags$head(tags$style(HTML("
