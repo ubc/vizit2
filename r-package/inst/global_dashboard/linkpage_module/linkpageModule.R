@@ -17,10 +17,11 @@ linkpageModule <- function(input, output, session) {
   root <- "../../inst/data/"
   result_root <- "../../inst/results/"
 
-  course_axis_csv <- reactiveFileReader(10000,
-                session,
-                paste0(root, requested_course(), "/course_axis.csv"),
-                read_csv)
+  course_axis_csv <- reactiveFileReader(
+    10000,
+    session,
+    paste0(root, requested_course(), "/course_axis.csv"),
+    read_csv)
 
   course_axis <- reactive({
     validate(need(try(nrow(course_axis_csv()) > 0), "No course axis found."))
