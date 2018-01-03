@@ -5,12 +5,6 @@ overviewModuleUI <- function(id) {
   fluidPage(
     
     fluidRow(
-      htmlOutput(
-        outputId = "opening_paragraph"
-      )
-    ),
-    
-    fluidRow(
       
       bsCollapse(
         
