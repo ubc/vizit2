@@ -216,25 +216,5 @@ linkpageModule <- function(input, output, session) {
     DT::datatable(link_df,escape = FALSE)
 
   })
-
-  #########################################################
-  ################ median statistic  ######################
-  #########################################################
-
-  output$click_median <- renderText({
-    
-    paste0("Click Median: ",
-           " ",
-           median(reactive_link_dat()$number_of_click, na.rm = TRUE))
-  
-  })
-
-  output$pageview_median <- renderText({
-    
-    paste0("Pageview Median: ",
-           " ",
-           median(reactive_page()$Pageview, na.rm = TRUE))
-        
-  })
   
 }

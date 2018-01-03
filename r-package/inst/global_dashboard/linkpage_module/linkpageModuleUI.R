@@ -18,7 +18,7 @@ linkpageModuleUI <- function(id) {
           
           splitLayout(
             
-            cellWidths =  c("17.5%", "17.5%", "17.5%", "17.5%", "15%", "15%", "0%"),
+            cellWidths =  c("20%", "20%", "20%", "20%", "20%", "0%"),
             
             # Add filtering 4 select box            
             selectInput(ns("activity_level"),
@@ -45,27 +45,27 @@ linkpageModuleUI <- function(id) {
                         selected = "All"),
             
             htmlOutput(ns("chap_name_linkpage")),
-            
-            column(
-              
-              width = 1.2,
-                   
-              # Add text for showing the click median and pageview median
-              tags$head(tags$style(HTML("
-                                        #category_header, 
-                                        #click_median,
-                                        #pageview_median {
-                                        text-align: center;
-                                        }
-                                        div.box-header {
-                                        text-align: center;
-                                        }
-              "))),
-              
-              h6(textOutput(ns("click_median"))),
-              h6(textOutput(ns("pageview_median")))
-                   
-            ),    
+            # 
+            # column(
+            #   
+            #   width = 1.2,
+            #        
+            #   # Add text for showing the click median and pageview median
+            #   tags$head(tags$style(HTML("
+            #                             #category_header, 
+            #                             #click_median,
+            #                             #pageview_median {
+            #                             text-align: center;
+            #                             }
+            #                             div.box-header {
+            #                             text-align: center;
+            #                             }
+            #   "))),
+            #   
+            #   h6(textOutput(ns("click_median"))),
+            #   h6(textOutput(ns("pageview_median")))
+            #        
+            # ),    
             
             # Add filtering reset button
             h3(actionButton(ns("reset_filters"), "Reset"),align = "center"),
@@ -90,7 +90,7 @@ linkpageModuleUI <- function(id) {
           title = "Which links do learners click most?",
           h5(strong("Click the 'Number of clicks' column header to reorder the links.")),
           tags$p("The links in the table below are not only ones you may have
-                               included as resources; they may also have been posted in the
+                 included as resources; they may also have been posted in the
                  discussion forums by learners."),
           br(),
           DT::dataTableOutput(ns("link_summary")),
