@@ -21,7 +21,7 @@ overviewModuleUI <- function(id) {
         bsCollapsePanel(
           "Apply filters",
           splitLayout(
-            cellWidths = c("20%", "20%", "20%", "20%", "10%", "10%", "0%"),
+            cellWidths = c("20%", "20%", "20%", "20%", "20%", "0%"),
             
             # Add 4 select boxes
             selectInput(ns("activity_level"),
@@ -49,23 +49,23 @@ overviewModuleUI <- function(id) {
             
             htmlOutput(ns("chap_name_overview")),
             
-            # Add filtering reset button here
-            column(
-              
-              width = 1.2,
-              
-              # Right-align the text showing the author/viewer counts.
-              tags$head(tags$style(HTML("
-                                        #student_count {
-                                        text-align: right;
-                                        }
-                                        div.box-header {
-                                        text-align: right;
-                                        }"))),
-              
-              h5(textOutput(ns("student_count")))
-     
-            ),
+            # # Add filtering reset button here
+            # column(
+            #   
+            #   width = 1.2,
+            #   
+            #   # Right-align the text showing the author/viewer counts.
+            #   tags$head(tags$style(HTML("
+            #                             #student_count {
+            #                             text-align: right;
+            #                             }
+            #                             div.box-header {
+            #                             text-align: right;
+            #                             }"))),
+            #   
+            #   h5(textOutput(ns("student_count")))
+            # 
+            # ),
             
             h3(actionButton(ns("reset_filters"), "Reset"),align = "center"),
             
