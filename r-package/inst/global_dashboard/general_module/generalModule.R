@@ -84,14 +84,4 @@ generalModule <- function(input, output, session) {
 
   })
 
-  filtered_students <- reactive({
-    filt_segs <- filtered_general()
-    num_students <- n_distinct(filt_segs$user_id)
-    return(num_students)
-  })
-
-  ### Number of students ###
-  output$num_students <- renderText({
-    paste0(filtered_students(), " students")
-  })
 }

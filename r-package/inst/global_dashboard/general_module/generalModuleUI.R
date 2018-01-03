@@ -18,7 +18,7 @@ generalModuleUI <- function(id) {
           
           splitLayout(
             
-            cellWidths = c("20%", "20%", "20%", "20%", "20%"),
+            cellWidths = c("25%", "25%", "25%", "25%", "0%"),
             
             selectInput(ns("activity_level"),
                         "Activity Level:",
@@ -39,8 +39,6 @@ generalModuleUI <- function(id) {
                                     "Verified" = "verified",
                                     "Audit" = "audit"),
                         selected = "all"),
-            
-            h5(textOutput(ns("num_students")), align = "center"),
             
             h3(actionButton(ns("reset_filters"), "Reset"),align = "center"),
             
