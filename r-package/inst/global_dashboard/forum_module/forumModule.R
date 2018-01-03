@@ -312,32 +312,6 @@ forumModule <- function(input, output, session) {
 
     })
 
-    # Render the author count.
-    output$author_count <- renderText({
-      get_author_count(
-        forum_posts = wrangled_forum_posts(),
-        forum_elements = wrangled_forum_elements(),
-        activity_level = activity_level(),
-        gender = gender(),
-        registration_status = registration_status(),
-        category = category()
-      )
-
-    })
-
-    # Render the viewer count.
-    output$viewer_count <- renderText({
-      get_viewer_count(
-        forum_views = wrangled_forum_views(),
-        forum_elements = wrangled_forum_elements(),
-        activity_level = activity_level(),
-        gender = gender(),
-        registration_status = registration_status(),
-        category = category()
-      )
-
-    })
-
     # Render the main plot.
     output$forum_plot <- renderPlot({
       forum_barplot()

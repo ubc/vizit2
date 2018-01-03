@@ -44,37 +44,6 @@ forumModuleUI <- function(id) {
                           "Audit" = "audit"),
               selected = "All"
             ),
-            # column(
-            #   width = 1.2,
-            #   # Right-align the text showing the author/viewer counts.
-            #   tags$head(tags$style(
-            #     HTML(
-            #       "
-            #       #category_header, #author_count, #viewer_count {
-            #       text-align: center;
-            #       }
-            #       div.box-header {
-            #       text-align: center;
-            #       }
-            #       "
-            #     ))),
-            #   h5(textOutput(ns("author_count")), align = "right"),
-            #   bsTooltip(
-            #     ns("author_count"),
-            #     "This is the number of unique users who posted at least once in the discussion forums.",
-            #     placement = "bottom",
-            #     trigger = "hover",
-            #     options = NULL
-            #   ),
-            #   h5(textOutput(ns("viewer_count")), align = "right"),
-            #   bsTooltip(
-            #     ns("viewer_count"),
-            #     "This is the number of unique users who viewed at least one post in the discussion forums.",
-            #     placement = "bottom",
-            #     trigger = "hover",
-            #     options = NULL
-            #   )
-            # ),
             h3(actionButton(ns("reset_filters"), "Reset"), align = "center"),
             tags$head(tags$style(
               HTML("
