@@ -34,8 +34,12 @@ generalModule <- function(input, output, session) {
   })
 
   ### Read data frame: ###
-  demo <- reactiveFileReader(1000, session, paste0(root, requested_course(),
-                                                   "/wrangled_demographics.csv"), read_csv)
+  demo <- reactiveFileReader(1000, 
+                             session, 
+                             paste0(root, 
+                                    requested_course(),
+                                    "/wrangled_demographics.csv"), 
+                             read_csv)
 
   output$loe_demo <- renderPlot({
     # Level of Education:

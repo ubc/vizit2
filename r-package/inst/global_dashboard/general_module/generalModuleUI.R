@@ -27,12 +27,14 @@ generalModuleUI <- function(id) {
                                     "30 mins to 5 hrs" = "30_min_to_5_hr",
                                     "Over 5 hrs" = "over_5_hr"),
                         selected = "All"),
+            
             selectInput(ns("gender"), "Gender:",
                         choices = c("All" = "all",
                                     "Male" = "male",
                                     "Female" = "female",
                                     "Other" = "other"),
                         selected = "all"), 
+            
             selectInput(ns("mode"),
                         "Registration Status:",
                         choices = c("All" = "all",
