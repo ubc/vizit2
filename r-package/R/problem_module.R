@@ -28,7 +28,7 @@ clean_multiple_choice <- function(raw_csv) {
 #' Parse a JSON object and return it as a flat dataframe.
 #'
 #' This function is required to convert the JSON derived from the xbundle XML
-#' into a format that other dataframes can interact with.
+#'   into a format that other dataframes can interact with.
 #'
 #' @param name_lookup A JSON object contain keys for `id`, `problem`,
 #'   `chapter_name`, `chapter_name`, `choices`, `correct_id` and `correct`
@@ -112,7 +112,6 @@ tally_correct_answers <- function(joined_scores) {
     dplyr::rename(n_correct = n)
 }
 
-
 #' Calculate the percent of correct answers
 #'
 #' Each row represents a problem.
@@ -124,8 +123,7 @@ tally_correct_answers <- function(joined_scores) {
 #' @return A dataframe where each row is a row and the columns show the
 #'   percentage and absolute number of students that got the problem correct.
 #' @export
-calculate_percent_correct_tbl <-
-  function(joined_scores, number_correct) {
+calculate_percent_correct_tbl <- function(joined_scores, number_correct) {
     joined_scores %>%
       dplyr::group_by(problem_url_name) %>%
       dplyr::tally() %>%
@@ -135,8 +133,8 @@ calculate_percent_correct_tbl <-
 
 #' A filterable version of get_mean_scores
 #'
-#' @param filtered_problems_tbl The result of `read_multiple_choice_csv` filtered
-#'   by demographics and chapter
+#' @param filtered_problems_tbl The result of `read_multiple_choice_csv` 
+#'   filtered by demographics and chapter
 #' @param name_lookup A JSON object contain keys for `id`, `problem`,
 #'   `chapter_name`, `chapter_name`, `choices`, `correct_id` and `correct`
 #'
@@ -146,8 +144,8 @@ calculate_percent_correct_tbl <-
 get_mean_scores_filterable <- function(filtered_problems_tbl) {
   number_correct <- tally_correct_answers(filtered_problems_tbl)
 
-  percent_correct_tbl <-
-    calculate_percent_correct_tbl(filtered_problems_tbl, number_correct)
+  percent_correct_tbl <- calculate_percent_correct_tbl(filtered_problems_tbl, 
+                                                       number_correct)
 }
 
 #' Join the summary and lookup tables
@@ -174,20 +172,21 @@ join_summary_lookup <- function(summarised_scores, lookup_table) {
 #' @return A dataframe where each row is a chapter that contains the average
 #'   score on that chapter
 #' @export
-summarise_scores_by_chapter <-
-  function(summarised_scores, lookup_table) {
+summarise_scores_by_chapter <- function(summarised_scores, lookup_table) {
     chapter_summarised_scores <-
       join_summary_lookup(summarised_scores, lookup_table)
-
+    
     chapter_summary_tbl <- chapter_summarised_scores %>%
       dplyr::distinct(problem_url_name, .keep_all = TRUE) %>%
       dplyr::group_by(chapter, chapter_index) %>%
       dplyr::summarise(percent_correct = mean(percent_correct)) %>%
       dplyr::ungroup() %>%
       dplyr::mutate(chapter = forcats::as_factor(chapter)) %>%
-      dplyr::mutate(chapter = forcats::fct_reorder(chapter, chapter_index, .desc = TRUE))
-
-  }
+      dplyr::mutate(chapter = forcats::fct_reorder(chapter, 
+                                                   chapter_index, 
+                                                   .desc = TRUE))
+    
+}
 
 
 #' Produce a dataframe clean dataframe of all questions
@@ -206,7 +205,6 @@ prepare_filterable_problems <-
     chapter_summarised_scores <-
       join_summary_lookup(summarised_scores, lookup_table)
 
-
     problem_by_chapter <- chapter_summarised_scores %>%
       dplyr::distinct(problem_url_name, .keep_all = TRUE) %>%
       dplyr::arrange(percent_correct) %>%
@@ -214,7 +212,7 @@ prepare_filterable_problems <-
       dplyr::mutate(percent_correct = round(percent_correct * 100, 2)) %>%
       dplyr::rename("Problem" = problem, "% Correct" = percent_correct)
 
-  }
+}
 
 #' Select the easiest (or hardest) problems
 #'
@@ -226,11 +224,10 @@ prepare_filterable_problems <-
 #' @return The summarised scores dataframe with the with the number of rows
 #'   equal to the absolute value of the index.
 #' @export
-get_extreme_summarised_scores <-
-  function(summarised_scores, index) {
+get_extreme_summarised_scores <- function(summarised_scores, index) {
     summarised_scores %>%
       dplyr::top_n(index, percent_correct)
-  }
+}
 
 
 #' Left join extracted problems and lookup table
@@ -241,16 +238,14 @@ get_extreme_summarised_scores <-
 #' @return The left joined dataframe by id and choice_id, filtering out
 #' blank problems
 #' @export
-join_problems_to_lookup <-
-  function(extracted_problems, lookup_table) {
-    joined_melted_problems <-
-      dplyr::left_join(
+join_problems_to_lookup <- function(extracted_problems, lookup_table) {
+    joined_melted_problems <- dplyr::left_join(
         extracted_problems,
         lookup_table,
         by = c("problem_url_name" = "id",
                "item_response" = "choice_id")
-      )
-  }
+    )
+}
 
 #' The left join of joined problems and summarised scores
 #'
@@ -260,10 +255,11 @@ join_problems_to_lookup <-
 #'
 #' @return A left joined dataframe of joined problems and summarised scores
 #' @export
-join_users_problems <-
-  function(joined_problems, summarised_scores) {
-    dplyr::left_join(joined_problems, summarised_scores, by = "problem_url_name")
-  }
+join_users_problems <- function(joined_problems, summarised_scores) {
+    dplyr::left_join(joined_problems, 
+                     summarised_scores, 
+                     by = "problem_url_name")
+}
 
 #' Count the number of filtered users for each problem
 #'
@@ -285,19 +281,19 @@ filter_counts <- function(joined_user_problems) {
 #'
 #' @return A dataframe with lookup information attached
 #' @export
-filter_extreme_problem_choices <-
-  function(lookup_table,
-           extreme_problems,
-           filtered_counts) {
+filter_extreme_problem_choices <- function(lookup_table,
+                                           extreme_problems,
+                                           filtered_counts) {
     lookup_table %>%
       dplyr::select(id, problem, choice) %>%
       dplyr::filter(id %in% extreme_problems$problem_url_name) %>%
       dplyr::inner_join(filtered_counts, by = c("id" = "problem_url_name"))
-  }
+}
 
 #' Perform the last wrangling before plotting extreme problems
 #'
-#' Calculates the percent of students selected each option and determines if that option is correct.
+#' Calculates the percent of students selected each option and determines if 
+#'   that option is correct.
 #'
 #' @param joined_user_problems The result of `join_users_problems`
 #' @param extreme_problems The result of `get_extreme_summarised_score`
@@ -305,10 +301,9 @@ filter_extreme_problem_choices <-
 #'
 #' @return A dataframe with `problem,` `choice` and percent `correct`
 #' @export
-aggregate_extracted_problems <-
-  function(joined_user_problems,
-           extreme_problems,
-           question_choices) {
+aggregate_extracted_problems <- function(joined_user_problems,
+                                         extreme_problems,
+                                         question_choices) {
     joined_user_problems <- joined_user_problems %>%
       dplyr::filter(problem_url_name %in% extreme_problems$problem_url_name) %>%  # Only in the bottom/top
       dplyr::mutate(correct_bool = ifelse(correct == "true", TRUE, FALSE)) %>%
@@ -316,7 +311,8 @@ aggregate_extracted_problems <-
       dplyr::summarise(responses = n(),
                        correct = any(correct_bool)) %>%
       dplyr::right_join(question_choices,
-                        by = c("problem_url_name" = "id", "choice" = "choice")) %>%
+                        by = c("problem_url_name" = "id", 
+                               "choice" = "choice")) %>%
       tidyr::replace_na(list(responses = 0, correct = "FALSE")) %>% # Assume 0 values are incorrect
       dplyr::mutate(
         freq_responses = responses / filtered_users,
@@ -337,23 +333,24 @@ aggregate_extracted_problems <-
 #'
 #' @return A dataframe ready to be plotted by `plot_aggregated_problems`
 #' @export
-aggregate_melted_problems <-
-  function(lookup_table,
-           joined_user_problems,
-           extreme_problems) {
+aggregate_melted_problems <- function(lookup_table,
+                                      joined_user_problems,
+                                      extreme_problems) {
     filtered_counts <- filter_counts(joined_user_problems)
 
-    question_choices <-
-      filter_extreme_problem_choices(lookup_table, extreme_problems, filtered_counts)
+    question_choices <- filter_extreme_problem_choices(lookup_table, 
+                                                       extreme_problems, 
+                                                       filtered_counts)
 
-    agg_melted_problems <-
-      aggregate_extracted_problems(joined_user_problems, extreme_problems, question_choices)
-  }
+    agg_melted_problems <- aggregate_extracted_problems(joined_user_problems, 
+                                                        extreme_problems, 
+                                                        question_choices)
+}
 
 
 #' Plot aggregated problems
 #'
-#' This funciton is used to plot the top or bottom questions.
+#' This function is used to plot the top or bottom questions.
 #'
 #' @param agg_melted_problems A dataframe with the problem
 #' and choice names as well as the number of students who chose
@@ -362,11 +359,10 @@ aggregate_melted_problems <-
 #' @return A facetted ggplot bar chart
 #' @export
 plot_aggregated_problems <- function(agg_melted_problems) {
-  id_to_questions <-
-    ggplot2::as_labeller(setNames(
+  id_to_questions <- ggplot2::as_labeller(setNames(
       as.character(agg_melted_problems$trunc_question),
       agg_melted_problems$problem_url_name
-    ))
+  ))
 
   fill_scheme <- c("Correct" = "#66c2a5", "Incorrect" = "#b2e2e2")
 
