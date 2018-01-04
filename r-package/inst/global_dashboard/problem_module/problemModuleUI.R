@@ -11,34 +11,38 @@ problemModuleUI <- function(id) {
           title = "Apply filters",
           splitLayout(
             cellWidths = c("20%", "20%", "20%", "20%", "20%", "0%"),
-            selectInput(ns("activity_level"),
-                        "Activity Level:",
-                        choices = c("All" = "all",
-                                    "Under 30 mins" = "under_30_min",
-                                    "30 mins to 5 hrs" = "30_min_to_5_hr",
-                                    "Over 5 hrs" = "over_5_hr"),
-                        selected = "all"),
-            selectInput(ns("gender"), "Gender:",
-                        choices = c("All" = "all",
-                                    "Male" = "male",
-                                    "Female" = "female",
-                                    "Other" = "other"),
-                        selected = "all"),
-            selectInput(ns("mode"),
-                        "Registration Status:",
-                        choices = c("All" = "all",
-                                    "Verified" = "verified",
-                                    "Audit" = "audit"),
-                        selected = "all"),
+            selectInput(
+              inputId = ns("activity_level"),
+              label = "Activity Level:",
+              choices = c("All" = "all",
+                          "Under 30 mins" = "under_30_min",
+                          "30 mins to 5 hrs" = "30_min_to_5_hr",
+                          "Over 5 hrs" = "over_5_hr"),
+              selected = "all"),
+            selectInput(
+              inputId = ns("gender"), 
+              label = "Gender:",
+              choices = c("All" = "all",
+                          "Male" = "male",
+                          "Female" = "female",
+                          "Other" = "other"),
+              selected = "all"),
+            selectInput(
+              inputId = ns("mode"),
+              label = "Registration Status:",
+              choices = c("All" = "all",
+                          "Verified" = "verified",
+                          "Audit" = "audit"),
+              selected = "all"),
             htmlOutput(ns("moduleSelection")),
-            h3(actionButton(ns("reset_filters"),
-                            "Reset", align = "center")),
+            h3(actionButton(ns("reset_filters"), "Reset"), align = "center"),
             tags$head(tags$style(HTML("
                                       .shiny-split-layout > div {
                                       overflow: visible;
-                                      }"))),
-            tags$style(type = "text/css", "#num_students {margin-top: 30px;}")),
-        style = "primary"
+                                      }
+                                      ")))
+          ),
+          style = "primary"
         )
       )
     ),

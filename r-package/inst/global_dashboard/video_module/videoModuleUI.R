@@ -36,14 +36,12 @@ videoModuleUI <- function(id) {
                           "Audit" = "audit"),
               selected = "all"),
             htmlOutput(ns("moduleSelection")),
-            # h5(textOutput(ns("num_students")), align = "center"),
             h3(actionButton(ns("reset_filters"), "Reset"), align = "center"),
             tags$head(tags$style(HTML("
                                       .shiny-split-layout > div {
                                       overflow: visible;
                                       }
-                                      "))),
-            tags$style(type = 'text/css', "#num_students {margin-top: 30px;}")
+                                      ")))
           ),
           style = "primary"
         )
