@@ -11,7 +11,7 @@ videoModuleUI <- function(id) {
         bsCollapsePanel(
           title = "Apply filters",
           splitLayout(
-            cellWidths = c("15%", "10%", "20%", "30%", "15%", "10%"),
+            cellWidths = c("20%", "20%", "20%", "20%", "20%", "0%"),
             selectInput(
               inputId = ns("activity_level"),
               label = "Activity Level:",
@@ -36,7 +36,7 @@ videoModuleUI <- function(id) {
                           "Audit" = "audit"),
               selected = "all"),
             htmlOutput(ns("moduleSelection")),
-            h5(textOutput(ns("num_students")), align = "center"),
+            # h5(textOutput(ns("num_students")), align = "center"),
             h3(actionButton(ns("reset_filters"), "Reset"), align = "center"),
             tags$head(tags$style(HTML("
                                       .shiny-split-layout > div {
