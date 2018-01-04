@@ -1,9 +1,10 @@
 #' Convert a JSON object into a tidyJSON dataframe
 #'
-#' @param assessment_json An JSON file generated through `xml_extraction <course> --assessments`
+#' @param assessment_json An JSON file generated through 
+#'   `xml_extraction <course> --assessments`
 #'
-#'
-#' @return A flattened dataframe with the columns `url_name`, `title`, `label`, `name`
+#' @return A flattened dataframe with the columns `url_name`, `title`, `label`, 
+#'   `name`
 #' @export
 extract_assessment_json <- function(assessment_json) {
 
@@ -29,7 +30,7 @@ extract_assessment_json <- function(assessment_json) {
 #' Convert a CSV respresenting an open_assessment.sql query into a usable format
 #'
 #' Extracts the nececessary information from event JSON and discards it. Points
-#' possible should always be the same for each assessment.
+#'   possible should always be the same for each assessment.
 #'
 #' @param assessment_tbl
 #'
@@ -42,11 +43,16 @@ extract_assessment_csv <- function(assessment_tbl) {
     "\\\"points_possible\\\": \\d+, \\\"name\\\": \\\"(\\S+)\\\""
 
   extracted_assessment <- assessment_tbl %>%
-    dplyr::mutate(assessment_id = stringr::str_extract(module_id, "[0-9a-f]{32}")) %>%
     dplyr::mutate(
-      points_possible = gsubfn::strapply(event, "\\\"points_possible\\\": (\\d+)",
-                                 as.numeric),
-      points = gsubfn::strapply(event, "\\\"points\\\": (\\d+)", as.numeric),
+      assessment_id = stringr::str_extract(module_id, "[0-9a-f]{32}")
+    ) %>%
+    dplyr::mutate(
+      points_possible = gsubfn::strapply(event, 
+                                         "\\\"points_possible\\\": (\\d+)",
+                                         as.numeric),
+      points = gsubfn::strapply(event, 
+                                "\\\"points\\\": (\\d+)", 
+                                as.numeric),
       name = gsubfn::strapply(event, name_extraction)
     ) %>%
     tidyr::unnest() %>%
@@ -57,8 +63,8 @@ extract_assessment_csv <- function(assessment_tbl) {
 #' Join the results of extract_assessment_csv and extract_assessment_json
 #'
 #' This function joins the BigQuery and XML data. This is needed to populate the
-#' BigQuery data with the title and label fields. If the ID of the assessment
-#' does not occur in the XML, it is removed before preceding.
+#'   BigQuery data with the title and label fields. If the ID of the assessment
+#'   does not occur in the XML, it is removed before preceding.
 #'
 #' @param extracted_csv the result of extract_assessment_csv
 #' @param extracted_json the result of extract_assessment_json
@@ -69,43 +75,45 @@ extract_assessment_csv <- function(assessment_tbl) {
 #' join_extracted_assessment(sample_extracted_assessment_tbl, extracted_content)
 join_extracted_assessment_data <- function(extracted_csv, extracted_json) {
     joint_assessment <- dplyr::left_join(extracted_csv,
-                                  extracted_json,
-                                  by = c(assessment_id = "url_name",
+                                         extracted_json,
+                                         by = c(assessment_id = "url_name",
                                          name = "name")) %>%
       dplyr::filter(!is.na(label))
-  }
+}
 
 
 #' Summarise assessment data for plotting
 #'
 #' This function checks that the number of points possible does not vary within
-#' title-label groups.
+#'   title-label groups.
 #'
 #' @param joint_assessment The result of join_extracted_assessment_data
-#' @param trunc_length The length of that the label should be truncated to. Do not
-#'   set to less than 4
+#' @param trunc_length The length of that the label should be truncated to. Do 
+#'   not set to less than 4
 #'
 #' @return A summarised dataframe of the average scores in each area.
 #' @export
 #' @examples
 #' summarise_joined_assessment_data(sample_join_extracted_assessment_data, 20)
-summarise_joined_assessment_data <- function(joint_assessment, trunc_length = 20) {
-    points_possible_all_same <- joint_assessment %>%
-      dplyr::group_by(title, label) %>%
-      dplyr::filter(min(points_possible) != max(points_possible))
-
-    if (nrow(points_possible_all_same) != 0)  {
-      warning("points_possible different within title/label group")
-    }
-
-    summary_assessment <- joint_assessment %>%
-      dplyr::group_by(title, label) %>%
-      dplyr::summarise(
-        avg_score = mean(points),
-        avg_percent = mean(points) / max(points_possible)
-      ) %>%
-      dplyr::mutate(trunc_label = stringr::str_trunc(label, trunc_length))
+summarise_joined_assessment_data <- function(joint_assessment, 
+                                             trunc_length = 20) {
+  
+  points_possible_all_same <- joint_assessment %>%
+    dplyr::group_by(title, label) %>%
+    dplyr::filter(min(points_possible) != max(points_possible))
+  
+  if (nrow(points_possible_all_same) != 0)  {
+    warning("points_possible different within title/label group")
   }
+  
+  summary_assessment <- joint_assessment %>%
+    dplyr::group_by(title, label) %>%
+    dplyr::summarise(
+      avg_score = mean(points),
+      avg_percent = mean(points) / max(points_possible)
+    ) %>%
+    dplyr::mutate(trunc_label = stringr::str_trunc(label, trunc_length))
+}
 
 #' Plot the summary assessment data
 #'
