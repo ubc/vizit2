@@ -4,6 +4,9 @@ before_install: cd r-package
 language: R
 sudo: false
 cache: packages
+notifications:
+  email:
+    on_failure: change
 
 # r_github_packages:
 #  - jimhester/covr
