@@ -458,7 +458,8 @@ infer_post_subcategories <- function(forum) {
 #' Prepare the forum words.
 #'
 #' @param forum A dataframe with one row per post.
-#' @return The dataframe with each row containing a word, prepared for joining with the forum elements.
+#' @return The dataframe with each row containing a word, prepared for joining 
+#'   with the forum elements.
 #' @examples
 #' prepare_words(forum)
 #' @export
@@ -570,10 +571,12 @@ prepare_json <- function(json) {
                                        all_elements = json))
   
   # Combine into a dataframe.
-  forum_elements_df <- data.frame("commentable_id" = forum_elements_mat[,1],
-                                  "display_name" = forum_elements_mat[,2],
-                                  "discussion_category" = forum_elements_mat[,3],
-                                  "discussion_target" = forum_elements_mat[,4])
+  forum_elements_df <- data.frame(
+    "commentable_id" = forum_elements_mat[,1],
+    "display_name" = forum_elements_mat[,2],
+    "discussion_category" = forum_elements_mat[,3],
+    "discussion_target" = forum_elements_mat[,4]
+  )
   
   json_forum_elements <- rbind(discussion_topics, forum_elements_df)
   
