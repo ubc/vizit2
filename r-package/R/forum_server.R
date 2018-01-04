@@ -1,9 +1,12 @@
 #' Apply the selected filter settings to the forum data.
 #' @param input_df The input dataframe.
 #' @param forum_elements The forum elements dataframe.
-#' @param activity_level One of \code{under_30_min}, \code{30_min_to_5_hr}, \code{over_5_hr}, or (default) \code{All}.
-#' @param gender One of \code{male}, \code{female}, \code{other}, or (default) \code{All}.
-#' @param registration_status One of \code{audit}, \code{verified}, or (default) \code{All}.
+#' @param activity_level One of \code{under_30_min}, \code{30_min_to_5_hr}, 
+#'   \code{over_5_hr}, or (default) \code{All}.
+#' @param gender One of \code{male}, \code{female}, \code{other}, or (default) 
+#'   \code{All}.
+#' @param registration_status One of \code{audit}, \code{verified}, or (default) 
+#'   \code{All}.
 #' @param category One of the forum categories.
 #' @return \code{filtered_df} A dataframe filtered by the selected settings.
 #' @export
@@ -92,8 +95,10 @@ apply_forum_filters <-
 
 
 #' Get the top words for each subcategory.
-#' @param input_forum The input dataframe containing a row for each word in the forum.
-#' @return \code{word_counts} A dataframe containing the counts for each word in each subcategory.
+#' @param input_forum The input dataframe containing a row for each word in the 
+#'   forum.
+#' @return \code{word_counts} A dataframe containing the counts for each word in
+#'   each subcategory.
 #' @export
 #' @examples
 #' get_target_word_counts(wrangled_forum_words)
@@ -110,14 +115,18 @@ get_target_word_counts <- function(input_forum) {
 
 
 #' Count the number of posts for each subcategory in an input forum.
-#' @param input_forum The input dataframe containing a row for each post in the forum.
-#' @param wrangled_forum_elements A dataframe containing information about each of the forum subcategories.
-#' @return \code{post_counts} A dataframe containing the post counts for each subcategory in the forum.
+#' @param input_forum The input dataframe containing a row for each post in the 
+#'   forum.
+#' @param wrangled_forum_elements A dataframe containing information about each 
+#'   of the forum subcategories.
+#' @return \code{post_counts} A dataframe containing the post counts for each 
+#'   subcategory in the forum.
 #' @export
 #' @examples
 #' count_posts(wrangled_forum_posts)
 count_posts <- function(input_forum, wrangled_forum_elements) {
-  # Make sure there is a row for every permutation of display names and post types.
+  # Make sure there is a row for every permutation of display names and post 
+  # types.
   types_dummy_set <- data_frame(
     "commentable_id" = rep(wrangled_forum_elements$commentable_id, each = 4),
     "type" = rep(
@@ -163,9 +172,12 @@ count_posts <- function(input_forum, wrangled_forum_elements) {
 
 
 #' Count the number of authors for each subcategory in an input forum.
-#' @param input_forum The input dataframe containing a row for each post in the forum.
-#' @param wrangled_forum_elements A dataframe containing information about each of the forum subcategories.
-#' @return \code{author_counts} A dataframe containing the unique author counts for each subcategory in the forum.
+#' @param input_forum The input dataframe containing a row for each post in the 
+#'   forum.
+#' @param wrangled_forum_elements A dataframe containing information about each 
+#'   of the forum subcategories.
+#' @return \code{author_counts} A dataframe containing the unique author counts 
+#'   for each subcategory in the forum.
 #' @examples
 #' count_authors(wrangled_forum_posts)
 count_authors <- function(input_forum, wrangled_forum_elements) {
@@ -184,9 +196,12 @@ count_authors <- function(input_forum, wrangled_forum_elements) {
 
 
 #' Count the number of view events for each subcategory in an input forum.
-#' @param input_forum The input dataframe containing a row for each read event in the forum.
-#' @param wrangled_forum_elements A dataframe containing information about each of the forum subcategories.
-#' @return \code{view_counts} A dataframe containing the read counts for each subcategory in the forum.
+#' @param input_forum The input dataframe containing a row for each read event 
+#'   in the forum.
+#' @param wrangled_forum_elements A dataframe containing information about each 
+#'   of the forum subcategories.
+#' @return \code{view_counts} A dataframe containing the read counts for each 
+#'   subcategory in the forum.
 #' @examples
 #' count_views(wrangled_forum_views)
 count_views <- function(input_forum, wrangled_forum_elements) {
@@ -206,7 +221,8 @@ count_views <- function(input_forum, wrangled_forum_elements) {
 
 
 #' Determines whether the plot types breakdown will be shown.
-#' @param plot_variable One of (default) \code{posts}, \code{authors}, or \code{views}.
+#' @param plot_variable One of (default) \code{posts}, \code{authors}, or 
+#'   \code{views}.
 #' @param breakdown One of \code{TRUE} or (default) \code{FALSE}.
 #' @return \code{TRUE} or \code{FALSE}
 #' @examples
@@ -226,13 +242,16 @@ set_breakdown <- function(plot_variable, breakdown) {
 
 
 #' Filter the forum elements by the selected filter variables.
-#' @param forum_elements The forum elements dataframe that was passed in from the wrangling script.
+#' @param forum_elements The forum elements dataframe that was passed in from 
+#'   the wrangling script.
 #' @param category The forum category that the user has selected.
-#' @return \code{filtered_forum_elements} The same dataframe, filtered by category if appropriate.
+#' @return \code{filtered_forum_elements} The same dataframe, filtered by 
+#'   category if appropriate.
 #' @examples
 #' filter_forum_elements(wrangled_forum_elements, "Part 1")
 #' @details
-#' The forum elements dataframe only needs to be filtered by category, since it doesn't include any variables related to students.
+#' The forum elements dataframe only needs to be filtered by category, since it 
+#'   doesn't include any variables related to students.
 filter_forum_elements <- function(forum_elements,
                                   category) {
   if (category == "All") {
@@ -252,7 +271,8 @@ filter_forum_elements <- function(forum_elements,
 
 
 #' Resets all the user-defined filters to "All".
-#' @param session A Shiny session object. See https://shiny.rstudio.com/reference/shiny/latest/session.html
+#' @param session A Shiny session object. See 
+#'  https://shiny.rstudio.com/reference/shiny/latest/session.html
 #' @return None.
 #' @examples
 #' reset_filters(session)
@@ -298,7 +318,8 @@ reset_filters <- function(session) {
 }
 
 
-#' Calculates the number of unique users who searched for each search query, given the selected filters.
+#' Calculates the number of unique users who searched for each search query, 
+#'   given the selected filters.
 #' @param forum_searches The wrangled forum searches dataframe.
 #' @param forum_elements The forum elements dataframe.
 #' @param activity_level The activity level of the students.
@@ -308,7 +329,9 @@ reset_filters <- function(session) {
 #' @return \code{forum_searches} The filtered forum searches dataframe.
 #' @export
 #' @examples
-#' calculate_forum_searches(wrangled_forum_searches, "under_30_min", "female", "verified", "Part 3")
+#' calculate_forum_searches(
+#'   wrangled_forum_searches, "under_30_min", "female", "verified", "Part 3"
+#' )
 calculate_forum_searches <-
   function(forum_searches = wrangled_forum_searches,
            forum_elements,
@@ -348,8 +371,10 @@ calculate_forum_searches <-
 
 #' Get the options for the subcategory options, given the selected category.
 #' @param category The selected category.
-#' @param filtered_forum_elements The forum elements dataframe, filtered by the selected category.
-#' @return \code{subcategory_options} A list of options for the user to select from.
+#' @param filtered_forum_elements The forum elements dataframe, filtered by the 
+#'   selected category.
+#' @return \code{subcategory_options} A list of options for the user to select 
+#'   from.
 #' @export
 #' @examples
 #' get_subcategory_options("Part 1", filtered_forum_elements)
@@ -358,16 +383,20 @@ get_subcategory_options <- function(category,
   subcategory_options <- c("All")
 
   if (category == "All") {
-    subcategory_options <- append(subcategory_options,
-                                  as.character(unique(
-                                    filtered_forum_elements$discussion_category
-                                  )))
+    subcategory_options <- append(
+      subcategory_options,
+      as.character(unique(
+        filtered_forum_elements$discussion_category
+      ))
+    )
 
     return(subcategory_options)
 
   } else {
-    subcategory_options <- append(subcategory_options,
-                                  as.character(filtered_forum_elements$display_name))
+    subcategory_options <- append(
+      subcategory_options,
+      as.character(filtered_forum_elements$display_name)
+    )
 
     return(subcategory_options)
 
@@ -377,17 +406,29 @@ get_subcategory_options <- function(category,
 
 
 #' Update the post, view, and author counts for the selected filters.
-#' @param forum_posts The forum posts dataframe passed in from the wrangling script.
-#' @param forum_views The forum views dataframe passed in from the wrangling script.
-#' @param forum_elements The forum elements dataframe passed in from the wrangling script.
+#' @param forum_posts The forum posts dataframe passed in from the wrangling 
+#'   script.
+#' @param forum_views The forum views dataframe passed in from the wrangling 
+#'   script.
+#' @param forum_elements The forum elements dataframe passed in from the 
+#'   wrangling script.
 #' @param activity_level The activity level of the students.
 #' @param gender The gender of the students.
 #' @param registration_status The registration status of the students.
 #' @param category The forum category.
-#' @return \code{filtered_forum_data} A dataframe with one row per subcategory (or category), and counts for each variable.
+#' @return \code{filtered_forum_data} A dataframe with one row per subcategory 
+#'   (or category), and counts for each variable.
 #' @export
 #' @examples
-#' update_forum_data(wrangled_forum_posts, wrangled_forum_views, filtered_forum_elements(), "over_5_hr", "other", "audit", "All")
+#' update_forum_data(
+#'   wrangled_forum_posts,
+#'   wrangled_forum_views, 
+#'   filtered_forum_elements(), 
+#'   "over_5_hr", 
+#'   "other", 
+#'   "audit", 
+#'   "All"
+#' )
 update_forum_data <- function(forum_posts,
                               forum_views,
                               forum_elements,
@@ -534,7 +575,14 @@ update_forum_data <- function(forum_posts,
 #' @param category The forum category.
 #' @return \code{filtered_wordcloud_data} The filtered forum words dataframe.
 #' @examples
-#' filter_wordcloud_data(wrangled_forum_words, forum_elements, "30_min_to_5_hr", "female", "All", "General")
+#' filter_wordcloud_data(
+#'   wrangled_forum_words, 
+#'   forum_elements, 
+#'   "30_min_to_5_hr", 
+#'   "female", 
+#'   "All", 
+#'   "General"
+#' )
 filter_wordcloud_data <- function(forum_words,
                                   forum_elements,
                                   activity_level,
@@ -560,12 +608,18 @@ filter_wordcloud_data <- function(forum_words,
 
 
 #' Specify which subcategory has been selected.
-#' @param updated_forum_data The dataframe containing the counts for each (sub)category.
+#' @param updated_forum_data The dataframe containing the counts for each 
+#'   (sub)category.
 #' @param category The selected category.
 #' @param selected_subcategory The selected subcategory.
-#' @return \code{forum_w_selection} The same dataframe with a new column, \code{selected}.
+#' @return \code{forum_w_selection} The same dataframe with a new column, 
+#'   \code{selected}.
 #' @examples
-#' specify_forum_data_selection(updated_forum_data, "Part 1", "Part 1 Video Discussion")
+#' specify_forum_data_selection(
+#'   updated_forum_data,
+#'   "Part 1",
+#'   "Part 1 Video Discussion"
+#' )
 specify_forum_data_selection <- function(updated_forum_data,
                                          category,
                                          selected_subcategory) {
@@ -576,13 +630,13 @@ specify_forum_data_selection <- function(updated_forum_data,
 
   if (category == "All") {
     # If there is a selection match, set it to TRUE.
-    forum_w_selection$selected[forum_w_selection$discussion_category == selected_subcategory] <-
-      "TRUE"
+    forum_w_selection$selected[forum_w_selection$discussion_category
+                               == selected_subcategory] <- "TRUE"
 
   } else {
     # If there is a selection match, set it to TRUE.
-    forum_w_selection$selected[forum_w_selection$display_name == selected_subcategory] <-
-      "TRUE"
+    forum_w_selection$selected[forum_w_selection$display_name
+                               == selected_subcategory] <- "TRUE"
 
   }
 
@@ -596,8 +650,10 @@ specify_forum_data_selection <- function(updated_forum_data,
 }
 
 
-#' Set the title of the main barplot, according to the relevant variable and category.
-#' @param plot_variable One of (default) \code{posts}, \code{authors}, or \code{views}.
+#' Set the title of the main barplot, according to the relevant variable and 
+#'   category.
+#' @param plot_variable One of (default) \code{posts}, \code{authors}, or 
+#'   \code{views}.
 #' @return \code{forum_plot_title} A string for the plot title.
 #' @examples
 #' set_forum_plot_title("views", "Part 1")
@@ -647,7 +703,8 @@ set_forum_plot_title <- function(plot_variable,
 
 
 #' Set the label of the y-axis in the main barplot.
-#' @param plot_variable One of (default) \code{posts}, \code{authors}, or \code{views}.
+#' @param plot_variable One of (default) \code{posts}, \code{authors}, or 
+#'   \code{views}.
 #' @return \code{forum_plot_ylabe} The label of the y-axis in the main barplot.
 #' @examples
 #' set_forum_plot_ylabel("authors")
@@ -677,10 +734,16 @@ set_forum_plot_ylabel <- function(plot_variable) {
 #' @param filtered_forum_elements The filtered forum elements dataframe.
 #' @param category The selected category.
 #' @param selected_subcategory The selected subcategory.
-#' @return \code{wordcloud_data} A dataframe with the counts of each word in the selected subcategory(ies).
+#' @return \code{wordcloud_data} A dataframe with the counts of each word in the
+#'   selected subcategory(ies).
 #' @export
 #' @examples
-#' get_wordcloud_data(filtered_wordcloud_data, filtered_forum_elements, "Part 1", "Part 1 Lecture 1 Discussion")
+#' get_wordcloud_data(
+#'   filtered_wordcloud_data, 
+#'   filtered_forum_elements, 
+#'   "Part 1", 
+#'   "Part 1 Lecture 1 Discussion"
+#' )
 get_wordcloud_data <- function(filtered_wordcloud_data,
                                filtered_forum_elements,
                                category,
@@ -794,7 +857,8 @@ set_wordcloud_title <- function(category,
 #' Set the title of the forum threads table.
 #' @param category The selected category.
 #' @param selected_subcategory The selected subcategory.
-#' @return \code{forum_threads_title} A string for the title of the forum threads table.
+#' @return \code{forum_threads_title} A string for the title of the forum 
+#'   threads table.
 #' @examples
 #' set_forum_threads_title("Part 3", "All")
 set_forum_threads_title <- function(category,
@@ -822,10 +886,12 @@ set_forum_threads_title <- function(category,
 }
 
 
-#' Get the lengths of the labels on the main barplot (either the categories or the subcategories).
+#' Get the lengths of the labels on the main barplot (either the categories or 
+#'   the subcategories).
 #' @param forum_data The forum data for the main barplot.
 #' @param category The selected category.
-#' @return \code{label_lengths} A list with the lengths (in characters) of each label on the main plot.
+#' @return \code{label_lengths} A list with the lengths (in characters) of each 
+#'   label on the main plot.
 #' @export
 #' @examples
 #' get_label_lengths(forum_data, "Technical Questions")
@@ -848,17 +914,27 @@ get_label_lengths <- function(forum_data,
 
 #' Set the horizontal axis limit of the main barplot.
 #' @param forum_data The forum data for the main barplot.
-#' @param plot_variable One of (default) \code{posts}, \code{authors}, or \code{views}.
-#' @param label_lengths A list containing the lengths (in characters) of each label on the barplot.
-#' @param min_axis_length The axis length to set if all the values are set to zero (i.e. all students have been filtered out). Default is 0.1 so that the axis is minimally affected when values are small.
-#' @param percent_addition_per_char The percentage by which to expand the axis per character in the label of the longest bar. Default is 0.023 because that tends to look good.
-#' @return \code{axis_limit} The maximum axis limit for the horizontal axis in the main barplot.
+#' @param plot_variable One of (default) \code{posts}, \code{authors}, or 
+#'   \code{views}.
+#' @param label_lengths A list containing the lengths (in characters) of each 
+#'   label on the barplot.
+#' @param min_axis_length The axis length to set if all the values are set to 
+#'   zero (i.e. all students have been filtered out). Default is 0.1 so that the
+#'   axis is minimally affected when values are small.
+#' @param percent_addition_per_char The percentage by which to expand the axis 
+#'   per character in the label of the longest bar. Default is 0.023 because 
+#'   that tends to look good.
+#' @return \code{axis_limit} The maximum axis limit for the horizontal axis in 
+#'   the main barplot.
 #' @examples
 #' set_axis_limit(forum_data, "views", c(15,12,14,7))
 #' @details
-#' Usually, the variance in bar lengths is greater than the variance in label lengths.
-#' If this is not the case, it is possible that the axis limit will need to be expanded further.
-#' For example, the second-longest bar may have a label that is twice as long as the label of the longest bar.
+#' Usually, the variance in bar lengths is greater than the variance in label 
+#'   lengths.
+#' If this is not the case, it is possible that the axis limit will need to be 
+#'   expanded further.
+#' For example, the second-longest bar may have a label that is twice as long as
+#'   the label of the longest bar.
 #' In the future, it will be desirable to account for these cases.
 #' @export
 set_axis_limit <- function(forum_data,
@@ -895,7 +971,8 @@ set_axis_limit <- function(forum_data,
 
 #' Get the function to pass into the x value of aes_string() in the main barplot.
 #' @param category The selected category.
-#' @return \code{reactive_xvar_string} A string that matches the function to call for the x value of aes_string().
+#' @return \code{reactive_xvar_string} A string that matches the function to 
+#'   call for the x value of aes_string().
 #' @examples
 #' get_reactive_xvar_string("Part 2")
 get_reactive_xvar_string <- function(category) {
@@ -917,8 +994,10 @@ get_reactive_xvar_string <- function(category) {
 
 
 #' Set the fill value of the bars in the main barplot, given the plot variable.
-#' @param plot_variable One of (default) \code{posts}, \code{authors}, or \code{views}.
-#' @return \code{fill_value} A hex value representing the color for the bar fill.
+#' @param plot_variable One of (default) \code{posts}, \code{authors}, or 
+#'   \code{views}.
+#' @return \code{fill_value} A hex value representing the color for the bar 
+#'   fill.
 #' @examples
 #' set_fill_value("views")
 set_fill_value <- function(plot_variable) {
@@ -943,17 +1022,33 @@ set_fill_value <- function(plot_variable) {
 
 #' Make the main barplot for displaying the forum data.
 #' @param forum_data The forum data for the main barplot.
-#' @param xvar_string A string that matches the function to call for the x value of aes_string().
-#' @param plot_variable One of (default) \code{posts}, \code{authors}, or \code{views}.
+#' @param xvar_string A string that matches the function to call for the x value
+#'   of aes_string().
+#' @param plot_variable One of (default) \code{posts}, \code{authors}, or 
+#'   \code{views}.
 #' @param fill_value A hex value representing the color for the bar fill.
-#' @param axis_limit The maximum axis limit for the horizontal axis in the main barplot.
+#' @param axis_limit The maximum axis limit for the horizontal axis in the main 
+#'   barplot.
 #' @param category The selected category.
 #' @param ylabel The label of the y-axis in the main barplot.
-#' @param breakdown One of \code{TRUE} or \code{FALSE}; determines whether the post types breakdown is shown.
-#' @return \code{forum_barplot} A ggplot2 object to be rendered as the main forum barplot.
+#' @param breakdown One of \code{TRUE} or \code{FALSE}; determines whether the 
+#'   post types breakdown is shown.
+#' @return \code{forum_barplot} A ggplot2 object to be rendered as the main 
+#'   forum barplot.
 #' @export
 #' @examples
-#' make_forum_barplot(forum_data, xvar_string = "fct_reorder(discussion_category, course_order, .desc = TRUE)", plot_variable = "authors", fill_value = "red", axis_limit = 100, category = "All", ylabel = "Category", breakdown = FALSE)
+#' make_forum_barplot(
+#'   forum_data, 
+#'   xvar_string = "fct_reorder(discussion_category, 
+#'                              course_order, 
+#'                              .desc = TRUE)", 
+#'   plot_variable = "authors", 
+#'   fill_value = "red", 
+#'   axis_limit = 100, 
+#'   category = "All", 
+#'   ylabel = "Category", 
+#'   breakdown = FALSE
+#' )
 make_forum_barplot <- function(forum_data,
                                xvar_string,
                                plot_variable,
@@ -1026,8 +1121,10 @@ make_forum_barplot <- function(forum_data,
 
 #' Gather the post types into a single column for easy plotting.
 #' @param forum_data The forum data for the main barplot.
-#' @param grouping_var grouping_var One of \code{discussion_category} or \code{display_name}, depending on whether a category has been selected.
-#' @return \code{gathered} A dataframe with the post types gathered into a single column.
+#' @param grouping_var grouping_var One of \code{discussion_category} or 
+#'   \code{display_name}, depending on whether a category has been selected.
+#' @return \code{gathered} A dataframe with the post types gathered into a 
+#'   single column.
 #' @export
 #' @examples
 #' gather_post_types(forum_data, grouping_var = "discussion_category")
@@ -1055,14 +1152,25 @@ gather_post_types <- function(forum_data,
 
 #' Make the main forum barplot with the post types breakdown.
 #' @param forum_data The forum data for the main barplot.
-#' @param xvar_string A string that matches the function to call for the x value of aes_string().
-#' @param grouping_var grouping_var One of \code{discussion_category} or \code{display_name}, depending on whether a category has been selected.
-#' @param axis_limit The maximum axis limit for the horizontal axis in the main barplot.
+#' @param xvar_string A string that matches the function to call for the x value 
+#'   of aes_string().
+#' @param grouping_var grouping_var One of \code{discussion_category} or 
+#'   \code{display_name}, depending on whether a category has been selected.
+#' @param axis_limit The maximum axis limit for the horizontal axis in the main 
+#'   barplot.
 #' @param xlabel The label of the x-axis in the main barplot.
-#' @return \code{forum_breakdown_barplot} A ggplot2 object to be rendered as the main forum barplot.
+#' @return \code{forum_breakdown_barplot} A ggplot2 object to be rendered as the 
+#'   main forum barplot.
 #' @export
 #' @examples
-#' make_forum_breakdown_barplot(forum_data = forum_data, xvar_string = "fct_reorder(discussion_category, course_order, .desc = TRUE)", axis_limit = 100, grouping_var = "discussion_category", xlabel = "Category")
+#' make_forum_breakdown_barplot(
+#'   forum_data = forum_data, 
+#'   xvar_string = "fct_reorder(discussion_category, 
+#'                              course_order, 
+#'                              .desc = TRUE)", 
+#'   axis_limit = 100, 
+#'   grouping_var = "discussion_category", 
+#'   xlabel = "Category")
 make_forum_breakdown_barplot <- function(gathered,
                                          xvar_string,
                                          grouping_var,
@@ -1106,7 +1214,8 @@ make_forum_breakdown_barplot <- function(gathered,
 
 
 #' Get the number of authors for which the selected filter settings apply.
-#' @param forum_posts The forum posts dataframe that was passed in from the wrangling script.
+#' @param forum_posts The forum posts dataframe that was passed in from the 
+#'   wrangling script.
 #' @param forum_elements The forum elements dataframe.
 #' @param activity_level The activity level of the students.
 #' @param gender The gender of the students.
@@ -1114,7 +1223,14 @@ make_forum_breakdown_barplot <- function(gathered,
 #' @param category The forum category.
 #' @return \code{author_count} A string showing the number of authors.
 #' @examples
-#' get_author_count(wrangled_forum_posts, forum_elements, "All", "male", "verified", "All")
+#' get_author_count(
+#'   wrangled_forum_posts, 
+#'   forum_elements, 
+#'   "All", 
+#'   "male", 
+#'   "verified", 
+#'   "All"
+#' )
 get_author_count <- function(forum_posts,
                              forum_elements,
                              activity_level,
@@ -1139,7 +1255,8 @@ get_author_count <- function(forum_posts,
 
 
 #' Get the number of viewers for which the selected filter settings apply.
-#' @param forum_views The forum views dataframe that was passed in from the wrangling script.
+#' @param forum_views The forum views dataframe that was passed in from the 
+#'   wrangling script.
 #' @param forum_elements The forum elements dataframe.
 #' @param activity_level The activity level of the students.
 #' @param gender The gender of the students.
@@ -1147,7 +1264,14 @@ get_author_count <- function(forum_posts,
 #' @param category The forum category.
 #' @return \code{author_count} A string showing the number of authors.
 #' @examples
-#' get_viewer_count(wrangled_forum_views, forum_elements, "All", "male", "verified", "All")
+#' get_viewer_count(
+#'   wrangled_forum_views, 
+#'   forum_elements, 
+#'   "All", 
+#'   "male", 
+#'   "verified", 
+#'   "All"
+#' )
 get_viewer_count <- function(forum_views,
                              forum_elements,
                              activity_level,
@@ -1172,9 +1296,12 @@ get_viewer_count <- function(forum_views,
 
 
 #' Make the wordcloud.
-#' @param wordcloud_data A dataframe showing the counts of the top words in the selected subcategory.
-#' @param max_words The maximum number of words to show in the wordcloud. Default is 20.
-#' @param scale A list giving the range of sizes to for the display of words in the wordcloud. Default is c(3.5,1).
+#' @param wordcloud_data A dataframe showing the counts of the top words in the 
+#'   selected subcategory.
+#' @param max_words The maximum number of words to show in the wordcloud. 
+#'   Default is 20.
+#' @param scale A list giving the range of sizes to for the display of words in 
+#'   the wordcloud. Default is c(3.5,1).
 #' @return A wordcloud object.
 #' @export
 #' @examples
@@ -1202,17 +1329,27 @@ make_wordcloud <- function(wordcloud_data,
 
 
 #' Get the forum threads for the authors who match the filter settings.
-#' @param forum_posts The forum posts dataframe that was passed in from the wrangling script.
+#' @param forum_posts The forum posts dataframe that was passed in from the 
+#'   wrangling script.
 #' @param forum_elements The forum elements dataframe.
 #' @param activity_level The activity level of the students.
 #' @param gender The gender of the students.
 #' @param registration_status The registration status of the students.
 #' @param category The selected forum category.
 #' @param selected_subcategory The selected forum subcategory.
-#' @return \code{forum_threads} The forum threads that were authored by students for which the filter settings apply.
+#' @return \code{forum_threads} The forum threads that were authored by students 
+#'   for which the filter settings apply.
 #' @export
 #' @examples
-#' get_forum_threads(forum_posts = wrangled_forum_posts, forum_elements, "over_5_hr", "female", "audit", "All", "All")
+#' get_forum_threads(
+#'   forum_posts = wrangled_forum_posts, 
+#'   forum_elements, 
+#'   "over_5_hr", 
+#'   "female", 
+#'   "audit", 
+#'   "All", 
+#'   "All"
+#' )
 get_forum_threads <- function(forum_posts,
                               forum_elements,
                               activity_level,

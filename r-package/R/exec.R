@@ -5,9 +5,9 @@
 #' This function runs the bash script \code{populate_course.sh}, which is located in exec/.
 #' @export
 populate_course <- function() {
-
-        run_bash_script("populate_course.sh")
-
+  
+  run_bash_script("populate_course.sh")
+  
 }
 
 #' Run a bash script.
@@ -17,9 +17,9 @@ populate_course <- function() {
 #' run_bash_script("populate_course.sh")
 #' @export
 run_bash_script <- function(script_name) {
-
-        command <- paste0("bash ", script_name)
-
-        system(command)
-
+  
+  command <- paste0("bash ", script_name)
+  
+  system(command)
+  
 }
