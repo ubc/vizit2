@@ -36,8 +36,7 @@ problemModule <- function(input, output, session) {
   })
 
   filtered_students <- reactive({
-    validate(need(try(nrow(filtered_general()) > 0)
-                  , "No students found."))
+    validate(need(try(nrow(filtered_general()) > 0), "No students found."))
     filt_segs <- filtered_general()
     n_distinct(filt_segs$user_id)
   })
