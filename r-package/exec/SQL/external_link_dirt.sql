@@ -19,6 +19,11 @@ FROM (
     AND event NOT LIKE '%target_url": "https://courses.edx.org%'
     AND event NOT LIKE '%target_url": "https://www.edx.org/%'
     AND event NOT LIKE '%target_url": "https://studio.edx.org%'
+    AND event NOT LIKE '%target_url": "https://preview.edx.org%'
+    AND event NOT LIKE '%target_url": "https://courses.edge.edx.org%'
+    AND event NOT LIKE '%target_url": "https://www.edge.edx.org/%'
+    AND event NOT LIKE '%target_url": "https://studio.edge.edx.org%'
+    AND event NOT LIKE '%target_url": "https://preview.edge.edx.org%'
     AND event NOT LIKE '%target_url": "javascript:void(0)%'
     AND time > PARSE_UTC_USEC("{date}")
   ORDER BY
