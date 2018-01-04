@@ -42,8 +42,12 @@ videoModule <- function(input, output, session)
   })
 
   ### Read data frame: ###
-  tidy_segment_df <- reactiveFileReader(1000, session, paste0(root, requested_course(),
-                                                              "/wrangled_video_heat.csv"), read_csv)
+  tidy_segment_df <- reactiveFileReader(1000,
+                                        session,
+                                        paste0(root,
+                                               requested_course(),
+                                               "/wrangled_video_heat.csv"), 
+                                        read_csv)
 
   ### Get Chap Name ###
   chap_name <- reactive({
@@ -57,7 +61,9 @@ videoModule <- function(input, output, session)
   output$moduleSelection <- renderUI({
     ns <- NS("videoID")
 
-    selectInput(ns("module"), "Module:", choices = get_module_options(chap_name()),
+    selectInput(ns("module"), 
+                "Module:", 
+                choices = get_module_options(chap_name()),
                 selected = "All")
   })
 
@@ -65,8 +71,10 @@ videoModule <- function(input, output, session)
   filtered_segments <- reactive({
     validate(need(try(nrow(tidy_segment_df()) > 0), "No segments found."))
     # Filter students by selected demographics
-    filt_segs <- filter_demographics(tidy_segment_df(), gender = gender(),
-                                     activity_level = activity_level(), mode = mode())
+    filt_segs <- filter_demographics(tidy_segment_df(),
+                                     gender = gender(),
+                                     activity_level = activity_level(),
+                                     mode = mode())
     filt_segs <- filter_chapter(filt_segs, chapter = module())
 
     # Aggregate data by video (lose student level information)
@@ -79,8 +87,10 @@ videoModule <- function(input, output, session)
   filtered_students <- reactive({
     validate(need(try(nrow(tidy_segment_df()) > 0), "No students found."))
     # Filter students by selected demographics
-    filt_segs <- filter_demographics(tidy_segment_df(), gender = gender(),
-                                     activity_level = activity_level(), mode = mode())
+    filt_segs <- filter_demographics(tidy_segment_df(), 
+                                     gender = gender(),
+                                     activity_level = activity_level(), 
+                                     mode = mode())
     filt_segs <- filter_chapter(filt_segs, chapter = module())
 
     # Get number of filtered students
@@ -92,8 +102,10 @@ videoModule <- function(input, output, session)
   ### Filtering module markers ###
   filtered_ch_markers <- reactive({
     # Filter students by selected demographics
-    filt_segs <- filter_demographics(tidy_segment_df(), gender = gender(),
-                                     activity_level = activity_level(), mode = mode())
+    filt_segs <- filter_demographics(tidy_segment_df(), 
+                                     gender = gender(),
+                                     activity_level = activity_level(), 
+                                     mode = mode())
     filt_segs <- filter_chapter(filt_segs, chapter = module())
 
     # Obtain module markers for videos:
@@ -106,8 +118,10 @@ videoModule <- function(input, output, session)
   filtered_table <- reactive({
     validate(need(try(nrow(tidy_segment_df()) > 0), "No videos found."))
     # Filter students by selected demographics
-    filt_segs <- filter_demographics(tidy_segment_df(), gender = gender(),
-                                     activity_level = activity_level(), mode = mode())
+    filt_segs <- filter_demographics(tidy_segment_df(), 
+                                     gender = gender(),
+                                     activity_level = activity_level(), 
+                                     mode = mode())
     filt_segs <- filter_chapter(filt_segs, chapter = module())
 
     # Obtain length of videos
@@ -117,7 +131,8 @@ videoModule <- function(input, output, session)
     avg_time_spent <- get_avg_time_spent(filt_segs)
 
     # Obtain filtered summary table
-    summary_tbl <- get_summary_table(filtered_segments(), vid_lengths,
+    summary_tbl <- get_summary_table(filtered_segments(), 
+                                     vid_lengths,
                                      avg_time_spent)
 
     return(summary_tbl)
@@ -146,22 +161,29 @@ videoModule <- function(input, output, session)
         "All"
       })
 
-      updateSelectInput(session, inputId = "activity_level", selected = activity_level())
+      updateSelectInput(session, inputId = "activity_level", 
+                        selected = activity_level())
 
-      updateSelectInput(session, inputId = "gender", selected = gender())
+      updateSelectInput(session, inputId = "gender", 
+                        selected = gender())
 
-      updateSelectInput(session, inputId = "mode", selected = mode())
+      updateSelectInput(session, inputId = "mode", 
+                        selected = mode())
 
-      updateSelectInput(session, inputId = "module", selected = module())
+      updateSelectInput(session, inputId = "module", 
+                        selected = module())
 
     })
   })
 
   ### Which of my videos is viewed the most? ###
   output$most_viewed <- plotly::renderPlotly({
-    g <- get_video_comparison_plot(filtered_segments(), module(), filtered_ch_markers())
+    g <- get_video_comparison_plot(filtered_segments(), 
+                                   module(), 
+                                   filtered_ch_markers())
 
-    plotly::ggplotly(g, tooltip = "text") %>% plotly::config(displayModeBar = FALSE)
+    plotly::ggplotly(g, tooltip = "text") %>% 
+      plotly::config(displayModeBar = FALSE)
   })
 
   ### Which part of my videos are being watched the most? ###
@@ -169,21 +191,28 @@ videoModule <- function(input, output, session)
     g <- get_segment_comparison_plot(filtered_segments(), module(),
                                      filtered_ch_markers())
 
-    plotly::ggplotly(g, tooltip = "text") %>% plotly::config(displayModeBar = FALSE)
+    plotly::ggplotly(g, tooltip = "text") %>% 
+      plotly::config(displayModeBar = FALSE)
   })
 
   ### Which part of my videos is the surprising?###
   output$surprising <- plotly::renderPlotly({
-    g <- get_high_low_plot(filtered_segments(), module(), filtered_ch_markers())
+    g <- get_high_low_plot(filtered_segments(), 
+                           module(), 
+                           filtered_ch_markers())
 
-    plotly::ggplotly(g, tooltip = "text") %>% plotly::config(displayModeBar = FALSE)
+    plotly::ggplotly(g, tooltip = "text") %>% 
+      plotly::config(displayModeBar = FALSE)
   })
 
   # Which are my students watch up until?
   output$up_until <- plotly::renderPlotly({
-    g <- get_up_until_plot(filtered_segments(), module(), filtered_ch_markers())
+    g <- get_up_until_plot(filtered_segments(), 
+                           module(), 
+                           filtered_ch_markers())
 
-    plotly::ggplotly(g, tooltip = "text") %>% plotly::config(displayModeBar = FALSE)
+    plotly::ggplotly(g, tooltip = "text") %>% 
+      plotly::config(displayModeBar = FALSE)
   })
 
   # Overview
