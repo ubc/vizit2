@@ -1,4 +1,5 @@
-#' Writes csv with course short names and their corresponding checksums to the data directory
+#' Writes csv with course short names and their corresponding checksums to the 
+#'   data directory
 #'
 #' @return No value is returned
 #'
@@ -26,13 +27,20 @@ get_hashed_courses <- function(input_json, output_csv) {
 }
 
 
-#' Writes csv with dashboard name and their corresponding checksums to the data directory
+#' Writes csv with dashboard name and their corresponding checksums to the data 
+#'   directory
 #'
 #' @return No value is returned
 #'
 #' @examples get_hashed_dashboard()
 get_hashed_dashboard <- function(){
-  dashboard <- c("general", "video", "overview", "linkpage", "forum", "problems")
+  
+  dashboard <- c("general", 
+                 "video", 
+                 "overview", 
+                 "linkpage", 
+                 "forum", 
+                 "problems")
   
   hashed_dashboards_df <- data.frame(dashboard) %>% 
     mutate(checksum = sapply(dashboard, digest::digest))
