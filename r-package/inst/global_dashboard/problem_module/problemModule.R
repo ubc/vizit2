@@ -210,10 +210,6 @@ problemModule <- function(input, output, session) {
     plot_assessment(reactive_assessment())
   })
 
-  output$num_students <- renderText({
-    paste0(filtered_students(), " students")
-  })
-
   observe({
     observeEvent(input$reset_filters, autoDestroy = FALSE, {
       # Update the activity level.

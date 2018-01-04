@@ -10,7 +10,7 @@ problemModuleUI <- function(id) {
         bsCollapsePanel(
           title = "Apply filters",
           splitLayout(
-            cellWidths = c("15%", "10%", "20%", "30%", "15%", "10%"),
+            cellWidths = c("20%", "20%", "20%", "20%", "20%", "0%"),
             selectInput(ns("activity_level"),
                         "Activity Level:",
                         choices = c("All" = "all",
@@ -31,8 +31,6 @@ problemModuleUI <- function(id) {
                                     "Audit" = "audit"),
                         selected = "all"),
             htmlOutput(ns("moduleSelection")),
-            h5(textOutput(ns("num_students")),
-               align = "center"),
             h3(actionButton(ns("reset_filters"),
                             "Reset", align = "center")),
             tags$head(tags$style(HTML("
