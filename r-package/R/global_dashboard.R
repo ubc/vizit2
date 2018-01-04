@@ -94,13 +94,10 @@ get_unhashed_course <- function(hashed_course, course_checksum_df){
     course_checksum_df <- read_csv("../inst/data/.hashed_courses.csv")
   }
   
-  
-  
   selected_course <- course_checksum_df %>% 
     filter(checksum == hashed_course)
   return(selected_course$short_name)
 }
-
 
 requested_course_global <- reactive({
   query <- parseQueryString(session$clientData$url_search)
