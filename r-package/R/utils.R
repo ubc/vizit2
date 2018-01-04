@@ -21,8 +21,9 @@ read_course_csv <- function(course_name, csv_name, data_dir = c("..", "data")) {
 }
 
 
-
-cut_activity_levels <- function(df, input_activity_name = "sum_dt", output_activity_name = "activity_level") {
+cut_activity_levels <- function(df, 
+                                input_activity_name = "sum_dt", 
+                                output_activity_name = "activity_level") {
   quo_input <- dplyr::enquo(input_activity_name)
   quo_output <- dplyr::enquo(output_activity_name)
 
@@ -36,7 +37,6 @@ cut_activity_levels <- function(df, input_activity_name = "sum_dt", output_activ
 
   df <- df %>%
     dplyr::filter(!is.na(quo_input))
-
 
   # lazy_na <- rlang::expr(!is.na(sum_dt))
   df %>%
