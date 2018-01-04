@@ -8,22 +8,28 @@
 #' @param input_course the short name of the course
 #' @return course_axis a dataframe containing course_axis information
 read_course_axis <- function(input_course){
-  input_csv_path <- paste0("../inst/data/", input_course, "/course_axis.csv")
+  input_csv_path <- paste0("../inst/data/", 
+                           input_course, 
+                           "/course_axis.csv")
   course_axis <- readr::read_csv(input_csv_path)
   return(course_axis)
 }
+
 
 #' Import external_link_dirt.csv files based on specified course folder name
 #' @param input_course the short name of the course
 #' @return link_dirt the raw link data in a dataframe
 read_link_dirt <- function(input_course){
-  input_csv_path <- paste0("../inst/data/", input_course, "/external_link_dirt.csv")
+  input_csv_path <- paste0("../inst/data/", 
+                           input_course, 
+                           "/external_link_dirt.csv")
   link_dirt <- readr::read_csv(input_csv_path)
   return(link_dirt)
 }
 
+
 #' Set three levels for students total spending time on course based on tracklog
-#' link data
+#'   link data
 #' @param link_data dataframe containing the information of student click any
 #'   links in the edx course
 #' @return link_data a dataframe with renamed columns and factorized
@@ -31,43 +37,51 @@ read_link_dirt <- function(input_course){
 #' @examples set_activity_level(link_data = read_link_dirt)
 #' @export
 set_activity_level <- function(link_data){
-
+  
   # Rename columns
   colnames(link_data)[3] <- "path" #TODO: turn to rename
   colnames(link_data)[5] <- "mode"
-
+  
   # Classify activity level into three groups
   link_data <- link_data %>%
     dplyr::mutate(activity_level = case_when(
-                        (.$activity_level < 1800) ~ "under_30_min",
-                        (.$activity_level >= 1800) & (.$activity_level < 18000) ~ "30_min_to_5_hr",
-                        (.$activity_level >= 18000) ~ "over_5_hr"))
+      (.$activity_level < 1800) ~ "under_30_min",
+      (.$activity_level >= 1800) & (.$activity_level < 18000) ~ "30_min_to_5_hr",
+      (.$activity_level >= 18000) ~ "over_5_hr"))
   return(link_data)
 }
 
 
-
-#' Get which module each external link locate based on link tracklog data and course axis data
-#' @param link_data dataframe containing the information of student click any links in the edx course
+#' Get which module each external link locate based on link tracklog data and 
+#'   course axis data
+#' @param link_data dataframe containing the information of student click any 
+#'   links in the edx course
 #' @param course_axis dataframe containing all elements in the edx course
 #' @return link_data
-#' @examples get_module_of_link(link_data = set_activity_level, course_axis = read_course_axis)
+#' @examples get_module_of_link(
+#'   link_data = set_activity_level, 
+#'   course_axis = read_course_axis
+#' )
 #' @export
 get_module_of_link <- function(link_data, course_axis){
 
   # Get the module name where each link locates
   module_hash_string <- rep(0,length(link_data))
 
-  for (i in (seq(length(link_data$path)))){
+  for (i in (seq(length(link_data$path)))) {
       module_hash <- strsplit(link_data$path[i],"/")[[1]][7]
       module_hash_string [i] <- paste0("/",module_hash)
-      }
+  }
 
   module_hash_string <- data.frame(module_hash_string)
   colnames(module_hash_string)[1] <- "path"
 
   # Join it with course axis table
-  module_location <- dplyr::left_join(module_hash_string,course_axis,by = "path") %>%
+  module_location <- dplyr::left_join(
+    module_hash_string,
+    course_axis,
+    by = "path"
+  ) %>%
     select(name)
 
   # Add module name column to link dataframe
@@ -80,7 +94,10 @@ get_module_of_link <- function(link_data, course_axis){
 #' Export the tidy link dataframe
 #' @param input_course
 #' @param cleaned_data tidy link dataframe
-#' @examples write_link_clean(input_course = "psyc1",cleaned_data = get_module_of_link)
+#' @examples write_link_clean(
+#'   input_course = "psyc1",
+#'   cleaned_data = get_module_of_link
+#' )
 #' @export
 write_link_clean <- function(input_course, cleaned_data){
   output_csv_path <- paste0("../inst/data/", input_course, "/external_link.csv")
@@ -119,12 +136,19 @@ prepare_tidy_page <- function(page_data){
   colnames(page_data)[colnames(page_data) == 'B_mode'] <- 'mode'
 
   # Manipulate duplicated messy URLs
-  # Why do this: Some page URL still have characters after the 8th "/" in page URL, which is messy and might cause problem in the mapping name phase
-  # Solution: If a page URL have characters after the 8th "/", we remove these characters
-  page_data$page <- sub(sprintf("^((?:[^/]*/){%s}).*", 8), "\\1", page_data$page)
+  # Why do this: Some page URL still have characters after the 8th "/" in page 
+  # URL, which is messy and might cause problem in the mapping name phase.
+  # Solution: If a page URL have characters after the 8th "/", we remove these 
+  # characters
+  page_data$page <- sub(sprintf("^((?:[^/]*/){%s}).*", 8), 
+                        "\\1", 
+                        page_data$page)
 
-  # Remove the last '/ 'in page URL where there is an'/ 'at the end, in order to match page name in the future
-  page_data$page <- substr(page_data$page,1,max(unique(nchar(page_data$page)))-1)
+  # Remove the last '/ 'in page URL where there is an'/ 'at the end, in order to 
+  # match page name in the future
+  page_data$page <- substr(page_data$page,
+                           1,
+                           max(unique(nchar(page_data$page)))-1)
 
   # Create column "path" for page data
   path_string <- rep(0,length(page_data$page))
@@ -133,7 +157,7 @@ prepare_tidy_page <- function(page_data){
     hash1 <- strsplit(page_data$page[i],"/")[[1]][7]
     hash2 <- strsplit(page_data$page[i],"/")[[1]][8]
     path_string[i] <- paste0("/",hash1,"/",hash2)
-    }
+  }
 
   page_data["path"] <- path_string
 
@@ -143,18 +167,22 @@ prepare_tidy_page <- function(page_data){
     dplyr::filter(path!="/NA/NA") %>%
     dplyr::mutate(date = as.Date(lubridate::ymd_hms(time))) %>%
     dplyr::mutate(activity_level = dplyr::case_when(
-                        (.$activity_level < 1800) ~ "under_30_min",
-                        (.$activity_level >= 1800) & (.$activity_level < 18000) ~ "30_min_to_5_hr",
-                        (.$activity_level >= 18000) ~ "over_5_hr")) %>%
+      (.$activity_level < 1800) ~ "under_30_min",
+      (.$activity_level >= 1800) & (.$activity_level < 18000) ~ "30_min_to_5_hr",
+      (.$activity_level >= 18000) ~ "over_5_hr")) %>%
     dplyr::arrange(time)
 
-  # Filter out tracklog data where students has course navigation activity: each_session_time < 10s
-  # each_session_time is defined as for per student per day per page, the time interval between each event's time stamp
+  # Filter out tracklog data where students has course navigation activity: 
+  # each_session_time < 10s
+  # each_session_time is defined as for per student per day per page, the time 
+  # interval between each event's time stamp
   course_navigation_threshold <- 10
   sig_student_time <- log_dat %>%
     dplyr::group_by(date, page, user_id) %>%
     dplyr::mutate(next_stamp = dplyr::lead(time)) %>%
-    dplyr::mutate(each_session_time = abs(as.double(difftime(time,next_stamp,units = "secs")))) %>%
+    dplyr::mutate(each_session_time = abs(
+      as.double(difftime(time,next_stamp,units = "secs")))
+    ) %>%
     dplyr::filter(each_session_time > course_navigation_threshold)
 
   # Select necessary column for making the dashboard
@@ -165,7 +193,8 @@ prepare_tidy_page <- function(page_data){
 }
 
 
-#' Get non-video and non-problem element name then create a chapter/module column for all these course elements
+#' Get non-video and non-problem element name then create a chapter/module 
+#'   column for all these course elements
 #' @param course_axis dataframe containing all course elements information
 #' @return page_name
 #' @examples prepare_page_name(course_axis =  read_course_axis)
@@ -173,8 +202,9 @@ prepare_tidy_page <- function(page_data){
 prepare_page_name <- function(course_axis){
 
   # Wrangle course axis table to remove video and problem elements
-  # Note : In order to only count all non-video and non-problem pages in the link & page dashboard,
-  # I conduct filter here for only getting the path of non-video and non-problem elements in order to mapping tracklog data
+  # Note : In order to only count all non-video and non-problem pages in the 
+  # link & page dashboard, I conduct filter here for only getting the path of 
+  # non-video and non-problem elements in order to mapping tracklog data
   page_name <- course_axis %>%
     dplyr::select(index,category,name,path) %>%
     dplyr::filter(grepl("Video",name)==FALSE) %>%
@@ -200,7 +230,11 @@ prepare_page_name <- function(course_axis){
   for (i in seq(length(chap_index))){
     page_name <- page_name %>%
       dplyr::arrange(index) %>%
-      dplyr::mutate(chapter_location = replace(chapter_location, index >= chap_index[i] , chap_name[i]))
+      dplyr::mutate(chapter_location = replace(
+        chapter_location, 
+        index >= chap_index[i] , 
+        chap_name[i]
+      ))
   }
   return(page_name)
  }
@@ -211,31 +245,38 @@ prepare_page_name <- function(course_axis){
 #' Export the tidy page dataframe
 #' @param input_course
 #' @param cleaned_data A tidy page dataframe.
-#' @examples write_page_clean(input_course = "psyc1",cleaned_data = prepare_tidy_page)
+#' @examples write_page_clean(
+#'   input_course = "psyc1",
+#'   cleaned_data = prepare_tidy_page
+#' )
 #' @export
 write_page_clean <- function(input_course,cleaned_data){
   output_csv_path <- paste0("../inst/data/", input_course, "/page.csv")
   readr::write_csv(x=cleaned_data, path= output_csv_path)
-
 }
 
 
-#' Export the tidy course axis dataframe containing all non-video and non-problem elements with module/chapter information
+#' Export the tidy course axis dataframe containing all non-video and 
+#'   non-problem elements with module/chapter information
 #' @param input_course
 #' @param cleaned_data A tidy page_name dataframe
-#' @examples write_page_name(input_course = "psyc1",cleaned_data = prepare_page_name)
+#' @examples write_page_name(
+#'   input_course = "psyc1",
+#'   cleaned_data = prepare_page_name
+#' )
 write_page_name <- function(input_course,cleaned_data){
   output_csv_path <- paste0("../inst/data/", input_course, "/page_name.csv")
   readr::write_csv(x=cleaned_data, path= output_csv_path)
 }
 
-
 ######################
 # wrangle_page_link  #
 ######################
 
-
-#' Read in three csv files getting from rbq.py : course_axis.csv, external_link_dirt.csv and page_dirt.csv; perform wrangling; export three csv files for building link_page_dashabord: external_link.csv, page.csv and page_name.csv
+#' Read in three csv files getting from rbq.py : course_axis.csv, 
+#'   external_link_dirt.csv and page_dirt.csv; perform wrangling; 
+#'   export three csv files for building link_page_dashabord: external_link.csv, 
+#'   page.csv and page_name.csv
 #' @param input_course
 #' @examples
 #' wrangle_link_page(input_cours = "psyc1")
