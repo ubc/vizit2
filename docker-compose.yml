@@ -50,8 +50,8 @@ services:
       - VIRTUAL_PORT=80
       - LETSENCRYPT_HOST=YOURDOMAIN.COM
     volumes:
-      - /mooc_capstone_public/r-package:/srv/shiny-server
-      - /mooc_capstone_public/logs:/var/log/shiny-server
+      - /vizit/r-package:/srv/shiny-server
+      - /vizit/logs:/var/log/shiny-server
     networks:
       - proxy-tier
 
