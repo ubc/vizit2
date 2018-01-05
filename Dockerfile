@@ -44,7 +44,7 @@ sudo apt-get update && sudo apt-get install -y google-cloud-sdk \
 
 RUN R -e "install.packages('devtools', repos='https://cran.rstudio.com/')"
 
-RUN R -e "devtools::install_github('AndrewLim1990/mooc_capstone_public/r-package')"
+RUN R -e "devtools::install_github('laingdk/vizit/r-package')"
 
 ADD environment.yml /
 
