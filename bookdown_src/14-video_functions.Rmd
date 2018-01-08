@@ -15,7 +15,7 @@ tools::Rd2txt_options(underline_titles=FALSE)
 
 #### Main Documentation
 ```{r, comment=NA, echo=FALSE}
-tools::Rd2txt("../../r-package/man/wrangle_video.Rd")
+tools::Rd2txt("../r-package/man/wrangle_video.Rd")
 ```
 
 #### Additional Notes:
@@ -42,61 +42,61 @@ tools::Rd2txt("../../r-package/man/wrangle_video.Rd")
 ### obtain_raw_video_data 
 #### Main Documentation
 ```{r, comment=NA, echo=FALSE}
-tools::Rd2txt("../../r-package/man/obtain_raw_video_data.Rd")
+tools::Rd2txt("../r-package/man/obtain_raw_video_data.Rd")
 ```
 
 ### obtain_video_axis_data 
 #### Main Documentation
 ```{r, comment=NA, echo=FALSE}
-tools::Rd2txt("../../r-package/man/obtain_video_axis_data.Rd")
+tools::Rd2txt("../r-package/man/obtain_video_axis_data.Rd")
 ```
 
 ### write_wrangled_video_data 
 #### Main Documentation
 ```{r, comment=NA, echo=FALSE}
-tools::Rd2txt("../../r-package/man/write_wrangled_video_data.Rd")
+tools::Rd2txt("../r-package/man/write_wrangled_video_data.Rd")
 ```
 
 ### prepare_video_data 
 #### Main Documentation
 ```{r, comment=NA, echo=FALSE}
-tools::Rd2txt("../../r-package/man/prepare_video_data.Rd")
+tools::Rd2txt("../r-package/man/prepare_video_data.Rd")
 ```
 
 ### get_start_end_df 
 #### Main Documentation
 ```{r, comment=NA, echo=FALSE}
-tools::Rd2txt("../../r-package/man/get_start_end_df.Rd")
+tools::Rd2txt("../r-package/man/get_start_end_df.Rd")
 ```
 
 ### get_watched_segments 
 #### Main Documentation
 ```{r, comment=NA, echo=FALSE}
-tools::Rd2txt("../../r-package/man/get_watched_segments.Rd")
+tools::Rd2txt("../r-package/man/get_watched_segments.Rd")
 ```
 
 ### make_tidy_segments 
 #### Main Documentation
 ```{r, comment=NA, echo=FALSE}
-tools::Rd2txt("../../r-package/man/make_tidy_segments.Rd")
+tools::Rd2txt("../r-package/man/make_tidy_segments.Rd")
 ```
 
 ### check_integrity 
 #### Main Documentation
 ```{r, comment=NA, echo=FALSE}
-tools::Rd2txt("../../r-package/man/check_integrity.Rd")
+tools::Rd2txt("../r-package/man/check_integrity.Rd")
 ```
 
 ### get_end_time 
 #### Main Documentation
 ```{r, comment=NA, echo=FALSE}
-tools::Rd2txt("../../r-package/man/get_end_time.Rd")
+tools::Rd2txt("../r-package/man/get_end_time.Rd")
 ```
 
 ### get_mode 
 #### Main Documentation
 ```{r, comment=NA, echo=FALSE}
-tools::Rd2txt("../../r-package/man/get_mode.Rd")
+tools::Rd2txt("../r-package/man/get_mode.Rd")
 ```
 
 
@@ -106,7 +106,7 @@ tools::Rd2txt("../../r-package/man/get_mode.Rd")
 
 #### Main Documentation
 ```{r, comment=NA, echo=FALSE}
-tools::Rd2txt("../../r-package/man/get_aggregated_df.Rd")
+tools::Rd2txt("../r-package/man/get_aggregated_df.Rd")
 ```
 
 #### Additional Notes:
@@ -124,37 +124,37 @@ aggregated_df <- get_aggregated_df(filt_segs, 10)
 ### get_ch_markers 
 #### Main Documentation
 ```{r, comment=NA, echo=FALSE}
-tools::Rd2txt("../../r-package/man/get_ch_markers.Rd")
+tools::Rd2txt("../r-package/man/get_ch_markers.Rd")
 ```
 
 ### get_video_lengths 
 #### Main Documentation
 ```{r, comment=NA, echo=FALSE}
-tools::Rd2txt("../../r-package/man/get_video_lengths.Rd")
+tools::Rd2txt("../r-package/man/get_video_lengths.Rd")
 ```
 
 ### get_summary_table 
 #### Main Documentation
 ```{r, comment=NA, echo=FALSE}
-tools::Rd2txt("../../r-package/man/get_ch_markers.Rd")
+tools::Rd2txt("../r-package/man/get_ch_markers.Rd")
 ```
 
 ### get_video_comparison_plot 
 #### Main Documentation
 ```{r, comment=NA, echo=FALSE}
-tools::Rd2txt("../../r-package/man/get_video_comparison_plot.Rd")
+tools::Rd2txt("../r-package/man/get_video_comparison_plot.Rd")
 ```
 
 ### get_segment_comparison_plot 
 #### Main Documentation
 ```{r, comment=NA, echo=FALSE}
-tools::Rd2txt("../../r-package/man/get_segment_comparison_plot.Rd")
+tools::Rd2txt("../r-package/man/get_segment_comparison_plot.Rd")
 ```
 
 ### get_top_hotspots_plot 
 #### Main Documentation
 ```{r, comment=NA, echo=FALSE}
-tools::Rd2txt("../../r-package/man/get_top_hotspots_plot.Rd")
+tools::Rd2txt("../r-package/man/get_top_hotspots_plot.Rd")
 ```
 #### Additional Notes:
 * This function is no longer used the plot was discarded after usability testing.
@@ -162,7 +162,7 @@ tools::Rd2txt("../../r-package/man/get_top_hotspots_plot.Rd")
 ### get_high_low_plot 
 #### Main Documentation
 ```{r, comment=NA, echo=FALSE}
-tools::Rd2txt("../../r-package/man/get_high_low_plot.Rd")
+tools::Rd2txt("../r-package/man/get_high_low_plot.Rd")
 ```
 #### Additional Notes:
 * This function returns a plot where segments with abnormally high and low watch rates are highlighted.
@@ -172,7 +172,7 @@ tools::Rd2txt("../../r-package/man/get_high_low_plot.Rd")
 ### get_up_until_plot 
 #### Main Documentation
 ```{r, comment=NA, echo=FALSE}
-tools::Rd2txt("../../r-package/man/get_up_until_plot.Rd")
+tools::Rd2txt("../r-package/man/get_up_until_plot.Rd")
 ```
 #### Additional Notes:
 * This function returns a plot in which segments are highlighted up until the average *maximum* stop time per student.
@@ -181,7 +181,7 @@ tools::Rd2txt("../../r-package/man/get_up_until_plot.Rd")
 ### get_rank 
 #### Main Documentation
 ```{r, comment=NA, echo=FALSE}
-tools::Rd2txt("../../r-package/man/get_rank.Rd")
+tools::Rd2txt("../r-package/man/get_rank.Rd")
 ```
 
 #### Additional Notes:

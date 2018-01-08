@@ -50,5 +50,9 @@ We are grateful to many of our colleagues at UBC. Especially, we are grateful to
 Navigate to the `bookdown_src` directory in `https://github.com/laingdk/vizit`, and run the following code in R:
 
 ```r
-bookdown::render_book('index.Rmd', 'all')
+bookdown::render_book(
+  input = 'index.Rmd', 
+  output_format = 'all',
+  output_dir = '../docs/'
+)
 ```
