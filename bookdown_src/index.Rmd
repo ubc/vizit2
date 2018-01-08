@@ -53,6 +53,6 @@ Navigate to the `bookdown_src` directory in `https://github.com/laingdk/vizit`, 
 bookdown::render_book(
   input = 'index.Rmd', 
   output_format = 'all',
-  output_dir = '../docs/'
+  output_dir = '../docs'
 )
 ```
