@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>edXviz: Interactive Visualization of Student Engagement with edX MOOCs</title>
+  <meta name="description" content="edXviz: Interactive Visualization of Student Engagement with edX MOOCs">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="edXviz: Interactive Visualization of Student Engagement with edX MOOCs" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="edXviz: Interactive Visualization of Student Engagement with edX MOOCs" />
+  
+  
+  
+
+<meta name="author" content="Matt Emery, David Laing, Andrew Lim, Subi Zhang">
+
+
+<meta name="date" content="2017-06-23">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="forum-overview.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> edXviz: Interactive Visualization of Student Engagement with edX MOOCs</a></li>
+<li class="chapter" data-level="2" data-path="video-overview.html"><a href="video-overview.html"><i class="fa fa-check"></i><b>2</b> Video Overview</a><ul>
+<li class="chapter" data-level="2.1" data-path="video-overview.html"><a href="video-overview.html#data-cleaning-pipeline"><i class="fa fa-check"></i><b>2.1</b> Data Cleaning Pipeline</a></li>
+<li class="chapter" data-level="2.2" data-path="video-overview.html"><a href="video-overview.html#visualization-reasoning-and-caveats"><i class="fa fa-check"></i><b>2.2</b> Visualization Reasoning and Caveats:</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html"><i class="fa fa-check"></i><b>3</b> Video Dashboard Functions</a><ul>
+<li class="chapter" data-level="3.1" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#wrangling-functions"><i class="fa fa-check"></i><b>3.1</b> Wrangling Functions</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#wrangle_video"><i class="fa fa-check"></i><b>3.1.1</b> wrangle_video</a></li>
+<li class="chapter" data-level="3.1.2" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#obtain_raw_video_data"><i class="fa fa-check"></i><b>3.1.2</b> obtain_raw_video_data</a></li>
+<li class="chapter" data-level="3.1.3" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#obtain_video_axis_data"><i class="fa fa-check"></i><b>3.1.3</b> obtain_video_axis_data</a></li>
+<li class="chapter" data-level="3.1.4" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#write_wrangled_video_data"><i class="fa fa-check"></i><b>3.1.4</b> write_wrangled_video_data</a></li>
+<li class="chapter" data-level="3.1.5" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#prepare_video_data"><i class="fa fa-check"></i><b>3.1.5</b> prepare_video_data</a></li>
+<li class="chapter" data-level="3.1.6" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_start_end_df"><i class="fa fa-check"></i><b>3.1.6</b> get_start_end_df</a></li>
+<li class="chapter" data-level="3.1.7" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_watched_segments"><i class="fa fa-check"></i><b>3.1.7</b> get_watched_segments</a></li>
+<li class="chapter" data-level="3.1.8" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#make_tidy_segments"><i class="fa fa-check"></i><b>3.1.8</b> make_tidy_segments</a></li>
+<li class="chapter" data-level="3.1.9" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#check_integrity"><i class="fa fa-check"></i><b>3.1.9</b> check_integrity</a></li>
+<li class="chapter" data-level="3.1.10" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_end_time"><i class="fa fa-check"></i><b>3.1.10</b> get_end_time</a></li>
+<li class="chapter" data-level="3.1.11" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_mode"><i class="fa fa-check"></i><b>3.1.11</b> get_mode</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#server-functions"><i class="fa fa-check"></i><b>3.2</b> Server Functions</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_aggregated_df"><i class="fa fa-check"></i><b>3.2.1</b> get_aggregated_df</a></li>
+<li class="chapter" data-level="3.2.2" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_ch_markers"><i class="fa fa-check"></i><b>3.2.2</b> get_ch_markers</a></li>
+<li class="chapter" data-level="3.2.3" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_video_lengths"><i class="fa fa-check"></i><b>3.2.3</b> get_video_lengths</a></li>
+<li class="chapter" data-level="3.2.4" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_summary_table"><i class="fa fa-check"></i><b>3.2.4</b> get_summary_table</a></li>
+<li class="chapter" data-level="3.2.5" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_video_comparison_plot"><i class="fa fa-check"></i><b>3.2.5</b> get_video_comparison_plot</a></li>
+<li class="chapter" data-level="3.2.6" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_segment_comparison_plot"><i class="fa fa-check"></i><b>3.2.6</b> get_segment_comparison_plot</a></li>
+<li class="chapter" data-level="3.2.7" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_top_hotspots_plot"><i class="fa fa-check"></i><b>3.2.7</b> get_top_hotspots_plot</a></li>
+<li class="chapter" data-level="3.2.8" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_high_low_plot"><i class="fa fa-check"></i><b>3.2.8</b> get_high_low_plot</a></li>
+<li class="chapter" data-level="3.2.9" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_up_until_plot"><i class="fa fa-check"></i><b>3.2.9</b> get_up_until_plot</a></li>
+<li class="chapter" data-level="3.2.10" data-path="video-dashboard-functions.html"><a href="video-dashboard-functions.html#get_rank"><i class="fa fa-check"></i><b>3.2.10</b> get_rank</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="demographics-overview.html"><a href="demographics-overview.html"><i class="fa fa-check"></i><b>4</b> Demographics Overview</a><ul>
+<li class="chapter" data-level="4.1" data-path="demographics-overview.html"><a href="demographics-overview.html#data-cleaning-pipeline-1"><i class="fa fa-check"></i><b>4.1</b> Data Cleaning Pipeline</a></li>
+<li class="chapter" data-level="4.2" data-path="demographics-overview.html"><a href="demographics-overview.html#visualization-reasoning-and-caveats-1"><i class="fa fa-check"></i><b>4.2</b> Visualization Reasoning and Caveats:</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="r-general-demographics-dashboard-functions.html"><a href="r-general-demographics-dashboard-functions.html"><i class="fa fa-check"></i><b>5</b> R General Demographics Dashboard Functions</a><ul>
+<li class="chapter" data-level="5.1" data-path="r-general-demographics-dashboard-functions.html"><a href="r-general-demographics-dashboard-functions.html#wrangling-functions-1"><i class="fa fa-check"></i><b>5.1</b> Wrangling Functions</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="r-general-demographics-dashboard-functions.html"><a href="r-general-demographics-dashboard-functions.html#wrangle_general"><i class="fa fa-check"></i><b>5.1.1</b> wrangle_general</a></li>
+<li class="chapter" data-level="5.1.2" data-path="r-general-demographics-dashboard-functions.html"><a href="r-general-demographics-dashboard-functions.html#obtain_raw_general_data"><i class="fa fa-check"></i><b>5.1.2</b> obtain_raw_general_data</a></li>
+<li class="chapter" data-level="5.1.3" data-path="r-general-demographics-dashboard-functions.html"><a href="r-general-demographics-dashboard-functions.html#obtain_language_info"><i class="fa fa-check"></i><b>5.1.3</b> obtain_language_info</a></li>
+<li class="chapter" data-level="5.1.4" data-path="r-general-demographics-dashboard-functions.html"><a href="r-general-demographics-dashboard-functions.html#obtain_country_info"><i class="fa fa-check"></i><b>5.1.4</b> obtain_country_info</a></li>
+<li class="chapter" data-level="5.1.5" data-path="r-general-demographics-dashboard-functions.html"><a href="r-general-demographics-dashboard-functions.html#prepare_general_data"><i class="fa fa-check"></i><b>5.1.5</b> prepare_general_data</a></li>
+<li class="chapter" data-level="5.1.6" data-path="r-general-demographics-dashboard-functions.html"><a href="r-general-demographics-dashboard-functions.html#write_general_data"><i class="fa fa-check"></i><b>5.1.6</b> write_general_data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="r-general-demographics-dashboard-functions.html"><a href="r-general-demographics-dashboard-functions.html#server-functions-1"><i class="fa fa-check"></i><b>5.2</b> Server Functions</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="r-general-demographics-dashboard-functions.html"><a href="r-general-demographics-dashboard-functions.html#convert_loe"><i class="fa fa-check"></i><b>5.2.1</b> convert_loe</a></li>
+<li class="chapter" data-level="5.2.2" data-path="r-general-demographics-dashboard-functions.html"><a href="r-general-demographics-dashboard-functions.html#get_loe_df"><i class="fa fa-check"></i><b>5.2.2</b> get_loe_df</a></li>
+<li class="chapter" data-level="5.2.3" data-path="r-general-demographics-dashboard-functions.html"><a href="r-general-demographics-dashboard-functions.html#get_loe_plot"><i class="fa fa-check"></i><b>5.2.3</b> get_loe_plot</a></li>
+<li class="chapter" data-level="5.2.4" data-path="r-general-demographics-dashboard-functions.html"><a href="r-general-demographics-dashboard-functions.html#get_age_df"><i class="fa fa-check"></i><b>5.2.4</b> get_age_df</a></li>
+<li class="chapter" data-level="5.2.5" data-path="r-general-demographics-dashboard-functions.html"><a href="r-general-demographics-dashboard-functions.html#get_age_plot"><i class="fa fa-check"></i><b>5.2.5</b> get_age_plot</a></li>
+<li class="chapter" data-level="5.2.6" data-path="r-general-demographics-dashboard-functions.html"><a href="r-general-demographics-dashboard-functions.html#get_top_country_df"><i class="fa fa-check"></i><b>5.2.6</b> get_top_country_df</a></li>
+<li class="chapter" data-level="5.2.7" data-path="r-general-demographics-dashboard-functions.html"><a href="r-general-demographics-dashboard-functions.html#get_country_plot"><i class="fa fa-check"></i><b>5.2.7</b> get_country_plot</a></li>
+<li class="chapter" data-level="5.2.8" data-path="r-general-demographics-dashboard-functions.html"><a href="r-general-demographics-dashboard-functions.html#get_top_language_df"><i class="fa fa-check"></i><b>5.2.8</b> get_top_language_df</a></li>
+<li class="chapter" data-level="5.2.9" data-path="r-general-demographics-dashboard-functions.html"><a href="r-general-demographics-dashboard-functions.html#get_language_plot"><i class="fa fa-check"></i><b>5.2.9</b> get_language_plot</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="forum-overview.html"><a href="forum-overview.html"><i class="fa fa-check"></i><b>6</b> Forum Overview</a><ul>
+<li class="chapter" data-level="6.1" data-path="forum-overview.html"><a href="forum-overview.html#hierarchy-of-the-discussion-forums"><i class="fa fa-check"></i><b>6.1</b> Hierarchy of the Discussion Forums</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="forum-overview.html"><a href="forum-overview.html#notes"><i class="fa fa-check"></i><b>6.1.1</b> Notes</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="forum-overview.html"><a href="forum-overview.html#data-cleaning-pipeline-2"><i class="fa fa-check"></i><b>6.2</b> Data Cleaning Pipeline</a></li>
+<li class="chapter" data-level="6.3" data-path="forum-overview.html"><a href="forum-overview.html#visualization-reasoning-and-caveats-2"><i class="fa fa-check"></i><b>6.3</b> Visualization Reasoning and Caveats</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="r-functions.html"><a href="r-functions.html"><i class="fa fa-check"></i><b>7</b> R Functions</a><ul>
+<li class="chapter" data-level="7.1" data-path="r-functions.html"><a href="r-functions.html#wrangling-functions-2"><i class="fa fa-check"></i><b>7.1</b> Wrangling Functions</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="r-functions.html"><a href="r-functions.html#get_activity_levels"><i class="fa fa-check"></i><b>7.1.1</b> get_activity_levels</a></li>
+<li class="chapter" data-level="7.1.2" data-path="r-functions.html"><a href="r-functions.html#get_discussion_vars_json"><i class="fa fa-check"></i><b>7.1.2</b> get_discussion_vars_json</a></li>
+<li class="chapter" data-level="7.1.3" data-path="r-functions.html"><a href="r-functions.html#get_discussion_vars_xml"><i class="fa fa-check"></i><b>7.1.3</b> get_discussion_vars_xml</a></li>
+<li class="chapter" data-level="7.1.4" data-path="r-functions.html"><a href="r-functions.html#infer_post_subcategories"><i class="fa fa-check"></i><b>7.1.4</b> infer_post_subcategories</a></li>
+<li class="chapter" data-level="7.1.5" data-path="r-functions.html"><a href="r-functions.html#prepare_json"><i class="fa fa-check"></i><b>7.1.5</b> prepare_json</a></li>
+<li class="chapter" data-level="7.1.6" data-path="r-functions.html"><a href="r-functions.html#prepare_posts"><i class="fa fa-check"></i><b>7.1.6</b> prepare_posts</a></li>
+<li class="chapter" data-level="7.1.7" data-path="r-functions.html"><a href="r-functions.html#prepare_searches"><i class="fa fa-check"></i><b>7.1.7</b> prepare_searches</a></li>
+<li class="chapter" data-level="7.1.8" data-path="r-functions.html"><a href="r-functions.html#prepare_views"><i class="fa fa-check"></i><b>7.1.8</b> prepare_views</a></li>
+<li class="chapter" data-level="7.1.9" data-path="r-functions.html"><a href="r-functions.html#prepare_words"><i class="fa fa-check"></i><b>7.1.9</b> prepare_words</a></li>
+<li class="chapter" data-level="7.1.10" data-path="r-functions.html"><a href="r-functions.html#prepare_xml"><i class="fa fa-check"></i><b>7.1.10</b> prepare_xml</a></li>
+<li class="chapter" data-level="7.1.11" data-path="r-functions.html"><a href="r-functions.html#wrangle_forum"><i class="fa fa-check"></i><b>7.1.11</b> wrangle_forum</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">edXviz: Interactive Visualization of Student Engagement with edX MOOCs</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="r-functions" class="section level1">
+<h1><span class="header-section-number">7</span> R Functions</h1>
+<div id="wrangling-functions-2" class="section level2">
+<h2><span class="header-section-number">7.1</span> Wrangling Functions</h2>
+<div id="get_activity_levels" class="section level3">
+<h3><span class="header-section-number">7.1.1</span> get_activity_levels</h3>
+<div id="main-documentation-36" class="section level4">
+<h4><span class="header-section-number">7.1.1.1</span> Main Documentation</h4>
+<pre><code>Convert sum_dt to activity_level.
+
+Description:
+
+     Convert sum_dt to activity_level.
+
+Usage:
+
+     get_activity_levels(forum)
+     
+Arguments:
+
+   forum: A forum dataframe.
+
+Value:
+
+     The same dataframe with a new column for activity_level.
+
+Examples:
+
+     get_activity_levels(forum)
+     </code></pre>
+</div>
+<div id="additional-notes-6" class="section level4">
+<h4><span class="header-section-number">7.1.1.2</span> Additional Notes</h4>
+</div>
+</div>
+<div id="get_discussion_vars_json" class="section level3">
+<h3><span class="header-section-number">7.1.2</span> get_discussion_vars_json</h3>
+<div id="main-documentation-37" class="section level4">
+<h4><span class="header-section-number">7.1.2.1</span> Main Documentation</h4>
+<pre><code>Get the variables associated with each forum element in the JSON file.
+(for use in &#39;prepare_json&#39;).
+
+Description:
+
+     Get the variables associated with each forum element in the JSON
+     file. (for use in &#39;prepare_json&#39;).
+
+Usage:
+
+     get_discussion_vars_json(i, all_elements)
+     
+Arguments:
+
+       i: An iterator.
+
+all_elements: A nested list containing attributes for each course
+          element.
+
+Value:
+
+     A vector containing the &#39;commentable_id&#39;, &#39;display_name&#39;,
+     &#39;discussion_category&#39;, and &#39;discussion_target&#39; of a course
+     element.
+
+Examples:
+
+     get_discussion_vars_json(i)
+     </code></pre>
+</div>
+<div id="additional-notes-7" class="section level4">
+<h4><span class="header-section-number">7.1.2.2</span> Additional Notes</h4>
+</div>
+</div>
+<div id="get_discussion_vars_xml" class="section level3">
+<h3><span class="header-section-number">7.1.3</span> get_discussion_vars_xml</h3>
+<div id="main-documentation-38" class="section level4">
+<h4><span class="header-section-number">7.1.3.1</span> Main Documentation</h4>
+<pre><code>Get the variables associated with each forum element in the XML file
+(for use in &#39;prepare_xml&#39;).
+
+Description:
+
+     Get the variables associated with each forum element in the XML
+     file (for use in &#39;prepare_xml&#39;).
+
+Usage:
+
+     get_discussion_vars_xml(i, all_parameters)
+     
+Arguments:
+
+       i: An iterator.
+
+all_parameters: An XML tree containing all the parameters associated
+          with each discussion node.
+
+Value:
+
+     A vector containing the &#39;display_name&#39;, &#39;discussion_category&#39;, and
+     &#39;discussion_target&#39; of a course element.
+
+Examples:
+
+     get_discussion_vars_xml(i)
+     </code></pre>
+</div>
+<div id="additional-notes-8" class="section level4">
+<h4><span class="header-section-number">7.1.3.2</span> Additional Notes</h4>
+</div>
+</div>
+<div id="infer_post_subcategories" class="section level3">
+<h3><span class="header-section-number">7.1.4</span> infer_post_subcategories</h3>
+<div id="main-documentation-39" class="section level4">
+<h4><span class="header-section-number">7.1.4.1</span> Main Documentation</h4>
+<pre><code>Infer the subcategories of each post, even if it&#39;s a response post or a
+comment.
+
+Description:
+
+     Infer the subcategories of each post, even if it&#39;s a response post
+     or a comment.
+
+Usage:
+
+     infer_post_subcategories(forum)
+     
+Arguments:
+
+   forum: A forum dataframe.
+
+Value:
+
+     The same dataframe with commentable_id filled in for everything.
+
+Examples:
+
+     infer_post_subcategories(forum)
+     </code></pre>
+</div>
+<div id="additional-notes-9" class="section level4">
+<h4><span class="header-section-number">7.1.4.2</span> Additional Notes</h4>
+</div>
+</div>
+<div id="prepare_json" class="section level3">
+<h3><span class="header-section-number">7.1.5</span> prepare_json</h3>
+<div id="main-documentation-40" class="section level4">
+<h4><span class="header-section-number">7.1.5.1</span> Main Documentation</h4>
+<pre><code>Prepare the JSON file for joining with the XML file.
+
+Description:
+
+     Prepare the JSON file for joining with the XML file.
+
+Usage:
+
+     prepare_json(json)
+     
+Arguments:
+
+    json: A JSON file containing information about the course elements.
+
+Value:
+
+     A dataframe with four columns: &#39;commentable_id&#39;, &#39;display_name&#39;,
+     &#39;discussion_category&#39;, and &#39;discussion_target&#39;.
+
+Examples:
+
+     prepare_json(json)
+     </code></pre>
+</div>
+<div id="additional-notes-10" class="section level4">
+<h4><span class="header-section-number">7.1.5.2</span> Additional Notes</h4>
+</div>
+</div>
+<div id="prepare_posts" class="section level3">
+<h3><span class="header-section-number">7.1.6</span> prepare_posts</h3>
+<div id="main-documentation-41" class="section level4">
+<h4><span class="header-section-number">7.1.6.1</span> Main Documentation</h4>
+<pre><code>Prepare the forum posts.
+
+Description:
+
+     Prepare the forum posts.
+
+Usage:
+
+     prepare_posts(forum)
+     
+Arguments:
+
+   forum: A dataframe with one post per row.
+
+Value:
+
+     The prepared forum posts data.
+
+Examples:
+
+     prepare_posts(forum)
+     </code></pre>
+</div>
+<div id="additional-notes-11" class="section level4">
+<h4><span class="header-section-number">7.1.6.2</span> Additional Notes</h4>
+</div>
+</div>
+<div id="prepare_searches" class="section level3">
+<h3><span class="header-section-number">7.1.7</span> prepare_searches</h3>
+<div id="main-documentation-42" class="section level4">
+<h4><span class="header-section-number">7.1.7.1</span> Main Documentation</h4>
+<pre><code>Prepare the forum searches dataframe.
+
+Description:
+
+     Prepare the forum searches dataframe.
+
+Usage:
+
+     prepare_searches(forum)
+     
+Arguments:
+
+   forum: A dataframe with one search event per row.
+
+Value:
+
+     The forum searches data with a new column for activity level.
+
+Examples:
+
+     prepare_searches(forum)
+     </code></pre>
+</div>
+<div id="additional-notes-12" class="section level4">
+<h4><span class="header-section-number">7.1.7.2</span> Additional Notes</h4>
+</div>
+</div>
+<div id="prepare_views" class="section level3">
+<h3><span class="header-section-number">7.1.8</span> prepare_views</h3>
+<div id="main-documentation-43" class="section level4">
+<h4><span class="header-section-number">7.1.8.1</span> Main Documentation</h4>
+<pre><code>Prepare the forum views dataframe.
+
+Description:
+
+     Prepare the forum views dataframe.
+
+Usage:
+
+     prepare_views(forum)
+     
+Arguments:
+
+   forum: A dataframe with one read event per row.
+
+Value:
+
+     The prepared forum views data.
+
+Examples:
+
+     prepare_views(forum)
+     </code></pre>
+</div>
+<div id="additional-notes-13" class="section level4">
+<h4><span class="header-section-number">7.1.8.2</span> Additional Notes</h4>
+</div>
+</div>
+<div id="prepare_words" class="section level3">
+<h3><span class="header-section-number">7.1.9</span> prepare_words</h3>
+<div id="main-documentation-44" class="section level4">
+<h4><span class="header-section-number">7.1.9.1</span> Main Documentation</h4>
+<pre><code>Prepare the forum words.
+
+Description:
+
+     Prepare the forum words.
+
+Usage:
+
+     prepare_words(forum)
+     
+Arguments:
+
+   forum: A dataframe with one row per post.
+
+Value:
+
+     The dataframe with each row containing a word, prepared for
+     joining with the forum elements.
+
+Examples:
+
+     prepare_words(forum)
+     </code></pre>
+</div>
+<div id="additional-notes-14" class="section level4">
+<h4><span class="header-section-number">7.1.9.2</span> Additional Notes</h4>
+</div>
+</div>
+<div id="prepare_xml" class="section level3">
+<h3><span class="header-section-number">7.1.10</span> prepare_xml</h3>
+<div id="main-documentation-45" class="section level4">
+<h4><span class="header-section-number">7.1.10.1</span> Main Documentation</h4>
+<pre><code>Prepare the XML file for joining with the JSON file.
+
+Description:
+
+     Prepare the XML file for joining with the JSON file.
+
+Usage:
+
+     prepare_xml(xml)
+     
+Arguments:
+
+     xml: An XML file containing information about the course elements.
+
+Value:
+
+     A dataframe with three columns: &#39;display_name&#39;,
+     &#39;discussion_category&#39;, and &#39;discussion_target&#39;.
+
+Examples:
+
+     prepare_xml(xml)
+     </code></pre>
+</div>
+<div id="additional-notes-15" class="section level4">
+<h4><span class="header-section-number">7.1.10.2</span> Additional Notes</h4>
+</div>
+</div>
+<div id="wrangle_forum" class="section level3">
+<h3><span class="header-section-number">7.1.11</span> wrangle_forum</h3>
+<div id="main-documentation-46" class="section level4">
+<h4><span class="header-section-number">7.1.11.1</span> Main Documentation</h4>
+<pre><code>Write the forum posts and forum words to csv.
+
+Description:
+
+     Write the forum posts and forum words to csv.
+
+Usage:
+
+     wrangle_forum(posts_input_path, views_input_path, searches_input_path,
+       json_input_path, xml_input_path, posts_output_path, words_output_path,
+       views_output_path, searches_output_path, elements_output_path)
+     
+Arguments:
+
+posts_input_path: The path to the CSV file containing the forum posts
+          data.
+
+views_input_path: The path to the CSV file containing the forum reads
+          data.
+
+searches_input_path: The path to the CSV file containing the forum
+          searches data.
+
+json_input_path: The path to the JSON file containing data on all
+          course elements.
+
+xml_input_path: The path to the XML file containing data on the course
+          structure.
+
+posts_output_path: The desired path to which to write the prepared
+          forum posts dataframe.
+
+words_output_path: The desired path to which to write the prepared
+          forum words dataframe.
+
+views_output_path: The desired path to which to write the prepared
+          forum views dataframe.
+
+searches_output_path: The desired path to which to write the prepared
+          forum searches dataframe.
+
+elements_output_path: The desired path to which to write the prepared
+          forum elements dataframe.
+
+Value:
+
+     None.
+
+Examples:
+
+     wrangle_forum(csv_path, json_path, xml_path)
+     </code></pre>
+</div>
+<div id="additional-notes-16" class="section level4">
+<h4><span class="header-section-number">7.1.11.2</span> Additional Notes</h4>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="forum-overview.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
