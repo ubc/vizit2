@@ -19,12 +19,6 @@ ext <- ".Rd"
 tools::Rd2txt(paste0(root, "get_module_of_link", ext))
 ```
 
-### hash_username
-
-```{r, comment=NA, echo=FALSE}
-tools::Rd2txt(paste0(root, "hash_username", ext))
-```
-
 ### prepare_page_name
 
 ```{r, comment=NA, echo=FALSE}
