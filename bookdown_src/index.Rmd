@@ -1,5 +1,5 @@
 --- 
-title: "edXviz: Interactive Visualization of Student Engagement with edX MOOCs"
+title: "VizIT: Visualization for Instructional Teams"
 author: "Matt Emery, David Laing, Andrew Lim, Subi Zhang"
 date: "`r Sys.Date()`"
 output:
@@ -14,7 +14,7 @@ documentclass: book
 
 ## Introduction
 
-edXviz is a capstone project completed by Matthew Emery, David Laing, Andrew Lim, and Subi Zhang, in partial fulfillment of the degree requirements for the Master of Data Science at the University of British Columbia (UBC). The project was completed in partnership with the Centre for Teaching, Learning and Technology (CTLT) at UBC.
+VizIT is a capstone project completed by Matthew Emery, David Laing, Andrew Lim, and Subi Zhang, in partial fulfillment of the degree requirements for the Master of Data Science at the University of British Columbia (UBC). The project was completed in partnership with the Centre for Teaching, Learning and Technology (CTLT) at UBC.
 
 Hundreds of thousands of students worldwide are enrolled in UBC's many massive open online courses (MOOCs). These MOOCs generate huge amounts of data, much of which could be used to help instructors understand how students are engaging with their courses. For our capstone project, we built a dashboard that is accessible to MOOC instructors directly in their edX course website. The dashboard will help instructors to discover patterns across the structures of their courses, with a special focus on course elements where student engagement is especially high or low. The dashboard includes visualizations of how students are interacting with course content such as videos and pages, how they are performing on problem sets, and how they are behaving in the discussion forums. edXviz is available as an open-source R package, and development is ongoing.
 
@@ -28,7 +28,7 @@ The python script `populate_courses.py` will acquire and process all the data fo
 
 ## Contents of this Document
 
-The edXviz dashboard has six separate views, each of which shows a different type of data:
+The VizIT dashboard has six separate views, each of which shows a different type of data:
 
 * Engagement Overview (or "Eiffel Tower" plot)
 * General Demographics
@@ -47,7 +47,7 @@ We are grateful to many of our colleagues at UBC. Especially, we are grateful to
 
 ## Instructions for generating this bookdown document
 
-Navigate to the edx_viz_documentation directory in our capstone repository, and run the following code in R:
+Navigate to the `bookdown_src` directory in `https://github.com/laingdk/vizit`, and run the following code in R:
 
 ```r
 bookdown::render_book('index.Rmd', 'all')
