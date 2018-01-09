@@ -70,7 +70,6 @@ overviewModuleUI <- function(id) {
         
         bsCollapsePanel(
           "How many learners engaged with each course element?",
-          h4("Hover your mouse on each bar below for further details."),
           plotly::plotlyOutput(ns("tower_plot"),height = '800px'),
           style = 'primary')
         
