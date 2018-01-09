@@ -46,8 +46,6 @@ Populate forum_views
 Populate tower_item
 Populate tower_engage_dirt
 Populate course_axis
-Populate external_link_dirt
-Populate page_dirt
 
 bash ./download_gcp_material.sh ${SHORT} "${GCLOUD}"
 
@@ -68,6 +66,5 @@ RPopulate () {
 RPopulate wrangle_overview_engagement tower_engage
 RPopulate wrangle_forum wrangled_forum_elements
 RPopulate wrangle_video wrangled_video_heat
-RPopulate wrangle_link_page external_link
 RPopulate wrangle_general wrangled_demographics
 RPopulate wrangle_assessments wrangled_assessment_csv_info
