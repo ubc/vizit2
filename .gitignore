@@ -15,3 +15,4 @@ r-package/inst/results
 /r-package/inst/global_dashboard/overview_module/.Rhistory
 .RData
 .Rapp.history
+r-package/exec/__pycache__/*
