@@ -6,14 +6,13 @@ Hundreds of thousands of students worldwide are enrolled in UBC’s many massive
 
 ### Documentation
 
-* [All documentation](https://andrewlim1990.github.io/edx_dashboard_documentation.github.io/index.html): This page contains all of our documentation, including the following topics:
-    * [Engagement Overview Dashboard](https://andrewlim1990.github.io/edx_dashboard_documentation.github.io/engagement-overview-dashboard-overview.html)
-    * [General Demographics Dashboard](https://andrewlim1990.github.io/edx_dashboard_documentation.github.io/general-demographics-overview.html)
-    * [Links and Pages Dashboard](https://andrewlim1990.github.io/edx_dashboard_documentation.github.io/link-and-page-dashboard-overview.html)
-    * [Forum Discussion Dashboard](https://andrewlim1990.github.io/edx_dashboard_documentation.github.io/forum-overview.html)
-    * [Problems Dashboard](https://andrewlim1990.github.io/edx_dashboard_documentation.github.io/problem-overview.html)
-    * [Video Dashboard](https://andrewlim1990.github.io/edx_dashboard_documentation.github.io/video-overview.html)
-    * [Deployment](https://andrewlim1990.github.io/edx_dashboard_documentation.github.io/deployment-walkthrough.html)
+* [All documentation](https://laingdk.github.io/vizit/): This page contains all of our documentation, including the following topics:
+    * [Engagement Overview Dashboard](https://laingdk.github.io/vizit//engagement-overview-dashboard-overview.html)
+    * [General Demographics Dashboard](https://laingdk.github.io/vizit//general-demographics-overview.html)
+    * [Forum Discussion Dashboard](https://laingdk.github.io/vizit//forum-overview.html)
+    * [Problems Dashboard](https://laingdk.github.io/vizit//problem-overview.html)
+    * [Video Dashboard](https://laingdk.github.io/vizit//video-overview.html)
+    * [Deployment](https://laingdk.github.io/vizit//deployment-walkthrough.html)
 
 ## Docker Image
 
@@ -25,4 +24,4 @@ Hundreds of thousands of students worldwide are enrolled in UBC’s many massive
 
 ## Deployment
 
-See [the deployment walkthrough here](./docs/deployment.md)
+See [the deployment walkthrough here](./extra_docs/deployment.md).
