@@ -21,7 +21,7 @@ def get_hashed_course(course_name, hash_path= "./../inst/data/.hashed_courses.cs
     raise CourseNotFoundException("Course {} not found.".format(course_name))
 
 
-def generate_template(html, dashboard, course, url="dev.vizit.edx.learninganalytics.ubc.ca"):
+def generate_template(html, dashboard, course, url="YOUR_URL_HERE"):
     hashed_course = get_hashed_course(course)
 
     template = Environment().from_string(source=html)
