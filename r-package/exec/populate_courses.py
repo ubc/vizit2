@@ -7,7 +7,7 @@ import click as cl
 
 
 @cl.command()
-@cl.option("--overwrite", default=False)
+@cl.option("--overwrite", default=True)
 def populate(overwrite):
     with open('../.config.json') as config:
         config_json = json.load(config)
