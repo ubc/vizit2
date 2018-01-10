@@ -7,7 +7,7 @@ import click as cl
 
 
 @cl.command()
-@cl.option("--overwrite", default=False)
+@cl.option("--overwrite", default=True)
 def populate(overwrite):	
     command = "bash ./populate_course.sh {short_name} {big_table} {gcloud}".format(
                 short_name="add_shortname_here",
