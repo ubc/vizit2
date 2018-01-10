@@ -390,10 +390,9 @@ infer_post_subcategories <- function(forum) {
     mutate(initial_post_id = comment_thread_id)
   
   if (sum(is.na(response_counts$responses)) > 0) {
-    print("        Replacing null response counts in response_counts with 0...")
+    print("          Replacing null response counts in response_counts with 0...")
     response_counts$responses[is.na(response_counts$responses)] <- 0
   }
-  
   
   comment_counts_on_init <- comment_counts %>% 
     group_by(initial_post_id) %>% 
@@ -423,26 +422,34 @@ infer_post_subcategories <- function(forum) {
   zero_counts <- comment_posts_w_sc %>% 
     select(mongoid, commentable_id)
   
-  print("          Setting responses in zero_counts to 0...")
-  zero_counts$responses <- 0
+  if (dim(zero_counts)[1] < 0) {
+    print("          Setting responses in zero_counts to 0...")
+    zero_counts$responses <- 0
+    
+    print("          Setting comments in zero_counts to 0...")
+    zero_counts$comments <- 0
+  }
   
-  print("          Setting comments in zero_counts to 0...")
-  zero_counts$comments <- 0
-  
+  print("          Binding comment_counts and zero_counts...")
   counts <- both_counts %>% 
     rbind(comment_counts) %>% 
     rbind(zero_counts)
   
+  print("          Joining the counts with forum_w_inferred_subcategories...")
   forum_posts <- forum_w_inferred_subcategories %>% 
     left_join(counts)
   
   # Wherever the number of responses or comments is NA, set to zero.
   if (sum(is.na(forum_posts$responses)) > 0) {
+    print("            There are response counts set to NA.")
+    print("            Setting to zero...")
     forum_posts$responses[is.na(forum_posts$responses)] <- 0
   }
   forum_posts$responses <- as.integer(forum_posts$responses)
   
   if (sum(is.na(forum_posts$comments)) > 0) {
+    print("            There are comment counts set to NA.")
+    print("            Setting to zero...")
     forum_posts$comments[is.na(forum_posts$comments)] <- 0
   }
   forum_posts$comments <- as.integer(forum_posts$comments)
