@@ -413,8 +413,11 @@ infer_post_subcategories <- function(forum) {
     both_counts$responses[is.na(both_counts$responses)] <- 0
   }
   
-  print("          Setting responses in comment_counts to 0...")
-  comment_counts$responses <- 0
+  if (dim(comment_counts)[1] > 0) {
+    print("          Setting responses in comment_counts to 0...")
+    comment_counts$responses <- 0
+  }
+  
   comment_counts <- comment_counts %>% 
     mutate(mongoid = response_post_id) %>% 
     select(-initial_post_id, -response_post_id)
@@ -422,7 +425,7 @@ infer_post_subcategories <- function(forum) {
   zero_counts <- comment_posts_w_sc %>% 
     select(mongoid, commentable_id)
   
-  if (dim(zero_counts)[1] < 0) {
+  if (dim(zero_counts)[1] > 0) {
     print("          Setting responses in zero_counts to 0...")
     zero_counts$responses <- 0
     
