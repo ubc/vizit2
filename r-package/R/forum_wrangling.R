@@ -174,7 +174,7 @@ wrangle_forum <- function(posts_input_path,
       gender,
       registration_status,
       discussion_category,
-      display_name,
+      discussion_target,
       word
     )
   

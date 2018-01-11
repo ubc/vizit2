@@ -241,6 +241,7 @@ filter_forum_elements <- function(forum_elements,
     filtered_forum_elements <- forum_elements %>%
       filter(discussion_category == category)
 
+    print(filtered_forum_elements)
     return(filtered_forum_elements)
 
   }
@@ -579,7 +580,9 @@ filter_wordcloud_data <- function(forum_words,
       category = category
     )
     incProgress(1, detail = "Done.")
-
+    
+    print(names(filtered_wordcloud_data))
+    
     return(filtered_wordcloud_data)
 
   })
