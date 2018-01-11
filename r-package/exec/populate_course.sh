@@ -32,20 +32,21 @@ Populate () {
 
 }
 
-Populate demographic_multiple_choice
-Populate open_assessment
+Populate demographic_multiple_choice &
+Populate open_assessment &
 
-Populate generalized_video_heat
-Populate generalized_video_axis
-Populate generalized_demographics
+Populate generalized_video_heat &
+Populate generalized_video_axis &
+Populate generalized_demographics &
 
-Populate forum_posts
-Populate forum_searches
-Populate forum_views
+Populate forum_posts &
+Populate forum_searches &
+Populate forum_views &
 
-Populate tower_item
-Populate tower_engage_dirt
+Populate tower_item &
+Populate tower_engage_dirt &
 Populate course_axis
+wait
 
 bash ./download_gcp_material.sh ${SHORT} "${GCLOUD}"
 
