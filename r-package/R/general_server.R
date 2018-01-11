@@ -92,10 +92,13 @@ get_age_df <- function(data) {
 #' @return Returns a ggplot geom_histogram object
 get_age_plot <- function(age_df) {
   g <- ggplot(age_df, aes(age)) + 
-    geom_histogram(fill = "#e78ac3", bins = 10) + 
+    geom_histogram(fill = "#e78ac3", breaks = seq(0, 100, by=5)) + 
     ylab("Number of learners") + 
     xlab("Age") + 
-    ggthemes::theme_few(base_family = "GillSans")
+    ggthemes::theme_few(base_family = "GillSans") +
+    scale_x_continuous(
+      limits = c(0, 100),
+      breaks = seq(0, 100, by=5))
   
   return(g)
 }
