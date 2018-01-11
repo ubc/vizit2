@@ -4,11 +4,12 @@ import os
 import subprocess
 import json
 import click as cl
-
+from datetime import datetime
 
 @cl.command()
 @cl.option("--overwrite", default=True)
 def populate(overwrite):
+    start_time = datetime.now()
     with open('../.config.json') as config:
         config_json = json.load(config)
         courses = config_json[0]["courses"]
@@ -22,6 +23,7 @@ def populate(overwrite):
             print(command)
             subprocess.call(command, shell=True)
     write_hashed_courses()
+    print("Total time " + str((datetime.now() - start_time).seconds) + " seconds")
 
 
 def write_hashed_courses():
