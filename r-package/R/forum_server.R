@@ -160,7 +160,7 @@ count_posts <- function(input_forum, wrangled_forum_elements) {
 #' count_authors(wrangled_forum_posts)
 count_authors <- function(input_forum, wrangled_forum_elements) {
   author_counts <- input_forum %>%
-    group_by(commentable_id, display_name) %>%
+    group_by(commentable_id, discussion_target) %>%
     summarize(authors = n_distinct(author_id)) %>%
     arrange(desc(authors))
 
@@ -184,7 +184,7 @@ count_authors <- function(input_forum, wrangled_forum_elements) {
 #' count_views(wrangled_forum_views)
 count_views <- function(input_forum, wrangled_forum_elements) {
   view_counts <- input_forum %>%
-    group_by(commentable_id, display_name) %>%
+    group_by(commentable_id, discussion_target) %>%
     count() %>%
     mutate(views = n) %>%
     select(-n) %>%
@@ -373,7 +373,7 @@ get_subcategory_options <- function(category,
   } else {
     subcategory_options <- append(
       subcategory_options,
-      as.character(filtered_forum_elements$display_name)
+      as.character(filtered_forum_elements$discussion_target)
     )
 
     return(subcategory_options)
@@ -615,7 +615,7 @@ specify_forum_data_selection <- function(updated_forum_data,
 
   } else {
     # If there is a selection match, set it to TRUE.
-    forum_w_selection$selected[forum_w_selection$display_name
+    forum_w_selection$selected[forum_w_selection$discussion_target
                                == selected_subcategory] <- "TRUE"
 
   }
@@ -758,7 +758,7 @@ get_wordcloud_data <- function(filtered_wordcloud_data,
 
         } else {
           filtered_selected <- filtered_wordcloud_data %>%
-            filter(display_name == selected_subcategory)
+            filter(discussion_target == selected_subcategory)
 
         }
 
@@ -775,7 +775,7 @@ get_wordcloud_data <- function(filtered_wordcloud_data,
 
           } else {
             wordcloud_data <- wordcloud_data %>%
-              filter(display_name == selected_subcategory)
+              filter(discussion_target == selected_subcategory)
 
           }
 
@@ -883,7 +883,7 @@ get_label_lengths <- function(forum_data,
     return(label_lengths)
 
   } else {
-    label_lengths <- nchar(as.character(forum_data$display_name))
+    label_lengths <- nchar(as.character(forum_data$discussion_target))
 
     return(label_lengths)
 
@@ -964,7 +964,7 @@ get_reactive_xvar_string <- function(category) {
 
   } else {
     reactive_xvar_string <-
-      "forcats::fct_reorder(display_name, course_order, .desc = TRUE)"
+      "forcats::fct_reorder(discussion_target, course_order, .desc = TRUE)"
 
     return(reactive_xvar_string)
 
@@ -1045,7 +1045,7 @@ make_forum_barplot <- function(forum_data,
     xlabel <- "Category"
 
   } else {
-    grouping_var <- "display_name"
+    grouping_var <- "discussion_target"
     xlabel <- "Subcategory"
 
   }
@@ -1102,7 +1102,7 @@ make_forum_barplot <- function(forum_data,
 #' Gather the post types into a single column for easy plotting.
 #' @param forum_data The forum data for the main barplot.
 #' @param grouping_var grouping_var One of \code{discussion_category} or 
-#'   \code{display_name}, depending on whether a category has been selected.
+#'   \code{discussion_target}, depending on whether a category has been selected.
 #' @return \code{gathered} A dataframe with the post types gathered into a 
 #'   single column.
 #' @export
@@ -1135,7 +1135,7 @@ gather_post_types <- function(forum_data,
 #' @param xvar_string A string that matches the function to call for the x value 
 #'   of aes_string().
 #' @param grouping_var grouping_var One of \code{discussion_category} or 
-#'   \code{display_name}, depending on whether a category has been selected.
+#'   \code{discussion_target}, depending on whether a category has been selected.
 #' @param axis_limit The maximum axis limit for the horizontal axis in the main 
 #'   barplot.
 #' @param xlabel The label of the x-axis in the main barplot.
@@ -1355,7 +1355,7 @@ get_forum_threads <- function(forum_posts,
     if (dim(filtered_posts)[1] != 0) {
       forum_threads <- filtered_posts %>%
         select(
-          Subcategory = display_name,
+          Subcategory = discussion_target,
           ## Select the variables to be displayed in the table.
           Author = author_id,
           Text = body,
@@ -1379,7 +1379,7 @@ get_forum_threads <- function(forum_posts,
 
     } else {
       filtered_selected <- filtered_posts %>%
-        filter(display_name == selected_subcategory)
+        filter(discussion_target == selected_subcategory)
 
     }
 
@@ -1387,7 +1387,7 @@ get_forum_threads <- function(forum_posts,
     if (dim(filtered_selected)[1] != 0) {
       forum_threads <- filtered_selected %>%
         select(
-          Subcategory = display_name,
+          Subcategory = discussion_target,
           ## Select the variables to be displayed in the table.
           Author = author_id,
           Text = body,
