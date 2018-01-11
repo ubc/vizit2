@@ -94,26 +94,6 @@ apply_forum_filters <-
   }
 
 
-#' Get the top words for each subcategory.
-#' @param input_forum The input dataframe containing a row for each word in the 
-#'   forum.
-#' @return \code{word_counts} A dataframe containing the counts for each word in
-#'   each subcategory.
-#' @export
-#' @examples
-#' get_target_word_counts(wrangled_forum_words)
-get_target_word_counts <- function(input_forum) {
-  # Get the word counts for each word in each subcategory.
-  word_counts <- input_forum %>%
-    group_by(display_name, word) %>%
-    count(sort = TRUE)
-
-  # Return the relative counts for each word in each subcategory.
-  return(word_counts)
-
-}
-
-
 #' Count the number of posts for each subcategory in an input forum.
 #' @param input_forum The input dataframe containing a row for each post in the 
 #'   forum.
