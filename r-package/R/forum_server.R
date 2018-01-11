@@ -145,8 +145,6 @@ count_posts <- function(input_forum, wrangled_forum_elements) {
       mutate(Comment = coalesce(Comment, 0L))
   }
   
-  print(post_counts)
-  
   return(post_counts)
 }
 
@@ -539,6 +537,8 @@ update_forum_data <- function(forum_posts,
 
     incProgress(1 / 7, detail = "Done.")
 
+    print(updated_forum_data$discussion_target)
+    
     return(updated_forum_data)
 
   })
