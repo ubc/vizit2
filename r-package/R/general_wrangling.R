@@ -80,10 +80,12 @@ prepare_general_data <- function(data, language_info, country_info)
 {
   # Add proper activity level:
   data <- data %>% 
+    mutate(sum_dt = as.numeric(sum_dt)) %>% 
     mutate(activity_level = case_when(
       (.$sum_dt < 1800) ~ "under_30_min", 
-      (.$sum_dt >= 1800) & (.$sum_dt < 18000) ~ "30_min_to_5_hr", 
-      (.$sum_dt >= 18000) ~ "over_5_hr", is.na(.$sum_dt) ~ "NA")
+      (.$sum_dt >= 1800 & .$sum_dt < 18000) ~ "30_min_to_5_hr", 
+      (.$sum_dt >= 18000) ~ "over_5_hr",
+      is.na(.$sum_dt) ~ "NA")
     )
   
   # Data frame with language code and language name
