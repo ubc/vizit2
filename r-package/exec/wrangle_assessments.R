@@ -26,7 +26,7 @@ assessment_json <-
   tidyjson::read_json(paste(
     "..",
     "inst",
-    "results",
+    "data",
     input_course,
     "assessments.json",
     sep = "/"
