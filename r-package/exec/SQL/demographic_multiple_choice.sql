@@ -7,7 +7,11 @@ SELECT
     A.pa.created AS row_date,
     B.gender AS gender,
     B.mode AS mode,
-    B.sum_dt AS sum_dt
+    CASE
+      WHEN B.sum_dt < 1800 THEN "under_30_min"
+      WHEN ((B.sum_dt >= 1800) & (B.sum_dt < 18000)) THEN "30_min_to_5_hr"
+      WHEN B.sum_dt >= 18000 THEN "over_5_hr"
+    END as activity_level
 FROM (
   SELECT
     pa.user_id AS user_id,
