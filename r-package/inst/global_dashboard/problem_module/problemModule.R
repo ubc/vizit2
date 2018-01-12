@@ -42,7 +42,7 @@ problemModule <- function(input, output, session) {
   })
 
   root <- "../../inst/data/"
-  result_root <- "../../inst/results/"
+  result_root <- "../../inst/data/"
 
   output$moduleSelection <- renderUI({
     ns <- NS("problemID")
