@@ -56,8 +56,8 @@ extract_assessment_csv <- function(assessment_tbl) {
       name = gsubfn::strapply(event, name_extraction)
     ) %>%
     tidyr::unnest() %>%
-    dplyr::filter(!is.na(sum_dt)) %>%
-    dplyr::select(-event, -module_id, -time, -sum_dt, -time)
+    dplyr::filter(!is.na(activity_level)) %>%
+    dplyr::select(-event, -module_id, -time)
 }
 
 #' Join the results of extract_assessment_csv and extract_assessment_json

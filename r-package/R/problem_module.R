@@ -1,8 +1,7 @@
 #' Clean a demographic multiple choice CSV
 #'
 #' This function cleans a CSV retrieved from the `demographic_multiple_choice`
-#' SQL script. It transforms the `sum_dt` column into activity_level. It also
-#' removes any non-multiple choice problems.
+#' SQL script. It removes any non-multiple choice problems.
 #'
 #' @param raw_csv A dataframe from the read_csv
 #'
