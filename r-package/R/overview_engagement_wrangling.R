@@ -26,22 +26,6 @@ clean_engagement_data <- function(dirt_engagement_data){
   dirt_engagement_data$module_id <- gsub("i4x://", 
                                          "", 
                                          dirt_engagement_data$module_id)
-
-  # Rename column in engagement table
-  colnames(dirt_engagement_data)[
-    colnames(dirt_engagement_data) == 'B_mode'
-  ] <- 'mode'
-  
-  # Transform activity levels.
-  dirt_engagement_data <- dirt_engagement_data %>%
-    mutate(activity_level = case_when(
-      
-      (.$activity_level < 1800) ~ "under_30_min",
-      (.$activity_level >= 1800) & (.$activity_level < 18000) ~ "30_min_to_5_hr",
-      (.$activity_level >= 18000) ~ "over_5_hr",
-      is.na(.$activity_level) ~ "NA"
-      
-    ))
   
   return(dirt_engagement_data)
 }
