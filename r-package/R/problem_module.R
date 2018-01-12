@@ -9,18 +9,9 @@
 #' @return A dataframe with the same dimensions as the CSV
 clean_multiple_choice <- function(raw_csv) {
   raw_csv %>%
-    dplyr::mutate(
-      activity_level = dplyr::case_when((.$sum_dt < 1800) ~ "under_30_min",
-                                        (.$sum_dt >= 1800) &
-                                          (.$sum_dt < 18000) ~ "30_min_to_5_hr",
-                                        (.$sum_dt >= 18000) ~ "over_5_hr",
-                                        is.na(.$sum_dt) ~ "NA"
-      )
-    ) %>%
     dplyr::filter(grepl("choice", item_response)) %>%  # Only multichoice problems
     dplyr::mutate(item_response = stringr::str_extract_all(item_response,
                                                            "choice_[0-9]+")) %>%
-    dplyr::select(-sum_dt) %>%
     tidyr::unnest()
 }
 
@@ -389,7 +380,7 @@ plot_aggregated_problems <- function(agg_melted_problems) {
       strip.position = "left",
       as.table = FALSE
     ) +
-    ggthemes::theme_few(base_family = "sans-serif") +
+    ggthemes::theme_few(base_family = "GillSans") +
     ggplot2::coord_flip() +
     ggplot2::theme(
       axis.text.y = element_blank(),
@@ -421,7 +412,7 @@ plot_problem_chapter_summaries <- function(chapter_summary_tbl) {
                   ggplot2::aes(x = chapter, y = percent_correct)) +
     ggplot2::geom_bar(stat = "identity", fill = "#66c2a5") +
     ggplot2::coord_flip() +
-    ggthemes::theme_few(base_family = "sans-serif") +
+    ggthemes::theme_few(base_family = "GillSans") +
     ggplot2::scale_y_continuous(labels = scales::percent, limits = c(0, 1)) +
     ggplot2::labs(x = "Module",
          y = "Mean grade on problems")

@@ -136,7 +136,7 @@ plot_assessment <- function(summary_assessment) {
       size = 4
     ) +
     facet_wrap( ~ title, scales = "free") +
-    ggthemes::theme_few(base_family = "sanserif") +
+    ggthemes::theme_few(base_family = "GillSans") +
     theme(axis.text.y = element_blank()) +
     coord_flip() +
     scale_y_continuous(labels = scales::percent, limits = c(0, 1)) +
