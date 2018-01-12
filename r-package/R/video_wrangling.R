@@ -110,15 +110,7 @@ prepare_video_data <- function(video_data, video_axis)
     mutate(old_speed = as.double(old_speed)) %>%
     mutate(new_time = as.double(new_time)) %>% 
     mutate(old_time = as.double(old_time)) %>%
-    mutate(speed_change_position = as.double(speed_change_position)) %>%
-    mutate(
-      activity_level = case_when((.$sum_dt < 1800) ~ "under_30_min",
-                                 (.$sum_dt >= 1800) &
-                                   (.$sum_dt < 18000) ~ "30_min_to_5_hr",
-                                 (.$sum_dt >= 18000) ~ "over_5_hr",
-                                 is.na(.$sum_dt) ~ "NA"
-      )
-    )
+    mutate(speed_change_position = as.double(speed_change_position))
   
   # Obtain the max time recorded for each stop_video event by assuming
   # the mode stop time is the maximum video length.  This is better than

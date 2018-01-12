@@ -13,7 +13,14 @@ SELECT
   person_course.mode AS mode,
   person_course.certified AS certified,
   person_course.gender AS gender,
-  person_course.sum_dt AS sum_dt
+  CASE
+    WHEN person_course.sum_dt < 1800
+      THEN "under_30_min"
+    WHEN ((person_course.sum_dt >= 1800) & (person_course.sum_dt < 18000))
+      THEN "30_min_to_5_hr"
+    WHEN person_course.sum_dt >= 18000
+      THEN "over_5_hr"
+  END as activity_level
 FROM (
   SELECT
     A.time AS time,
@@ -33,11 +40,13 @@ FROM (
       event_type,
       context.user_id,
       (CASE
-          WHEN REGEXP_MATCH( JSON_EXTRACT(event, '$.id'), r'([-])' ) THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(JSON_EXTRACT(event, '$.id'), '-', '/'), '"', ''), 'i4x/', ''), r'(?:.*\/)(.*)')
+          WHEN REGEXP_MATCH( JSON_EXTRACT(event, '$.id'), r'([-])' )
+            THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(JSON_EXTRACT(event, '$.id'), '-', '/'), '"', ''), 'i4x/', ''), r'(?:.*\/)(.*)')
           ELSE REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(JSON_EXTRACT(event, '$.id'), '-', '/'), '"', ''), 'i4x/', '') END) AS video_id,
       # This takes video id only
       (CASE
-          WHEN JSON_EXTRACT_SCALAR(event, '$.speed') IS NOT NULL THEN FLOAT(JSON_EXTRACT_SCALAR(event,'$.speed'))*FLOAT(JSON_EXTRACT_SCALAR(event, '$.currentTime'))
+          WHEN JSON_EXTRACT_SCALAR(event, '$.speed') IS NOT NULL
+            THEN FLOAT(JSON_EXTRACT_SCALAR(event,'$.speed'))*FLOAT(JSON_EXTRACT_SCALAR(event, '$.currentTime'))
           ELSE FLOAT(JSON_EXTRACT_SCALAR(event, '$.currentTime')) END) AS position,
       event_struct.old_time AS old_time,
       event_struct.new_time AS new_time,
