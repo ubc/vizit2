@@ -76,10 +76,9 @@ wrangle_forum <- function(posts_input_path,
   print("Preparing the forum words data...")
   forum_words <- prepare_words(forum = forum_posts)
   
-  # Prepare the forum searches data.
-  print("Preparing the forum searches data...")
-  wrangled_forum_searches <-
-    prepare_searches(forum = forum_searches)
+  # Load the forum searches data.
+  print("Load the forum searches data...")
+  wrangled_forum_searches <- forum_searches
   
   # Prepare the JSON elements.
   print("Preparing the JSON elements...")
@@ -205,9 +204,8 @@ wrangle_forum <- function(posts_input_path,
 #' @examples
 #' prepare_views(forum)
 prepare_views <- function(forum) {
-  # Get the activity level of the users.
-  forum_views <- forum %>%
-    get_activity_levels()
+  # Load the forum views.
+  forum_views <- forum
   
   # Add an event ID, just in case.
   forum_views$event_id <- 1:dim(forum_views)[1]
@@ -227,14 +225,9 @@ prepare_posts <- function(forum) {
   # Change the text from factor to character.
   forum$body <- as.character(forum$body)
   
-  # Get the activity level of the users.
-  print("     Getting activity levels...")
-  forum_w_activity_levels <- forum %>%
-    get_activity_levels()
-  
   # Mutate and add a column that says initial post, response post, and comment
   print("     Getting post types...")
-  forum_w_post_types <- forum_w_activity_levels %>%
+  forum_w_post_types <- forum %>%
     get_post_types()
   
   # Link response posts back to initial posts to get their commentable_id.
@@ -258,32 +251,6 @@ prepare_posts <- function(forum) {
     select(-post_type)
   
   return(forum_posts)
-}
-
-
-#' Convert sum_dt to activity_level.
-#'
-#' @param forum A forum dataframe.
-#' @return The same dataframe with a new column for activity_level.
-#' @examples
-#' get_activity_levels(forum)
-#' @export
-get_activity_levels <- function(forum) {
-  # Get the activity level of the users.
-  forum_w_activity_levels <- forum %>%
-    mutate(
-      activity_level = case_when(
-        (.$sum_dt < 1800) ~ "under_30_min",
-        (.$sum_dt >= 1800) &
-          (.$sum_dt < 18000) ~ "30_min_to_5_hr",
-        (.$sum_dt >= 18000) ~ "over_5_hr",
-        is.na(.$sum_dt) ~ "NA"
-      )
-    ) %>%
-    select(-sum_dt)
-  
-  return(forum_w_activity_levels)
-  
 }
 
 
@@ -496,21 +463,7 @@ prepare_words <- function(forum) {
 }
 
 
-#' Prepare the forum searches dataframe.
-#'
-#' @param forum A dataframe with one search event per row.
-#' @return The forum searches data with a new column for activity level.
-#' @examples
-#' prepare_searches(forum)
-#' @export
-prepare_searches <- function(forum) {
-  
-  # Get the activity level of the users.
-  forum_searches <- forum %>%
-    get_activity_levels()
-  
-  return(forum_searches)
-}
+
 
 
 #' Prepare the JSON file for joining with the XML file.
