@@ -298,7 +298,6 @@ make_tidy_segments <- function(data) {
       min_into_video,
       video_name,
       mode,
-      certified,
       gender,
       activity_level,
       max_stop_position,
