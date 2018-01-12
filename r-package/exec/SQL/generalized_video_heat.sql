@@ -11,7 +11,6 @@ SELECT
   video_heat.speed_change_position AS speed_change_position,
   video_heat.video_name AS video_name,
   person_course.mode AS mode,
-  person_course.certified AS certified,
   person_course.gender AS gender,
   CASE
     WHEN person_course.sum_dt < 1800
