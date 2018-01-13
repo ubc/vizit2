@@ -7,6 +7,6 @@ SELECT
 FROM
   [ubcxdata:{course}.video_axis]
 ORDER BY
-  video_id
+  index_chapter, index_video
 LIMIT
   {limit}
