@@ -269,7 +269,10 @@ get_watched_segments <- function(data) {
                                                       SEGMENT_SIZE, 
                                                       MIN_DURATION)) %>% 
     tidyr::unnest(segment) %>% 
-    mutate(min_into_video = segment * SEGMENT_SIZE / SECONDS_IN_MINUTE)
+    mutate(
+      min_into_video = ((segment * SEGMENT_SIZE) + (SEGMENT_SIZE / 2))
+      / SECONDS_IN_MINUTE
+    )
   
   return(data)
 }
