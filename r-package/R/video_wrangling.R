@@ -214,7 +214,6 @@ get_start_end_df <- function(data) {
       video_id,
       video_name,
       mode,
-      certified,
       gender,
       activity_level,
       max_stop_position,
