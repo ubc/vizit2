@@ -233,7 +233,9 @@ get_video_comparison_plot <- function(filtered_segments,
     theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) + 
     xlab("Length of video (minutes)") + 
     ylab("Video") + 
-    viridis::scale_fill_viridis() +
+    viridis::scale_fill_viridis(
+      name = "Unique viewers"
+    ) +
     scale_x_continuous(
       breaks = seq(0,max(filtered_segments$min_into_video),1)
     )
