@@ -194,6 +194,12 @@ get_summary_table <- function(aggregate_df, vid_lengths, avg_time_spent) {
   return(summary_tbl)
 }
 
+get_video_minute_breaks <- function(limits) {
+  breaks <- seq(limits[1], limits[2], by = 1)
+  print(limits)
+  print(breaks)
+}
+
 #' Obtains heatmap plot comparing videos against each other
 #' @param filtered_segments Dataframe of segments and corresponding watch counts 
 #'   filtered by demographics
@@ -227,7 +233,10 @@ get_video_comparison_plot <- function(filtered_segments,
     theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) + 
     xlab("Length of Video (minutes)") + 
     ylab("Video") + 
-    viridis::scale_fill_viridis()
+    viridis::scale_fill_viridis() +
+    scale_x_continuous(
+      breaks = seq(0,max(filtered_segments$min_into_video),1)
+    )
   
   if (module == "All") {
     g <- g + 
@@ -268,6 +277,9 @@ get_segment_comparison_plot <- function(filtered_segments,
     ylab("Video") + 
     viridis::scale_fill_viridis(
       name = "Views per learner<br>who started the<br>video ('watch rate')"
+    ) +
+    scale_x_continuous(
+      breaks = seq(0,max(filtered_segments$min_into_video),1)
     )
   
   if (module == "All") {
@@ -307,7 +319,10 @@ get_top_hotspots_plot <- function(filtered_segments,
     theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) + 
     xlab("Length of Video (minutes)") + 
     ylab("Video") + 
-    viridis::scale_fill_viridis(guide = FALSE)
+    viridis::scale_fill_viridis(guide = FALSE) +
+    scale_x_continuous(
+      breaks = seq(0,max(filtered_segments$min_into_video),1)
+    )
   
   if (module == "All") {
     g <- g + geom_hline(yintercept = filtered_ch_markers)
@@ -352,7 +367,10 @@ get_high_low_plot <- function(filtered_segments, module, filtered_ch_markers) {
     xlab("Length of Video (minutes)") + 
     ylab("Video") + 
     scale_fill_manual(values = c("#F8E85D", "#488C93", "#3D0752"), 
-                      name = "Legend")
+                      name = "Legend") +
+    scale_x_continuous(
+      breaks = seq(0,max(filtered_segments$min_into_video),1)
+    )
   
   if (module == "All") {
     g <- g + geom_hline(yintercept = filtered_ch_markers)
@@ -392,7 +410,10 @@ get_up_until_plot <- function(filtered_segments, module, filtered_ch_markers) {
           axis.ticks.y = element_blank()) + 
     xlab("Length of Video (minutes)") + 
     ylab("Video") + 
-    scale_fill_gradient(low = "gray86", high = "skyblue", guide = FALSE)
+    scale_fill_gradient(low = "gray86", high = "skyblue", guide = FALSE) +
+    scale_x_continuous(
+      breaks = seq(0,max(filtered_segments$min_into_video),1)
+    )
   
   if (module == "All") {
     g <- g + 
