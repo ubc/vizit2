@@ -231,7 +231,7 @@ get_video_comparison_plot <- function(filtered_segments,
           axis.ticks.y = element_blank()) + 
     ggthemes::theme_few(base_family = "GillSans") + 
     theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) + 
-    xlab("Length of Video (minutes)") + 
+    xlab("Length of video (minutes)") + 
     ylab("Video") + 
     viridis::scale_fill_viridis() +
     scale_x_continuous(
@@ -273,7 +273,7 @@ get_segment_comparison_plot <- function(filtered_segments,
           axis.ticks.y = element_blank()) + 
     ggthemes::theme_few(base_family = "GillSans") + 
     theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) + 
-    xlab("Length of video (minutes)") + 
+    xlab("Position in video (minutes)") + 
     ylab("Video") + 
     viridis::scale_fill_viridis(
       name = "Views per learner<br>who started the<br>video ('watch rate')"
@@ -317,7 +317,7 @@ get_top_hotspots_plot <- function(filtered_segments,
           axis.ticks.y = element_blank()) + 
     ggthemes::theme_few(base_family = "GillSans") + 
     theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) + 
-    xlab("Length of Video (minutes)") + 
+    xlab("Position in video (minutes)") + 
     ylab("Video") + 
     viridis::scale_fill_viridis(guide = FALSE) +
     scale_x_continuous(
@@ -364,7 +364,7 @@ get_high_low_plot <- function(filtered_segments, module, filtered_ch_markers) {
           axis.ticks.y = element_blank()) + 
     ggthemes::theme_few(base_family = "GillSans") + 
     theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) + 
-    xlab("Length of Video (minutes)") + 
+    xlab("Position in video (minutes)") + 
     ylab("Video") + 
     scale_fill_manual(values = c("#F8E85D", "#488C93", "#3D0752"), 
                       name = "Legend") +
@@ -408,7 +408,7 @@ get_up_until_plot <- function(filtered_segments, module, filtered_ch_markers) {
     ggthemes::theme_few(base_family = "GillSans") + 
     theme(axis.text.y = element_blank(), 
           axis.ticks.y = element_blank()) + 
-    xlab("Length of Video (minutes)") + 
+    xlab("Position in video (minutes)") + 
     ylab("Video") + 
     scale_fill_gradient(low = "gray86", high = "skyblue", guide = FALSE) +
     scale_x_continuous(
