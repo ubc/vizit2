@@ -235,8 +235,8 @@ calculate_segments_viewed <- function(start,
   end_segment <- end %/% segment_size
   start_segment <- start %/% segment_size
   
-  if ((end %% segment_size) > acceptence_criteria) {
-    end_segment <- end_segment + 1
+  if ((end %% segment_size) < acceptence_criteria) {
+    end_segment <- end_segment - 1
   }
   
   if ((start %% segment_size) > (segment_size - acceptence_criteria)) {
