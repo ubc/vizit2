@@ -237,7 +237,9 @@ get_video_comparison_plot <- function(filtered_segments,
       name = "Unique viewers"
     ) +
     scale_x_continuous(
-      breaks = seq(0,max(filtered_segments$min_into_video),1)
+      breaks = seq(0,
+                   max(filtered_segments$min_into_video),
+                   round(max(filtered_segments$min_into_video)/10))
     )
   
   if (module == "All") {
@@ -281,7 +283,9 @@ get_segment_comparison_plot <- function(filtered_segments,
       name = "Views per learner<br>who started the<br>video ('watch rate')"
     ) +
     scale_x_continuous(
-      breaks = seq(0,max(filtered_segments$min_into_video),1)
+      breaks = seq(0,
+                   max(filtered_segments$min_into_video),
+                   round(max(filtered_segments$min_into_video)/10))
     )
   
   if (module == "All") {
@@ -323,7 +327,9 @@ get_top_hotspots_plot <- function(filtered_segments,
     ylab("Video") + 
     viridis::scale_fill_viridis(guide = FALSE) +
     scale_x_continuous(
-      breaks = seq(0,max(filtered_segments$min_into_video),1)
+      breaks = seq(0,
+                   max(filtered_segments$min_into_video),
+                   round(max(filtered_segments$min_into_video)/10))
     )
   
   if (module == "All") {
@@ -371,7 +377,9 @@ get_high_low_plot <- function(filtered_segments, module, filtered_ch_markers) {
     scale_fill_manual(values = c("#F8E85D", "#488C93", "#3D0752"), 
                       name = "Legend") +
     scale_x_continuous(
-      breaks = seq(0,max(filtered_segments$min_into_video),1)
+      breaks = seq(0,
+                   max(filtered_segments$min_into_video),
+                   round(max(filtered_segments$min_into_video)/10))
     )
   
   if (module == "All") {
@@ -414,7 +422,9 @@ get_up_until_plot <- function(filtered_segments, module, filtered_ch_markers) {
     ylab("Video") + 
     scale_fill_gradient(low = "gray86", high = "skyblue", guide = FALSE) +
     scale_x_continuous(
-      breaks = seq(0,max(filtered_segments$min_into_video),1)
+      breaks = seq(0,
+                   max(filtered_segments$min_into_video),
+                   round(max(filtered_segments$min_into_video)/10))
     )
   
   if (module == "All") {
