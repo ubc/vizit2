@@ -333,12 +333,13 @@ check_integrity <- function(start, end, max_stop_position) {
   na_check <- is.na(end) | is.na(start)
   passed_ending_check <- end > max_stop_position
   start_larger_than_end_check <- end < start
+  start_is_not_neg_check <- start < 0
   watch_duration_check <- (watch_duration < MIN_DURATION) | (watch_duration > MAX_DURATION)
   
   all_checks <-
     !(
       na_check | passed_ending_check | start_larger_than_end_check |
-        watch_duration_check
+        start_is_not_neg_check | watch_duration_check 
     )
   
   return(all_checks)
