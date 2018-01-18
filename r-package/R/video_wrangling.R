@@ -122,6 +122,16 @@ prepare_video_data <- function(video_data, video_axis)
     group_by(video_id) %>% 
     summarize(max_stop_position = get_mode(round(position)))
   
+  extra_max_stop_times <- prepared_data %>% 
+    filter(!video_id %in% unique(max_stop_times$video_id)) %>% 
+    group_by(video_id) %>% 
+    summarise(max_stop_position = max(round(position), na.rm = T))
+  
+  max_stop_times <- max_stop_times %>% 
+    rbind(extra_max_stop_times) %>% 
+    filter(max_stop_position > 0) %>% 
+    arrange(video_id)
+  
   # Place max video length column into dataframe This will be used as an
   # integrity check
   prepared_data <- prepared_data %>% 
