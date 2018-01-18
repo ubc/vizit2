@@ -383,7 +383,7 @@ plot_aggregated_problems <- function(agg_melted_problems) {
     ggplot2::coord_flip() +
     ggplot2::theme(
       axis.text.y = element_blank(),
-      strip.text.y = element_text(angle = 0),
+      strip.text.y = element_text(angle = 180),
       axis.title.y.right = element_text(color = "red"),
       strip.switch.pad.grid = unit(15, "cm"),
       legend.justification = "top",
