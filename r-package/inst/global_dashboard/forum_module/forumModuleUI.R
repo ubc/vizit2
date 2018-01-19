@@ -9,9 +9,9 @@ forumModuleUI <- function(id) {
       bsCollapse(
         id = ns("demo_dropdown_collapse"),
         multiple = TRUE,
-        open = "Apply filters",
+        open = "↕ Apply filters",
         bsCollapsePanel(
-          title = "Apply filters",
+          title = "↕ Apply filters",
           splitLayout(
             cellWidths = c("25%", "25%", "25%", "25%", "0%"),
             selectInput(
@@ -62,9 +62,9 @@ forumModuleUI <- function(id) {
       bsCollapse(
         id = ns("main_plots"),
         multiple = TRUE,
-        open = "What are students talking about in the discussion forums?",
+        open = "↕ What are students talking about in the discussion forums?",
         bsCollapsePanel(
-          title = "What are students talking about in the discussion forums?",
+          title = "↕ What are students talking about in the discussion forums?",
           splitLayout(
             cellWidths = c("33%", "0%", "33%", "33%", "0%"),
             column(
@@ -144,9 +144,9 @@ forumModuleUI <- function(id) {
       bsCollapse(
         id = ns("searches_dropdown_collapse"),
         multiple = TRUE,
-        open = "What are students searching for in the discussion forums?",
+        open = "↕ What are students searching for in the discussion forums?",
         bsCollapsePanel(
-          "What are students searching for in the discussion forums?",
+          "↕ What are students searching for in the discussion forums?",
           dataTableOutput(ns("searches")),
           style = "primary"
         )

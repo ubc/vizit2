@@ -7,9 +7,9 @@ videoModuleUI <- function(id) {
       bsCollapse(
         id = ns('demo_dropdown_collapse'),
         multiple = TRUE,
-        open = "Apply filters",
+        open = "↕ Apply filters",
         bsCollapsePanel(
-          title = "Apply filters",
+          title = "↕ Apply filters",
           splitLayout(
             cellWidths = c("20%", "20%", "20%", "20%", "20%", "0%"),
             selectInput(
@@ -53,9 +53,9 @@ videoModuleUI <- function(id) {
       bsCollapse(
         id = ns("most_views"),
         multiple = TRUE,
-        open = "How many learners viewed each video? (colour shows viewers; x-axis is video length)",
+        open = "↕ How many learners have viewed each video? (colour shows viewers; x-axis is video length)",
         bsCollapsePanel(
-          title = "How many learners viewed each video? (colour shows viewers; x-axis is video length)",
+          title = "↕ How many learners have viewed each video? (colour shows viewers; x-axis is video length)",
           plotly::plotlyOutput(ns("most_viewed")),
           style = 'primary'
         )
@@ -68,7 +68,7 @@ videoModuleUI <- function(id) {
         id = ns("heat_map"),
         multiple = TRUE,
         bsCollapsePanel(
-          title = "Which 20-second segments are viewed most within each video?",
+          title = "↕ Which 20-second segments are viewed most within each video?",
           plotly::plotlyOutput(ns("video_heatmap")),
           style = 'primary'
         )
@@ -81,7 +81,7 @@ videoModuleUI <- function(id) {
         id = ns("top_surprise"),
         multiple = TRUE,
         bsCollapsePanel(
-          title = "Which 20-second segments have abnormally high or low watch rates? ('watch rate' = views per learner who started the video)",
+          title = "↕ Which 20-second segments have abnormally high or low watch rates? ('watch rate' = views per learner who started the video)",
           selectInput(
             inputId = ns("top_selection"),
             label = "Select number of outliers to highlight:",
@@ -101,7 +101,7 @@ videoModuleUI <- function(id) {
         id = ns("summary_table"),
         multiple = TRUE,
         bsCollapsePanel(
-          title = "Summary Table",
+          title = "↕ Summary Table",
           dataTableOutput(ns("summary_tbl")),
           br(),
           style = 'primary'

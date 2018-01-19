@@ -6,9 +6,9 @@ problemModuleUI <- function(id) {
       bsCollapse(
         id = ns('demo_dropdown_collapse'),
         multiple = TRUE, 
-        open = "Apply filters",
+        open = "↕ Apply filters",
         bsCollapsePanel(
-          title = "Apply filters",
+          title = "↕ Apply filters",
           splitLayout(
             cellWidths = c("20%", "20%", "20%", "20%", "20%", "0%"),
             selectInput(
@@ -51,9 +51,9 @@ problemModuleUI <- function(id) {
       bsCollapse(
         id = ns("overview_panel"),
         multiple = TRUE, #open = "How did students do in each module?",
-        open = "How did students do in each module?",
+        open = "↕ How well are students performing in each module?",
         bsCollapsePanel(
-          title = "How did students do in each module?",
+          title = "↕ How well are students performing in each module?",
           #tags$p("This plot shows the average grade achieved by students on the multiple choice problems in each module."),
           plotOutput(ns("overview_plot")),
           style = "primary"
@@ -65,7 +65,7 @@ problemModuleUI <- function(id) {
       bsCollapse(
         id = ns("bottom_questions_panel"),
         bsCollapsePanel(
-          "What are the three hardest problems?",
+          "↕ What are the three hardest problems?",
           plotOutput(ns("bottom_questions"), height = "600px"),
           style = "primary"
         )
@@ -81,7 +81,7 @@ problemModuleUI <- function(id) {
         #        it will be recorded as the final grade. Otherwise, the final
         #        grade is determined by the peer assessments."),
         bsCollapsePanel(
-          title = "How were students assessed on Open Response Assessments?",
+          title = "↕ How are students assessed on Open Response Assessments?",
           plotOutput(ns("assessment_plot")),
           style = "primary"
         )
@@ -92,7 +92,7 @@ problemModuleUI <- function(id) {
       bsCollapse(
         id = ns("chapter_overview_panel"),
         bsCollapsePanel(
-          title = "What was the average score on each problem?",
+          title = "↕ What is the average score on each problem?",
           DT::dataTableOutput(ns("chapter_table")),
           style = "primary"
         )

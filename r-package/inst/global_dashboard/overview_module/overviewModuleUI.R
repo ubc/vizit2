@@ -10,10 +10,10 @@ overviewModuleUI <- function(id) {
         
         id = ns('demo_dropdown_collapse'),
         multiple = TRUE,
-        open = "Apply filters",
+        open = "↕ Apply filters",
         
         bsCollapsePanel(
-          "Apply filters",
+          "↕ Apply filters",
           splitLayout(
             cellWidths = c("20%", "20%", "20%", "20%", "20%", "0%"),
             
@@ -66,10 +66,10 @@ overviewModuleUI <- function(id) {
       bsCollapse(
         id = ns("effiel_towerplot"),
         multiple = TRUE,
-        open = "How many learners engaged with each course element?",
+        open = "↕ How many learners have engaged with each course element?",
         
         bsCollapsePanel(
-          "How many learners engaged with each course element?",
+          "↕ How many learners have engaged with each course element?",
           plotly::plotlyOutput(ns("tower_plot"),height = '800px'),
           style = 'primary')
         
