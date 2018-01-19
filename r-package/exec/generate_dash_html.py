@@ -32,10 +32,10 @@ def generate_template(html, dashboard, course, url="YOUR_URL_HERE"):
 @cl.command()
 @cl.argument('coursename')
 def edxviz_html(coursename):
-    list_of_dashboards = [Dashboard("Overview Engagement", "overview"),
-                          Dashboard("General", "general"),
-                          Dashboard("Forum", "forum"),
-                          Dashboard("Problem", "problem"),
+    list_of_dashboards = [Dashboard("Engagement Overview", "overview"),
+                          Dashboard("Demographics", "general"),
+                          Dashboard("Discussion Forum", "forum"),
+                          Dashboard("Problems", "problem"),
                           Dashboard("Video", "video")]
 
     html = """
