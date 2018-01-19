@@ -53,9 +53,9 @@ videoModuleUI <- function(id) {
       bsCollapse(
         id = ns("most_views"),
         multiple = TRUE,
-        open = "Which of my videos are watched the most?",
+        open = "How many learners viewed each video? (colour shows viewers; x-axis is video length)",
         bsCollapsePanel(
-          title = "Which of my videos are watched the most?",
+          title = "How many learners viewed each video? (colour shows viewers; x-axis is video length)",
           plotly::plotlyOutput(ns("most_viewed")),
           style = 'primary'
         )
@@ -68,22 +68,12 @@ videoModuleUI <- function(id) {
         id = ns("heat_map"),
         multiple = TRUE,
         bsCollapsePanel(
-          title = "Which segments of my videos are being viewed the most?",
+          title = "Which 20-second segments are viewed most within each video?",
           plotly::plotlyOutput(ns("video_heatmap")),
           style = 'primary'
         )
       )
     ),
-    
-    # Developer note: This plot was removed and to be re-implemented 
-    # pending usability testing results
-    #
-    # Up until plot
-    # fluidRow(
-    #   bsCollapse(id=ns("up_unt"), multiple=TRUE,
-    #              bsCollapsePanel("What part are students watching up until?",
-    #                              plotly::plotlyOutput(ns("up_until")),
-    #                              style='primary'))),
     
     # Top Heat
     fluidRow(
@@ -91,10 +81,10 @@ videoModuleUI <- function(id) {
         id = ns("top_surprise"),
         multiple = TRUE,
         bsCollapsePanel(
-          title = "Which video segments have abnormally high or low watch rates?",
+          title = "Which 20-second segments have abnormally high or low watch rates?",
           selectInput(
             inputId = ns("top_selection"),
-            label = "Select segments to highlight:",
+            label = "Select number of outliers to highlight:",
             choices = c("Top 10" = 10,
                         "Top 25" = 25,
                         "Top 50" = 50),
