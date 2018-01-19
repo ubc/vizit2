@@ -81,7 +81,7 @@ videoModuleUI <- function(id) {
         id = ns("top_surprise"),
         multiple = TRUE,
         bsCollapsePanel(
-          title = "Which 20-second segments have abnormally high or low watch rates?",
+          title = "Which 20-second segments have abnormally high or low watch rates? ('watch rate' = views per learner who started the video)",
           selectInput(
             inputId = ns("top_selection"),
             label = "Select number of outliers to highlight:",
