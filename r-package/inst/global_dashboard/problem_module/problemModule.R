@@ -128,8 +128,17 @@ problemModule <- function(input, output, session) {
   )
 
   bottom_melted_problems <- reactive({
-    validate(need(try(nrow(joined_users_problems()) > 0)
-                  , "No problems found."))
+    
+    validate(
+      need(
+        try(
+          (nrow(joined_users_problems())) > 0 
+          & (sum(!is.na(joined_users_problems()$problem)) > 0)
+      ),
+      message = "No multiple choice problems found."
+      )
+    )
+    
     filtered_joined_problems <-
       filter_demographics(
         joined_users_problems(),
@@ -153,8 +162,12 @@ problemModule <- function(input, output, session) {
   })
 
   reactive_overview <- reactive({
-    validate(need(try(nrow(problems_tbl()) > 0)
-                  , "No problems found."))
+    validate(
+      need(
+        try(nrow(problems_tbl()) > 0 & sum(!is.na(problems_tlb()$problem)) > 0), 
+        "No multiple choice problems found."
+      )
+    )
     filter_summary_scores <- problems_tbl() %>%
       filter_demographics(
         gender = gender(),
