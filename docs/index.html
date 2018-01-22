@@ -25,7 +25,7 @@
 <meta name="author" content="Matt Emery, David Laing, Andrew Lim, Subi Zhang">
 
 
-<meta name="date" content="2018-01-08">
+<meta name="date" content="2018-01-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -328,7 +328,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="header">
 <h1 class="title">VizIT: Visualization for Instructional Teams</h1>
 <h4 class="author"><em>Matt Emery, David Laing, Andrew Lim, Subi Zhang</em></h4>
-<h4 class="date"><em>2018-01-08</em></h4>
+<h4 class="date"><em>2018-01-22</em></h4>
 </div>
 <div id="overview-of-the-project" class="section level1">
 <h1><span class="header-section-number">1</span> Overview of the Project</h1>
@@ -357,7 +357,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Videos</li>
 </ul>
 <p>This document devotes two sections to each of the views. In each view’s first section, we describe the data preparation process in greater detail, and provide explanations of each of the visualizations. In each view’s second section, we provide standard R documentation for the functions that were used to wrangle that data and serve it in the Shiny app.</p>
-<p>Finally, we provide a step-by-step guide for deploying the app on Microsoft Azure.</p>
+<p>Finally, we provide a step-by-step guide for deploying the app on Google Compute Engine.</p>
 </div>
 <div id="acknowledgments" class="section level2">
 <h2><span class="header-section-number">1.4</span> Acknowledgments</h2>
@@ -365,11 +365,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="instructions-for-generating-this-bookdown-document" class="section level2">
 <h2><span class="header-section-number">1.5</span> Instructions for generating this bookdown document</h2>
-<p>Navigate to the <code>bookdown_src</code> directory in <code>https://github.com/laingdk/vizit</code>, and run the following code in R:</p>
+<p>Navigate to the <code>bookdown_src</code> directory in <code>https://github.com/davidklaing/vizit</code>, and run the following code in R:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bookdown<span class="op">::</span><span class="kw">render_book</span>(
   <span class="dt">input =</span> <span class="st">&#39;index.Rmd&#39;</span>, 
   <span class="dt">output_format =</span> <span class="st">&#39;all&#39;</span>,
-  <span class="dt">output_dir =</span> <span class="st">&#39;../docs/&#39;</span>
+  <span class="dt">output_dir =</span> <span class="st">&#39;../docs&#39;</span>
 )</code></pre></div>
 
 </div>
