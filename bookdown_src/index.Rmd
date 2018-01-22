@@ -47,7 +47,7 @@ We are grateful to many of our colleagues at UBC. Especially, we are grateful to
 
 ## Instructions for generating this bookdown document
 
-Navigate to the `bookdown_src` directory in `https://github.com/davidklaing/vizit`, and run the following code in R:
+Navigate to `vizit/bookdown_src`, and run the following code in R:
 
 ```r
 bookdown::render_book(
