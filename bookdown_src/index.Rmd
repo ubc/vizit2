@@ -39,7 +39,7 @@ The VizIT dashboard has six separate views, each of which shows a different type
 
 This document devotes two sections to each of the views. In each view's first section, we describe the data preparation process in greater detail, and provide explanations of each of the visualizations. In each view's second section, we provide standard R documentation for the functions that were used to wrangle that data and serve it in the Shiny app.
 
-Finally, we provide a step-by-step guide for deploying the app on Microsoft Azure.
+Finally, we provide a step-by-step guide for deploying the app on Google Compute Engine.
 
 ## Acknowledgments
 
@@ -47,7 +47,7 @@ We are grateful to many of our colleagues at UBC. Especially, we are grateful to
 
 ## Instructions for generating this bookdown document
 
-Navigate to the `bookdown_src` directory in `https://github.com/laingdk/vizit`, and run the following code in R:
+Navigate to the `bookdown_src` directory in `https://github.com/davidklaing/vizit`, and run the following code in R:
 
 ```r
 bookdown::render_book(
