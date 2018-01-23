@@ -131,9 +131,6 @@ wrangle_forum <- function(posts_input_path,
   wrangled_forum_elements$course_order <-
     1:dim(wrangled_forum_elements)[1]
   
-  print("Here are the forum elements:")
-  print(wrangled_forum_elements)
-  
   # Combine the posts with the forum_elements.
   print("Joining everything with forum elements...")
   wrangled_forum_posts <-
@@ -546,8 +543,53 @@ prepare_json <- function(json) {
   
   json_forum_elements <- rbind(discussion_topics, forum_elements_df)
   
-  print("Here are the json_forum_elements:")
-  print(json_forum_elements)
+  
+  # If there are mismatched categories and subcategories in the JSON file,
+  # apply transformations to add a custom NA value that can be joined with the
+  # course XML.
+  #
+  # Note: these conditions are extremely idiosyncratic, based on malformed
+  # XMLs found in only two courses. This should be revisited if it causes
+  # problems later. We're making this decision for the sake of piloting the tool
+  # with a specific motivated user. That being said, the conditions written here
+  # shouldn't apply if the XML is well formed, as it usually is.
+  if (
+    sum(
+      as.character(json_forum_elements$commentable_id)
+      == as.character(json_forum_elements$discussion_target) 
+      & as.character(json_forum_elements$commentable_id)
+      != as.character(json_forum_elements$display_name)
+    ) > 0
+  ) {
+    
+    # Convert to character so that I can add new levels.
+    json_forum_elements$commentable_id <- as.character(
+      json_forum_elements$commentable_id
+    )
+    json_forum_elements$discussion_target <- as.character(
+      json_forum_elements$discussion_target
+    )
+    json_forum_elements$discussion_category <- as.character(
+      json_forum_elements$discussion_category
+    )
+    json_forum_elements$display_name <- as.character(
+      json_forum_elements$display_name
+    )
+    
+    # Make the needed transformations.
+    json_forum_elements <- json_forum_elements %>% 
+      mutate(discussion_category = case_when(
+        (commentable_id == discussion_target
+         & commentable_id != display_name) ~ "no-category-identifier-found",
+        TRUE ~ discussion_category
+      ))
+    json_forum_elements <- json_forum_elements %>% 
+      mutate(discussion_target = case_when(
+        (commentable_id == discussion_target
+         & commentable_id != display_name) ~ display_name,
+        TRUE ~ discussion_target
+      ))
+  }
   
   # Return the forum elements dataframe.
   return(json_forum_elements)
@@ -628,9 +670,6 @@ prepare_xml <- function(xml) {
   
   # Add the category ordering to the forum elements dataframe.
   forum_elements_xml$category_order <- as.integer(category_levels)
-  
-  print("Here are the forum_elements_xml:")
-  print(forum_elements_xml)
   
   # Return the XML forum elements.
   return(forum_elements_xml)
