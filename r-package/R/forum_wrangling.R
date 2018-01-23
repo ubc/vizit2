@@ -88,7 +88,7 @@ wrangle_forum <- function(posts_input_path,
   print("Preparing the XML elements...")
   forum_elements_xml <- prepare_xml(xml = course_xml)
   
-  # The JSON file will have more dimensions than the JSON file, because it took 
+  # The JSON file will have more dimensions than the XML file, because it took 
   # the `discussion_topics` as well as the discussion_category/discussion_target
   # pairs. Get that difference in dimensions.
   extra_dim <-
@@ -130,6 +130,9 @@ wrangle_forum <- function(posts_input_path,
   print("Adding the course order to forum_elements...")
   wrangled_forum_elements$course_order <-
     1:dim(wrangled_forum_elements)[1]
+  
+  print("Here are the forum elements:")
+  print(wrangled_forum_elements)
   
   # Combine the posts with the forum_elements.
   print("Joining everything with forum elements...")
@@ -543,6 +546,9 @@ prepare_json <- function(json) {
   
   json_forum_elements <- rbind(discussion_topics, forum_elements_df)
   
+  print("Here are the json_forum_elements:")
+  print(json_forum_elements)
+  
   # Return the forum elements dataframe.
   return(json_forum_elements)
 }
@@ -582,6 +588,24 @@ prepare_xml <- function(xml) {
   # Add a variable to store the order of the discussion targets.
   forum_elements_xml$target_order <- 1:dim(forum_elements_xml)[1]
   
+  # Replace any missing values of discussion_category with a custom value.
+  if (sum(is.na(forum_elements_xml$discussion_category)) > 0) {
+    
+    forum_elements_xml$discussion_category <- as.character(
+      forum_elements_xml$discussion_category
+    )
+    
+    forum_elements_xml$discussion_category[
+      is.na(forum_elements_xml$discussion_category)
+      ] <- "no-category-identifier-found"
+    
+    forum_elements_xml$discussion_category <- as.factor(
+      forum_elements_xml$discussion_category
+    )
+    
+  }
+  
+  
   # Add a variable to store the order of the discussion categories.
   # Start with the first discussion category.
   # NOTE: should fix in case first element is NA.
@@ -604,6 +628,9 @@ prepare_xml <- function(xml) {
   
   # Add the category ordering to the forum elements dataframe.
   forum_elements_xml$category_order <- as.integer(category_levels)
+  
+  print("Here are the forum_elements_xml:")
+  print(forum_elements_xml)
   
   # Return the XML forum elements.
   return(forum_elements_xml)
