@@ -307,6 +307,7 @@ make_tidy_segments <- function(data) {
     group_by(
       video_id,
       user_id,
+      segment,
       min_into_video,
       video_name,
       mode,
@@ -370,9 +371,7 @@ get_end_time <- function(start, time, time_ahead, latest_speed) {
   latest_speed[is.na(latest_speed)] <- 1
   
   duration <- as.double(difftime(time_ahead, time, units = "secs"))
-  # print(duration)
   end <- as.double(start) + latest_speed * duration
-  # print(end)
   end
 }
 
