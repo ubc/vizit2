@@ -29,14 +29,14 @@
 get_aggregated_df <- function(filt_segs, top_selection) {
   aggregate_segment_df <- filt_segs %>% 
     dplyr::filter(is.na(user_id) == FALSE) %>% 
-    group_by(video_id, min_into_video) %>% 
+    group_by(video_id, min_into_video, segment, last_segment) %>% 
     summarize(count = sum(count),
               course_order = unique(course_order), 
               vid_length = unique(max_stop_position), 
               video_name = unique(video_name)) %>% 
-    mutate(min_into_video = as.double(min_into_video)) %>% 
-    ungroup()
-  
+    ungroup() %>% 
+    mutate(min_into_video = as.double(min_into_video))
+    
   # Getting dataframe with number of unique user views of videos Note:
   # This still counts scenarios if a person watches a video for 0.125
   # seconds No thresholding has been conducted.
@@ -56,9 +56,30 @@ get_aggregated_df <- function(filt_segs, top_selection) {
   # Only select segments within videos that have been watched at least
   # once This is the data frame that is used to make plots:
   aggregate_segment_df <- aggregate_segment_df[
-    aggregate_segment_df$count > 0, 
-  ] %>% 
+    aggregate_segment_df$count > 0,
+  ] %>%
     ungroup()
+  
+  # Get the last segment for each video, for the purpose of creating a dummy
+  # dataframe with zero counts for all segments in each video.
+  last_segments <- aggregate_segment_df %>% 
+    group_by(video_id) %>% 
+    summarize(last_segment = mean(last_segment, na.rm = T))
+  
+  for (video in 1:dim(last_segments)[1]) {
+    video_segments <- expand_segments(
+        last_segments$video_id[video],
+        last_segments$last_segment[video]
+    )
+    if (video == 1) {
+      all_segments <- video_segments
+    } else {
+      all_segments <- all_segments %>% 
+        rbind(video_segments)
+    }
+  }
+  
+  
   
   # Create dataframe with average watch rate of videos:
   avg_watch_rate_df <- aggregate_segment_df %>% group_by(video_id) %>% 
@@ -107,9 +128,26 @@ get_aggregated_df <- function(filt_segs, top_selection) {
     mutate(video_id = forcats::fct_reorder(video_id, course_order))
   # Filter out segments with watchrates of less than 1%
   aggregate_segment_df <- aggregate_segment_df %>% 
-    filter(watch_rate > 0.01)
+    filter(watch_rate >= 0)
   
   return(aggregate_segment_df)
+}
+
+expand_segments <- function(video_id, latest_segment) {
+  
+  print(video_id)
+  print(latest_segment)
+  
+  if (latest_segment == 0) {
+    return(data.frame(video_id = video_id, 
+                      latest_segment = latest_segment))
+  } else {
+    current_segment <- data.frame(video_id = video_id, 
+                                  latest_segment = latest_segment)
+    expanded_segments <- rbind(current_segment,
+                               expand_segments(video_id,
+                                               latest_segment - 1))
+  }
 }
 
 #' Obtains locations of chapter lines to be placed on visualizations
@@ -214,6 +252,7 @@ get_video_minute_breaks <- function(limits) {
 get_video_comparison_plot <- function(filtered_segments, 
                                       module, 
                                       filtered_ch_markers) {
+  
   g <- ggplot(
     filtered_segments, 
     aes_string(fill = "`Students`", 
