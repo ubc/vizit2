@@ -400,8 +400,8 @@ get_high_low_plot <- function(filtered_segments, module, filtered_ch_markers) {
     theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) + 
     xlab("Position in video (minutes)") + 
     ylab("Video") + 
-    # scale_fill_manual(values = c("#F8E85D", "#488C93", "#3D0752"),
-    #                   name = "Legend") +
+    scale_fill_manual(values = c("#F8E85D", "#488C93", "#3D0752"),
+                      name = "Legend") +
     scale_x_continuous(
       breaks = seq(0,
                    max(filtered_segments$min_into_video),
