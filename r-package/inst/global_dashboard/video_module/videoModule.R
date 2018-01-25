@@ -89,10 +89,7 @@ videoModule <- function(input, output, session)
     # Aggregate data by video (lose student level information)
     aggregate_segment_df <- get_aggregated_df(filt_segs, 
                                               top_selection(),
-                                              video_axis())
-    
-    print("Here's the output of get_aggregated_df:")
-    print(aggregate_segment_df)
+                                              video_axis)
     
     return(aggregate_segment_df)
   })
