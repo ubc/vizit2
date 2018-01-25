@@ -83,14 +83,34 @@ get_aggregated_df <- function(filt_segs, top_selection, video_axis) {
   
   # Isolate the missing segments.
   missing_segments <- all_segments %>% 
+    mutate(segment = latest_segment) %>% 
+    select(-latest_segment) %>% 
     anti_join(aggregate_segment_df)
   
-  video_attributes <- missing_segments %>% 
-    right_join(video_axis())
+  video_attributes <- aggregate_segment_df %>% 
+    group_by(video_id) %>% 
+    summarise(last_segment = unique(last_segment),
+              course_order = unique(course_order),
+              vid_length = unique(vid_length),
+              video_name = unique(video_name),
+              Students = unique(Students))
+  
+  full_missing_segments <- missing_segments %>% 
+    left_join(video_attributes) %>% 
+    mutate(min_into_video = ((segment*20)/60)+(1/6),
+           count = 0,
+           unique_views = Students,
+           watch_rate = 0,
+           `Views per Student` = 0)
+  
+  aggregate_segment_df <- aggregate_segment_df %>% 
+    rbind(full_missing_segments)
   
   # Create dataframe with average watch rate of videos:
-  avg_watch_rate_df <- aggregate_segment_df %>% group_by(video_id) %>% 
-    summarize(avg_watch_rate = round(mean(watch_rate), 2)) %>% ungroup()
+  avg_watch_rate_df <- aggregate_segment_df %>% 
+    group_by(video_id) %>% 
+    summarize(avg_watch_rate = round(mean(watch_rate), 2)) %>% 
+    ungroup()
   
   # Obtain average watch rate:
   aggregate_segment_df <- aggregate_segment_df %>% 
@@ -108,9 +128,9 @@ get_aggregated_df <- function(filt_segs, top_selection, video_axis) {
   # Finding most postiive and negative residuals:
   model_df <- data.frame(predict(model, interval = "confidence")) %>% 
     mutate(actual = aggregate_segment_df$watch_rate) %>% 
-    mutate(residual = actual - fit) %>% 
+    mutate(residual = actual - fit) %>%
     mutate(negative_rank = get_rank(residual)) %>% 
-    mutate(positive_rank = get_rank(-residual)) %>% 
+    mutate(positive_rank = get_rank(-residual)) %>%
     mutate(top_negative = as.integer(negative_rank <= top_selection)) %>% 
     mutate(top_positive = as.integer(positive_rank <= top_selection)) %>% 
     mutate(high_low = case_when(.$top_positive == 1 ~ "High Watch Rate", 
@@ -133,6 +153,7 @@ get_aggregated_df <- function(filt_segs, top_selection, video_axis) {
     mutate(up_until = case_when(.$min_into_video <= .$up_until ~ 1, 
                                 TRUE ~ 0)) %>% 
     mutate(video_id = forcats::fct_reorder(video_id, course_order))
+  
   # Filter out segments with watchrates of less than 1%
   aggregate_segment_df <- aggregate_segment_df %>% 
     filter(watch_rate >= 0)
@@ -248,8 +269,6 @@ get_summary_table <- function(aggregate_df, vid_lengths, avg_time_spent) {
 
 get_video_minute_breaks <- function(limits) {
   breaks <- seq(limits[1], limits[2], by = 1)
-  print(limits)
-  print(breaks)
 }
 
 #' Obtains heatmap plot comparing videos against each other
@@ -349,48 +368,6 @@ get_segment_comparison_plot <- function(filtered_segments,
   return(g)
 }
 
-#' Obtains heatmap with segments of highest watch rate highlighted
-#' @param filtered_segments Dataframe of segments and corresponding watch counts
-#'   filtered by demographics
-#' @param module String of module (chapter) name to display
-#' @param filtered_ch_markers List of values containing locations of where to 
-#'   put chapter markers
-#'
-#' @return \code{g}: ggplot heatmap object
-#'
-#' @examples
-#' get_top_hotspots_plot(filtered_segments, module, filtered_ch_markers)
-get_top_hotspots_plot <- function(filtered_segments, 
-                                  module, 
-                                  filtered_ch_markers) {
-  g <- ggplot(filtered_segments, aes_string(
-    fill = "top_watch_rate", 
-    x = "min_into_video", 
-    y = "video_id", 
-    text = "paste0(video_name, \"<br>\", watch_rate, \" views per student\", 
-           \"<br>\", count, \" times this segment was watched\", \"<br>\", 
-          unique_views, \" students started this video\")")) + 
-    geom_tile() + 
-    theme(axis.title.y = element_blank(), 
-          axis.text.y = element_blank(), 
-          axis.ticks.y = element_blank()) + 
-    ggthemes::theme_few(base_family = "GillSans") + 
-    theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) + 
-    xlab("Position in video (minutes)") + 
-    ylab("Video") + 
-    viridis::scale_fill_viridis(guide = FALSE) +
-    scale_x_continuous(
-      breaks = seq(0,
-                   max(filtered_segments$min_into_video),
-                   round(max(filtered_segments$min_into_video)/10))
-    )
-  
-  if (module == "All") {
-    g <- g + geom_hline(yintercept = filtered_ch_markers)
-  }
-  
-  return(g)
-}
 
 #' Obtains heatmap plot highlighting which segments have abnormally high or low 
 #'   watch rates
@@ -405,21 +382,17 @@ get_top_hotspots_plot <- function(filtered_segments,
 #' @examples
 #' get_high_low_plot(filtered_segments, module, filtered_ch_markers)
 get_high_low_plot <- function(filtered_segments, module, filtered_ch_markers) {
+  
   g <- ggplot(filtered_segments) + 
     geom_tile(
-      aes(fill = high_low, 
-          x = min_into_video, 
-          y = video_id, 
-          text = paste0(video_name, 
-                        "<br>", 
-                        watch_rate, 
-                        " views per student", 
-                        "<br>", 
-                        count, 
-                        " times this segment was watched", 
-                        "<br>", 
-                        unique_views, 
-                        " students started this video"))) + 
+      aes_string(fill = "high_low", 
+                 x = "min_into_video", 
+                 y = "video_id", 
+                 text = "paste0(video_name, \"<br>\",
+                      watch_rate, \" times viewed per student\", \"<br>\",
+                      count, \" times this segment was watched (raw)\", 
+                      \"<br>\", unique_views, 
+                      \" students started this video\")")) + 
     theme(axis.title.y = element_blank(), 
           axis.text.y = element_blank(), 
           axis.ticks.y = element_blank()) + 
@@ -427,8 +400,8 @@ get_high_low_plot <- function(filtered_segments, module, filtered_ch_markers) {
     theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) + 
     xlab("Position in video (minutes)") + 
     ylab("Video") + 
-    scale_fill_manual(values = c("#F8E85D", "#488C93", "#3D0752"), 
-                      name = "Legend") +
+    # scale_fill_manual(values = c("#F8E85D", "#488C93", "#3D0752"),
+    #                   name = "Legend") +
     scale_x_continuous(
       breaks = seq(0,
                    max(filtered_segments$min_into_video),
