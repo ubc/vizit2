@@ -49,14 +49,6 @@ videoModule <- function(input, output, session)
                                                "/wrangled_video_heat.csv"), 
                                         read_csv)
   
-  ### Get video axis ###
-  video_axis <- reactiveFileReader(1000,
-                                   session,
-                                   paste0(root,
-                                          requested_course(),
-                                          "/generalized_video_axis.csv"), 
-                                   read_csv)
-
   ### Get Chap Name ###
   chap_name <- reactive({
     validate(need(try(nrow(tidy_segment_df()) > 0), "No chapters found."))
@@ -88,8 +80,7 @@ videoModule <- function(input, output, session)
 
     # Aggregate data by video (lose student level information)
     aggregate_segment_df <- get_aggregated_df(filt_segs, 
-                                              top_selection(),
-                                              video_axis)
+                                              top_selection())
     
     return(aggregate_segment_df)
   })
