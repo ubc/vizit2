@@ -88,7 +88,6 @@ get_aggregated_df <- function(filt_segs, top_selection, video_axis) {
   video_attributes <- missing_segments %>% 
     right_join(video_axis())
   
-  
   # Create dataframe with average watch rate of videos:
   avg_watch_rate_df <- aggregate_segment_df %>% group_by(video_id) %>% 
     summarize(avg_watch_rate = round(mean(watch_rate), 2)) %>% ungroup()
