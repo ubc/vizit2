@@ -19,14 +19,15 @@
 #' @param filt_segs Dataframe containing students that have been filtered by 
 #'   selected demographics. Typically obtained via \code{filter_demographics()}
 #' @param top_selection Value of the number of top segments to highlight.
+#' @param video_axis The table of video attributes.
 #'
 #' @return \code{aggregate_segment_df}: Aggregated dataframe with additional 
 #'   columns
 #' @export
 #'
 #' @examples
-#' get_aggregated_df(filt_segs, 25)
-get_aggregated_df <- function(filt_segs, top_selection) {
+#' get_aggregated_df(filt_segs, 25, video_axis)
+get_aggregated_df <- function(filt_segs, top_selection, video_axis) {
   aggregate_segment_df <- filt_segs %>% 
     dplyr::filter(is.na(user_id) == FALSE) %>% 
     group_by(video_id, min_into_video, segment, last_segment) %>% 
@@ -66,6 +67,7 @@ get_aggregated_df <- function(filt_segs, top_selection) {
     group_by(video_id) %>% 
     summarize(last_segment = mean(last_segment, na.rm = T))
   
+  # For every video, create a row for each segment.
   for (video in 1:dim(last_segments)[1]) {
     video_segments <- expand_segments(
         last_segments$video_id[video],
@@ -79,6 +81,12 @@ get_aggregated_df <- function(filt_segs, top_selection) {
     }
   }
   
+  # Isolate the missing segments.
+  missing_segments <- all_segments %>% 
+    anti_join(aggregate_segment_df)
+  
+  video_attributes <- missing_segments %>% 
+    right_join(video_axis())
   
   
   # Create dataframe with average watch rate of videos:
@@ -133,10 +141,17 @@ get_aggregated_df <- function(filt_segs, top_selection) {
   return(aggregate_segment_df)
 }
 
+#' For a given video with a maximum segment, expand to create a dataframe
+#'   with one row per segment. This is a recursive function.
+#' @param video_d The video ID.
+#' @param latest_segment The latest segment value. Typically begins with the 
+#'   greatest segment value associated with the video in question.
+#'
+#' @return A dataframe with one row per segment in the video.
+#'
+#' @examples
+#' expand_segments("lkjsdflkj1233113lkj23", 6)
 expand_segments <- function(video_id, latest_segment) {
-  
-  print(video_id)
-  print(latest_segment)
   
   if (latest_segment == 0) {
     return(data.frame(video_id = video_id, 
