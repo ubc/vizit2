@@ -318,7 +318,11 @@ make_tidy_segments <- function(data) {
       index_chapter,
       chapter
     ) %>% 
-    summarize(count = n())
+    summarize(count = n()) %>% 
+    ungroup() %>% 
+    group_by(video_id) %>% 
+    mutate(last_segment = max(segment, na.rm = T)) %>% 
+    ungroup()
   
   return(tidy_segment_df)
 }
