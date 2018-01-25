@@ -27,7 +27,7 @@
 #'
 #' @examples
 #' get_aggregated_df(filt_segs, 25, video_axis)
-get_aggregated_df <- function(filt_segs, top_selection, video_axis) {
+get_aggregated_df <- function(filt_segs, top_selection) {
   aggregate_segment_df <- filt_segs %>% 
     dplyr::filter(is.na(user_id) == FALSE) %>% 
     group_by(video_id, min_into_video, segment, last_segment) %>% 
@@ -44,7 +44,8 @@ get_aggregated_df <- function(filt_segs, top_selection, video_axis) {
   unique_views <- filt_segs %>% 
     group_by(video_id) %>% 
     summarize(unique_views = n_distinct(user_id)) %>% 
-    arrange(unique_views) %>% ungroup()
+    arrange(unique_views) %>%
+    ungroup()
   
   # Place number of unique view column into dataframe:
   aggregate_segment_df <- aggregate_segment_df %>% 
@@ -57,9 +58,8 @@ get_aggregated_df <- function(filt_segs, top_selection, video_axis) {
   # Only select segments within videos that have been watched at least
   # once This is the data frame that is used to make plots:
   aggregate_segment_df <- aggregate_segment_df[
-    aggregate_segment_df$count > 0,
-  ] %>%
-    ungroup()
+    aggregate_segment_df$Students > 0,
+  ]
   
   # Get the last segment for each video, for the purpose of creating a dummy
   # dataframe with zero counts for all segments in each video.
@@ -93,18 +93,19 @@ get_aggregated_df <- function(filt_segs, top_selection, video_axis) {
               course_order = unique(course_order),
               vid_length = unique(vid_length),
               video_name = unique(video_name),
+              unique_views = unique(unique_views),
               Students = unique(Students))
   
   full_missing_segments <- missing_segments %>% 
     left_join(video_attributes) %>% 
-    mutate(min_into_video = ((segment*20)/60)+(1/6),
+    mutate(min_into_video = as.numeric(((segment*20)/60)+(1/6)),
            count = 0,
-           unique_views = Students,
            watch_rate = 0,
            `Views per Student` = 0)
   
   aggregate_segment_df <- aggregate_segment_df %>% 
-    rbind(full_missing_segments)
+    rbind(full_missing_segments) %>% 
+    arrange(course_order, segment)
   
   # Create dataframe with average watch rate of videos:
   avg_watch_rate_df <- aggregate_segment_df %>% 
@@ -116,7 +117,7 @@ get_aggregated_df <- function(filt_segs, top_selection, video_axis) {
   aggregate_segment_df <- aggregate_segment_df %>% 
     left_join(avg_watch_rate_df, 
               by = "video_id") %>% 
-    dplyr::filter(is.na(video_name) == FALSE)
+    dplyr::filter(!is.na(video_name))
   
   # Correcting course order:
   aggregate_segment_df <- aggregate_segment_df %>% 
@@ -140,23 +141,6 @@ get_aggregated_df <- function(filt_segs, top_selection, video_axis) {
   # Adding positive and negative residual ranks to dataframe:
   aggregate_segment_df <- aggregate_segment_df %>% 
     mutate(high_low = model_df$high_low)
-  
-  up_until_df <- filt_segs %>% 
-    group_by(video_id, user_id) %>% 
-    summarize(max_min = max(min_into_video)) %>% 
-    ungroup() %>% 
-    group_by(video_id) %>% 
-    summarize(up_until = mean(max_min))
-  
-  aggregate_segment_df <- aggregate_segment_df %>% 
-    left_join(up_until_df, by = "video_id") %>% 
-    mutate(up_until = case_when(.$min_into_video <= .$up_until ~ 1, 
-                                TRUE ~ 0)) %>% 
-    mutate(video_id = forcats::fct_reorder(video_id, course_order))
-  
-  # Filter out segments with watchrates of less than 1%
-  aggregate_segment_df <- aggregate_segment_df %>% 
-    filter(watch_rate >= 0)
   
   return(aggregate_segment_df)
 }
@@ -386,7 +370,7 @@ get_high_low_plot <- function(filtered_segments, module, filtered_ch_markers) {
   g <- ggplot(filtered_segments) + 
     geom_tile(
       aes_string(fill = "high_low", 
-                 x = "min_into_video", 
+                 x = "round(min_into_video, digits = 10)", 
                  y = "video_id", 
                  text = "paste0(video_name, \"<br>\",
                       watch_rate, \" times viewed per student\", \"<br>\",
