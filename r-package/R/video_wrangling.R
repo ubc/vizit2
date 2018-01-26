@@ -140,7 +140,6 @@ prepare_video_data <- function(video_data, video_axis)
   # This is used to put videos in proper course order.
   video_course_order <- video_axis %>% 
     semi_join(prepared_data, by = "video_id") %>%
-    mutate(index_video = -index_video) %>% 
     mutate(course_order = rank(index_video, ties.method = "min")) %>% 
     select(video_id, course_order, index_chapter, chapter_name)
   
@@ -323,6 +322,11 @@ make_tidy_segments <- function(data) {
     group_by(video_id) %>% 
     mutate(last_segment = max(segment, na.rm = T)) %>% 
     ungroup()
+  
+  tidy_segment_df %>% 
+    group_by(video_id) %>% 
+    summarize(course_order = unique(course_order)) %>% 
+    print()
   
   return(tidy_segment_df)
 }
