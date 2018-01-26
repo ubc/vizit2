@@ -29,8 +29,6 @@
 #' get_aggregated_df(filt_segs, 25, video_axis)
 get_aggregated_df <- function(filt_segs, top_selection) {
   
-  View(filt_segs)
-  
   aggregate_segment_df <- filt_segs %>% 
     dplyr::filter(is.na(user_id) == FALSE) %>% 
     group_by(video_id, min_into_video, segment, last_segment) %>% 
