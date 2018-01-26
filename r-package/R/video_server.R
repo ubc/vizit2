@@ -28,6 +28,9 @@
 #' @examples
 #' get_aggregated_df(filt_segs, 25, video_axis)
 get_aggregated_df <- function(filt_segs, top_selection) {
+  
+  View(filt_segs)
+  
   aggregate_segment_df <- filt_segs %>% 
     dplyr::filter(is.na(user_id) == FALSE) %>% 
     group_by(video_id, min_into_video, segment, last_segment) %>% 
@@ -274,7 +277,7 @@ get_video_comparison_plot <- function(filtered_segments,
     filtered_segments, 
     aes_string(fill = "`Students`", 
                x = "min_into_video", 
-               y = "video_id", 
+               y = "forcats::fct_reorder(video_id, course_order, .desc = TRUE)", 
                text = "paste0(video_name, \"<br>\",
                       watch_rate, \" times viewed per student\", \"<br>\",
                       count, \" times this segment was watched (raw)\", 
@@ -323,7 +326,7 @@ get_segment_comparison_plot <- function(filtered_segments,
   g <- ggplot(filtered_segments, aes_string(
     fill = "watch_rate", 
     x = "min_into_video", 
-    y = "video_id", 
+    y = "forcats::fct_reorder(video_id, course_order, .desc = TRUE)", 
     text = "paste0(video_name, \"<br>\",watch_rate, \" views per student\", 
            \"<br>\", count, \" times this segment was watched (raw)\", \"<br>\",
            unique_views, \" students started this video\")")) + 
@@ -371,7 +374,7 @@ get_high_low_plot <- function(filtered_segments, module, filtered_ch_markers) {
     geom_tile(
       aes_string(fill = "high_low", 
                  x = "round(min_into_video, digits = 10)", 
-                 y = "video_id", 
+                 y = "forcats::fct_reorder(video_id, course_order, .desc = TRUE)", 
                  text = "paste0(video_name, \"<br>\",
                       watch_rate, \" times viewed per student\", \"<br>\",
                       count, \" times this segment was watched (raw)\", 
