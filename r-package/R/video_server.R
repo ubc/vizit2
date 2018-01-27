@@ -180,20 +180,26 @@ expand_segments <- function(video_id, latest_segment) {
 #' @examples
 #' get_ch_markers(filt_segs)
 get_ch_markers <- function(filt_segs) {
+  
+  max_course_order <- max(filt_segs$course_order, na.rm = TRUE)
+  
   video_ch_markers <- filt_segs %>% 
     group_by(video_id) %>% 
     summarize(index_chapter = unique(index_chapter), 
               course_order = unique(course_order)) %>% 
     ungroup() %>% 
     arrange(desc(course_order)) %>% 
-    mutate(course_order = rank(course_order)) %>% 
+    mutate(course_order = get_rank(course_order)) %>% 
     mutate(last_vid_in_ch = index_chapter != lead(index_chapter)) %>% 
-    mutate(ch_marker = ifelse(last_vid_in_ch, course_order, NA)) %>% 
+    mutate(ch_marker = ifelse(last_vid_in_ch, 
+                              max_course_order-course_order, 
+                              NA)) %>%
     select(video_id, ch_marker)
-  
+    
   ch_markers <- unique(
     video_ch_markers$ch_marker[!is.na(video_ch_markers$ch_marker)]
-  ) - 0.5
+  ) + 1.5
+  
   return(ch_markers)
 }
 
