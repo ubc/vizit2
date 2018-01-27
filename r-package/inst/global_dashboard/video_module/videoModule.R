@@ -52,8 +52,13 @@ videoModule <- function(input, output, session)
   ### Get Chap Name ###
   chap_name <- reactive({
     validate(need(try(nrow(tidy_segment_df()) > 0), "No chapters found."))
-    chap_name <- unique(tidy_segment_df()$chapter)
-    chap_name <- chap_name[!is.na(chap_name)]
+    chap_name <- tidy_segment_df() %>% 
+      group_by(chapter) %>% 
+      summarise(index_chapter = unique(index_chapter)) %>% 
+      arrange(index_chapter) %>% 
+      select(chapter)
+    
+    chap_name <- chap_name$chapter
     return(chap_name)
   })
 
