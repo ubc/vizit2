@@ -24,6 +24,9 @@ filter_demographics <- function(input_df, gender = "all", activity_level = "all"
   if (mode == "verified") {
     filtered_df <- filtered_df %>% filter(mode == "verified")
   }
+  if (mode == "no-id-professional") {
+    filtered_df <- filtered_df %>% filter(mode == "no-id-professional")
+  }
   
   return(filtered_df)
 }

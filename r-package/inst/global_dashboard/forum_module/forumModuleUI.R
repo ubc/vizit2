@@ -41,7 +41,8 @@ forumModuleUI <- function(id) {
               "Registration Status:",
               choices = c("All",
                           "Verified" = "verified",
-                          "Audit" = "audit"),
+                          "Audit" = "audit",
+                          "no-id-professional" = "no-id-professional"),
               selected = "All"
             ),
             h3(actionButton(ns("reset_filters"), "Reset"), align = "center"),

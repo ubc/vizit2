@@ -39,7 +39,8 @@ generalModuleUI <- function(id) {
                         "Registration Status:",
                         choices = c("All" = "all",
                                     "Verified" = "verified",
-                                    "Audit" = "audit"),
+                                    "Audit" = "audit",
+                                    "no-id-professional" = "no-id-professional"),
                         selected = "all"),
             
             h3(actionButton(ns("reset_filters"), "Reset"),align = "center"),

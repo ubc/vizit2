@@ -38,7 +38,8 @@ overviewModuleUI <- function(id) {
                         "Registration Status: ",
                         choices = c("All",
                                     "Verified" = "verified",
-                                    "Audit" = "audit"),
+                                    "Audit" = "audit",
+                                    "no-id-professional" = "no-id-professional"),
                         selected = "All"),
             
             htmlOutput(ns("chap_name_overview")),

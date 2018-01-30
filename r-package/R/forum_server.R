@@ -65,6 +65,12 @@ apply_forum_filters <-
 
     }
 
+    if (registration_status == "no-id-professional") {
+      filtered_df <-
+        filtered_df %>% filter(registration_status == "no-id-professional")
+      
+    }
+    
     if (category != "All") {
       if (!"discussion_category" %in% names(filtered_df)) {
         filtered_df
