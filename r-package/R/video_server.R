@@ -181,26 +181,33 @@ expand_segments <- function(video_id, latest_segment) {
 #' get_ch_markers(filt_segs)
 get_ch_markers <- function(filt_segs) {
   
-  max_course_order <- max(filt_segs$course_order, na.rm = TRUE)
-  
-  video_ch_markers <- filt_segs %>% 
-    group_by(video_id) %>% 
-    summarize(index_chapter = unique(index_chapter), 
-              course_order = unique(course_order)) %>% 
-    ungroup() %>% 
-    arrange(desc(course_order)) %>% 
-    mutate(course_order = get_rank(course_order)) %>% 
-    mutate(last_vid_in_ch = index_chapter != lead(index_chapter)) %>% 
-    mutate(ch_marker = ifelse(last_vid_in_ch, 
-                              max_course_order-course_order, 
-                              NA)) %>%
-    select(video_id, ch_marker)
+  if (length(unique(filt_segs$index_chapter)) > 1) {
     
-  ch_markers <- unique(
-    video_ch_markers$ch_marker[!is.na(video_ch_markers$ch_marker)]
-  ) + 1.5
+    max_course_order <- max(rank(unique(filt_segs$course_order)), na.rm = TRUE)
+    
+    video_ch_markers <- filt_segs %>% 
+      group_by(video_id) %>% 
+      summarize(index_chapter = unique(index_chapter), 
+                course_order = unique(course_order)) %>% 
+      ungroup() %>% 
+      mutate(course_order = get_rank(course_order)) %>% 
+      arrange(course_order) %>% 
+      mutate(last_vid_in_ch = index_chapter != lead(index_chapter)) %>% 
+      mutate(ch_marker = ifelse(last_vid_in_ch, 
+                                max_course_order-course_order, 
+                                NA)) %>%
+      select(video_id, ch_marker)
+    
+    ch_markers <- unique(
+      video_ch_markers$ch_marker[!is.na(video_ch_markers$ch_marker)]
+    ) + 0.5
+    
+    return(ch_markers)
+    
+  } else {
+    return(NA)
+  }
   
-  return(ch_markers)
 }
 
 #' Obtains dataframe with length of videos
@@ -301,8 +308,15 @@ get_video_comparison_plot <- function(filtered_segments,
     ) +
     scale_x_continuous(
       breaks = seq(0,
-                   max(filtered_segments$min_into_video),
-                   round(max(filtered_segments$min_into_video)/10))
+                   max(filtered_segments$min_into_video, na.rm = T),
+                   max(
+                     round(
+                       max(
+                         filtered_segments$min_into_video, na.rm = T)/10
+                     ),
+                     1
+                   )
+      )
     )
   
   if (module == "All") {
@@ -347,8 +361,15 @@ get_segment_comparison_plot <- function(filtered_segments,
     ) +
     scale_x_continuous(
       breaks = seq(0,
-                   max(filtered_segments$min_into_video),
-                   round(max(filtered_segments$min_into_video)/10))
+                   max(filtered_segments$min_into_video, na.rm = T),
+                   max(
+                     round(
+                       max(
+                         filtered_segments$min_into_video, na.rm = T)/10
+                     ),
+                     1
+                   )
+      )
     )
   
   if (module == "All") {
@@ -395,8 +416,15 @@ get_high_low_plot <- function(filtered_segments, module, filtered_ch_markers) {
                       name = "Legend") +
     scale_x_continuous(
       breaks = seq(0,
-                   max(filtered_segments$min_into_video),
-                   round(max(filtered_segments$min_into_video)/10))
+                   max(filtered_segments$min_into_video, na.rm = T),
+                   max(
+                     round(
+                       max(
+                         filtered_segments$min_into_video, na.rm = T)/10
+                     ),
+                     1
+                   )
+      )
     )
   
   if (module == "All") {
@@ -440,8 +468,15 @@ get_up_until_plot <- function(filtered_segments, module, filtered_ch_markers) {
     scale_fill_gradient(low = "gray86", high = "skyblue", guide = FALSE) +
     scale_x_continuous(
       breaks = seq(0,
-                   max(filtered_segments$min_into_video),
-                   round(max(filtered_segments$min_into_video)/10))
+                   max(filtered_segments$min_into_video, na.rm = T),
+                   max(
+                     round(
+                       max(
+                         filtered_segments$min_into_video, na.rm = T)/10
+                     ),
+                     1
+                   )
+      )
     )
   
   if (module == "All") {
