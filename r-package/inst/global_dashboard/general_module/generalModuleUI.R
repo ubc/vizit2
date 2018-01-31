@@ -66,7 +66,7 @@ generalModuleUI <- function(id) {
       bsCollapse(id = ns("level_of_education"), 
                  multiple = TRUE, 
                  open = "↕ What are my learners' levels of education?",
-                 bsCollapsePanel("What are my learners' levels of education?",
+                 bsCollapsePanel("↕ What are my learners' levels of education?",
                                  plotOutput(ns("loe_demo")),
                                  style = 'primary'))),
 
