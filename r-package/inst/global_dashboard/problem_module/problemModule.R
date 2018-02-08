@@ -101,8 +101,17 @@ problemModule <- function(input, output, session) {
   chap_name <- reactive({
     validate(need(try(unique(joined_users_problems()$chapter))
                   , "No Chapters Found"))
-    chapters <- unique(joined_users_problems()$chapter)
-    chapters[!is.na(chapters)]
+    
+    chapters <- joined_users_problems() %>% 
+      group_by(chapter) %>% 
+      summarise(chapter_index = unique(chapter_index)) %>% 
+      arrange(chapter_index) %>% 
+      select(chapter)
+    
+    chapters <- chapters$chapter
+    
+    return(chapters)
+    
   })
 
   extracted_content <- reactiveFileReader(
