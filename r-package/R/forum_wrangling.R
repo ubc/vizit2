@@ -88,48 +88,69 @@ wrangle_forum <- function(posts_input_path,
   print("Preparing the XML elements...")
   forum_elements_xml <- prepare_xml(xml = course_xml)
   
-  # The JSON file will have more dimensions than the XML file, because it took 
-  # the `discussion_topics` as well as the discussion_category/discussion_target
-  # pairs. Get that difference in dimensions.
-  extra_dim <-
-    dim(forum_elements_json)[1] - dim(forum_elements_xml)[1]
-  
-  # Store only those extra topics.
-  extra_topics <-
-    forum_elements_json[
-      !forum_elements_json$display_name %in% forum_elements_xml$display_name,
-    ]
-  
-  # Assign their orders and remove the superfluous column.
-  extra_topics$target_order <- 1:extra_dim
-  extra_topics$category_order <- 1:extra_dim
-  extra_topics <- extra_topics %>%
-    select(-commentable_id)
-  
-  # Add the extra order numbers to the XML data.
-  forum_elements_xml <- forum_elements_xml %>%
-    mutate(category_order = category_order + extra_dim,
-           target_order = target_order + extra_dim)
-  
-  # Row-bind the xml with the extra topics from the JSON.
-  forum_elements_xml <-
-    rbind(extra_topics, forum_elements_xml)
-  
-  # Combine the JSON elements and the XML elements.
-  print("Combining the JSON and XML elements...")
-  wrangled_forum_elements <-
-    left_join(forum_elements_json, forum_elements_xml) %>%
-    arrange(target_order) %>%
-    # Keep only the ones that have been assigned a target order.
-    filter(!is.na(target_order)) %>%
-    # Keep only the ones that actually appear in the data.
-    filter(commentable_id %in% as.character(levels(forum_posts$commentable_id)))
-  
-  # Add a variable which corresponds with the order in which the subcategories 
-  # will be plotted.
-  print("Adding the course order to forum_elements...")
-  wrangled_forum_elements$course_order <-
-    1:dim(wrangled_forum_elements)[1]
+  if (!is.na(forum_elements_xml)) { # Should apply to most courses, but there was one in piloting where it didn't.
+    
+    # The JSON file will have more dimensions than the XML file, because it took 
+    # the `discussion_topics` as well as the discussion_category/discussion_target
+    # pairs. Get that difference in dimensions.
+    extra_dim <-
+      dim(forum_elements_json)[1] - dim(forum_elements_xml)[1]
+    
+    # Store only those extra topics.
+    extra_topics <-
+      forum_elements_json[
+        !forum_elements_json$display_name %in% forum_elements_xml$display_name,
+        ]
+    
+    # Assign their orders and remove the superfluous column.
+    extra_topics$target_order <- 1:extra_dim
+    extra_topics$category_order <- 1:extra_dim
+    extra_topics <- extra_topics %>%
+      select(-commentable_id)
+    
+    # Add the extra order numbers to the XML data.
+    forum_elements_xml <- forum_elements_xml %>%
+      mutate(category_order = category_order + extra_dim,
+             target_order = target_order + extra_dim)
+    
+    # Row-bind the xml with the extra topics from the JSON.
+    forum_elements_xml <-
+      rbind(extra_topics, forum_elements_xml)
+    
+    # Combine the JSON elements and the XML elements.
+    print("Combining the JSON and XML elements...")
+    wrangled_forum_elements <-
+      left_join(forum_elements_json, forum_elements_xml) %>%
+      arrange(target_order) %>%
+      # Keep only the ones that have been assigned a target order.
+      filter(!is.na(target_order)) %>%
+      # Keep only the ones that actually appear in the data.
+      filter(commentable_id %in% as.character(levels(forum_posts$commentable_id)))
+    
+    # Add a variable which corresponds with the order in which the subcategories 
+    # will be plotted.
+    print("Adding the course order to forum_elements...")
+    wrangled_forum_elements$course_order <-
+      1:dim(wrangled_forum_elements)[1]
+    
+  } else {
+    
+    print("There was nothing relevant found in xbundle.xml. Relying on prod_analytics.json")
+    
+    wrangled_forum_elements <- forum_elements_json
+    
+    print("Adding the course order to forum_elements...")
+    wrangled_forum_elements$course_order <-
+      1:dim(wrangled_forum_elements)[1]
+    
+    wrangled_forum_elements <- wrangled_forum_elements %>% 
+      mutate(
+        discussion_target = discussion_category,
+        category_order = course_order,
+        target_order = course_order
+      )
+
+  }
   
   # Combine the posts with the forum_elements.
   print("Joining everything with forum elements...")
@@ -610,6 +631,12 @@ prepare_xml <- function(xml) {
   
   # Get the attributes of each discussion node.
   all_parameters <- sapply(discussion_nodes, XML::xmlAttrs)
+  
+  # We've seen one course in piloting that doesn't store these attributes
+  # in xbundle.xml.
+  if (length(all_parameters) == 0) {
+    return(NA)
+  }
   
   # Get the parameters of interest and save them as a dataframe.
   if (class(all_parameters) == "list") {
