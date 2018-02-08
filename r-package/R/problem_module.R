@@ -83,7 +83,9 @@ get_mean_scores <- function(problems_tbl, lookup_table) {
       users = dplyr::n_distinct(user_id)
     ) %>%
     dplyr::ungroup()
-
+  
+  return(summarised_scores)
+  
 }
 
 
@@ -215,8 +217,24 @@ prepare_filterable_problems <-
 #'   equal to the absolute value of the index.
 #' @export
 get_extreme_summarised_scores <- function(summarised_scores, index) {
-    summarised_scores %>%
-      dplyr::top_n(index, percent_correct)
+  
+  if (dim(summarised_scores)[1] >= abs(index)) {
+    
+    output <- summarised_scores %>%
+      dplyr::top_n(index, percent_correct) %>% 
+      arrange(percent_correct)
+
+    return(output)
+    
+  } else {
+    
+    output <- summarised_scores %>% 
+      arrange(percent_correct)
+    
+    return(output)
+    
+  }
+  
 }
 
 
@@ -355,49 +373,92 @@ plot_aggregated_problems <- function(agg_melted_problems) {
   ))
 
   fill_scheme <- c("Correct" = "#66c2a5", "Incorrect" = "#b2e2e2")
+  
+  if (length(unique(agg_melted_problems$problem_url_name)) > 1) {
+    
+    ggplot2::ggplot(agg_melted_problems,
+                    ggplot2::aes(x = choice, y = freq_responses,
+                                 fill = correct)) +
+      ggplot2::geom_bar(stat = "identity") +
+      ggplot2::geom_text(
+        ggplot2::aes(
+          label = trunc_choice,
+          x = choice,
+          y = 0,
+          hjust = 0
+        ),
+        color = 'black',
+        check_overlap = TRUE,
+        size = 4
+      ) +
+      ggplot2::facet_wrap(
+        ~ problem_url_name,
+        scales = "free",
+        labeller = id_to_questions,
+        ncol = 1,
+        strip.position = "left",
+        as.table = FALSE
+      ) +
+      ggthemes::theme_few(base_family = "GillSans") +
+      ggplot2::coord_flip() +
+      ggplot2::theme(
+        axis.text.y = element_blank(),
+        strip.text.y = element_text(angle = 180),
+        axis.title.y.right = element_text(color = "red"),
+        strip.switch.pad.grid = unit(15, "cm"),
+        legend.justification = "top",
+        axis.ticks.y = element_blank()
+      ) +
+      ggplot2::scale_y_continuous(
+        labels = scales::percent,
+        limits = c(0, 1),
+        position = "right"
+      ) + # Add percentage scaling
+      ggplot2::labs(x = "Choice",
+                    y = "Percent of Respondents",
+                    fill = "") +
+      ggplot2::scale_fill_manual(values = fill_scheme)
+    
+  } else {
+    
+    ggplot2::ggplot(agg_melted_problems,
+                    ggplot2::aes(x = choice, y = freq_responses,
+                                 fill = correct)) +
+      ggplot2::geom_bar(stat = "identity") +
+      ggplot2::geom_text(
+        ggplot2::aes(
+          label = trunc_choice,
+          x = choice,
+          y = 0,
+          hjust = 0
+        ),
+        color = 'black',
+        check_overlap = TRUE,
+        size = 4
+      ) +
+      ggthemes::theme_few(base_family = "GillSans") +
+      ggplot2::coord_flip() +
+      # ggplot2::theme(
+      #   axis.text.y = element_blank(),
+      #   strip.text.y = element_text(angle = 180),
+      #   axis.title.y.right = element_text(color = "red"),
+      #   strip.switch.pad.grid = unit(15, "cm"),
+      #   legend.justification = "top",
+      #   axis.ticks.y = element_blank()
+      # ) +
+      ggplot2::scale_y_continuous(
+        labels = scales::percent,
+        limits = c(0, 1),
+        position = "right"
+      ) + # Add percentage scaling
+      ggplot2::labs(x = "Choice",
+                    y = "Percent of Respondents",
+                    fill = "") +
+      ggplot2::scale_fill_manual(values = fill_scheme)
+    
+  }
 
-  ggplot2::ggplot(agg_melted_problems,
-                  ggplot2::aes(x = choice, y = freq_responses,
-                  fill = correct)) +
-    ggplot2::geom_bar(stat = "identity") +
-    ggplot2::geom_text(
-      ggplot2::aes(
-        label = trunc_choice,
-        x = choice,
-        y = 0,
-        hjust = 0
-      ),
-      color = 'black',
-      check_overlap = TRUE,
-      size = 4
-    ) +
-    ggplot2::facet_wrap(
-      ~ problem_url_name,
-      scales = "free",
-      labeller = id_to_questions,
-      ncol = 1,
-      strip.position = "left",
-      as.table = FALSE
-    ) +
-    ggthemes::theme_few(base_family = "GillSans") +
-    ggplot2::coord_flip() +
-    ggplot2::theme(
-      axis.text.y = element_blank(),
-      strip.text.y = element_text(angle = 180),
-      axis.title.y.right = element_text(color = "red"),
-      strip.switch.pad.grid = unit(15, "cm"),
-      legend.justification = "top",
-      axis.ticks.y = element_blank()
-    ) +
-    ggplot2::scale_y_continuous(
-      labels = scales::percent,
-      limits = c(0, 1),
-      position = "right"
-    ) + # Add percentage scaling
-    ggplot2::labs(x = "Choice",
-         y = "Percent of Respondents",
-         fill = "") +
-    ggplot2::scale_fill_manual(values = fill_scheme)
+  
 }
 
 #' Overview plot (Chapter by Course)

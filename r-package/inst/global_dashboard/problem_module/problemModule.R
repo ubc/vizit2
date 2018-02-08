@@ -160,7 +160,7 @@ problemModule <- function(input, output, session) {
     bottom_questions <- filtered_joined_problems %>%
       get_mean_scores(lookup_table()) %>%
       get_extreme_summarised_scores(-3)
-
+    
     aggregate_melted_problems(lookup_table(),
                               filtered_joined_problems,
                               bottom_questions)
