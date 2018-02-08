@@ -164,7 +164,7 @@ problemModule <- function(input, output, session) {
   reactive_overview <- reactive({
     validate(
       need(
-        try(nrow(problems_tbl()) > 0 & sum(!is.na(problems_tlb()$problem)) > 0), 
+        try(nrow(problems_tbl()) > 0 & sum(!is.na(problems_tbl()$problem)) > 0), 
         "No multiple choice problems found."
       )
     )
