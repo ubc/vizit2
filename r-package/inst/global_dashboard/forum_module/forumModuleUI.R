@@ -42,7 +42,7 @@ forumModuleUI <- function(id) {
               choices = c("All",
                           "Verified" = "verified",
                           "Audit" = "audit",
-                          "no-id-professional" = "no-id-professional"),
+                          "Professional" = "no-id-professional"),
               selected = "All"
             ),
             h3(actionButton(ns("reset_filters"), "Reset"), align = "center"),

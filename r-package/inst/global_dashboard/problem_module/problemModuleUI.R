@@ -33,7 +33,7 @@ problemModuleUI <- function(id) {
               choices = c("All" = "all",
                           "Verified" = "verified",
                           "Audit" = "audit",
-                          "no-id-professional" = "no-id-professional"),
+                          "Professional" = "no-id-professional"),
               selected = "all"),
             htmlOutput(ns("moduleSelection")),
             h3(actionButton(ns("reset_filters"), "Reset"), align = "center"),

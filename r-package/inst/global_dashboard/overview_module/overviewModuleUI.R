@@ -39,7 +39,7 @@ overviewModuleUI <- function(id) {
                         choices = c("All",
                                     "Verified" = "verified",
                                     "Audit" = "audit",
-                                    "no-id-professional" = "no-id-professional"),
+                                    "Professional" = "no-id-professional"),
                         selected = "All"),
             
             htmlOutput(ns("chap_name_overview")),
