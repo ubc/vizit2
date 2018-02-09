@@ -438,14 +438,6 @@ plot_aggregated_problems <- function(agg_melted_problems) {
       ) +
       ggthemes::theme_few(base_family = "GillSans") +
       ggplot2::coord_flip() +
-      # ggplot2::theme(
-      #   axis.text.y = element_blank(),
-      #   strip.text.y = element_text(angle = 180),
-      #   axis.title.y.right = element_text(color = "red"),
-      #   strip.switch.pad.grid = unit(15, "cm"),
-      #   legend.justification = "top",
-      #   axis.ticks.y = element_blank()
-      # ) +
       ggplot2::scale_y_continuous(
         labels = scales::percent,
         limits = c(0, 1),
