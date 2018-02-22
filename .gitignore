@@ -19,6 +19,7 @@ r-package/inst/results
 .RData
 .Rapp.history
 r-package/exec/__pycache__/*
+r-package/exec/video_time.Rmd
 
 # R stuff:
 
