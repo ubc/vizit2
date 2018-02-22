@@ -95,6 +95,23 @@ videoModuleUI <- function(id) {
         )
       )
     ),
+    
+    # Views across time
+    fluidRow(
+      bsCollapse(
+        id = ns("views_across_time"),
+        multiple = TRUE,
+        bsCollapsePanel(
+          title = "↕ When were videos most viewed?",
+          dateRangeInput('dateRange',
+                         label = 'Date range input: yyyy-mm-dd',
+                         start = Sys.Date() - 14,
+                         end = Sys.Date()),
+          plotly::plotlyOutput(ns("across_time")), 
+          style = 'primary'
+        )
+      )
+    ),
         
     # Summary table:
     fluidRow(

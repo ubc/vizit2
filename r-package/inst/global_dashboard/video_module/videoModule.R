@@ -211,13 +211,13 @@ videoModule <- function(input, output, session)
     plotly::ggplotly(g, tooltip = "text") %>% 
       plotly::config(displayModeBar = FALSE)
   })
-
-  # Which are my students watch up until?
-  output$up_until <- plotly::renderPlotly({
-    g <- get_up_until_plot(filtered_segments(), 
-                           module(), 
-                           filtered_ch_markers())
-
+  
+  ### When have students viewed each video?
+  output$across_time <- plotly::renderPlotly({
+    g <- make_video_time_plot(filtered_viewers(),
+                              module(),
+                              filtered_ch_markers())
+    
     plotly::ggplotly(g, tooltip = "text") %>% 
       plotly::config(displayModeBar = FALSE)
   })
