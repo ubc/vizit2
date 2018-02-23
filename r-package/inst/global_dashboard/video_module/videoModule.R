@@ -112,7 +112,7 @@ videoModule <- function(input, output, session)
   #### Filtering for video time plot: ###
   filtered_events <- reactive({
     
-    validate(need(try(nrow(tidy_segment_df()) > 0), "No segments found."))
+    validate(need(try(nrow(events_df()) > 0), "No events found."))
     
     # Filter students by selected demographics
     filt_events <- filter_demographics(events_df(),
@@ -129,6 +129,8 @@ videoModule <- function(input, output, session)
     # Filter to select only the requested date range.
     filt_events <- filt_events %>% 
       filter(as.Date(time) >= daterange()[1] & as.Date(time) <= daterange()[2])
+    
+    validate(need(try(nrow(filt_events) > 0), "No events found."))
     
     return(filt_events)
     
