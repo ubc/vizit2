@@ -39,3 +39,5 @@ Suggests:
   packagedocs
 RoxygenNote: 6.0.1
 VignetteBuilder: packagedocs
+Remotes:
+    jeremystan/tidyjson
