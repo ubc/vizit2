@@ -2,17 +2,21 @@
 % Please edit documentation in R/video_wrangling.R
 \name{prepare_video_data}
 \alias{prepare_video_data}
-\title{Converts columns into proper variable types and adds additional columns with video information}
+\title{Converts columns into proper variable types and adds additional columns with 
+  video information}
 \usage{
 prepare_video_data(video_data, video_axis)
 }
 \arguments{
-\item{video_axis}{A dataframe containing course structure information. Contains columns course_order, index_chapter, chapter_name}
+\item{video_axis}{A dataframe containing course structure information. 
+Contains columns course_order, index_chapter, chapter_name}
 
-\item{data}{Raw input dataframe to be transformed. \code{data} is obtained through \code{obtain_raw_video_data()}}
+\item{data}{Raw input dataframe to be transformed. \code{data} is obtained 
+through \code{obtain_raw_video_data()}}
 }
 \value{
-\code{prepared_data}: The prepared data with converted variable types and extra columns
+\code{prepared_data}: The prepared data with converted variable 
+  types and extra columns
 }
 \description{
 Additional columns added:

@@ -2,7 +2,8 @@
 % Please edit documentation in R/get_checksum.R
 \name{get_hashed_courses}
 \alias{get_hashed_courses}
-\title{Writes csv with course short names and their corresponding checksums to the data directory}
+\title{Writes csv with course short names and their corresponding checksums to the 
+  data directory}
 \usage{
 get_hashed_courses(input_json, output_csv)
 }
@@ -10,7 +11,8 @@ get_hashed_courses(input_json, output_csv)
 No value is returned
 }
 \description{
-Writes csv with course short names and their corresponding checksums to the data directory
+Writes csv with course short names and their corresponding checksums to the 
+  data directory
 }
 \examples{
 get_hashed_courses()

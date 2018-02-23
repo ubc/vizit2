@@ -7,15 +7,15 @@
 make_tidy_segments(data)
 }
 \arguments{
-\item{data}{Dataframe containing segment information. This dataframe is typically obtained through
-\code{get_watched_segments()}}
+\item{data}{Dataframe containing segment information. This dataframe is 
+typically obtained through \code{get_watched_segments()}}
 }
 \value{
 \code{data}: Tidy version of input dataframe.
 }
 \description{
-Returns a tidy, more usable, version of the input dataframe. Segment information is
-converted into a single column using \code{gather()}
+Returns a tidy, more usable, version of the input dataframe. 
+  Segment information is converted into a single column using \code{gather()}
 }
 \examples{
 make_tidy_segments(data = start_end_df)

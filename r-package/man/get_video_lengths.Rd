@@ -7,11 +7,12 @@
 get_video_lengths(filt_segs)
 }
 \arguments{
-\item{filt_segs}{Dataframe containing students that have been filtered by selected demographics. Typically
-obtained via \code{filter_demographics()}}
+\item{filt_segs}{Dataframe containing students that have been filtered by 
+selected demographics. Typically obtained via \code{filter_demographics()}}
 }
 \value{
-\code{vid_lengths}: Dataframe with the video lengths associated with each video ID.
+\code{vid_lengths}: Dataframe with the video lengths associated with 
+  each video ID.
 }
 \description{
 Obtains dataframe with length of videos

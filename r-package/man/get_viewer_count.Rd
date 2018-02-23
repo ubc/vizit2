@@ -8,7 +8,8 @@ get_viewer_count(forum_views, forum_elements, activity_level, gender,
   registration_status, category)
 }
 \arguments{
-\item{forum_views}{The forum views dataframe that was passed in from the wrangling script.}
+\item{forum_views}{The forum views dataframe that was passed in from the 
+wrangling script.}
 
 \item{forum_elements}{The forum elements dataframe.}
 
@@ -27,5 +28,12 @@ get_viewer_count(forum_views, forum_elements, activity_level, gender,
 Get the number of viewers for which the selected filter settings apply.
 }
 \examples{
-get_viewer_count(wrangled_forum_views, forum_elements, "All", "male", "verified", "All")
+get_viewer_count(
+  wrangled_forum_views, 
+  forum_elements, 
+  "All", 
+  "male", 
+  "verified", 
+  "All"
+)
 }

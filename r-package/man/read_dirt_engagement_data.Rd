@@ -7,10 +7,11 @@
 read_dirt_engagement_data(input_course)
 }
 \arguments{
-\item{input_course}{Name of course directory (ex. psyc1, spd1, marketing, etc)}
+\item{input_course}{Name of course directory (eg. psyc1, spd1, etc)}
 }
 \value{
-tower_engage: Dataframe containing student engagement information with videos and problems
+tower_engage: Dataframe containing student engagement information 
+  with videos and problems
 }
 \description{
 Import untidy student engagement csv file as an R dataframe object

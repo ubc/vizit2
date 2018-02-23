@@ -14,6 +14,5 @@ A dataframe with the same dimensions as the CSV
 }
 \description{
 This function cleans a CSV retrieved from the `demographic_multiple_choice`
-SQL script. It transforms the `sum_dt` column into activity_level. It also
-removes any non-multiple choice problems.
+SQL script. It removes any non-multiple choice problems.
 }

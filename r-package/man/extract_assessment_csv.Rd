@@ -14,7 +14,7 @@ An extracted table
 }
 \description{
 Extracts the nececessary information from event JSON and discards it. Points
-possible should always be the same for each assessment.
+  possible should always be the same for each assessment.
 }
 \examples{
 extract_assessment_csv(raw_assessment)

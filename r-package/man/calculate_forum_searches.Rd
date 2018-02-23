@@ -2,7 +2,8 @@
 % Please edit documentation in R/forum_server.R
 \name{calculate_forum_searches}
 \alias{calculate_forum_searches}
-\title{Calculates the number of unique users who searched for each search query, given the selected filters.}
+\title{Calculates the number of unique users who searched for each search query, 
+  given the selected filters.}
 \usage{
 calculate_forum_searches(forum_searches = wrangled_forum_searches,
   forum_elements, activity_level, gender, registration_status, category)
@@ -24,8 +25,11 @@ calculate_forum_searches(forum_searches = wrangled_forum_searches,
 \code{forum_searches} The filtered forum searches dataframe.
 }
 \description{
-Calculates the number of unique users who searched for each search query, given the selected filters.
+Calculates the number of unique users who searched for each search query, 
+  given the selected filters.
 }
 \examples{
-calculate_forum_searches(wrangled_forum_searches, "under_30_min", "female", "verified", "Part 3")
+calculate_forum_searches(
+  wrangled_forum_searches, "under_30_min", "female", "verified", "Part 3"
+)
 }

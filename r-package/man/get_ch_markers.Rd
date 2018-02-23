@@ -7,11 +7,12 @@
 get_ch_markers(filt_segs)
 }
 \arguments{
-\item{filt_segs}{Dataframe containing students that have been filtered by selected demographics. Typically
-obtained via \code{filter_demographics()}}
+\item{filt_segs}{Dataframe containing students that have been filtered by 
+selected demographics. Typically obtained via \code{filter_demographics()}}
 }
 \value{
-\code{ch_markers}: List of values of where to place chapter lines on visualizations
+\code{ch_markers}: List of values of where to place chapter lines on 
+  visualizations
 }
 \description{
 Obtains locations of chapter lines to be placed on visualizations

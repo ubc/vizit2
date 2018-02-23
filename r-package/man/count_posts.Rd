@@ -7,12 +7,15 @@
 count_posts(input_forum, wrangled_forum_elements)
 }
 \arguments{
-\item{input_forum}{The input dataframe containing a row for each post in the forum.}
+\item{input_forum}{The input dataframe containing a row for each post in the 
+forum.}
 
-\item{wrangled_forum_elements}{A dataframe containing information about each of the forum subcategories.}
+\item{wrangled_forum_elements}{A dataframe containing information about each 
+of the forum subcategories.}
 }
 \value{
-\code{post_counts} A dataframe containing the post counts for each subcategory in the forum.
+\code{post_counts} A dataframe containing the post counts for each 
+  subcategory in the forum.
 }
 \description{
 Count the number of posts for each subcategory in an input forum.

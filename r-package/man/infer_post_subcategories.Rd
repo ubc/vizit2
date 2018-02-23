@@ -2,7 +2,8 @@
 % Please edit documentation in R/forum_wrangling.R
 \name{infer_post_subcategories}
 \alias{infer_post_subcategories}
-\title{Infer the subcategories of each post, even if it's a response post or a comment.}
+\title{Infer the subcategories of each post, even if it's a response post or a 
+  comment.}
 \usage{
 infer_post_subcategories(forum)
 }
@@ -13,7 +14,8 @@ infer_post_subcategories(forum)
 The same dataframe with commentable_id filled in for everything.
 }
 \description{
-Infer the subcategories of each post, even if it's a response post or a comment.
+Infer the subcategories of each post, even if it's a response post or a 
+  comment.
 }
 \examples{
 infer_post_subcategories(forum)

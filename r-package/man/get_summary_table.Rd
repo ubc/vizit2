@@ -7,14 +7,15 @@
 get_summary_table(aggregate_df, vid_lengths, avg_time_spent)
 }
 \arguments{
-\item{aggregate_df}{Dataframe containing students that have been filtered by selected demographics. Typically
-obtained via \code{filter_demographics()}}
+\item{aggregate_df}{Dataframe containing students that have been filtered by 
+selected demographics. Typically obtained via \code{filter_demographics()}}
 
-\item{vid_lengths}{Dataframe containing video ID's with their associated video lengths. Typically
-obtained via \code{get_video_lengths()}}
+\item{vid_lengths}{Dataframe containing video ID's with their associated 
+video lengths. Typically obtained via \code{get_video_lengths()}}
 }
 \value{
-\code{summary_table}: Dataframe relevant summary statistics for each video.
+\code{summary_table}: Dataframe relevant summary statistics for each 
+  video.
 }
 \description{
 Obtains video summary table to be used on shiny app

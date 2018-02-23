@@ -27,5 +27,12 @@ filter_wordcloud_data(forum_words, forum_elements, activity_level, gender,
 Filter the wordcloud data by the selected filters.
 }
 \examples{
-filter_wordcloud_data(wrangled_forum_words, forum_elements, "30_min_to_5_hr", "female", "All", "General")
+filter_wordcloud_data(
+  wrangled_forum_words, 
+  forum_elements, 
+  "30_min_to_5_hr", 
+  "female", 
+  "All", 
+  "General"
+)
 }

@@ -7,7 +7,8 @@
 get_page_name(page_name_df)
 }
 \arguments{
-\item{page_name_df}{A dataframe we get after joining page dataframe and page name dataframe.}
+\item{page_name_df}{A dataframe we get after joining page dataframe and page 
+name dataframe.}
 }
 \value{
 each_page

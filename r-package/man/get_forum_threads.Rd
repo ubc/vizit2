@@ -8,7 +8,8 @@ get_forum_threads(forum_posts, forum_elements, activity_level, gender,
   registration_status, category, selected_subcategory)
 }
 \arguments{
-\item{forum_posts}{The forum posts dataframe that was passed in from the wrangling script.}
+\item{forum_posts}{The forum posts dataframe that was passed in from the 
+wrangling script.}
 
 \item{forum_elements}{The forum elements dataframe.}
 
@@ -23,11 +24,20 @@ get_forum_threads(forum_posts, forum_elements, activity_level, gender,
 \item{selected_subcategory}{The selected forum subcategory.}
 }
 \value{
-\code{forum_threads} The forum threads that were authored by students for which the filter settings apply.
+\code{forum_threads} The forum threads that were authored by students 
+  for which the filter settings apply.
 }
 \description{
 Get the forum threads for the authors who match the filter settings.
 }
 \examples{
-get_forum_threads(forum_posts = wrangled_forum_posts, forum_elements, "over_5_hr", "female", "audit", "All", "All")
+get_forum_threads(
+  forum_posts = wrangled_forum_posts, 
+  forum_elements, 
+  "over_5_hr", 
+  "female", 
+  "audit", 
+  "All", 
+  "All"
+)
 }

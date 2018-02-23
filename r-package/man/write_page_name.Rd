@@ -2,7 +2,8 @@
 % Please edit documentation in R/link_page_wrangling.R
 \name{write_page_name}
 \alias{write_page_name}
-\title{Export the tidy course axis dataframe containing all non-video and non-problem elements with module/chapter information}
+\title{Export the tidy course axis dataframe containing all non-video and 
+  non-problem elements with module/chapter information}
 \usage{
 write_page_name(input_course, cleaned_data)
 }
@@ -10,8 +11,12 @@ write_page_name(input_course, cleaned_data)
 \item{cleaned_data}{A tidy page_name dataframe}
 }
 \description{
-Export the tidy course axis dataframe containing all non-video and non-problem elements with module/chapter information
+Export the tidy course axis dataframe containing all non-video and 
+  non-problem elements with module/chapter information
 }
 \examples{
-write_page_name(input_course = "psyc1",cleaned_data = prepare_page_name)
+write_page_name(
+  input_course = "psyc1",
+  cleaned_data = prepare_page_name
+)
 }

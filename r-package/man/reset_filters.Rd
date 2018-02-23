@@ -7,7 +7,8 @@
 reset_filters(session)
 }
 \arguments{
-\item{session}{A Shiny session object. See https://shiny.rstudio.com/reference/shiny/latest/session.html}
+\item{session}{A Shiny session object. See 
+https://shiny.rstudio.com/reference/shiny/latest/session.html}
 }
 \value{
 None.

@@ -7,11 +7,13 @@
 get_video_comparison_plot(filtered_segments, module, filtered_ch_markers)
 }
 \arguments{
-\item{filtered_segments}{Dataframe of segments and corresponding watch counts filtered by demographics}
+\item{filtered_segments}{Dataframe of segments and corresponding watch counts 
+filtered by demographics}
 
 \item{module}{String of module (chapter) name to display}
 
-\item{filtered_ch_markers}{List of values containing locations of where to put chapter markers}
+\item{filtered_ch_markers}{List of values containing locations of where to 
+put chapter markers}
 }
 \value{
 \code{g}: ggplot heatmap object

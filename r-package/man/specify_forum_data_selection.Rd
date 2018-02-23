@@ -7,18 +7,24 @@
 specify_forum_data_selection(updated_forum_data, category, selected_subcategory)
 }
 \arguments{
-\item{updated_forum_data}{The dataframe containing the counts for each (sub)category.}
+\item{updated_forum_data}{The dataframe containing the counts for each 
+(sub)category.}
 
 \item{category}{The selected category.}
 
 \item{selected_subcategory}{The selected subcategory.}
 }
 \value{
-\code{forum_w_selection} The same dataframe with a new column, \code{selected}.
+\code{forum_w_selection} The same dataframe with a new column, 
+  \code{selected}.
 }
 \description{
 Specify which subcategory has been selected.
 }
 \examples{
-specify_forum_data_selection(updated_forum_data, "Part 1", "Part 1 Video Discussion")
+specify_forum_data_selection(
+  updated_forum_data,
+  "Part 1",
+  "Part 1 Video Discussion"
+)
 }

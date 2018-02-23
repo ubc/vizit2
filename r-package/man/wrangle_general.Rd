@@ -13,8 +13,9 @@ wrangle_general(input_course)
 No value is returned
 }
 \description{
-Reads the input course's raw 'generalized_demographics.csv' and outputs a cleaned version as wrangled_demographics.csv
-within the same directory
+Reads the input course's raw 'generalized_demographics.csv' and 
+  outputs a cleaned version as wrangled_demographics.csv within the same 
+  directory
 }
 \examples{
 wrangle_general('psyc1')

@@ -2,20 +2,25 @@
 % Please edit documentation in R/forum_wrangling.R
 \name{get_discussion_vars_xml}
 \alias{get_discussion_vars_xml}
-\title{Get the variables associated with each forum element in the XML file (for use in \code{prepare_xml}).}
+\title{Get the variables associated with each forum element in the XML file (for use 
+  in \code{prepare_xml}).}
 \usage{
 get_discussion_vars_xml(i, all_parameters)
 }
 \arguments{
 \item{i}{An iterator.}
 
-\item{all_parameters}{An XML tree containing all the parameters associated with each discussion node.}
+\item{all_parameters}{An XML tree containing all the parameters associated 
+with each discussion node.}
 }
 \value{
-A vector containing the \code{display_name}, \code{discussion_category}, and \code{discussion_target} of a course element.
+A vector containing the \code{display_name}, 
+  \code{discussion_category}, and \code{discussion_target} of a course 
+  element.
 }
 \description{
-Get the variables associated with each forum element in the XML file (for use in \code{prepare_xml}).
+Get the variables associated with each forum element in the XML file (for use 
+  in \code{prepare_xml}).
 }
 \examples{
 get_discussion_vars_xml(i, all_parameters)

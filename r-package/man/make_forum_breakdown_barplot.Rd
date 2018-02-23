@@ -8,22 +8,33 @@ make_forum_breakdown_barplot(gathered, xvar_string, grouping_var, axis_limit,
   xlabel)
 }
 \arguments{
-\item{xvar_string}{A string that matches the function to call for the x value of aes_string().}
+\item{xvar_string}{A string that matches the function to call for the x value 
+of aes_string().}
 
-\item{grouping_var}{grouping_var One of \code{discussion_category} or \code{display_name}, depending on whether a category has been selected.}
+\item{grouping_var}{grouping_var One of \code{discussion_category} or 
+\code{discussion_target}, depending on whether a category has been selected.}
 
-\item{axis_limit}{The maximum axis limit for the horizontal axis in the main barplot.}
+\item{axis_limit}{The maximum axis limit for the horizontal axis in the main 
+barplot.}
 
 \item{xlabel}{The label of the x-axis in the main barplot.}
 
 \item{forum_data}{The forum data for the main barplot.}
 }
 \value{
-\code{forum_breakdown_barplot} A ggplot2 object to be rendered as the main forum barplot.
+\code{forum_breakdown_barplot} A ggplot2 object to be rendered as the 
+  main forum barplot.
 }
 \description{
 Make the main forum barplot with the post types breakdown.
 }
 \examples{
-make_forum_breakdown_barplot(forum_data = forum_data, xvar_string = "fct_reorder(discussion_category, course_order, .desc = TRUE)", axis_limit = 100, grouping_var = "discussion_category", xlabel = "Category")
+make_forum_breakdown_barplot(
+  forum_data = forum_data, 
+  xvar_string = "fct_reorder(discussion_category, 
+                             course_order, 
+                             .desc = TRUE)", 
+  axis_limit = 100, 
+  grouping_var = "discussion_category", 
+  xlabel = "Category")
 }

@@ -2,22 +2,26 @@
 % Please edit documentation in R/video_server.R
 \name{get_high_low_plot}
 \alias{get_high_low_plot}
-\title{Obtains heatmap plot highlighting which segments have abnormally high or low watch rates}
+\title{Obtains heatmap plot highlighting which segments have abnormally high or low 
+  watch rates}
 \usage{
 get_high_low_plot(filtered_segments, module, filtered_ch_markers)
 }
 \arguments{
-\item{filtered_segments}{Dataframe of segments and corresponding watch counts filtered by demographics}
+\item{filtered_segments}{Dataframe of segments and corresponding watch counts 
+filtered by demographics}
 
 \item{module}{String of module (chapter) name to display}
 
-\item{filtered_ch_markers}{List of values containing locations of where to put chapter markers}
+\item{filtered_ch_markers}{List of values containing locations of where to 
+put chapter markers}
 }
 \value{
 \code{g}: ggplot heatmap object
 }
 \description{
-Obtains heatmap plot highlighting which segments have abnormally high or low watch rates
+Obtains heatmap plot highlighting which segments have abnormally high or low 
+  watch rates
 }
 \examples{
 get_high_low_plot(filtered_segments, module, filtered_ch_markers)

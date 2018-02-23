@@ -10,7 +10,8 @@ prepare_words(forum)
 \item{forum}{A dataframe with one row per post.}
 }
 \value{
-The dataframe with each row containing a word, prepared for joining with the forum elements.
+The dataframe with each row containing a word, prepared for joining 
+  with the forum elements.
 }
 \description{
 Prepare the forum words.

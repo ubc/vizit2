@@ -15,5 +15,5 @@ A flat dataframe with the above columns
 }
 \description{
 This function is required to convert the JSON derived from the xbundle XML
-into a format that other dataframes can interact with.
+  into a format that other dataframes can interact with.
 }

@@ -2,7 +2,8 @@
 % Please edit documentation in R/overview_engagement_server.R
 \name{get_nactive}
 \alias{get_nactive}
-\title{Compute how many students engaged with each course item after filtering student demographic}
+\title{Compute how many students engaged with each course item after filtering 
+  student demographic}
 \usage{
 get_nactive(detail_df)
 }
@@ -13,7 +14,8 @@ get_nactive(detail_df)
 summary_df Summarized-view of engagement dataframe.
 }
 \description{
-Compute how many students engaged with each course item after filtering student demographic
+Compute how many students engaged with each course item after filtering 
+  student demographic
 }
 \examples{
 get_nactive(detail_df = tower_engage)

@@ -10,7 +10,8 @@ get_module_nactive(tower_df)
 \item{tower_df}{Student engagement dataframe.}
 }
 \value{
-student_num A number refers to the maximum number of student engaged with one item witin the selected course module.
+student_num A number refers to the maximum number of student engaged 
+  with one item witin the selected course module.
 }
 \description{
 Count how many filtered students engaged with the filtered course module

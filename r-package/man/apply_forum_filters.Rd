@@ -12,11 +12,14 @@ apply_forum_filters(input_df, forum_elements, activity_level = "All",
 
 \item{forum_elements}{The forum elements dataframe.}
 
-\item{activity_level}{One of \code{under_30_min}, \code{30_min_to_5_hr}, \code{over_5_hr}, or (default) \code{All}.}
+\item{activity_level}{One of \code{under_30_min}, \code{30_min_to_5_hr}, 
+\code{over_5_hr}, or (default) \code{All}.}
 
-\item{gender}{One of \code{male}, \code{female}, \code{other}, or (default) \code{All}.}
+\item{gender}{One of \code{male}, \code{female}, \code{other}, or (default) 
+\code{All}.}
 
-\item{registration_status}{One of \code{audit}, \code{verified}, or (default) \code{All}.}
+\item{registration_status}{One of \code{audit}, \code{verified}, or (default) 
+\code{All}.}
 
 \item{category}{One of the forum categories.}
 }

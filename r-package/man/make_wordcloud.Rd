@@ -7,11 +7,14 @@
 make_wordcloud(wordcloud_data, max_words = 20, scale = c(3.5, 1))
 }
 \arguments{
-\item{wordcloud_data}{A dataframe showing the counts of the top words in the selected subcategory.}
+\item{wordcloud_data}{A dataframe showing the counts of the top words in the 
+selected subcategory.}
 
-\item{max_words}{The maximum number of words to show in the wordcloud. Default is 20.}
+\item{max_words}{The maximum number of words to show in the wordcloud. 
+Default is 20.}
 
-\item{scale}{A list giving the range of sizes to for the display of words in the wordcloud. Default is c(3.5,1).}
+\item{scale}{A list giving the range of sizes to for the display of words in 
+the wordcloud. Default is c(3.5,1).}
 }
 \value{
 A wordcloud object.

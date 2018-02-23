@@ -7,8 +7,8 @@
 get_mean_scores_filterable(filtered_problems_tbl)
 }
 \arguments{
-\item{filtered_problems_tbl}{The result of `read_multiple_choice_csv` filtered
-by demographics and chapter}
+\item{filtered_problems_tbl}{The result of `read_multiple_choice_csv` 
+filtered by demographics and chapter}
 
 \item{name_lookup}{A JSON object contain keys for `id`, `problem`,
 `chapter_name`, `chapter_name`, `choices`, `correct_id` and `correct`}

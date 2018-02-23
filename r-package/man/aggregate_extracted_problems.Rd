@@ -18,5 +18,6 @@ aggregate_extracted_problems(joined_user_problems, extreme_problems,
 A dataframe with `problem,` `choice` and percent `correct`
 }
 \description{
-Calculates the percent of students selected each option and determines if that option is correct.
+Calculates the percent of students selected each option and determines if 
+  that option is correct.
 }

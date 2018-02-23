@@ -2,7 +2,8 @@
 % Please edit documentation in R/overview_engagement_server.R
 \name{create_module_name}
 \alias{create_module_name}
-\title{Create a new column "chapter_name" for course item dataframe in order to implement module filtering}
+\title{Create a new column "chapter_name" for course item dataframe in order to 
+ implement module filtering}
 \usage{
 create_module_name(item_df)
 }
@@ -13,7 +14,8 @@ create_module_name(item_df)
 item_df A coure axis dataframe adding chapter_name column
 }
 \description{
-Create a new column "chapter_name" for course item dataframe in order to implement module filtering
+Create a new column "chapter_name" for course item dataframe in order to 
+ implement module filtering
 }
 \examples{
 create_module_name(item_df = tower_item)

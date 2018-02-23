@@ -7,18 +7,21 @@
 filter_forum_elements(forum_elements, category)
 }
 \arguments{
-\item{forum_elements}{The forum elements dataframe that was passed in from the wrangling script.}
+\item{forum_elements}{The forum elements dataframe that was passed in from 
+the wrangling script.}
 
 \item{category}{The forum category that the user has selected.}
 }
 \value{
-\code{filtered_forum_elements} The same dataframe, filtered by category if appropriate.
+\code{filtered_forum_elements} The same dataframe, filtered by 
+  category if appropriate.
 }
 \description{
 Filter the forum elements by the selected filter variables.
 }
 \details{
-The forum elements dataframe only needs to be filtered by category, since it doesn't include any variables related to students.
+The forum elements dataframe only needs to be filtered by category, since it 
+  doesn't include any variables related to students.
 }
 \examples{
 filter_forum_elements(wrangled_forum_elements, "Part 1")

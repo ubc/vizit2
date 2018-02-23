@@ -14,12 +14,15 @@ check_integrity(start, end, max_stop_position)
 \item{max_stop_position}{Length of the video being watched}
 }
 \value{
-\code{integrity}: Boolean of whether or not the data passes integrity checks
+\code{integrity}: Boolean of whether or not the data passes integrity 
+  checks
 }
 \description{
-Returns a boolean of whether or not start and end data makes sense. This checks for NA values,
-end times that are passed the maximum length of the video, and extremely long and short watch durations.
-The threshold for watch durations can be adjusted in the global constants: \code{MIN_DURATION} and \code{MAX_DURATION}
+Returns a boolean of whether or not start and end data makes 
+  sense. This checks for NA values, end times that are passed the maximum 
+  length of the video, and extremely long and short watch durations.
+  The threshold for watch durations can be adjusted in the global constants: 
+  \code{MIN_DURATION} and \code{MAX_DURATION}
 }
 \examples{
 check_integrity(start, end, max_stop_position)

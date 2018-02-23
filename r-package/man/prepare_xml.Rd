@@ -10,7 +10,8 @@ prepare_xml(xml)
 \item{xml}{An XML file containing information about the course elements.}
 }
 \value{
-A dataframe with three columns: \code{display_name}, \code{discussion_category}, and \code{discussion_target}.
+A dataframe with three columns: \code{display_name}, 
+  \code{discussion_category}, and \code{discussion_target}.
 }
 \description{
 Prepare the XML file for joining with the JSON file.

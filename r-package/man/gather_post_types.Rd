@@ -9,10 +9,12 @@ gather_post_types(forum_data, grouping_var)
 \arguments{
 \item{forum_data}{The forum data for the main barplot.}
 
-\item{grouping_var}{grouping_var One of \code{discussion_category} or \code{display_name}, depending on whether a category has been selected.}
+\item{grouping_var}{grouping_var One of \code{discussion_category} or 
+\code{discussion_target}, depending on whether a category has been selected.}
 }
 \value{
-\code{gathered} A dataframe with the post types gathered into a single column.
+\code{gathered} A dataframe with the post types gathered into a 
+  single column.
 }
 \description{
 Gather the post types into a single column for easy plotting.

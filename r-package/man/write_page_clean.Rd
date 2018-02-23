@@ -13,5 +13,8 @@ write_page_clean(input_course, cleaned_data)
 Export the tidy page dataframe
 }
 \examples{
-write_page_clean(input_course = "psyc1",cleaned_data = prepare_tidy_page)
+write_page_clean(
+  input_course = "psyc1",
+  cleaned_data = prepare_tidy_page
+)
 }

@@ -2,20 +2,25 @@
 % Please edit documentation in R/forum_wrangling.R
 \name{get_discussion_vars_json}
 \alias{get_discussion_vars_json}
-\title{Get the variables associated with each forum element in the JSON file. (for use in \code{prepare_json}).}
+\title{Get the variables associated with each forum element in the JSON file. (for 
+  use in \code{prepare_json}).}
 \usage{
 get_discussion_vars_json(i, all_elements)
 }
 \arguments{
 \item{i}{An iterator.}
 
-\item{all_elements}{A nested list containing attributes for each course element.}
+\item{all_elements}{A nested list containing attributes for each course 
+element.}
 }
 \value{
-A vector containing the \code{commentable_id}, \code{display_name}, \code{discussion_category}, and \code{discussion_target} of a course element.
+A vector containing the \code{commentable_id}, \code{display_name}, 
+  \code{discussion_category}, and \code{discussion_target} of a course 
+  element.
 }
 \description{
-Get the variables associated with each forum element in the JSON file. (for use in \code{prepare_json}).
+Get the variables associated with each forum element in the JSON file. (for 
+  use in \code{prepare_json}).
 }
 \examples{
 get_discussion_vars_json(i, all_elements)

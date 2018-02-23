@@ -15,5 +15,5 @@ each option.}
 A facetted ggplot bar chart
 }
 \description{
-This funciton is used to plot the top or bottom questions.
+This function is used to plot the top or bottom questions.
 }

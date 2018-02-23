@@ -2,22 +2,26 @@
 % Please edit documentation in R/video_server.R
 \name{get_up_until_plot}
 \alias{get_up_until_plot}
-\title{Obtains heatmap plot highlighting which segment has been watched up until on average}
+\title{Obtains heatmap plot highlighting which segment has been watched up until on 
+  average}
 \usage{
 get_up_until_plot(filtered_segments, module, filtered_ch_markers)
 }
 \arguments{
-\item{filtered_segments}{Dataframe of segments and corresponding watch counts filtered by demographics}
+\item{filtered_segments}{Dataframe of segments and corresponding watch counts 
+filtered by demographics}
 
 \item{module}{String of module (chapter) name to display}
 
-\item{filtered_ch_markers}{List of values containing locations of where to put chapter markers}
+\item{filtered_ch_markers}{List of values containing locations of where to 
+put chapter markers}
 }
 \value{
 \code{g}: ggplot heatmap object
 }
 \description{
-Obtains heatmap plot highlighting which segment has been watched up until on average
+Obtains heatmap plot highlighting which segment has been watched up until on 
+  average
 }
 \examples{
 get_up_until_plot(filtered_segments, module, filtered_ch_markers)

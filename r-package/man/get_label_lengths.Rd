@@ -2,7 +2,8 @@
 % Please edit documentation in R/forum_server.R
 \name{get_label_lengths}
 \alias{get_label_lengths}
-\title{Get the lengths of the labels on the main barplot (either the categories or the subcategories).}
+\title{Get the lengths of the labels on the main barplot (either the categories or 
+  the subcategories).}
 \usage{
 get_label_lengths(forum_data, category)
 }
@@ -12,10 +13,12 @@ get_label_lengths(forum_data, category)
 \item{category}{The selected category.}
 }
 \value{
-\code{label_lengths} A list with the lengths (in characters) of each label on the main plot.
+\code{label_lengths} A list with the lengths (in characters) of each 
+  label on the main plot.
 }
 \description{
-Get the lengths of the labels on the main barplot (either the categories or the subcategories).
+Get the lengths of the labels on the main barplot (either the categories or 
+  the subcategories).
 }
 \examples{
 get_label_lengths(forum_data, "Technical Questions")

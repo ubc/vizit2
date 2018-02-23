@@ -7,7 +7,8 @@
 set_forum_plot_ylabel(plot_variable)
 }
 \arguments{
-\item{plot_variable}{One of (default) \code{posts}, \code{authors}, or \code{views}.}
+\item{plot_variable}{One of (default) \code{posts}, \code{authors}, or 
+\code{views}.}
 }
 \value{
 \code{forum_plot_ylabe} The label of the y-axis in the main barplot.

@@ -12,7 +12,8 @@ get_top_language_df(data, top_selection)
 \item{top_selection}{Number of languages to include within the data frame}
 }
 \value{
-A data frame containing languages with the most number of students who speak it
+A data frame containing languages with the number of students 
+  who speak each one
 }
 \description{
 Returns a language aggregated data frame

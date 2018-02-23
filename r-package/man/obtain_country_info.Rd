@@ -2,7 +2,8 @@
 % Please edit documentation in R/general_wrangling.R
 \name{obtain_country_info}
 \alias{obtain_country_info}
-\title{Obtains a data frame with countries and ISO codes of their associated languages}
+\title{Obtains a data frame with countries and ISO codes of their associated 
+  languages}
 \usage{
 obtain_country_info()
 }
@@ -10,7 +11,8 @@ obtain_country_info()
 Data frame with countries and their associated ISO language codes
 }
 \description{
-Obtains a data frame with countries and ISO codes of their associated languages
+Obtains a data frame with countries and ISO codes of their associated 
+  languages
 }
 \examples{
 obtain_country_info()

@@ -7,7 +7,7 @@
 write_tidy_engagement_data(input_course, cleaned_data)
 }
 \arguments{
-\item{input_course}{Name of course directory (ex. psyc1, spd1, marketing, etc)}
+\item{input_course}{Name of course directory (ex. psyc1, spd1, etc)}
 
 \item{cleaned_data}{Dataframe containing cleaned data.}
 }
@@ -15,5 +15,8 @@ write_tidy_engagement_data(input_course, cleaned_data)
 Write cleaned data as a csv into the specified course directory
 }
 \examples{
-write_tidy_engagement_data(input_course = 'psyc1', cleaned_data = clean_engagement_data)
+write_tidy_engagement_data(
+  input_course = 'psyc1', 
+  cleaned_data = clean_engagement_data
+)
 }

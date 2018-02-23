@@ -2,7 +2,8 @@
 % Please edit documentation in R/get_checksum.R
 \name{get_hashed_dashboard}
 \alias{get_hashed_dashboard}
-\title{Writes csv with dashboard name and their corresponding checksums to the data directory}
+\title{Writes csv with dashboard name and their corresponding checksums to the data 
+  directory}
 \usage{
 get_hashed_dashboard()
 }
@@ -10,7 +11,8 @@ get_hashed_dashboard()
 No value is returned
 }
 \description{
-Writes csv with dashboard name and their corresponding checksums to the data directory
+Writes csv with dashboard name and their corresponding checksums to the data 
+  directory
 }
 \examples{
 get_hashed_dashboard()

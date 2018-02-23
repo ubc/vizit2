@@ -10,7 +10,9 @@ prepare_json(json)
 \item{json}{A JSON file containing information about the course elements.}
 }
 \value{
-A dataframe with four columns: \code{commentable_id}, \code{display_name}, \code{discussion_category}, and \code{discussion_target}.
+A dataframe with four columns: \code{commentable_id}, 
+  \code{display_name}, \code{discussion_category}, and 
+  \code{discussion_target}.
 }
 \description{
 Prepare the JSON file for joining with the XML file.

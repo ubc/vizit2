@@ -7,7 +7,8 @@
 set_breakdown(plot_variable, breakdown)
 }
 \arguments{
-\item{plot_variable}{One of (default) \code{posts}, \code{authors}, or \code{views}.}
+\item{plot_variable}{One of (default) \code{posts}, \code{authors}, or 
+\code{views}.}
 
 \item{breakdown}{One of \code{TRUE} or (default) \code{FALSE}.}
 }

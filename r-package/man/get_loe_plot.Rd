@@ -7,7 +7,8 @@
 get_loe_plot(loe_df)
 }
 \arguments{
-\item{loe_df}{Data frame containing studentes aggregated by level of education}
+\item{loe_df}{Data frame containing studentes aggregated by level of 
+education}
 }
 \value{
 Returns a ggplot geom_bar object

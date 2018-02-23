@@ -2,18 +2,21 @@
 % Please edit documentation in R/forum_server.R
 \name{set_forum_plot_title}
 \alias{set_forum_plot_title}
-\title{Set the title of the main barplot, according to the relevant variable and category.}
+\title{Set the title of the main barplot, according to the relevant variable and 
+  category.}
 \usage{
 set_forum_plot_title(plot_variable, category)
 }
 \arguments{
-\item{plot_variable}{One of (default) \code{posts}, \code{authors}, or \code{views}.}
+\item{plot_variable}{One of (default) \code{posts}, \code{authors}, or 
+\code{views}.}
 }
 \value{
 \code{forum_plot_title} A string for the plot title.
 }
 \description{
-Set the title of the main barplot, according to the relevant variable and category.
+Set the title of the main barplot, according to the relevant variable and 
+  category.
 }
 \examples{
 set_forum_plot_title("views", "Part 1")

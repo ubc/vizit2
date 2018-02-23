@@ -7,10 +7,12 @@
 get_avg_time_spent(filtered_segments)
 }
 \arguments{
-\item{filtered_segments}{Dataframe of segments and corresponding watch counts filtered by demographics}
+\item{filtered_segments}{Dataframe of segments and corresponding watch counts 
+filtered by demographics}
 }
 \value{
-\code{g}: A dataframe with the average time learners spent on each video
+\code{g}: A dataframe with the average time learners spent on each 
+  video
 }
 \description{
 Returns a dataframe with the average time learners spent on each video

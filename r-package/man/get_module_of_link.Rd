@@ -2,12 +2,14 @@
 % Please edit documentation in R/link_page_wrangling.R
 \name{get_module_of_link}
 \alias{get_module_of_link}
-\title{Get which module each external link locate based on link tracklog data and course axis data}
+\title{Get which module each external link locate based on link tracklog data and 
+  course axis data}
 \usage{
 get_module_of_link(link_data, course_axis)
 }
 \arguments{
-\item{link_data}{dataframe containing the information of student click any links in the edx course}
+\item{link_data}{dataframe containing the information of student click any 
+links in the edx course}
 
 \item{course_axis}{dataframe containing all elements in the edx course}
 }
@@ -15,8 +17,12 @@ get_module_of_link(link_data, course_axis)
 link_data
 }
 \description{
-Get which module each external link locate based on link tracklog data and course axis data
+Get which module each external link locate based on link tracklog data and 
+  course axis data
 }
 \examples{
-get_module_of_link(link_data = set_activity_level, course_axis = read_course_axis)
+get_module_of_link(
+  link_data = set_activity_level, 
+  course_axis = read_course_axis
+)
 }

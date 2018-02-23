@@ -12,7 +12,7 @@ get_language_plot(language_df, top_selection)
 \item{top_selection}{Number of different languages to include within the plot}
 }
 \value{
-Returns a plot languages with the most number of students who speak it
+Returns a plot of the number of students who speak each language
 }
 \description{
 Returns plot of language aggregated information

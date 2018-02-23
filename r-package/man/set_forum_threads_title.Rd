@@ -12,7 +12,8 @@ set_forum_threads_title(category, selected_subcategory)
 \item{selected_subcategory}{The selected subcategory.}
 }
 \value{
-\code{forum_threads_title} A string for the title of the forum threads table.
+\code{forum_threads_title} A string for the title of the forum 
+  threads table.
 }
 \description{
 Set the title of the forum threads table.

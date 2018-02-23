@@ -3,7 +3,7 @@
 \name{set_activity_level}
 \alias{set_activity_level}
 \title{Set three levels for students total spending time on course based on tracklog
-link data}
+  link data}
 \usage{
 set_activity_level(link_data)
 }
@@ -17,7 +17,7 @@ link_data a dataframe with renamed columns and factorized
 }
 \description{
 Set three levels for students total spending time on course based on tracklog
-link data
+  link data
 }
 \examples{
 set_activity_level(link_data = read_link_dirt)

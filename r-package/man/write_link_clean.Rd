@@ -13,5 +13,8 @@ write_link_clean(input_course, cleaned_data)
 Export the tidy link dataframe
 }
 \examples{
-write_link_clean(input_course = "psyc1",cleaned_data = get_module_of_link)
+write_link_clean(
+  input_course = "psyc1",
+  cleaned_data = get_module_of_link
+)
 }

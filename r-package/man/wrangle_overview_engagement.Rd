@@ -3,7 +3,8 @@
 \name{wrangle_overview_engagement}
 \alias{wrangle_overview_engagement}
 \title{This function automatically reads a file named "tower_engage_dirt.csv"
-from the specified course directory and output a clean files named "tower_engage.csv" in the same directory}
+  from the specified course directory and output a clean files named 
+  "tower_engage.csv" in the same directory}
 \usage{
 wrangle_overview_engagement(input_course)
 }
@@ -12,7 +13,8 @@ wrangle_overview_engagement(input_course)
 }
 \description{
 This function automatically reads a file named "tower_engage_dirt.csv"
-from the specified course directory and output a clean files named "tower_engage.csv" in the same directory
+  from the specified course directory and output a clean files named 
+  "tower_engage.csv" in the same directory
 }
 \examples{
 wrangle_video(input_course = "psyc1")

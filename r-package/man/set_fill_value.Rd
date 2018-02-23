@@ -7,10 +7,12 @@
 set_fill_value(plot_variable)
 }
 \arguments{
-\item{plot_variable}{One of (default) \code{posts}, \code{authors}, or \code{views}.}
+\item{plot_variable}{One of (default) \code{posts}, \code{authors}, or 
+\code{views}.}
 }
 \value{
-\code{fill_value} A hex value representing the color for the bar fill.
+\code{fill_value} A hex value representing the color for the bar 
+  fill.
 }
 \description{
 Set the fill value of the bars in the main barplot, given the plot variable.

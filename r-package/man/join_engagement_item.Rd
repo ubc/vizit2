@@ -2,8 +2,9 @@
 % Please edit documentation in R/overview_engagement_server.R
 \name{join_engagement_item}
 \alias{join_engagement_item}
-\title{Join filtered summary engagement dataframe with filtered item dataframe to match "item " ,"item name"  and "nactive" 
-convert all module item nacitve number to a constant to draw seperator line later}
+\title{Join filtered summary engagement dataframe with filtered item dataframe to 
+  match "item " ,"item name"  and "nactive" convert all module item nacitve 
+  number to a constant to draw separator line later}
 \usage{
 join_engagement_item(filtered_engagement, filtered_item)
 }
@@ -13,12 +14,17 @@ join_engagement_item(filtered_engagement, filtered_item)
 \item{filtered_item}{Filtered course axis dataframe}
 }
 \value{
-tower_df Dataframe containing item name, item category and how many student engaged with it
+tower_df Dataframe containing item name, item category and how many 
+  student engaged with it
 }
 \description{
-Join filtered summary engagement dataframe with filtered item dataframe to match "item " ,"item name"  and "nactive" 
-convert all module item nacitve number to a constant to draw seperator line later
+Join filtered summary engagement dataframe with filtered item dataframe to 
+  match "item " ,"item name"  and "nactive" convert all module item nacitve 
+  number to a constant to draw separator line later
 }
 \examples{
-join_engagement_item(filtered_engagement = filtered_tower_engage,filtered_item = filtered_tower_item)
+join_engagement_item(
+  filtered_engagement = filtered_tower_engage,
+  filtered_item = filtered_tower_item
+)
 }

@@ -7,10 +7,12 @@
 extract_assessment_json(assessment_json)
 }
 \arguments{
-\item{assessment_json}{An JSON file generated through `xml_extraction <course> --assessments`}
+\item{assessment_json}{An JSON file generated through 
+`xml_extraction <course> --assessments`}
 }
 \value{
-A flattened dataframe with the columns `url_name`, `title`, `label`, `name`
+A flattened dataframe with the columns `url_name`, `title`, `label`, 
+  `name`
 }
 \description{
 Convert a JSON object into a tidyJSON dataframe

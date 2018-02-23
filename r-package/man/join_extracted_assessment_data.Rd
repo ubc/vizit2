@@ -16,8 +16,8 @@ A joined dataframe of the two incoming dataframes
 }
 \description{
 This function joins the BigQuery and XML data. This is needed to populate the
-BigQuery data with the title and label fields. If the ID of the assessment
-does not occur in the XML, it is removed before preceding.
+  BigQuery data with the title and label fields. If the ID of the assessment
+  does not occur in the XML, it is removed before preceding.
 }
 \examples{
 join_extracted_assessment(sample_extracted_assessment_tbl, extracted_content)

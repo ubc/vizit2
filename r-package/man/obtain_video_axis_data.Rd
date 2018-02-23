@@ -7,16 +7,19 @@
 obtain_video_axis_data(input_course, testing = FALSE)
 }
 \arguments{
-\item{input_course}{Name of course directory (ex. psyc1, spd1, marketing, etc)}
+\item{input_course}{Name of course directory (ex. psyc1, spd1, etc)}
 
-\item{testing}{For developer use only. Boolean used to indicate to use testing data.}
+\item{testing}{For developer use only. Boolean used to indicate to use 
+testing data.}
 }
 \value{
-\code{video_axis}: Dataframe containing video course structure information
+\code{video_axis}: Dataframe containing video course structure 
+  information
 }
 \description{
-Reads the video_axis csv obtained through rbq.py into a dataframe. For documentation on how to use
-rbq.py, please see www.temporaryreferencelink.com
+Reads the video_axis csv obtained through rbq.py into a 
+  dataframe. For documentation on how to use rbq.py, please see 
+  www.temporaryreferencelink.com
 }
 \examples{
 obtain_video_axis_data(input_course = 'psyc1')

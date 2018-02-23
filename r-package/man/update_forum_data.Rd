@@ -8,11 +8,14 @@ update_forum_data(forum_posts, forum_views, forum_elements, activity_level,
   gender, registration_status, category)
 }
 \arguments{
-\item{forum_posts}{The forum posts dataframe passed in from the wrangling script.}
+\item{forum_posts}{The forum posts dataframe passed in from the wrangling 
+script.}
 
-\item{forum_views}{The forum views dataframe passed in from the wrangling script.}
+\item{forum_views}{The forum views dataframe passed in from the wrangling 
+script.}
 
-\item{forum_elements}{The forum elements dataframe passed in from the wrangling script.}
+\item{forum_elements}{The forum elements dataframe passed in from the 
+wrangling script.}
 
 \item{activity_level}{The activity level of the students.}
 
@@ -23,11 +26,20 @@ update_forum_data(forum_posts, forum_views, forum_elements, activity_level,
 \item{category}{The forum category.}
 }
 \value{
-\code{filtered_forum_data} A dataframe with one row per subcategory (or category), and counts for each variable.
+\code{filtered_forum_data} A dataframe with one row per subcategory 
+  (or category), and counts for each variable.
 }
 \description{
 Update the post, view, and author counts for the selected filters.
 }
 \examples{
-update_forum_data(wrangled_forum_posts, wrangled_forum_views, filtered_forum_elements(), "over_5_hr", "other", "audit", "All")
+update_forum_data(
+  wrangled_forum_posts,
+  wrangled_forum_views, 
+  filtered_forum_elements(), 
+  "over_5_hr", 
+  "other", 
+  "audit", 
+  "All"
+)
 }

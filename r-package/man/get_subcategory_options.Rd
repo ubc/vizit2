@@ -9,10 +9,12 @@ get_subcategory_options(category, filtered_forum_elements)
 \arguments{
 \item{category}{The selected category.}
 
-\item{filtered_forum_elements}{The forum elements dataframe, filtered by the selected category.}
+\item{filtered_forum_elements}{The forum elements dataframe, filtered by the 
+selected category.}
 }
 \value{
-\code{subcategory_options} A list of options for the user to select from.
+\code{subcategory_options} A list of options for the user to select 
+  from.
 }
 \description{
 Get the options for the subcategory options, given the selected category.

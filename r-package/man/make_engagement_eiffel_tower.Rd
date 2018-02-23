@@ -2,12 +2,14 @@
 % Please edit documentation in R/overview_engagement_server.R
 \name{make_engagement_eiffel_tower}
 \alias{make_engagement_eiffel_tower}
-\title{Make effiel tower plot :  all video/problem course items vs. number of engaging student}
+\title{Make eiffel tower plot: all video/problem course items vs. number of engaged 
+  students}
 \usage{
 make_engagement_eiffel_tower(tower_data)
 }
 \description{
-Make effiel tower plot :  all video/problem course items vs. number of engaging student
+Make eiffel tower plot: all video/problem course items vs. number of engaged 
+  students
 }
 \examples{
 make_engagement_eiffel_tower(tower_data = reactive_tower_df())

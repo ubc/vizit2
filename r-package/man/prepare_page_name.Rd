@@ -2,7 +2,8 @@
 % Please edit documentation in R/link_page_wrangling.R
 \name{prepare_page_name}
 \alias{prepare_page_name}
-\title{Get non-video and non-problem element name then create a chapter/module column for all these course elements}
+\title{Get non-video and non-problem element name then create a chapter/module 
+  column for all these course elements}
 \usage{
 prepare_page_name(course_axis)
 }
@@ -13,7 +14,8 @@ prepare_page_name(course_axis)
 page_name
 }
 \description{
-Get non-video and non-problem element name then create a chapter/module column for all these course elements
+Get non-video and non-problem element name then create a chapter/module 
+  column for all these course elements
 }
 \examples{
 prepare_page_name(course_axis =  read_course_axis)

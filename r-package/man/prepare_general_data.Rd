@@ -9,9 +9,11 @@ prepare_general_data(data, language_info, country_info)
 \arguments{
 \item{data}{Data frame containing student demographic information}
 
-\item{language_info}{Data frame containing languages and their associated ISO codes}
+\item{language_info}{Data frame containing languages and their associated ISO 
+codes}
 
-\item{country_info}{Data frame with countries and their associated languages as ISO codes}
+\item{country_info}{Data frame with countries and their associated languages 
+as ISO codes}
 }
 \value{
 Cleaned data frame containing demographic information
@@ -20,5 +22,9 @@ Cleaned data frame containing demographic information
 Cleans raw demographic data
 }
 \examples{
-prepare_general_data(obtain_raw_general_data('psyc1'), language_info(), country_info())
+prepare_general_data(
+  obtain_raw_general_data('psyc1'), 
+  language_info(), 
+  country_info()
+)
 }

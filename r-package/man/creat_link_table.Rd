@@ -2,7 +2,8 @@
 % Please edit documentation in R/link_page_server.R
 \name{creat_link_table}
 \alias{creat_link_table}
-\title{Create a page summary table to show page(name,clickable hyperlink) and its page view sorted by pageview in descending order}
+\title{Create a page summary table to show page(name,clickable hyperlink) and its 
+  page view sorted by pageview in descending order}
 \usage{
 creat_link_table(link_summary)
 }
@@ -13,7 +14,8 @@ creat_link_table(link_summary)
 page_df
 }
 \description{
-Create a page summary table to show page(name,clickable hyperlink) and its page view sorted by pageview in descending order
+Create a page summary table to show page(name,clickable hyperlink) and its 
+  page view sorted by pageview in descending order
 }
 \examples{
 creat_page_table(page_summary = reactive_page())

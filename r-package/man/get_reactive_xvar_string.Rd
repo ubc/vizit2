@@ -10,7 +10,8 @@ get_reactive_xvar_string(category)
 \item{category}{The selected category.}
 }
 \value{
-\code{reactive_xvar_string} A string that matches the function to call for the x value of aes_string().
+\code{reactive_xvar_string} A string that matches the function to 
+  call for the x value of aes_string().
 }
 \description{
 Get the function to pass into the x value of aes_string() in the main barplot.

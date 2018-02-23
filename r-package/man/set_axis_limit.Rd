@@ -10,24 +10,34 @@ set_axis_limit(forum_data, plot_variable, label_lengths,
 \arguments{
 \item{forum_data}{The forum data for the main barplot.}
 
-\item{plot_variable}{One of (default) \code{posts}, \code{authors}, or \code{views}.}
+\item{plot_variable}{One of (default) \code{posts}, \code{authors}, or 
+\code{views}.}
 
-\item{label_lengths}{A list containing the lengths (in characters) of each label on the barplot.}
+\item{label_lengths}{A list containing the lengths (in characters) of each 
+label on the barplot.}
 
-\item{min_axis_length}{The axis length to set if all the values are set to zero (i.e. all students have been filtered out). Default is 0.1 so that the axis is minimally affected when values are small.}
+\item{min_axis_length}{The axis length to set if all the values are set to 
+zero (i.e. all students have been filtered out). Default is 0.1 so that the
+axis is minimally affected when values are small.}
 
-\item{percent_addition_per_char}{The percentage by which to expand the axis per character in the label of the longest bar. Default is 0.023 because that tends to look good.}
+\item{percent_addition_per_char}{The percentage by which to expand the axis 
+per character in the label of the longest bar. Default is 0.023 because 
+that tends to look good.}
 }
 \value{
-\code{axis_limit} The maximum axis limit for the horizontal axis in the main barplot.
+\code{axis_limit} The maximum axis limit for the horizontal axis in 
+  the main barplot.
 }
 \description{
 Set the horizontal axis limit of the main barplot.
 }
 \details{
-Usually, the variance in bar lengths is greater than the variance in label lengths.
-If this is not the case, it is possible that the axis limit will need to be expanded further.
-For example, the second-longest bar may have a label that is twice as long as the label of the longest bar.
+Usually, the variance in bar lengths is greater than the variance in label 
+  lengths.
+If this is not the case, it is possible that the axis limit will need to be 
+  expanded further.
+For example, the second-longest bar may have a label that is twice as long as
+  the label of the longest bar.
 In the future, it will be desirable to account for these cases.
 }
 \examples{
