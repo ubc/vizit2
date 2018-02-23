@@ -28,6 +28,9 @@ videoModule <- function(input, output, session)
   top_selection2 <- reactive({
     as.integer(input$top_selection2)
   })
+  daterange <- reactive({
+    input$dateRange
+  })
 
   # Obtain requested course to display:
   requested_course <- reactive({
@@ -48,6 +51,22 @@ videoModule <- function(input, output, session)
                                                requested_course(),
                                                "/wrangled_video_heat.csv"), 
                                         read_csv)
+  
+  ### Read data for time plot: ###
+  events_df <- reactiveFileReader(1000,
+                                  session,
+                                  paste0(root,
+                                         requested_course(),
+                                         "/generalized_video_heat.csv"), 
+                                  read_csv)
+  
+  ### Read data for time plot: ###
+  axis_df <- reactiveFileReader(1000,
+                                  session,
+                                  paste0(root,
+                                         requested_course(),
+                                         "/generalized_video_axis.csv"), 
+                                  read_csv)
   
   ### Get Chap Name ###
   chap_name <- reactive({
@@ -88,6 +107,31 @@ videoModule <- function(input, output, session)
                                               top_selection())
     
     return(aggregate_segment_df)
+  })
+  
+  #### Filtering for video time plot: ###
+  filtered_events <- reactive({
+    
+    validate(need(try(nrow(tidy_segment_df()) > 0), "No segments found."))
+    
+    # Filter students by selected demographics
+    filt_events <- filter_demographics(events_df(),
+                                     gender = gender(),
+                                     activity_level = activity_level(),
+                                     mode = mode()) %>% 
+      dplyr::left_join(axis_df())
+    
+    # Filter to select only the requested chapters.
+    filt_events <- filt_events %>% 
+      dplyr::rename(chapter = chapter_name) %>% 
+      filter_chapter(chapter = module())
+    
+    # Filter to select only the requested date range.
+    filt_events <- filt_events %>% 
+      filter(as.Date(time) >= daterange()[1] & as.Date(time) <= daterange()[2])
+    
+    return(filt_events)
+    
   })
 
   #### Filtering for number of students: ###
@@ -214,7 +258,8 @@ videoModule <- function(input, output, session)
   
   ### When have students viewed each video?
   output$across_time <- plotly::renderPlotly({
-    g <- make_video_time_plot(filtered_viewers(),
+    g <- make_video_time_plot(filtered_events(),
+                              axis_df(),
                               module(),
                               filtered_ch_markers())
     

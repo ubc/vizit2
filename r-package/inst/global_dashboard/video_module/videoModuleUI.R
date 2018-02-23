@@ -102,10 +102,10 @@ videoModuleUI <- function(id) {
         id = ns("views_across_time"),
         multiple = TRUE,
         bsCollapsePanel(
-          title = "↕ When were videos most viewed?",
-          dateRangeInput('dateRange',
+          title = "↕ When have my learners viewed each video?",
+          dateRangeInput(ns('dateRange'),
                          label = 'Date range input: yyyy-mm-dd',
-                         start = Sys.Date() - 14,
+                         start = Sys.Date() - 365,
                          end = Sys.Date()),
           plotly::plotlyOutput(ns("across_time")), 
           style = 'primary'

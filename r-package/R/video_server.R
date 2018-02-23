@@ -532,3 +532,59 @@ get_module_options <- function(chap_name) {
   module_options <- append("All", chap_name)
   return(module_options)
 }
+
+make_video_time_plot <- function(filt_events, axis, module, ch_markers) {
+  
+  all_dates <- seq(
+    from = min(as.Date(filt_events$time), na.rm = T), 
+    to = max(as.Date(filt_events$time), na.rm = T), 
+    by = 1
+  )
+  all_videos <- unique(
+    filt_events$video_name
+  )[!is.na(unique(filt_events$video_name))]
+  
+  complete_dates <- data.frame(
+    video_name = sort(rep(all_videos, times = length(all_dates))),
+    date = rep(all_dates, times = length(all_videos))
+  ) %>% 
+    left_join(axis)
+  
+  prepared <- filt_events %>% 
+    group_by(video_name, index_video, date = as.Date(time)) %>% 
+    summarise(viewers = n_distinct(user_id)) %>%
+    filter(!is.na(video_name)) %>% 
+    right_join(complete_dates) %>% 
+    mutate(viewers = case_when(
+      !is.na(viewers) ~ viewers,
+      TRUE ~ as.integer(0)
+    ))
+  
+  g <- ggplot(prepared) +
+    geom_tile(
+      aes_string(
+        x = "date", 
+        y = "fct_reorder(video_name, index_video, .desc = T)", 
+        fill = "viewers",
+        text = "paste0(video_name, \"<br>\",
+                date, \"<br>\",
+                viewers,\" viewers\")"
+      )
+    ) +
+    scale_fill_continuous(type = "viridis") +
+    theme(axis.title.y = element_blank(), 
+          axis.text.y = element_blank(), 
+          axis.ticks.y = element_blank()) + 
+    ggthemes::theme_few(base_family = "GillSans") + 
+    theme(axis.text.y = element_blank(), 
+          axis.ticks.y = element_blank()) + 
+    xlab("Date") + 
+    ylab("Video")
+  
+  if (module == "All") {
+    g <- g + geom_hline(yintercept = ch_markers)
+  }
+  
+  return(g)
+  
+}
