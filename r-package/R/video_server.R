@@ -564,7 +564,7 @@ make_video_time_plot <- function(filt_events, axis, module, ch_markers) {
     geom_tile(
       aes_string(
         x = "date", 
-        y = "fct_reorder(video_name, index_video, .desc = T)", 
+        y = "forcats::fct_reorder(video_name, index_video, .desc = T)", 
         fill = "viewers",
         text = "paste0(video_name, \"<br>\",
                 date, \"<br>\",
