@@ -533,6 +533,20 @@ get_module_options <- function(chap_name) {
   return(module_options)
 }
 
+
+#' Make a heatmap showing the number of unique viewers across time.
+#' 
+#' @param filt_events A dataframe containing the video events filtered down
+#'   by the user's selected inputs.
+#' @param axis A dataframe containing information about each video.
+#' @param module The selected module, as defined by the user.
+#' @param ch_markers A dataframe containing the locations of each chapter
+#'   separator.
+#' 
+#' @return A ggplot object showing the number of unique viewers across time.
+#' @import dplyr
+#' @import ggplot2
+#' @export
 make_video_time_plot <- function(filt_events, axis, module, ch_markers) {
   
   all_dates <- seq(
@@ -548,21 +562,21 @@ make_video_time_plot <- function(filt_events, axis, module, ch_markers) {
     video_name = sort(rep(all_videos, times = length(all_dates))),
     date = rep(all_dates, times = length(all_videos))
   ) %>% 
-    left_join(axis)
+    dplyr::left_join(axis)
   
   prepared <- filt_events %>% 
-    group_by(video_name, index_video, date = as.Date(time)) %>% 
-    summarise(viewers = n_distinct(user_id)) %>%
-    filter(!is.na(video_name)) %>% 
-    right_join(complete_dates) %>% 
-    mutate(viewers = case_when(
+    dplyr::group_by(video_name, index_video, date = as.Date(time)) %>% 
+    dplyr::summarise(viewers = n_distinct(user_id)) %>%
+    dplyr::filter(!is.na(video_name)) %>% 
+    dplyr::right_join(complete_dates) %>% 
+    dplyr::mutate(viewers = dplyr::case_when(
       !is.na(viewers) ~ viewers,
       TRUE ~ as.integer(0)
     ))
   
-  g <- ggplot(prepared) +
-    geom_tile(
-      aes_string(
+  g <- ggplot2::ggplot(prepared) +
+    ggplot2::geom_tile(
+      ggplot2::aes_string(
         x = "date", 
         y = "forcats::fct_reorder(video_name, index_video, .desc = T)", 
         fill = "viewers",
@@ -578,13 +592,13 @@ make_video_time_plot <- function(filt_events, axis, module, ch_markers) {
           axis.text.y = element_blank(), 
           axis.ticks.y = element_blank()) + 
     ggthemes::theme_few(base_family = "GillSans") + 
-    theme(axis.text.y = element_blank(), 
+    ggplot2::theme(axis.text.y = element_blank(), 
           axis.ticks.y = element_blank()) + 
-    xlab("Date") + 
-    ylab("Video")
+    ggplot2::xlab("Date") + 
+    ggplot2::ylab("Video")
   
   if (module == "All") {
-    g <- g + geom_hline(yintercept = ch_markers)
+    g <- g + ggplot2::geom_hline(yintercept = ch_markers)
   }
   
   return(g)
