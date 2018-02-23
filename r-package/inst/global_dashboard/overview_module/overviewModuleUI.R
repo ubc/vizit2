@@ -71,7 +71,9 @@ overviewModuleUI <- function(id) {
         
         bsCollapsePanel(
           "↕ How many learners have engaged with each course element?",
-          plotly::plotlyOutput(ns("tower_plot"),height = '800px'),
+          shinycssloaders::withSpinner(
+            plotly::plotlyOutput(ns("tower_plot"),height = '800px')
+          ),
           style = 'primary')
         
       )

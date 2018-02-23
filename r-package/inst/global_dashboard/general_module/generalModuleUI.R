@@ -67,7 +67,9 @@ generalModuleUI <- function(id) {
                  multiple = TRUE, 
                  open = "↕ What are my learners' levels of education?",
                  bsCollapsePanel("↕ What are my learners' levels of education?",
-                                 plotOutput(ns("loe_demo")),
+                                 shinycssloaders::withSpinner(
+                                   plotOutput(ns("loe_demo"))
+                                  ),
                                  style = 'primary'))),
 
     # Location
@@ -75,7 +77,9 @@ generalModuleUI <- function(id) {
       bsCollapse(id = ns("location"),
                  multiple = TRUE,
                  bsCollapsePanel("↕ Where are my learners located? (top 10 countries)",
-                                 plotOutput(ns("continent_demo")),
+                                 shinycssloaders::withSpinner(
+                                   plotOutput(ns("continent_demo"))
+                                 ),
                                  style = 'primary'))),
 
     # Language
@@ -83,7 +87,9 @@ generalModuleUI <- function(id) {
       bsCollapse(id = ns("language"), 
                  multiple = TRUE,
                  bsCollapsePanel("↕ What languages do my learners speak? (top 10 languages)",
-                                 plotOutput(ns("language_demo")),
+                                 shinycssloaders::withSpinner(
+                                   plotOutput(ns("language_demo"))
+                                 ),
                                  style = 'primary'))),
 
     # Age
@@ -91,7 +97,9 @@ generalModuleUI <- function(id) {
       bsCollapse(id = ns("age"), 
                  multiple = TRUE,
                  bsCollapsePanel("↕ What age are my learners?",
-                                 plotOutput(ns("age_demo")),
+                                 shinycssloaders::withSpinner(
+                                   plotOutput(ns("age_demo"))
+                                 ),
                                  style = 'primary')))
     
   )

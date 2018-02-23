@@ -113,14 +113,14 @@ forumModuleUI <- function(id) {
                                h5(htmlOutput(
                                  ns("forum_plot_subtitle")
                                ))),
-              plotOutput(ns("forum_plot"))
+              shinycssloaders::withSpinner(plotOutput(ns("forum_plot")))
             ),
             # Show the wordcloud.
             column(width = 4,
                    h4(htmlOutput(
                      ns("wordcloud_title")
                    ), align = "center"),
-                   plotOutput(ns("wordcloud"))
+                   shinycssloaders::withSpinner(plotOutput(ns("wordcloud")))
             )
           ),
           # Third row for the threads table.
@@ -132,7 +132,7 @@ forumModuleUI <- function(id) {
                 "forum_threads_title"
               ))),
               h5("(Filter applies to authors)"),
-              dataTableOutput(ns("forum_threads"))
+              shinycssloaders::withSpinner(dataTableOutput(ns("forum_threads")))
             )
           ),
           style = "primary"
@@ -148,7 +148,7 @@ forumModuleUI <- function(id) {
         open = "↕ What are students searching for in the discussion forums?",
         bsCollapsePanel(
           "↕ What are students searching for in the discussion forums?",
-          dataTableOutput(ns("searches")),
+          shinycssloaders::withSpinner(dataTableOutput(ns("searches"))),
           style = "primary"
         )
       )

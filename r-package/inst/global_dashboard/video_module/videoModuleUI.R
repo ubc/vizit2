@@ -57,7 +57,7 @@ videoModuleUI <- function(id) {
         open = "↕ How many learners have viewed each video? (colour shows viewers; x-axis is video length)",
         bsCollapsePanel(
           title = "↕ How many learners have viewed each video? (colour shows viewers; x-axis is video length)",
-          plotly::plotlyOutput(ns("most_viewed")),
+          shinycssloaders::withSpinner(plotly::plotlyOutput(ns("most_viewed"))),
           style = 'primary'
         )
       )
@@ -70,7 +70,7 @@ videoModuleUI <- function(id) {
         multiple = TRUE,
         bsCollapsePanel(
           title = "↕ Which 20-second segments are viewed most within each video?",
-          plotly::plotlyOutput(ns("video_heatmap")),
+          shinycssloaders::withSpinner(plotly::plotlyOutput(ns("video_heatmap"))),
           style = 'primary'
         )
       )
@@ -90,7 +90,7 @@ videoModuleUI <- function(id) {
                         "Top 25" = 25,
                         "Top 50" = 50),
             selected = 10),
-          plotly::plotlyOutput(ns("surprising")), 
+          shinycssloaders::withSpinner(plotly::plotlyOutput(ns("surprising"))), 
           style = 'primary'
         )
       )
@@ -107,7 +107,7 @@ videoModuleUI <- function(id) {
                          label = 'Date range input: yyyy-mm-dd',
                          start = Sys.Date() - 365,
                          end = Sys.Date()),
-          plotly::plotlyOutput(ns("across_time")), 
+          shinycssloaders::withSpinner(plotly::plotlyOutput(ns("across_time"))), 
           style = 'primary'
         )
       )
@@ -120,7 +120,7 @@ videoModuleUI <- function(id) {
         multiple = TRUE,
         bsCollapsePanel(
           title = "↕ Summary Table",
-          dataTableOutput(ns("summary_tbl")),
+          shinycssloaders::withSpinner(dataTableOutput(ns("summary_tbl"))),
           br(),
           style = 'primary'
         )

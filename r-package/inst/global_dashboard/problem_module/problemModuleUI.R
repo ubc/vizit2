@@ -56,7 +56,7 @@ problemModuleUI <- function(id) {
         bsCollapsePanel(
           title = "↕ How well are students performing in each module?",
           #tags$p("This plot shows the average grade achieved by students on the multiple choice problems in each module."),
-          plotOutput(ns("overview_plot")),
+          shinycssloaders::withSpinner(plotOutput(ns("overview_plot"))),
           style = "primary"
         )
       )
@@ -67,7 +67,9 @@ problemModuleUI <- function(id) {
         id = ns("bottom_questions_panel"),
         bsCollapsePanel(
           "↕ What are the three hardest problems?",
-          plotOutput(ns("bottom_questions"), height = "600px"),
+          shinycssloaders::withSpinner(
+            plotOutput(ns("bottom_questions"), height = "600px")
+          ),
           style = "primary"
         )
       )
@@ -76,14 +78,9 @@ problemModuleUI <- function(id) {
     fluidRow(
       bsCollapse(
         id = ns("assessment_panel"),
-        # tags$p("Open Response Assessments are short essays that are reviewed by
-        #        the students themselves, by their peers, and occasionally by 
-        #        the instructor. If the instructor has completed an assessment,
-        #        it will be recorded as the final grade. Otherwise, the final
-        #        grade is determined by the peer assessments."),
         bsCollapsePanel(
           title = "↕ How are students assessed on Open Response Assessments?",
-          plotOutput(ns("assessment_plot")),
+          shinycssloaders::withSpinner(plotOutput(ns("assessment_plot"))),
           style = "primary"
         )
       )
@@ -94,7 +91,9 @@ problemModuleUI <- function(id) {
         id = ns("chapter_overview_panel"),
         bsCollapsePanel(
           title = "↕ What is the average score on each problem?",
-          DT::dataTableOutput(ns("chapter_table")),
+          shinycssloaders::withSpinner(
+            DT::dataTableOutput(ns("chapter_table"))
+          ),
           style = "primary"
         )
       )
