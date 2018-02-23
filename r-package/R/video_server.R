@@ -571,7 +571,9 @@ make_video_time_plot <- function(filt_events, axis, module, ch_markers) {
                 viewers,\" viewers\")"
       )
     ) +
-    scale_fill_continuous(type = "viridis") +
+    viridis::scale_fill_viridis(
+      name = "Unique viewers"
+    ) +
     theme(axis.title.y = element_blank(), 
           axis.text.y = element_blank(), 
           axis.ticks.y = element_blank()) + 
