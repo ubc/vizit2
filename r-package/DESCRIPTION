@@ -12,6 +12,7 @@ Imports:
     DT,
     ggthemes,
     gsubfn,
+    forcats,
     magrittr,
     lubridate,
     plotly,
@@ -40,4 +41,4 @@ Suggests:
 RoxygenNote: 6.0.1
 VignetteBuilder: packagedocs
 Remotes:
-    jeremystan/tidyjson
+    url::https://cran.r-project.org/src/contrib/Archive/tidyjson/tidyjson_0.2.2.tar.gz
