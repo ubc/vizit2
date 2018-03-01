@@ -36,9 +36,9 @@ Depends:
     shinyBS,
     shinycssloaders
 Suggests:
-  devtools,
-  packagedocs
+    devtools,
+    packagedocs
 RoxygenNote: 6.0.1
 VignetteBuilder: packagedocs
 Remotes:
-    url::https://cran.r-project.org/src/contrib/Archive/tidyjson/tidyjson_0.2.2.tar.gz
+    jeremystan/tidyjson
