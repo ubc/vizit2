@@ -6,13 +6,13 @@ Hundreds of thousands of students worldwide are enrolled in UBC’s many massive
 
 ### Documentation
 
-* [All documentation](https://davidklaing.github.io/vizit/): This page contains all of our documentation, including the following topics:
-    * [Engagement Overview Dashboard](https://davidklaing.github.io/vizit//engagement-overview-dashboard-overview.html)
-    * [General Demographics Dashboard](https://davidklaing.github.io/vizit//general-demographics-overview.html)
-    * [Forum Discussion Dashboard](https://davidklaing.github.io/vizit//forum-overview.html)
-    * [Problems Dashboard](https://davidklaing.github.io/vizit//problem-overview.html)
-    * [Video Dashboard](https://davidklaing.github.io/vizit//video-overview.html)
-    * [Deployment](https://davidklaing.github.io/vizit//deployment-walkthrough.html)
+* [All documentation](https://ubc.github.io/vizit2/): This page contains all of our documentation, including the following topics:
+    * [Engagement Overview Dashboard](https://ubc.github.io/vizit2//engagement-overview-dashboard-overview.html)
+    * [General Demographics Dashboard](https://ubc.github.io/vizit2//general-demographics-overview.html)
+    * [Forum Discussion Dashboard](https://ubc.github.io/vizit2//forum-overview.html)
+    * [Problems Dashboard](https://ubc.github.io/vizit2//problem-overview.html)
+    * [Video Dashboard](https://ubc.github.io/vizit2//video-overview.html)
+    * [Deployment](https://ubc.github.io/vizit2//deployment-walkthrough.html)
 
 ## Docker Image
 
