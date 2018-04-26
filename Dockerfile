@@ -44,7 +44,7 @@ sudo apt-get update && sudo apt-get install -y google-cloud-sdk \
 
 RUN R -e "install.packages('devtools', repos='https://cran.rstudio.com/')"
 
-RUN R -e "devtools::install_github('davidklaing/vizit/r-package')"
+RUN R -e "devtools::install_github('ubc/vizit2/r-package')"
 
 ADD environment.yml /
 
