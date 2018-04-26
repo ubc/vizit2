@@ -2,8 +2,8 @@
 
 start() {
 	mkdir -p /etc/docker-gen/templates/
-	cp /vizit/nginx.tmpl /etc/docker-gen/templates/nginx.tmpl
-	docker-compose -f /vizit/docker-compose.yml up
+	cp /vizit2/nginx.tmpl /etc/docker-gen/templates/nginx.tmpl
+	docker-compose -f /vizit2/docker-compose.yml up
 }
 
 stop() {
