@@ -334,7 +334,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <ol style="list-style-type: decimal">
 <li>Spin up a server instance. This process was tested on an Azure instance with 7 Gb of RAM and 7 Gb of space. The amount of RAM needed is a function of the number of concurrent users you expect and whether they are working on multiple courses. This setup was tested with six separate courses and there was no lag.</li>
 <li>SSH into your instance,</li>
-<li>Type <code>git clone git@github.com:davidklaing/vizit.git</code></li>
+<li>Type <code>git clone git@github.com:ubc/vizit2.git</code></li>
 <li><code>cd vizit</code> This will clone the git repo. All the necessary code is included.</li>
 <li><code>sudo docker run --rm -ti -p 3838:3838 -v $(pwd):/srv/shiny-server --name=&quot;populate&quot; lstmemery/moocshiny bin/bash</code> This will download and deploy the docker image. The image is about 2 gigabytes and contains the scripts to populate the course and run the server.</li>
 <li><code>cd srv/shiny-server/</code></li>
