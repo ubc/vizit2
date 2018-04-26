@@ -12,7 +12,7 @@ VizIT is a Shiny server application that allows instructors and course designers
 1. Spin up a server instance.
 	This process was tested on an Azure instance with 7 Gb of RAM and 7 Gb of space. The amount of RAM needed is a function of the number of concurrent users you expect and whether they are working on multiple courses. This setup was tested with six separate courses and there was no lag.
 2. SSH into your instance,
-3. Type `git clone git@github.com:davidklaing/vizit.git`
+3. Type `git clone git@github.com:ubc/vizit2.git`
 4. `cd vizit`
 	This will clone the git repo. All the necessary code is included.
 5. `sudo docker run --rm -ti -p 3838:3838 -v $(pwd):/srv/shiny-server --name="populate" lstmemery/moocshiny bin/bash`
@@ -34,5 +34,5 @@ VizIT is a Shiny server application that allows instructors and course designers
 	This step can take a significant amount of time to complete, depending on the number of courses being populated.
 14. `exit`
 15. `sudo docker rm -f populate`
-16. `sudo docker run -d -p 80:3838 -v ~/vizit/r-package/:/srv/shiny-server/ -v ~/vizit/docs/:/var/log/shiny-server/ lstmemery/moocshiny`
+16. `sudo docker run -d -p 80:3838 -v ~/vizit2/r-package/:/srv/shiny-server/ -v ~/vizit2/docs/:/var/log/shiny-server/ lstmemery/moocshiny`
 	This runs the shiny server.
