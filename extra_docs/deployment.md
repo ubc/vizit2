@@ -11,7 +11,7 @@ VizIT is a Shiny server application that allows instructors and course designers
 4. `sudo systemctl start docker && sudo systemctl enable docker`to start docker and ensure that it starts after reboot.
 5. `sudo groupadd docker && sudo usermod -aG docker $USER` to allow docker to run from without sudo
 6. Reboot for the previous work to take effect.
-7. `git clone https://github.com/lstmemery/moocshiny-nginx-tmpl.git && cp moocshiny-nginx-tmpl/.config.json vizit`
+7. `git clone https://github.com/moocshiny-nginx-tmpl.git`
 	Note: This is for UBC only. If you do not have access to this repo, you need to create your own `.config.json`. It should look like this:
 ```json
 [{"courses": [{"short_name": "Biobank1x_1T2017", "big_table": "UBCx__Biobank1x__1T2017", "cloud_platform": "UBCx__Biobank1x__1T2017"}]
