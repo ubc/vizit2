@@ -46,6 +46,8 @@ RUN R -e "install.packages('devtools', repos='https://cran.rstudio.com/')"
 
 RUN R -e "devtools::install_github('ubc/vizit2/r-package')"
 
+RUN R -e "devtools::install_github('andrewsali/shinycssloaders')"
+
 ADD environment.yml /
 
 RUN conda env create -f environment.yml
